@@ -1,0 +1,213 @@
+{
+  "metadata": {
+    "title": "Tenerife Experiences - Ihr kompletter Teneriffa-Reiseführer",
+    "description": "Entdecken Sie die besten Erlebnisse, Strände, Ausflüge, Restaurants und Aktivitäten auf Teneriffa. Buchen Sie Touren, finden Sie lokale Tipps und planen Sie Ihre perfekte Reise."
+  },
+  "nav": {
+    "home": "Startseite",
+    "experiences": "Erlebnisse",
+    "beaches": "Strände",
+    "culture": "Kultur",
+    "nature": "Natur",
+    "food": "Essen & Trinken",
+    "nightlife": "Nachtleben",
+    "events": "Feste",
+    "areas": "Regionen",
+    "blog": "Blog",
+    "search": "Suchen...",
+    "bookNow": "Jetzt buchen"
+  },
+  "home": {
+    "hero": {
+      "title": "Entdecke Teneriffa",
+      "subtitle": "Ihr ultimativer Reiseführer zur Insel des ewigen Frühlings",
+      "cta": "Erlebnisse entdecken",
+      "searchPlaceholder": "Was möchten Sie auf Teneriffa unternehmen?"
+    },
+    "featured": {
+      "title": "Empfohlene Erlebnisse",
+      "subtitle": "Handverlesene Aktivitäten, die Besucher lieben",
+      "viewAll": "Alle anzeigen"
+    },
+    "categories": {
+      "title": "Nach Kategorie entdecken",
+      "subtitle": "Finden Sie genau das, wonach Sie suchen"
+    },
+    "areas": {
+      "title": "Nach Region entdecken",
+      "subtitle": "Teneriffas vielfältige Regionen bieten einzigartige Erlebnisse",
+      "north": "Nord-Teneriffa",
+      "south": "Süd-Teneriffa",
+      "west": "West-Teneriffa",
+      "central": "Zentral-Teneriffa"
+    },
+    "blog": {
+      "title": "Reisetipps & Reiseführer",
+      "subtitle": "Expertentipps für Ihre Teneriffa-Reise",
+      "readMore": "Weiterlesen"
+    },
+    "weather": {
+      "title": "Wetter jetzt",
+      "feelsLike": "Gefühlt",
+      "humidity": "Luftfeuchtigkeit",
+      "wind": "Wind"
+    },
+    "newsletter": {
+      "title": "Insider-Tipps erhalten",
+      "subtitle": "Wöchentliche Reisetipps, Angebote und lokale Geheimnisse",
+      "placeholder": "Ihre E-Mail-Adresse",
+      "cta": "Abonnieren",
+      "privacy": "Wir respektieren Ihre Privatsphäre. Jederzeit abbestellbar."
+    }
+  },
+  "categories": {
+    "experiences": "Erlebnisse",
+    "beaches": "Strände",
+    "culture": "Kultur & Geschichte",
+    "nature": "Natur & Wandern",
+    "food": "Essen & Trinken",
+    "nightlife": "Nachtleben",
+    "shopping": "Einkaufen",
+    "family": "Familienspaß",
+    "wellness": "Wellness & Spa",
+    "services": "Dienstleistungen",
+    "practical": "Praktische Infos"
+  },
+  "item": {
+    "from": "Ab",
+    "perPerson": "pro Person",
+    "bookNow": "Jetzt buchen",
+    "duration": "Dauer",
+    "rating": "Bewertung",
+    "reviews": "Bewertungen",
+    "location": "Standort",
+    "highlights": "Highlights",
+    "includes": "Inklusive",
+    "description": "Beschreibung",
+    "sandType": "Sandart",
+    "bathingConditions": "Badebedingungen",
+    "accessibility": "Zugänglichkeit",
+    "riskLevel": "Risikostufe",
+    "similarExperiences": "Ähnliche Erlebnisse",
+    "writeReview": "Bewertung schreiben",
+    "seeAllReviews": "Alle Bewertungen",
+    "share": "Teilen",
+    "save": "Speichern"
+  },
+  "blog": {
+    "title": "Teneriffa Reiseblog",
+    "subtitle": "Tipps, Reiseführer und Inspiration für Ihre Reise",
+    "readTime": "Min. Lesezeit",
+    "publishedOn": "Veröffentlicht am",
+    "relatedArticles": "Verwandte Artikel",
+    "categories": "Kategorien",
+    "latestPosts": "Neueste Beiträge"
+  },
+  "areas": {
+    "title": "Teneriffa nach Regionen entdecken",
+    "subtitle": "Jede Region hat ihren eigenen Charakter und Attraktionen",
+    "thingsToDo": "Aktivitäten",
+    "restaurants": "Restaurants",
+    "beaches": "Strände"
+  },
+  "common": {
+    "loading": "Laden...",
+    "error": "Etwas ist schiefgelaufen",
+    "notFound": "Seite nicht gefunden",
+    "backHome": "Zurück zur Startseite",
+    "viewAll": "Alle anzeigen",
+    "showMore": "Mehr anzeigen",
+    "showLess": "Weniger anzeigen",
+    "filters": "Filter",
+    "sortBy": "Sortieren nach",
+    "popular": "Beliebteste",
+    "newest": "Neueste",
+    "priceAsc": "Preis: Aufsteigend",
+    "priceDesc": "Preis: Absteigend",
+    "ratingDesc": "Bestbewertet",
+    "noResults": "Keine Ergebnisse gefunden",
+    "free": "Kostenlos",
+    "featured": "Empfohlen",
+    "new": "Neu",
+    "topRated": "Bestbewertet"
+  },
+  "partners": {
+    "title": "Werben Sie fur Ihr Unternehmen auf Teneriffa",
+    "subtitle": "Erreichen Sie tausende Touristen, die Teneriffa jeden Monat besuchen, uber unsere mehrsprachige Reiseplattform",
+    "verified": "Verifiziert",
+    "premium": "Premium",
+    "visitWebsite": "Website besuchen",
+    "becomePartner": "Partner werden",
+    "freePlan": "Kostenlos",
+    "basicPlan": "Basis",
+    "premiumPlan": "Premium",
+    "perMonth": "/Monat",
+    "contactUs": "Kontakt",
+    "featuredTitle": "Empfohlene Partner",
+    "featuredSubtitle": "Vertrauenswurdige Unternehmen, empfohlen von Tenerife Experiences",
+    "trustedPartners": "Unsere Partner",
+    "ctaQuestion": "Mochten Sie Ihr Unternehmen tausenden Touristen prasentieren?",
+    "partnerProgram": "Partnerprogramm",
+    "seePlans": "Plane und Preise ansehen",
+    "choosePlan": "Wahlen Sie Ihren Plan",
+    "choosePlanSubtitle": "Flexible Optionen fur jede Unternehmensgrosse",
+    "mostPopular": "Am beliebtesten",
+    "freePriceLabel": "Kostenlos",
+    "getStarted": "Loslegen",
+    "whyPartner": "Warum Partner werden?",
+    "whyPartnerSubtitle": "Treten Sie der fuhrenden Reiseplattform fur Teneriffa bei und wachsen Sie",
+    "benefit1Title": "Gezielte Prasenz",
+    "benefit1Desc": "Ihr Unternehmen wird Touristen gezeigt, die aktiv ihren Teneriffa-Urlaub planen.",
+    "benefit2Title": "Detaillierte Analysen",
+    "benefit2Desc": "Verfolgen Sie Aufrufe, Klicks und Konversionen mit unserem umfassenden Dashboard.",
+    "benefit3Title": "Social-Media-Reichweite",
+    "benefit3Desc": "Premium-Partner werden auf unseren Social-Media-Kanalen vorgestellt.",
+    "features": {
+      "basicListing": "Basis-Unternehmenslisting",
+      "businessProfile": "Unternehmensprofilseite",
+      "mapPlacement": "Kartenplatzierung",
+      "featuredBadge": "Empfohlen-Badge und Startseiten-Platzierung",
+      "analytics": "Detailliertes Analyse-Dashboard",
+      "prioritySupport": "Prioritatssupport",
+      "topPlacement": "Top-Platzierung in Suchergebnissen",
+      "socialMedia": "Social-Media-Promotion",
+      "dedicatedManager": "Dedizierter Account Manager"
+    },
+    "stats": {
+      "monthlyVisitors": "Monatliche Besucher",
+      "countries": "Erreichte Lander",
+      "languages": "Unterstutzte Sprachen",
+      "yearlyGrowth": "Jahrliches Wachstum"
+    },
+    "testimonialsTitle": "Was unsere Partner sagen",
+    "testimonialsSubtitle": "Horen Sie von Unternehmen, die bereits mit uns wachsen",
+    "testimonial1": "Seit wir Tenerife Experiences beigetreten sind, haben wir einen 40%igen Anstieg internationaler Reservierungen verzeichnet.",
+    "testimonial2": "Das Analyse-Dashboard hilft uns zu verstehen, woher unsere Kunden kommen.",
+    "testimonial3": "Als Premium-Partner hat sich unsere Sichtbarkeit deutlich erhoht. Das Team ist professionell und reaktionsschnell.",
+    "contactTitle": "Kontaktieren Sie uns",
+    "contactSubtitle": "Erzahlen Sie uns von Ihrem Unternehmen und wir finden den perfekten Plan",
+    "formName": "Ihr Name",
+    "formNamePlaceholder": "Max Mustermann",
+    "formEmail": "E-Mail-Adresse",
+    "formEmailPlaceholder": "max@unternehmen.de",
+    "formBusiness": "Unternehmensname",
+    "formBusinessPlaceholder": "Ihr Unternehmensname",
+    "formMessage": "Nachricht",
+    "formMessagePlaceholder": "Erzahlen Sie uns von Ihrem Unternehmen...",
+    "sendInquiry": "Anfrage senden"
+  },
+  "footer": {
+    "about": "Über Tenerife Experiences",
+    "aboutText": "Ihr umfassender Reiseführer für alles, was Teneriffa zu bieten hat. Von atemberaubenden Stränden bis zu vulkanischen Landschaften helfen wir Ihnen, das Beste der Insel zu entdecken.",
+    "quickLinks": "Schnelllinks",
+    "categories": "Kategorien",
+    "contact": "Kontakt",
+    "legal": "Rechtliches",
+    "privacy": "Datenschutz",
+    "terms": "AGB",
+    "cookies": "Cookie-Richtlinie",
+    "copyright": "© {year} Tenerife Experiences. Alle Rechte vorbehalten.",
+    "partners": "Für Partner",
+    "advertise": "Bei uns werben"
+  }
+}

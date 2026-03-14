@@ -1,0 +1,213 @@
+{
+  "metadata": {
+    "title": "Tenerife Experiences - Your Complete Guide to Tenerife",
+    "description": "Discover the best experiences, beaches, excursions, restaurants and things to do in Tenerife. Book tours, find local tips and plan your perfect trip."
+  },
+  "nav": {
+    "home": "Home",
+    "experiences": "Experiences",
+    "beaches": "Beaches",
+    "culture": "Culture",
+    "nature": "Nature",
+    "food": "Food & Drink",
+    "nightlife": "Nightlife",
+    "events": "Festivals",
+    "areas": "Areas",
+    "blog": "Blog",
+    "search": "Search...",
+    "bookNow": "Book Now"
+  },
+  "home": {
+    "hero": {
+      "title": "Discover Tenerife",
+      "subtitle": "Your ultimate guide to the Island of Eternal Spring",
+      "cta": "Explore Experiences",
+      "searchPlaceholder": "What do you want to do in Tenerife?"
+    },
+    "featured": {
+      "title": "Featured Experiences",
+      "subtitle": "Hand-picked activities loved by visitors",
+      "viewAll": "View All"
+    },
+    "categories": {
+      "title": "Explore by Category",
+      "subtitle": "Find exactly what you're looking for"
+    },
+    "areas": {
+      "title": "Explore by Area",
+      "subtitle": "Tenerife's diverse regions offer unique experiences",
+      "north": "North Tenerife",
+      "south": "South Tenerife",
+      "west": "West Tenerife",
+      "central": "Central Tenerife"
+    },
+    "blog": {
+      "title": "Travel Tips & Guides",
+      "subtitle": "Expert advice for your Tenerife trip",
+      "readMore": "Read More"
+    },
+    "weather": {
+      "title": "Weather Right Now",
+      "feelsLike": "Feels like",
+      "humidity": "Humidity",
+      "wind": "Wind"
+    },
+    "newsletter": {
+      "title": "Get Insider Tips",
+      "subtitle": "Weekly Tenerife travel tips, deals, and local secrets",
+      "placeholder": "Your email address",
+      "cta": "Subscribe",
+      "privacy": "We respect your privacy. Unsubscribe anytime."
+    }
+  },
+  "categories": {
+    "experiences": "Experiences",
+    "beaches": "Beaches",
+    "culture": "Culture & History",
+    "nature": "Nature & Hiking",
+    "food": "Food & Drink",
+    "nightlife": "Nightlife",
+    "shopping": "Shopping",
+    "family": "Family Fun",
+    "wellness": "Wellness & Spa",
+    "services": "Services",
+    "practical": "Practical Info"
+  },
+  "item": {
+    "from": "From",
+    "perPerson": "per person",
+    "bookNow": "Book Now",
+    "duration": "Duration",
+    "rating": "Rating",
+    "reviews": "reviews",
+    "location": "Location",
+    "highlights": "Highlights",
+    "includes": "What's Included",
+    "description": "Description",
+    "sandType": "Sand Type",
+    "bathingConditions": "Bathing Conditions",
+    "accessibility": "Accessibility",
+    "riskLevel": "Risk Level",
+    "similarExperiences": "Similar Experiences",
+    "writeReview": "Write a Review",
+    "seeAllReviews": "See All Reviews",
+    "share": "Share",
+    "save": "Save"
+  },
+  "blog": {
+    "title": "Tenerife Travel Blog",
+    "subtitle": "Tips, guides, and inspiration for your trip",
+    "readTime": "min read",
+    "publishedOn": "Published on",
+    "relatedArticles": "Related Articles",
+    "categories": "Categories",
+    "latestPosts": "Latest Posts"
+  },
+  "areas": {
+    "title": "Explore Tenerife by Area",
+    "subtitle": "Each region has its own character and attractions",
+    "thingsToDo": "Things to Do",
+    "restaurants": "Restaurants",
+    "beaches": "Beaches"
+  },
+  "common": {
+    "loading": "Loading...",
+    "error": "Something went wrong",
+    "notFound": "Page not found",
+    "backHome": "Back to Home",
+    "viewAll": "View All",
+    "showMore": "Show More",
+    "showLess": "Show Less",
+    "filters": "Filters",
+    "sortBy": "Sort by",
+    "popular": "Most Popular",
+    "newest": "Newest",
+    "priceAsc": "Price: Low to High",
+    "priceDesc": "Price: High to Low",
+    "ratingDesc": "Best Rated",
+    "noResults": "No results found",
+    "free": "Free",
+    "featured": "Featured",
+    "new": "New",
+    "topRated": "Top Rated"
+  },
+  "partners": {
+    "title": "Promote Your Business in Tenerife",
+    "subtitle": "Reach thousands of tourists visiting Tenerife every month through our multilingual travel platform",
+    "verified": "Verified",
+    "premium": "Premium",
+    "visitWebsite": "Visit Website",
+    "becomePartner": "Become a Partner",
+    "freePlan": "Free",
+    "basicPlan": "Basic",
+    "premiumPlan": "Premium",
+    "perMonth": "/month",
+    "contactUs": "Contact Us",
+    "featuredTitle": "Featured Partners",
+    "featuredSubtitle": "Trusted businesses recommended by Tenerife Experiences",
+    "trustedPartners": "Our Partners",
+    "ctaQuestion": "Want to promote your business to thousands of tourists?",
+    "partnerProgram": "Partner Program",
+    "seePlans": "See Plans & Pricing",
+    "choosePlan": "Choose Your Plan",
+    "choosePlanSubtitle": "Flexible options for every business size",
+    "mostPopular": "Most Popular",
+    "freePriceLabel": "Free",
+    "getStarted": "Get Started",
+    "whyPartner": "Why Partner With Us?",
+    "whyPartnerSubtitle": "Join the leading travel platform for Tenerife and grow your business",
+    "benefit1Title": "Targeted Exposure",
+    "benefit1Desc": "Your business is shown to tourists actively planning their Tenerife trip, delivering highly qualified leads.",
+    "benefit2Title": "Detailed Analytics",
+    "benefit2Desc": "Track views, clicks, and conversions with our comprehensive dashboard. Understand your ROI.",
+    "benefit3Title": "Social Media Reach",
+    "benefit3Desc": "Premium partners get featured on our social media channels, reaching an even wider audience.",
+    "features": {
+      "basicListing": "Basic business listing",
+      "businessProfile": "Business profile page",
+      "mapPlacement": "Map placement",
+      "featuredBadge": "Featured badge & homepage placement",
+      "analytics": "Detailed analytics dashboard",
+      "prioritySupport": "Priority support",
+      "topPlacement": "Top placement in search results",
+      "socialMedia": "Social media promotion",
+      "dedicatedManager": "Dedicated account manager"
+    },
+    "stats": {
+      "monthlyVisitors": "Monthly Visitors",
+      "countries": "Countries Reached",
+      "languages": "Languages Supported",
+      "yearlyGrowth": "Yearly Growth"
+    },
+    "testimonialsTitle": "What Our Partners Say",
+    "testimonialsSubtitle": "Hear from businesses already growing with us",
+    "testimonial1": "Since joining Tenerife Experiences, we've seen a 40% increase in international reservations. The platform really reaches the right audience.",
+    "testimonial2": "The analytics dashboard helps us understand exactly where our customers come from. Best marketing investment we've made.",
+    "testimonial3": "Being featured as a premium partner has significantly boosted our visibility. The team is professional and responsive.",
+    "contactTitle": "Get in Touch",
+    "contactSubtitle": "Tell us about your business and we'll find the perfect plan for you",
+    "formName": "Your Name",
+    "formNamePlaceholder": "John Smith",
+    "formEmail": "Email Address",
+    "formEmailPlaceholder": "john@business.com",
+    "formBusiness": "Business Name",
+    "formBusinessPlaceholder": "Your business name",
+    "formMessage": "Message",
+    "formMessagePlaceholder": "Tell us about your business and what you're looking for...",
+    "sendInquiry": "Send Inquiry"
+  },
+  "footer": {
+    "about": "About Tenerife Experiences",
+    "aboutText": "Your comprehensive guide to everything Tenerife has to offer. From stunning beaches to volcanic landscapes, we help you discover the best of the island.",
+    "quickLinks": "Quick Links",
+    "categories": "Categories",
+    "contact": "Contact",
+    "legal": "Legal",
+    "privacy": "Privacy Policy",
+    "terms": "Terms of Service",
+    "cookies": "Cookie Policy",
+    "copyright": "© {year} Tenerife Experiences. All rights reserved.",
+    "partners": "For Partners",
+    "advertise": "Advertise With Us"
+  }
+}

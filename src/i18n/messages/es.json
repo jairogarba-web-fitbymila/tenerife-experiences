@@ -1,0 +1,213 @@
+{
+  "metadata": {
+    "title": "Tenerife Experiences - Tu Guía Completa de Tenerife",
+    "description": "Descubre las mejores experiencias, playas, excursiones, restaurantes y cosas que hacer en Tenerife. Reserva tours, encuentra consejos locales y planifica tu viaje perfecto."
+  },
+  "nav": {
+    "home": "Inicio",
+    "experiences": "Experiencias",
+    "beaches": "Playas",
+    "culture": "Cultura",
+    "nature": "Naturaleza",
+    "food": "Gastronomía",
+    "nightlife": "Vida Nocturna",
+    "events": "Fiestas",
+    "areas": "Zonas",
+    "blog": "Blog",
+    "search": "Buscar...",
+    "bookNow": "Reservar"
+  },
+  "home": {
+    "hero": {
+      "title": "Descubre Tenerife",
+      "subtitle": "Tu guía definitiva de la Isla de la Eterna Primavera",
+      "cta": "Explorar Experiencias",
+      "searchPlaceholder": "¿Qué quieres hacer en Tenerife?"
+    },
+    "featured": {
+      "title": "Experiencias Destacadas",
+      "subtitle": "Actividades seleccionadas y amadas por los visitantes",
+      "viewAll": "Ver Todas"
+    },
+    "categories": {
+      "title": "Explorar por Categoría",
+      "subtitle": "Encuentra exactamente lo que buscas"
+    },
+    "areas": {
+      "title": "Explorar por Zona",
+      "subtitle": "Las diversas regiones de Tenerife ofrecen experiencias únicas",
+      "north": "Norte de Tenerife",
+      "south": "Sur de Tenerife",
+      "west": "Oeste de Tenerife",
+      "central": "Centro de Tenerife"
+    },
+    "blog": {
+      "title": "Consejos y Guías de Viaje",
+      "subtitle": "Consejos expertos para tu viaje a Tenerife",
+      "readMore": "Leer Más"
+    },
+    "weather": {
+      "title": "Tiempo Ahora",
+      "feelsLike": "Sensación",
+      "humidity": "Humedad",
+      "wind": "Viento"
+    },
+    "newsletter": {
+      "title": "Recibe Consejos Exclusivos",
+      "subtitle": "Tips semanales, ofertas y secretos locales de Tenerife",
+      "placeholder": "Tu correo electrónico",
+      "cta": "Suscribirse",
+      "privacy": "Respetamos tu privacidad. Cancela cuando quieras."
+    }
+  },
+  "categories": {
+    "experiences": "Experiencias",
+    "beaches": "Playas",
+    "culture": "Cultura e Historia",
+    "nature": "Naturaleza y Senderismo",
+    "food": "Gastronomía",
+    "nightlife": "Vida Nocturna",
+    "shopping": "Compras",
+    "family": "Familia",
+    "wellness": "Bienestar y Spa",
+    "services": "Servicios",
+    "practical": "Info Práctica"
+  },
+  "item": {
+    "from": "Desde",
+    "perPerson": "por persona",
+    "bookNow": "Reservar Ahora",
+    "duration": "Duración",
+    "rating": "Valoración",
+    "reviews": "reseñas",
+    "location": "Ubicación",
+    "highlights": "Destacados",
+    "includes": "Qué Incluye",
+    "description": "Descripción",
+    "sandType": "Tipo de Arena",
+    "bathingConditions": "Condiciones de Baño",
+    "accessibility": "Accesibilidad",
+    "riskLevel": "Nivel de Riesgo",
+    "similarExperiences": "Experiencias Similares",
+    "writeReview": "Escribir Reseña",
+    "seeAllReviews": "Ver Todas las Reseñas",
+    "share": "Compartir",
+    "save": "Guardar"
+  },
+  "blog": {
+    "title": "Blog de Viajes a Tenerife",
+    "subtitle": "Consejos, guías e inspiración para tu viaje",
+    "readTime": "min de lectura",
+    "publishedOn": "Publicado el",
+    "relatedArticles": "Artículos Relacionados",
+    "categories": "Categorías",
+    "latestPosts": "Últimos Artículos"
+  },
+  "areas": {
+    "title": "Explora Tenerife por Zona",
+    "subtitle": "Cada región tiene su propio carácter y atracciones",
+    "thingsToDo": "Qué Hacer",
+    "restaurants": "Restaurantes",
+    "beaches": "Playas"
+  },
+  "common": {
+    "loading": "Cargando...",
+    "error": "Algo salió mal",
+    "notFound": "Página no encontrada",
+    "backHome": "Volver al Inicio",
+    "viewAll": "Ver Todo",
+    "showMore": "Ver Más",
+    "showLess": "Ver Menos",
+    "filters": "Filtros",
+    "sortBy": "Ordenar por",
+    "popular": "Más Popular",
+    "newest": "Más Reciente",
+    "priceAsc": "Precio: Menor a Mayor",
+    "priceDesc": "Precio: Mayor a Menor",
+    "ratingDesc": "Mejor Valorado",
+    "noResults": "No se encontraron resultados",
+    "free": "Gratis",
+    "featured": "Destacado",
+    "new": "Nuevo",
+    "topRated": "Mejor Valorado"
+  },
+  "partners": {
+    "title": "Promociona Tu Negocio en Tenerife",
+    "subtitle": "Llega a miles de turistas que visitan Tenerife cada mes a traves de nuestra plataforma multilingue",
+    "verified": "Verificado",
+    "premium": "Premium",
+    "visitWebsite": "Visitar Web",
+    "becomePartner": "Hazte Partner",
+    "freePlan": "Gratis",
+    "basicPlan": "Basico",
+    "premiumPlan": "Premium",
+    "perMonth": "/mes",
+    "contactUs": "Contactar",
+    "featuredTitle": "Partners Destacados",
+    "featuredSubtitle": "Negocios de confianza recomendados por Tenerife Experiences",
+    "trustedPartners": "Nuestros Partners",
+    "ctaQuestion": "Quieres promocionar tu negocio ante miles de turistas?",
+    "partnerProgram": "Programa de Partners",
+    "seePlans": "Ver Planes y Precios",
+    "choosePlan": "Elige Tu Plan",
+    "choosePlanSubtitle": "Opciones flexibles para cada tamano de negocio",
+    "mostPopular": "Mas Popular",
+    "freePriceLabel": "Gratis",
+    "getStarted": "Empezar",
+    "whyPartner": "Por que ser Partner?",
+    "whyPartnerSubtitle": "Unete a la plataforma de viajes lider de Tenerife y haz crecer tu negocio",
+    "benefit1Title": "Exposicion Dirigida",
+    "benefit1Desc": "Tu negocio se muestra a turistas que planifican activamente su viaje a Tenerife.",
+    "benefit2Title": "Analiticas Detalladas",
+    "benefit2Desc": "Rastrea visitas, clics y conversiones con nuestro panel completo. Entiende tu ROI.",
+    "benefit3Title": "Alcance en Redes Sociales",
+    "benefit3Desc": "Los partners premium aparecen en nuestras redes sociales, alcanzando una audiencia aun mayor.",
+    "features": {
+      "basicListing": "Listado basico de negocio",
+      "businessProfile": "Pagina de perfil de negocio",
+      "mapPlacement": "Ubicacion en el mapa",
+      "featuredBadge": "Insignia destacada y ubicacion en inicio",
+      "analytics": "Panel de analiticas detallado",
+      "prioritySupport": "Soporte prioritario",
+      "topPlacement": "Primera posicion en resultados",
+      "socialMedia": "Promocion en redes sociales",
+      "dedicatedManager": "Gestor de cuenta dedicado"
+    },
+    "stats": {
+      "monthlyVisitors": "Visitantes Mensuales",
+      "countries": "Paises Alcanzados",
+      "languages": "Idiomas Disponibles",
+      "yearlyGrowth": "Crecimiento Anual"
+    },
+    "testimonialsTitle": "Lo Que Dicen Nuestros Partners",
+    "testimonialsSubtitle": "Escucha a los negocios que ya crecen con nosotros",
+    "testimonial1": "Desde que nos unimos a Tenerife Experiences, hemos visto un aumento del 40% en reservas internacionales.",
+    "testimonial2": "El panel de analiticas nos ayuda a entender exactamente de donde vienen nuestros clientes.",
+    "testimonial3": "Ser partner premium ha aumentado significativamente nuestra visibilidad. El equipo es profesional y receptivo.",
+    "contactTitle": "Contactanos",
+    "contactSubtitle": "Cuentanos sobre tu negocio y encontraremos el plan perfecto para ti",
+    "formName": "Tu Nombre",
+    "formNamePlaceholder": "Juan Garcia",
+    "formEmail": "Correo Electronico",
+    "formEmailPlaceholder": "juan@negocio.com",
+    "formBusiness": "Nombre del Negocio",
+    "formBusinessPlaceholder": "Nombre de tu negocio",
+    "formMessage": "Mensaje",
+    "formMessagePlaceholder": "Cuentanos sobre tu negocio y lo que buscas...",
+    "sendInquiry": "Enviar Consulta"
+  },
+  "footer": {
+    "about": "Sobre Tenerife Experiences",
+    "aboutText": "Tu guía completa de todo lo que Tenerife tiene para ofrecer. Desde playas impresionantes hasta paisajes volcánicos, te ayudamos a descubrir lo mejor de la isla.",
+    "quickLinks": "Enlaces Rápidos",
+    "categories": "Categorías",
+    "contact": "Contacto",
+    "legal": "Legal",
+    "privacy": "Política de Privacidad",
+    "terms": "Términos de Servicio",
+    "cookies": "Política de Cookies",
+    "copyright": "© {year} Tenerife Experiences. Todos los derechos reservados.",
+    "partners": "Para Partners",
+    "advertise": "Anúnciate Con Nosotros"
+  }
+}
