@@ -275,6 +275,131 @@
     "freeCancellation": "Cancelación gratuita",
     "bestPrice": "Mejor precio garantizado"
   },
+  "pillar": {
+    "meta": {
+      "title": "Qué Ver en Tenerife: Guía Completa 2026 | Tenerife Experiences",
+      "description": "Descubre qué ver en Tenerife: las 10 mejores atracciones, playas, naturaleza, cultura y gastronomía. Guía completa con itinerarios de 3, 5 y 7 días."
+    },
+    "hero": {
+      "title": "Qué ver en Tenerife: Guía completa 2026",
+      "subtitle": "Todo lo que necesitas saber para descubrir la isla más espectacular de las Canarias. Playas de ensueño, volcanes, pueblos con encanto y una gastronomía única te esperan.",
+      "badge": "Guía Definitiva de Tenerife",
+      "altImage": "Vista panorámica del Teide y la costa de Tenerife al atardecer"
+    },
+    "toc": {
+      "title": "En esta guía",
+      "top10": "Top 10 Imprescindibles",
+      "byArea": "Por Zonas",
+      "beaches": "Playas",
+      "nature": "Naturaleza",
+      "culture": "Cultura",
+      "gastronomy": "Gastronomía",
+      "itineraries": "Itinerarios",
+      "faq": "Preguntas Frecuentes"
+    },
+    "sections": {
+      "mustSee": "Imprescindible",
+      "top10Title": "Los 10 lugares imprescindibles de Tenerife",
+      "top10Subtitle": "Las experiencias mejor valoradas por nuestros visitantes. Desde el majestuoso Teide hasta playas de arena negra volcánica.",
+      "noData": "Pronto añadiremos contenido aquí.",
+      "byAreaTitle": "Tenerife por zonas",
+      "byAreaSubtitle": "Cada rincón de la isla tiene su propia personalidad. Descubre qué ofrece cada zona.",
+      "viewAllAreas": "Ver todas las zonas",
+      "explore": "Explorar zona",
+      "beachesLabel": "Playas",
+      "beachesTitle": "Las mejores playas de Tenerife",
+      "beachesSubtitle": "Desde las doradas arenas de Las Teresitas hasta las playas volcánicas del norte, Tenerife tiene más de 150 playas para todos los gustos.",
+      "viewAllBeaches": "Ver todas las playas",
+      "natureLabel": "Naturaleza",
+      "natureTitle": "Naturaleza y paisajes únicos",
+      "natureSubtitle": "Tenerife es un paraíso natural: el tercer volcán más alto del mundo, bosques de laurisilva milenarios y barrancos espectaculares.",
+      "learnMore": "Saber más",
+      "cultureLabel": "Cultura e Historia",
+      "cultureTitle": "Pueblos con historia y tradición",
+      "cultureSubtitle": "Ciudades Patrimonio de la Humanidad, pueblos reconstruidos sobre lava y museos que cuentan siglos de historia.",
+      "viewAllCulture": "Ver toda la cultura",
+      "gastronomyLabel": "Gastronomía",
+      "gastronomyTitle": "Sabores de Tenerife",
+      "itinerariesLabel": "Planifica tu viaje",
+      "itinerariesTitle": "Itinerarios sugeridos",
+      "itinerariesSubtitle": "Planes optimizados para sacar el máximo partido a tu viaje según los días que dispongas.",
+      "faqTitle": "Preguntas frecuentes sobre Tenerife",
+      "faqSubtitle": "Resolvemos las dudas más comunes de los viajeros que visitan la isla."
+    },
+    "nature": {
+      "teideTitle": "Parque Nacional del Teide",
+      "teideDesc": "El pico más alto de España (3.718 m). Paisajes lunares, teleférico y observación de estrellas en un cielo Starlight.",
+      "anagaTitle": "Bosque de Anaga",
+      "anagaDesc": "Reserva de la Biosfera con bosques de laurisilva milenarios, miradores espectaculares y pueblos aislados.",
+      "mascaTitle": "Barranco de Masca",
+      "mascaDesc": "La ruta de senderismo más famosa de Tenerife. Un descenso espectacular desde el pueblo hasta el mar."
+    },
+    "culture": {
+      "lagunaTitle": "San Cristóbal de La Laguna",
+      "lagunaDesc": "Ciudad Patrimonio de la Humanidad por la UNESCO. Calles empedradas, casonas coloridas y ambiente universitario.",
+      "garachicoTitle": "Garachico",
+      "garachicoDesc": "El pueblo que renació de la lava. Piscinas naturales de El Caletón, arquitectura histórica y encanto atlántico.",
+      "museumsTitle": "Museos y Espacios Culturales",
+      "museumsDesc": "Desde el TEA en Santa Cruz hasta el Museo de la Naturaleza y el Hombre con sus momias guanches."
+    },
+    "beaches": {
+      "teresitas": "La playa más icónica de Tenerife, con arena dorada traída del Sáhara y aguas cristalinas protegidas.",
+      "duque": "Playa de lujo en Costa Adeje con arena clara, servicios premium y aguas tranquilas. Ideal para familias.",
+      "benijo": "Playa salvaje en Anaga con arena negra volcánica y vistas a los Roques. Perfecta para surfistas."
+    },
+    "gastronomy": {
+      "intro": "La gastronomía tinerfeña es una fusión de sabores canarios, españoles y latinoamericanos. Productos locales de calidad excepcional, vinos con denominación de origen y una tradición culinaria que sorprende.",
+      "highlight1": "Papas arrugadas con mojo: el plato más típico canario, imprescindible en cualquier guachinche",
+      "highlight2": "Vinos de Tenerife: 5 denominaciones de origen con cepas prefiloxéricas únicas en el mundo",
+      "highlight3": "Guachinches: restaurantes caseros donde probar auténtica cocina canaria a precios locales",
+      "cta": "Explorar la gastronomía"
+    },
+    "itineraries": {
+      "recommended": "Recomendado",
+      "3days": {
+        "title": "3 Días en Tenerife",
+        "subtitle": "Lo esencial de la isla",
+        "day1": "Teide al amanecer + La Orotava + Puerto de la Cruz",
+        "day2": "Playas del sur: Las Américas, Costa Adeje + avistamiento de ballenas",
+        "day3": "La Laguna + Santa Cruz + Playa de Las Teresitas"
+      },
+      "5days": {
+        "title": "5 Días en Tenerife",
+        "subtitle": "La experiencia completa",
+        "day1": "Parque Nacional del Teide + observación de estrellas",
+        "day2": "Bosque de Anaga + Playa de Benijo + Taganana",
+        "day3": "La Laguna + Museo de la Naturaleza + gastronomía",
+        "day4": "Costa Adeje + Siam Park + atardecer en Los Gigantes",
+        "day5": "Masca (senderismo) + Garachico + Icod de los Vinos"
+      },
+      "7days": {
+        "title": "7 Días en Tenerife",
+        "subtitle": "Sin prisas, sin perderte nada",
+        "days12": "Teide (teleférico + senderismo) + La Orotava + Puerto de la Cruz",
+        "day3": "Anaga completo: Cruz del Carmen, Chinamada, Benijo, Taganana",
+        "days45": "Sur: playas, whale watching, Siam Park, Barranco del Infierno",
+        "day6": "Oeste: Masca, Garachico, Icod, Los Gigantes al atardecer",
+        "day7": "La Laguna + Santa Cruz + compras + despedida gastronómica"
+      }
+    },
+    "faq": {
+      "q1": "¿Cuál es la mejor época para visitar Tenerife?",
+      "a1": "Tenerife se puede visitar todo el año gracias a su clima subtropical. Las temperaturas oscilan entre 18°C y 28°C. El invierno (diciembre-febrero) es ideal para huir del frío europeo, mientras que la primavera (marzo-mayo) ofrece paisajes verdes y floridos. El verano es perfecto para playa, aunque el sur siempre tiene buen tiempo.",
+      "q2": "¿Cuántos días necesito para ver Tenerife?",
+      "a2": "Recomendamos un mínimo de 5 días para ver lo esencial: Teide, playas del sur, Anaga y La Laguna. Con 7 días podrás añadir Masca, Garachico y disfrutar sin prisas. Si solo tienes 3 días, céntrate en el Teide, una zona de playa y La Laguna.",
+      "q3": "¿Es mejor el norte o el sur de Tenerife?",
+      "a3": "Depende de tus preferencias. El sur tiene playas más amplias, resorts y clima soleado garantizado. El norte ofrece naturaleza exuberante, pueblos con encanto, gastronomía auténtica y paisajes más verdes. Lo ideal es combinar ambas zonas.",
+      "q4": "¿Necesito coche para recorrer Tenerife?",
+      "a4": "Es muy recomendable. Aunque hay transporte público (guaguas y tranvía), tener coche te da libertad para explorar rincones como Masca, Anaga o las playas más remotas. Los precios de alquiler son razonables, desde unos 20-30€/día.",
+      "q5": "¿Qué ver en Tenerife con niños?",
+      "a5": "Tenerife es ideal para familias. No te pierdas Siam Park (mejor parque acuático del mundo), Loro Parque, las playas tranquilas de Costa Adeje, el teleférico del Teide y las piscinas naturales de Garachico. También hay excursiones en barco para ver delfines y ballenas."
+    },
+    "cta": {
+      "title": "¿Listo para descubrir Tenerife?",
+      "subtitle": "Reserva las mejores experiencias y actividades de la isla. Cancelación gratuita y mejor precio garantizado.",
+      "button": "Reservar Experiencias"
+    }
+  },
   "footer": {
     "about": "Sobre Tenerife Experiences",
     "aboutText": "Tu guía completa de todo lo que Tenerife tiene para ofrecer. Desde playas impresionantes hasta paisajes volcánicos, te ayudamos a descubrir lo mejor de la isla.",

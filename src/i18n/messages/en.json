@@ -275,6 +275,131 @@
     "freeCancellation": "Free cancellation",
     "bestPrice": "Best price guarantee"
   },
+  "pillar": {
+    "meta": {
+      "title": "What to See in Tenerife: Complete 2026 Guide | Tenerife Experiences",
+      "description": "Discover what to see in Tenerife: the 10 best attractions, beaches, nature, culture and gastronomy. Complete guide with 3, 5 and 7-day itineraries."
+    },
+    "hero": {
+      "title": "What to See in Tenerife: Complete 2026 Guide",
+      "subtitle": "Everything you need to know to discover the most spectacular island in the Canaries. Dream beaches, volcanoes, charming villages and unique cuisine await you.",
+      "badge": "The Ultimate Tenerife Guide",
+      "altImage": "Panoramic view of Mount Teide and the Tenerife coastline at sunset"
+    },
+    "toc": {
+      "title": "In this guide",
+      "top10": "Top 10 Must-See",
+      "byArea": "By Area",
+      "beaches": "Beaches",
+      "nature": "Nature",
+      "culture": "Culture",
+      "gastronomy": "Gastronomy",
+      "itineraries": "Itineraries",
+      "faq": "FAQ"
+    },
+    "sections": {
+      "mustSee": "Must See",
+      "top10Title": "The 10 must-see places in Tenerife",
+      "top10Subtitle": "The highest-rated experiences by our visitors. From the majestic Teide to volcanic black sand beaches.",
+      "noData": "We'll be adding content here soon.",
+      "byAreaTitle": "Tenerife by area",
+      "byAreaSubtitle": "Every corner of the island has its own personality. Discover what each area has to offer.",
+      "viewAllAreas": "View all areas",
+      "explore": "Explore area",
+      "beachesLabel": "Beaches",
+      "beachesTitle": "The best beaches in Tenerife",
+      "beachesSubtitle": "From the golden sands of Las Teresitas to the volcanic beaches of the north, Tenerife has over 150 beaches for every taste.",
+      "viewAllBeaches": "View all beaches",
+      "natureLabel": "Nature",
+      "natureTitle": "Unique nature and landscapes",
+      "natureSubtitle": "Tenerife is a natural paradise: the third-tallest volcano in the world, ancient laurel forests and spectacular ravines.",
+      "learnMore": "Learn more",
+      "cultureLabel": "Culture & History",
+      "cultureTitle": "Towns steeped in history and tradition",
+      "cultureSubtitle": "UNESCO World Heritage cities, towns rebuilt over lava and museums telling centuries of history.",
+      "viewAllCulture": "Explore all culture",
+      "gastronomyLabel": "Gastronomy",
+      "gastronomyTitle": "Flavours of Tenerife",
+      "itinerariesLabel": "Plan your trip",
+      "itinerariesTitle": "Suggested itineraries",
+      "itinerariesSubtitle": "Optimised plans to make the most of your trip depending on the days you have.",
+      "faqTitle": "Frequently asked questions about Tenerife",
+      "faqSubtitle": "We answer the most common questions from travellers visiting the island."
+    },
+    "nature": {
+      "teideTitle": "Teide National Park",
+      "teideDesc": "The highest peak in Spain (3,718 m). Lunar landscapes, cable car and stargazing under a Starlight-certified sky.",
+      "anagaTitle": "Anaga Forest",
+      "anagaDesc": "A Biosphere Reserve with ancient laurel forests, spectacular viewpoints and isolated villages.",
+      "mascaTitle": "Masca Gorge",
+      "mascaDesc": "Tenerife's most famous hiking trail. A spectacular descent from the village down to the sea."
+    },
+    "culture": {
+      "lagunaTitle": "San Cristóbal de La Laguna",
+      "lagunaDesc": "A UNESCO World Heritage city. Cobblestone streets, colourful mansions and a vibrant university atmosphere.",
+      "garachicoTitle": "Garachico",
+      "garachicoDesc": "The town reborn from lava. Natural pools of El Caletón, historic architecture and Atlantic charm.",
+      "museumsTitle": "Museums & Cultural Spaces",
+      "museumsDesc": "From TEA in Santa Cruz to the Museum of Nature and Man with its Guanche mummies."
+    },
+    "beaches": {
+      "teresitas": "Tenerife's most iconic beach, with golden sand brought from the Sahara and crystal-clear sheltered waters.",
+      "duque": "A premium beach in Costa Adeje with light sand, top-tier facilities and calm waters. Perfect for families.",
+      "benijo": "A wild beach in Anaga with volcanic black sand and views of the Roques. Perfect for surfers."
+    },
+    "gastronomy": {
+      "intro": "Tenerife's cuisine is a fusion of Canarian, Spanish and Latin American flavours. Exceptional local produce, wines with their own denomination of origin and a culinary tradition that never fails to surprise.",
+      "highlight1": "Papas arrugadas with mojo: the quintessential Canarian dish, a must-try at any guachinche",
+      "highlight2": "Tenerife wines: 5 denominations of origin with unique pre-phylloxera grape varieties",
+      "highlight3": "Guachinches: family-run eateries serving authentic Canarian cuisine at local prices",
+      "cta": "Explore the cuisine"
+    },
+    "itineraries": {
+      "recommended": "Recommended",
+      "3days": {
+        "title": "3 Days in Tenerife",
+        "subtitle": "The island essentials",
+        "day1": "Teide at sunrise + La Orotava + Puerto de la Cruz",
+        "day2": "Southern beaches: Las Américas, Costa Adeje + whale watching",
+        "day3": "La Laguna + Santa Cruz + Playa de Las Teresitas"
+      },
+      "5days": {
+        "title": "5 Days in Tenerife",
+        "subtitle": "The complete experience",
+        "day1": "Teide National Park + stargazing",
+        "day2": "Anaga Forest + Playa de Benijo + Taganana",
+        "day3": "La Laguna + Museum of Nature + gastronomy",
+        "day4": "Costa Adeje + Siam Park + sunset at Los Gigantes",
+        "day5": "Masca (hiking) + Garachico + Icod de los Vinos"
+      },
+      "7days": {
+        "title": "7 Days in Tenerife",
+        "subtitle": "Take your time, miss nothing",
+        "days12": "Teide (cable car + hiking) + La Orotava + Puerto de la Cruz",
+        "day3": "Full Anaga: Cruz del Carmen, Chinamada, Benijo, Taganana",
+        "days45": "South: beaches, whale watching, Siam Park, Barranco del Infierno",
+        "day6": "West: Masca, Garachico, Icod, sunset at Los Gigantes",
+        "day7": "La Laguna + Santa Cruz + shopping + farewell dinner"
+      }
+    },
+    "faq": {
+      "q1": "What is the best time to visit Tenerife?",
+      "a1": "Tenerife can be visited year-round thanks to its subtropical climate. Temperatures range between 18°C and 28°C. Winter (December-February) is ideal for escaping the European cold, while spring (March-May) offers green, blooming landscapes. Summer is perfect for the beach, though the south always has good weather.",
+      "q2": "How many days do I need to see Tenerife?",
+      "a2": "We recommend a minimum of 5 days to see the essentials: Teide, southern beaches, Anaga and La Laguna. With 7 days you can add Masca, Garachico and enjoy at a leisurely pace. If you only have 3 days, focus on Teide, one beach area and La Laguna.",
+      "q3": "Is the north or south of Tenerife better?",
+      "a3": "It depends on your preferences. The south has wider beaches, resorts and guaranteed sunshine. The north offers lush nature, charming villages, authentic cuisine and greener landscapes. Ideally, combine both areas.",
+      "q4": "Do I need a car to get around Tenerife?",
+      "a4": "Highly recommended. While there is public transport (buses and tram), having a car gives you the freedom to explore spots like Masca, Anaga or the more remote beaches. Rental prices are reasonable, from around €20-30/day.",
+      "q5": "What to see in Tenerife with kids?",
+      "a5": "Tenerife is ideal for families. Don't miss Siam Park (world's best water park), Loro Parque, the calm beaches of Costa Adeje, the Teide cable car and Garachico's natural pools. There are also boat trips to see dolphins and whales."
+    },
+    "cta": {
+      "title": "Ready to discover Tenerife?",
+      "subtitle": "Book the best experiences and activities on the island. Free cancellation and best price guaranteed.",
+      "button": "Book Experiences"
+    }
+  },
   "footer": {
     "about": "About Tenerife Experiences",
     "aboutText": "Your comprehensive guide to everything Tenerife has to offer. From stunning beaches to volcanic landscapes, we help you discover the best of the island.",
