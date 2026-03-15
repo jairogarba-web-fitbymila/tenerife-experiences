@@ -1,7 +1,7 @@
 {
   "metadata": {
     "title": "Tenerife Experiences - Ihr kompletter Teneriffa-Reiseführer",
-    "description": "Entdecken Sie die besten Erlebnisse, Strände, Ausflüge, Restaurants und Aktivitäten auf Teneriffa. Buchen Sie Touren, finden Sie lokale Tipps und planen Sie Ihre perfekte Reise."
+    "description": "Entdecken Sie Teneriffa: Ihr Reiseführer zu den besten Stränden, Ausflügen, Restaurants und Erlebnissen. Aktuelle Infos für 2026. Planen Sie Ihre Reise jetzt!"
   },
   "nav": {
     "home": "Startseite",
@@ -22,7 +22,13 @@
       "title": "Entdecke Teneriffa",
       "subtitle": "Ihr ultimativer Reiseführer zur Insel des ewigen Frühlings",
       "cta": "Erlebnisse entdecken",
-      "searchPlaceholder": "Was möchten Sie auf Teneriffa unternehmen?"
+      "searchPlaceholder": "Was möchten Sie auf Teneriffa unternehmen?",
+      "badge": "Kanarische Inseln, Spanien",
+      "altImage": "Panoramablick auf den Teide und die vulkanische Landschaft von Teneriffa, Kanarische Inseln",
+      "statsRating": "Bewertung",
+      "statsBeaches": "Strände",
+      "statsExperiences": "Erlebnisse",
+      "statsLanguages": "Sprachen"
     },
     "featured": {
       "title": "Empfohlene Erlebnisse",
@@ -39,7 +45,10 @@
       "north": "Nord-Teneriffa",
       "south": "Süd-Teneriffa",
       "west": "West-Teneriffa",
-      "central": "Zentral-Teneriffa"
+      "central": "Zentral-Teneriffa",
+      "viewAll": "Alle anzeigen",
+      "experiences": "Erlebnisse",
+      "explore": "Entdecken"
     },
     "blog": {
       "title": "Reisetipps & Reiseführer",

@@ -1,7 +1,7 @@
 {
   "metadata": {
     "title": "Tenerife Experiences - Your Complete Guide to Tenerife",
-    "description": "Discover the best experiences, beaches, excursions, restaurants and things to do in Tenerife. Book tours, find local tips and plan your perfect trip."
+    "description": "Discover Tenerife: your complete guide to the best beaches, excursions, restaurants and experiences. Updated practical info for 2026. Plan your trip now!"
   },
   "nav": {
     "home": "Home",
@@ -22,7 +22,13 @@
       "title": "Discover Tenerife",
       "subtitle": "Your ultimate guide to the Island of Eternal Spring",
       "cta": "Explore Experiences",
-      "searchPlaceholder": "What do you want to do in Tenerife?"
+      "searchPlaceholder": "What do you want to do in Tenerife?",
+      "badge": "Canary Islands, Spain",
+      "altImage": "Panoramic view of Mount Teide and the volcanic landscape of Tenerife, Canary Islands",
+      "statsRating": "rating",
+      "statsBeaches": "beaches",
+      "statsExperiences": "experiences",
+      "statsLanguages": "languages"
     },
     "featured": {
       "title": "Featured Experiences",
@@ -39,7 +45,10 @@
       "north": "North Tenerife",
       "south": "South Tenerife",
       "west": "West Tenerife",
-      "central": "Central Tenerife"
+      "central": "Central Tenerife",
+      "viewAll": "View all",
+      "experiences": "experiences",
+      "explore": "Explore"
     },
     "blog": {
       "title": "Travel Tips & Guides",

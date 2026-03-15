@@ -1,7 +1,7 @@
 {
   "metadata": {
     "title": "Tenerife Experiences - Tu Guía Completa de Tenerife",
-    "description": "Descubre las mejores experiencias, playas, excursiones, restaurantes y cosas que hacer en Tenerife. Reserva tours, encuentra consejos locales y planifica tu viaje perfecto."
+    "description": "Descubre Tenerife: guía completa con las mejores playas, excursiones, restaurantes y experiencias. Información práctica actualizada en 2026. ¡Planifica tu viaje!"
   },
   "nav": {
     "home": "Inicio",
@@ -22,7 +22,13 @@
       "title": "Descubre Tenerife",
       "subtitle": "Tu guía definitiva de la Isla de la Eterna Primavera",
       "cta": "Explorar Experiencias",
-      "searchPlaceholder": "¿Qué quieres hacer en Tenerife?"
+      "searchPlaceholder": "¿Qué quieres hacer en Tenerife?",
+      "badge": "Islas Canarias, España",
+      "altImage": "Vista panorámica del Teide y el paisaje volcánico de Tenerife, Islas Canarias",
+      "statsRating": "valoración",
+      "statsBeaches": "playas",
+      "statsExperiences": "experiencias",
+      "statsLanguages": "idiomas"
     },
     "featured": {
       "title": "Experiencias Destacadas",
@@ -39,7 +45,10 @@
       "north": "Norte de Tenerife",
       "south": "Sur de Tenerife",
       "west": "Oeste de Tenerife",
-      "central": "Centro de Tenerife"
+      "central": "Centro de Tenerife",
+      "viewAll": "Ver todo",
+      "experiences": "experiencias",
+      "explore": "Explorar"
     },
     "blog": {
       "title": "Consejos y Guías de Viaje",

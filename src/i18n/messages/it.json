@@ -1,15 +1,15 @@
 {
   "metadata": {
     "title": "Tenerife Experiences - La Tua Guida Completa di Tenerife",
-    "description": "Scopri le migliori esperienze, spiagge, escursioni, ristoranti e cose da fare a Tenerife. Prenota tour, trova consigli locali e pianifica il tuo viaggio perfetto."
+    "description": "Scopri Tenerife: guida completa alle migliori spiagge, escursioni, ristoranti ed esperienze. Info pratiche aggiornate al 2026. Pianifica il tuo viaggio ora!"
   },
   "nav": { "home": "Home", "experiences": "Esperienze", "beaches": "Spiagge", "culture": "Cultura", "nature": "Natura", "food": "Gastronomia", "nightlife": "Vita Notturna", "events": "Cultura e Svago",
     "areas": "Zone", "blog": "Blog", "search": "Cerca...", "bookNow": "Prenota" },
   "home": {
-    "hero": { "title": "Scopri Tenerife", "subtitle": "La tua guida definitiva all'Isola dell'Eterna Primavera", "cta": "Esplora le Esperienze", "searchPlaceholder": "Cosa vuoi fare a Tenerife?" },
+    "hero": { "title": "Scopri Tenerife", "subtitle": "La tua guida definitiva all'Isola dell'Eterna Primavera", "cta": "Esplora le Esperienze", "searchPlaceholder": "Cosa vuoi fare a Tenerife?", "badge": "Isole Canarie, Spagna", "altImage": "Vista panoramica del Teide e del paesaggio vulcanico di Tenerife, Isole Canarie", "statsRating": "valutazione", "statsBeaches": "spiagge", "statsExperiences": "esperienze", "statsLanguages": "lingue" },
     "featured": { "title": "Esperienze in Evidenza", "subtitle": "Attività selezionate e amate dai visitatori", "viewAll": "Vedi Tutte" },
     "categories": { "title": "Esplora per Categoria", "subtitle": "Trova esattamente quello che cerchi" },
-    "areas": { "title": "Esplora per Zona", "subtitle": "Le diverse regioni di Tenerife offrono esperienze uniche", "north": "Nord di Tenerife", "south": "Sud di Tenerife", "west": "Ovest di Tenerife", "central": "Centro di Tenerife" },
+    "areas": { "title": "Esplora per Zona", "subtitle": "Le diverse regioni di Tenerife offrono esperienze uniche", "north": "Nord di Tenerife", "south": "Sud di Tenerife", "west": "Ovest di Tenerife", "central": "Centro di Tenerife", "viewAll": "Vedi tutto", "experiences": "esperienze", "explore": "Esplora" },
     "blog": { "title": "Consigli e Guide di Viaggio", "subtitle": "Consigli esperti per il tuo viaggio a Tenerife", "readMore": "Leggi di Più" },
     "weather": { "title": "Meteo Ora", "feelsLike": "Percepita", "humidity": "Umidità", "wind": "Vento" },
     "newsletter": { "title": "Ricevi Consigli Esclusivi", "subtitle": "Consigli settimanali, offerte e segreti locali", "placeholder": "La tua email", "cta": "Iscriviti", "privacy": "Rispettiamo la tua privacy." }

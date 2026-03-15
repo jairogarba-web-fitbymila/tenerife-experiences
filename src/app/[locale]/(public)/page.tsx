@@ -21,6 +21,7 @@ import { Button } from '@/components/ui/button'
 import { Card, CardContent } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
 import { FeaturedPartners } from '@/components/home/featured-partners'
+import { HeroSearchBar } from '@/components/home/hero-search-bar'
 
 const categories = [
   { id: 'experiences', icon: Camera, href: '/experiences', color: 'from-orange-500 to-amber-500' },
@@ -114,7 +115,7 @@ export default function HomePage() {
         <div className="absolute inset-0">
           <img
             src="https://images.unsplash.com/photo-1506368387824-6cf9848c1638?w=1920&q=85"
-            alt="Mount Teide, Tenerife - Canary Islands"
+            alt={t('hero.altImage')}
             className="w-full h-full object-cover"
           />
           <div className="absolute inset-0 bg-gradient-to-b from-slate-950/70 via-slate-950/50 to-slate-950" />
@@ -125,7 +126,7 @@ export default function HomePage() {
           <div className="text-center space-y-8">
             <Badge variant="outline" className="border-orange-400/30 text-orange-400 px-4 py-1 animate-fade-in">
               <MapPin className="h-3 w-3 mr-1" />
-              Canary Islands, Spain
+              {t('hero.badge')}
             </Badge>
 
             <h1 className="text-5xl sm:text-6xl lg:text-8xl font-bold tracking-tight animate-fade-in-up">
@@ -139,30 +140,15 @@ export default function HomePage() {
             </p>
 
             {/* Search Bar */}
-            <div className="mx-auto max-w-xl">
-              <div className="relative group">
-                <div className="absolute -inset-0.5 bg-gradient-to-r from-orange-500 to-amber-500 rounded-2xl opacity-20 group-hover:opacity-40 transition-opacity blur" />
-                <div className="relative flex items-center bg-slate-900 rounded-xl border border-white/10 px-4 py-3">
-                  <MapPin className="h-5 w-5 text-orange-400 mr-3 shrink-0" />
-                  <input
-                    type="text"
-                    placeholder={t('hero.searchPlaceholder')}
-                    className="flex-1 bg-transparent text-white placeholder-gray-500 outline-none text-lg"
-                  />
-                  <Button size="sm" className="bg-orange-500 hover:bg-orange-600 text-white rounded-lg ml-2">
-                    <ArrowRight className="h-4 w-4" />
-                  </Button>
-                </div>
-              </div>
-            </div>
+            <HeroSearchBar placeholder={t('hero.searchPlaceholder')} />
 
             <div className="flex flex-wrap items-center justify-center gap-6 text-sm text-gray-500">
               <span className="flex items-center gap-1">
-                <Star className="h-4 w-4 text-orange-400 fill-orange-400" /> 4.9/5 rating
+                <Star className="h-4 w-4 text-orange-400 fill-orange-400" /> 4.9/5 {t('hero.statsRating')}
               </span>
-              <span>150+ beaches</span>
-              <span>500+ experiences</span>
-              <span>6 languages</span>
+              <span>150+ {t('hero.statsBeaches')}</span>
+              <span>500+ {t('hero.statsExperiences')}</span>
+              <span>6 {t('hero.statsLanguages')}</span>
             </div>
           </div>
         </div>
@@ -207,7 +193,7 @@ export default function HomePage() {
               <p className="mt-2 text-gray-400">{t('areas.subtitle')}</p>
             </div>
             <Link href="/areas" className="hidden sm:flex items-center text-orange-400 hover:text-orange-300 text-sm font-medium gap-1">
-              View all <ChevronRight className="h-4 w-4" />
+              {t('areas.viewAll')} <ChevronRight className="h-4 w-4" />
             </Link>
           </div>
 
@@ -224,10 +210,10 @@ export default function HomePage() {
                   <div className="absolute bottom-0 left-0 right-0 p-6">
                     <h3 className="text-xl font-bold text-white group-hover:text-orange-400 transition-colors">{t(`areas.${area.key}`)}</h3>
                     <p className="text-sm text-gray-300 mt-1">
-                      {area.itemCount}+ experiences
+                      {area.itemCount}+ {t('areas.experiences')}
                     </p>
                     <div className="mt-3 flex items-center gap-1 text-orange-400 text-sm font-medium opacity-0 translate-y-2 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300">
-                      Explore <ArrowRight className="h-4 w-4" />
+                      {t('areas.explore')} <ArrowRight className="h-4 w-4" />
                     </div>
                   </div>
                 </div>

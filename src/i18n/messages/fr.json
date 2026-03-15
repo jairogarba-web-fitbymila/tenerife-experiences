@@ -1,7 +1,7 @@
 {
   "metadata": {
     "title": "Tenerife Experiences - Votre Guide Complet de Tenerife",
-    "description": "Découvrez les meilleures expériences, plages, excursions, restaurants et activités à Tenerife. Réservez des visites, trouvez des conseils locaux et planifiez votre voyage parfait."
+    "description": "Découvrez Tenerife : guide complet des meilleures plages, excursions, restaurants et expériences. Infos pratiques à jour pour 2026. Planifiez votre voyage !"
   },
   "nav": {
     "home": "Accueil",
@@ -22,11 +22,17 @@
       "title": "Découvrez Tenerife",
       "subtitle": "Votre guide ultime de l'île du Printemps Éternel",
       "cta": "Explorer les Expériences",
-      "searchPlaceholder": "Que voulez-vous faire à Tenerife ?"
+      "searchPlaceholder": "Que voulez-vous faire à Tenerife ?",
+      "badge": "Îles Canaries, Espagne",
+      "altImage": "Vue panoramique du Teide et du paysage volcanique de Tenerife, Îles Canaries",
+      "statsRating": "note",
+      "statsBeaches": "plages",
+      "statsExperiences": "expériences",
+      "statsLanguages": "langues"
     },
     "featured": { "title": "Expériences en Vedette", "subtitle": "Activités sélectionnées et appréciées par les visiteurs", "viewAll": "Voir Tout" },
     "categories": { "title": "Explorer par Catégorie", "subtitle": "Trouvez exactement ce que vous cherchez" },
-    "areas": { "title": "Explorer par Région", "subtitle": "Les régions de Tenerife offrent des expériences uniques", "north": "Nord de Tenerife", "south": "Sud de Tenerife", "west": "Ouest de Tenerife", "central": "Centre de Tenerife" },
+    "areas": { "title": "Explorer par Région", "subtitle": "Les régions de Tenerife offrent des expériences uniques", "north": "Nord de Tenerife", "south": "Sud de Tenerife", "west": "Ouest de Tenerife", "central": "Centre de Tenerife", "viewAll": "Voir tout", "experiences": "expériences", "explore": "Explorer" },
     "blog": { "title": "Conseils & Guides de Voyage", "subtitle": "Conseils d'experts pour votre voyage à Tenerife", "readMore": "Lire la Suite" },
     "weather": { "title": "Météo Actuelle", "feelsLike": "Ressenti", "humidity": "Humidité", "wind": "Vent" },
     "newsletter": { "title": "Recevez des Conseils Exclusifs", "subtitle": "Conseils hebdomadaires, offres et secrets locaux", "placeholder": "Votre adresse e-mail", "cta": "S'abonner", "privacy": "Nous respectons votre vie privée. Désabonnez-vous à tout moment." }
