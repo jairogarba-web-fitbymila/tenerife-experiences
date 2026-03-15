@@ -21,6 +21,7 @@ import {
   ChevronUp,
   MessageSquare,
   ArrowUpDown,
+  Download,
 } from 'lucide-react'
 
 interface Lead {
@@ -227,13 +228,39 @@ export default function LeadsPage() {
             Manage your business leads and track conversions
           </p>
         </div>
-        <Button
-          onClick={() => setShowForm(!showForm)}
-          className="gap-2 bg-orange-500 text-white hover:bg-orange-600"
-        >
-          {showForm ? <X className="h-4 w-4" /> : <Plus className="h-4 w-4" />}
-          {showForm ? 'Cancel' : 'New Lead'}
-        </Button>
+        <div className="flex items-center gap-2">
+          <Button
+            onClick={async () => {
+              try {
+                const res = await fetch('/api/admin/leads/export')
+                if (!res.ok) throw new Error('Export failed')
+                const blob = await res.blob()
+                const url = URL.createObjectURL(blob)
+                const a = document.createElement('a')
+                a.href = url
+                a.download = `leads-export-${new Date().toISOString().split('T')[0]}.csv`
+                document.body.appendChild(a)
+                a.click()
+                a.remove()
+                URL.revokeObjectURL(url)
+              } catch (err) {
+                console.error('Export failed:', err)
+              }
+            }}
+            variant="outline"
+            className="gap-2 border-white/10 text-gray-300 hover:bg-white/5 hover:text-white"
+          >
+            <Download className="h-4 w-4" />
+            Export CSV
+          </Button>
+          <Button
+            onClick={() => setShowForm(!showForm)}
+            className="gap-2 bg-orange-500 text-white hover:bg-orange-600"
+          >
+            {showForm ? <X className="h-4 w-4" /> : <Plus className="h-4 w-4" />}
+            {showForm ? 'Cancel' : 'New Lead'}
+          </Button>
+        </div>
       </div>
 
       {/* Create Lead Form */}
