@@ -224,9 +224,12 @@ export default async function ArticlePage({
       <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8 mt-12">
         <div
           className="prose prose-invert prose-lg max-w-none
-            prose-headings:text-white prose-headings:font-bold
-            prose-p:text-gray-300 prose-p:leading-relaxed
+            prose-headings:text-white prose-headings:font-bold prose-headings:mt-10 prose-headings:mb-4
+            prose-h2:text-2xl prose-h2:border-l-4 prose-h2:border-orange-400 prose-h2:pl-4
+            prose-h3:text-xl prose-h3:text-gray-200
+            prose-p:text-gray-300 prose-p:leading-[1.9] prose-p:mb-5 prose-p:text-[15px]
             prose-a:text-orange-400 prose-a:no-underline hover:prose-a:text-orange-300
+            prose-ul:space-y-2 prose-li:text-gray-300
             prose-strong:text-white
             prose-li:text-gray-300
             prose-blockquote:border-orange-400 prose-blockquote:text-gray-400"

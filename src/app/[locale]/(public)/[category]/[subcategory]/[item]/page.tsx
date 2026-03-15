@@ -202,10 +202,17 @@ export default async function ItemDetailPage({
             </div>
 
             {/* Description */}
-            <div>
-              <h2 className="text-xl font-semibold text-white mb-3">{t('description')}</h2>
-              <div className="text-gray-300 leading-relaxed whitespace-pre-line">
-                {getLocalizedText(item.description, loc)}
+            <div className="bg-slate-900/30 rounded-2xl p-6 border border-white/5">
+              <h2 className="text-xl font-semibold text-white mb-4">{t('description')}</h2>
+              <div className="text-gray-300 leading-[1.8] whitespace-pre-line text-[15px] space-y-3">
+                {getLocalizedText(item.description, loc).split('. ').reduce((acc: string[][], sentence: string, i: number) => {
+                  const groupIndex = Math.floor(i / 2)
+                  if (!acc[groupIndex]) acc[groupIndex] = []
+                  acc[groupIndex].push(sentence)
+                  return acc
+                }, [] as string[][]).map((group: string[], i: number) => (
+                  <p key={i}>{group.join('. ')}{group[group.length - 1]?.endsWith('.') ? '' : '.'}</p>
+                ))}
               </div>
             </div>
 

@@ -195,10 +195,26 @@
 /* Prose dark theme for article content */
 .prose-dark {
   color: #d1d5db;
+  font-size: 15px;
+  line-height: 1.9;
 }
 .prose-dark h1, .prose-dark h2, .prose-dark h3, .prose-dark h4 {
   color: #ffffff;
   font-weight: 700;
+  margin-top: 2.5rem;
+  margin-bottom: 1rem;
+}
+.prose-dark h2 {
+  font-size: 1.5rem;
+  border-left: 4px solid #fb923c;
+  padding-left: 1rem;
+}
+.prose-dark h3 {
+  font-size: 1.25rem;
+  color: #e5e7eb;
+}
+.prose-dark p {
+  margin-bottom: 1.25rem;
 }
 .prose-dark a {
   color: #fb923c;
@@ -209,13 +225,28 @@
 }
 .prose-dark strong {
   color: #ffffff;
+  font-weight: 600;
 }
 .prose-dark blockquote {
   border-left-color: #fb923c;
   color: #9ca3af;
+  padding: 1rem 1.5rem;
+  background: rgba(15, 23, 42, 0.5);
+  border-radius: 0 0.5rem 0.5rem 0;
+}
+.prose-dark ul {
+  space-y: 0.5rem;
+}
+.prose-dark ul li {
+  padding-left: 0.25rem;
+  margin-bottom: 0.5rem;
 }
 .prose-dark ul li::marker {
   color: #fb923c;
+}
+.prose-dark img {
+  border-radius: 1rem;
+  margin: 2rem 0;
 }
 
 /* Glassmorphism */
