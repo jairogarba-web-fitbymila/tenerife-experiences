@@ -4,6 +4,7 @@ import { Link } from '@/i18n/routing'
 import { Card, CardContent } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
 import { ChevronRight } from 'lucide-react'
+import { Breadcrumbs } from '@/components/shared/breadcrumbs'
 import { t as getLocalizedText } from '@/lib/helpers'
 import type { Locale } from '@/types/database'
 
@@ -64,12 +65,17 @@ export default async function CategoryPage({
     .eq('visible', true)
     .order('sort_order')
 
+  const categoryName = getLocalizedText(cat.name, locale as Locale)
+
   return (
     <>
       {/* Hero */}
       <section className="relative overflow-hidden py-16 sm:py-24">
         <div className="absolute inset-0 bg-gradient-to-b from-orange-500/5 to-transparent" />
         <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="mb-6">
+            <Breadcrumbs items={[{ label: categoryName }]} />
+          </div>
           <div className="max-w-3xl">
             <h1 className="text-4xl sm:text-5xl font-bold text-white">
               {getLocalizedText(cat.name, locale as Locale)}

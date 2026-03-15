@@ -79,11 +79,35 @@ export async function FeaturedPartners() {
               partner.description?.en ||
               ''
 
+            const localBusinessJsonLd = {
+              '@context': 'https://schema.org',
+              '@type': 'LocalBusiness',
+              name: partner.name,
+              ...(partner.address && {
+                address: {
+                  '@type': 'PostalAddress',
+                  streetAddress: partner.address,
+                  addressRegion: 'Tenerife',
+                  addressCountry: 'ES',
+                },
+              }),
+              ...(partner.phone && { telephone: partner.phone }),
+              ...(partner.website && { url: partner.website }),
+              ...(partner.image && { image: partner.image }),
+              ...(partner.area && {
+                areaServed: partner.area.replace(/-/g, ' ').replace(/\b\w/g, (l: string) => l.toUpperCase()),
+              }),
+            }
+
             return (
               <Card
                 key={partner.id}
                 className="group bg-slate-900/50 border-white/5 hover:border-white/20 transition-all duration-300 overflow-hidden"
               >
+                <script
+                  type="application/ld+json"
+                  dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessJsonLd) }}
+                />
                 {/* Image / Logo Header */}
                 <div className="relative h-40 bg-gradient-to-br from-slate-800 to-slate-900 overflow-hidden">
                   {partner.image ? (

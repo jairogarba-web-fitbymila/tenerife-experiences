@@ -4,6 +4,7 @@ import { Link } from '@/i18n/routing'
 import { Card, CardContent } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
 import { Calendar, MapPin, ArrowLeft, Check, Info, Star } from 'lucide-react'
+import { Breadcrumbs } from '@/components/shared/breadcrumbs'
 import { t as getLocalizedText } from '@/lib/helpers'
 import type { Locale } from '@/types/database'
 import { notFound } from 'next/navigation'
@@ -64,14 +65,13 @@ export default async function EventDetailPage({
   return (
     <div className="pb-20">
       {/* Breadcrumb */}
-      <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 pt-8">
-        <Link
-          href="/events"
-          className="inline-flex items-center text-sm text-gray-400 hover:text-purple-400 transition-colors gap-1 mb-8"
-        >
-          <ArrowLeft className="h-4 w-4" />
-          {locale === 'es' ? 'Todos los Eventos' : locale === 'de' ? 'Alle Veranstaltungen' : 'All Events'}
-        </Link>
+      <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 pt-8 mb-8">
+        <Breadcrumbs
+          items={[
+            { label: locale === 'es' ? 'Cultura y Ocio' : locale === 'de' ? 'Kultur & Freizeit' : 'Culture & Leisure', href: '/events' },
+            { label: getLocalizedText(event.name, loc) },
+          ]}
+        />
       </div>
 
       {/* Header */}

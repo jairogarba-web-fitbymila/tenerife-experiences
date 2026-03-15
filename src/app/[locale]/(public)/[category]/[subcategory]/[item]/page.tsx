@@ -17,6 +17,7 @@ import {
   Accessibility,
   AlertTriangle,
 } from 'lucide-react'
+import { Breadcrumbs } from '@/components/shared/breadcrumbs'
 import { t as getLocalizedText, formatPrice } from '@/lib/helpers'
 import type { Locale } from '@/types/database'
 import { notFound } from 'next/navigation'
@@ -71,6 +72,19 @@ export default async function ItemDetailPage({
     .single()
 
   if (!item) notFound()
+
+  // Get category and subcategory names for breadcrumbs
+  const { data: cat } = await supabase
+    .from('categories')
+    .select('name')
+    .eq('slug', category)
+    .single()
+
+  const { data: sub } = await supabase
+    .from('subcategories')
+    .select('name')
+    .eq('slug', subcategory)
+    .single()
 
   // Get reviews
   const { data: reviews } = await supabase
@@ -128,13 +142,13 @@ export default async function ItemDetailPage({
       />
       {/* Breadcrumb */}
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-6">
-        <div className="flex items-center gap-2 text-sm text-gray-500">
-          <Link href={`/${category}`} className="hover:text-orange-400">{category}</Link>
-          <span>/</span>
-          <Link href={`/${category}/${subcategory}`} className="hover:text-orange-400">{subcategory}</Link>
-          <span>/</span>
-          <span className="text-gray-300">{getLocalizedText(item.name, loc)}</span>
-        </div>
+        <Breadcrumbs
+          items={[
+            { label: cat ? getLocalizedText(cat.name, loc) : category, href: `/${category}` },
+            { label: sub ? getLocalizedText(sub.name, loc) : subcategory, href: `/${category}/${subcategory}` },
+            { label: getLocalizedText(item.name, loc) },
+          ]}
+        />
       </div>
 
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 mt-6">

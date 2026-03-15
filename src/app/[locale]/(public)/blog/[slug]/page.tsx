@@ -4,6 +4,7 @@ import { Link } from '@/i18n/routing'
 import { Badge } from '@/components/ui/badge'
 import { Calendar, Clock, ArrowLeft, Share2 } from 'lucide-react'
 import { Button } from '@/components/ui/button'
+import { Breadcrumbs } from '@/components/shared/breadcrumbs'
 import { t as getLocalizedText } from '@/lib/helpers'
 import type { Locale } from '@/types/database'
 import { notFound } from 'next/navigation'
@@ -61,6 +62,58 @@ export default async function ArticlePage({
   if (!article) notFound()
 
   const content = getLocalizedText(article.content, locale as Locale)
+  const articleTitle = getLocalizedText(article.title, locale as Locale)
+
+  // FAQPage structured data
+  const isSpanish = locale === 'es'
+  const isGerman = locale === 'de'
+  const faqQuestions = [
+    {
+      question: isSpanish
+        ? `¿Qué es ${articleTitle}?`
+        : isGerman
+          ? `Was ist ${articleTitle}?`
+          : `What is ${articleTitle}?`,
+      answer: getLocalizedText(article.excerpt || article.title, locale as Locale),
+    },
+    {
+      question: isSpanish
+        ? `¿Cuánto cuesta ${articleTitle}?`
+        : isGerman
+          ? `Was kostet ${articleTitle}?`
+          : `How much does ${articleTitle} cost?`,
+      answer: isSpanish
+        ? `Consulta nuestro artículo completo sobre ${articleTitle} para obtener información actualizada sobre precios y opciones disponibles.`
+        : isGerman
+          ? `Lesen Sie unseren vollständigen Artikel über ${articleTitle} für aktuelle Preis- und Optionsinformationen.`
+          : `Check our full article about ${articleTitle} for up-to-date pricing and available options.`,
+    },
+    {
+      question: isSpanish
+        ? `¿Cuál es la mejor época para ${articleTitle}?`
+        : isGerman
+          ? `Wann ist die beste Zeit für ${articleTitle}?`
+          : `When is the best time for ${articleTitle}?`,
+      answer: isSpanish
+        ? `Tenerife disfruta de un clima agradable durante todo el año. Lee nuestro artículo completo sobre ${articleTitle} para encontrar recomendaciones detalladas.`
+        : isGerman
+          ? `Teneriffa genießt das ganze Jahr über ein angenehmes Klima. Lesen Sie unseren vollständigen Artikel über ${articleTitle} für detaillierte Empfehlungen.`
+          : `Tenerife enjoys pleasant weather year-round. Read our full article about ${articleTitle} for detailed recommendations.`,
+    },
+  ]
+
+  const faqJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: faqQuestions.map((faq) => ({
+      '@type': 'Question',
+      name: faq.question,
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: faq.answer,
+      },
+    })),
+  }
 
   // JSON-LD Article structured data
   const articleJsonLd = {
@@ -100,15 +153,20 @@ export default async function ArticlePage({
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLd) }}
       />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
+      />
       {/* Header */}
       <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 pt-8">
-        <Link
-          href="/blog"
-          className="inline-flex items-center text-sm text-gray-400 hover:text-orange-400 transition-colors gap-1 mb-8"
-        >
-          <ArrowLeft className="h-4 w-4" />
-          {t('title')}
-        </Link>
+        <div className="mb-8">
+          <Breadcrumbs
+            items={[
+              { label: t('title'), href: '/blog' },
+              { label: articleTitle },
+            ]}
+          />
+        </div>
 
         <div className="flex items-center gap-3 mb-4">
           {article.category && (

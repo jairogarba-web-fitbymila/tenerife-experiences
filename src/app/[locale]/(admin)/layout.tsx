@@ -9,6 +9,7 @@ import {
   Handshake,
   CalendarDays,
   Users,
+  Target,
   LogOut,
 } from 'lucide-react'
 
@@ -18,6 +19,7 @@ const navItems = [
   { href: '/dashboard/categories', label: 'Categories', icon: FolderTree },
   { href: '/dashboard/items', label: 'Items', icon: MapPin },
   { href: '/dashboard/partners', label: 'Partners', icon: Handshake },
+  { href: '/dashboard/leads', label: 'Leads', icon: Target },
   { href: '/dashboard/events', label: 'Events', icon: CalendarDays },
   { href: '/dashboard/subscribers', label: 'Subscribers', icon: Users },
 ]

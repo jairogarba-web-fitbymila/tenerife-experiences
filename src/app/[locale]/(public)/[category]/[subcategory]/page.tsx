@@ -4,6 +4,7 @@ import { Link } from '@/i18n/routing'
 import { Card, CardContent } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
 import { Star, MapPin, Clock, ArrowLeft } from 'lucide-react'
+import { Breadcrumbs } from '@/components/shared/breadcrumbs'
 import { t as getLocalizedText, formatPrice } from '@/lib/helpers'
 import type { Locale } from '@/types/database'
 import { notFound } from 'next/navigation'
@@ -51,14 +52,13 @@ export default async function SubcategoryPage({
       <section className="py-12 sm:py-16">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           {/* Breadcrumb */}
-          <div className="flex items-center gap-2 text-sm text-gray-500 mb-6">
-            <Link href={`/${category}`} className="hover:text-orange-400 transition-colors">
-              {getLocalizedText(cat.name, locale as Locale)}
-            </Link>
-            <span>/</span>
-            <span className="text-gray-300">
-              {getLocalizedText(sub.name, locale as Locale)}
-            </span>
+          <div className="mb-6">
+            <Breadcrumbs
+              items={[
+                { label: getLocalizedText(cat.name, locale as Locale), href: `/${category}` },
+                { label: getLocalizedText(sub.name, locale as Locale) },
+              ]}
+            />
           </div>
 
           <h1 className="text-3xl sm:text-4xl font-bold text-white">
