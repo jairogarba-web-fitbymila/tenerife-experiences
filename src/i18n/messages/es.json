@@ -61,6 +61,10 @@
       "humidity": "Humedad",
       "wind": "Viento"
     },
+    "exploreMap": {
+      "title": "Explora el Mapa",
+      "subtitle": "Descubre los mejores lugares de la isla"
+    },
     "newsletter": {
       "title": "Recibe Consejos Exclusivos",
       "subtitle": "Tips semanales, ofertas y secretos locales de Tenerife",
@@ -399,6 +403,12 @@
       "subtitle": "Reserva las mejores experiencias y actividades de la isla. Cancelación gratuita y mejor precio garantizado.",
       "button": "Reservar Experiencias"
     }
+  },
+  "cookies": {
+    "message": "Usamos cookies para mejorar tu experiencia. Al continuar navegando, aceptas nuestra política de cookies.",
+    "accept": "Aceptar",
+    "reject": "Rechazar",
+    "learnMore": "Saber más"
   },
   "footer": {
     "about": "Sobre Tenerife Experiences",

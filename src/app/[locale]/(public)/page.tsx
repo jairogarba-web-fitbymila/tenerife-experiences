@@ -22,6 +22,20 @@ import { Card, CardContent } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
 import { FeaturedPartners } from '@/components/home/featured-partners'
 import { HeroSearchBar } from '@/components/home/hero-search-bar'
+import { MapSection } from '@/components/home/map-section'
+
+const mapPins = [
+  { name: 'Teide National Park', slug: 'areas/teide', category: 'nature', lat: 28.2723, lng: -16.6422 },
+  { name: 'Costa Adeje', slug: 'areas/costa-adeje', category: 'beaches', lat: 28.0801, lng: -16.7266 },
+  { name: 'Los Gigantes', slug: 'areas/los-gigantes', category: 'nature', lat: 28.2472, lng: -16.8411 },
+  { name: 'Puerto de la Cruz', slug: 'areas/puerto-de-la-cruz', category: 'culture', lat: 28.4144, lng: -16.5483 },
+  { name: 'Santa Cruz', slug: 'areas/santa-cruz', category: 'culture', lat: 28.4698, lng: -16.2548 },
+  { name: 'La Laguna', slug: 'areas/la-laguna', category: 'culture', lat: 28.4853, lng: -16.3154 },
+  { name: 'Anaga', slug: 'areas/anaga', category: 'nature', lat: 28.5434, lng: -16.1783 },
+  { name: 'Playa de las Teresitas', slug: 'beaches/best-beaches', category: 'beaches', lat: 28.5082, lng: -16.1872 },
+  { name: 'Masca', slug: 'nature/hiking-trails', category: 'nature', lat: 28.2948, lng: -16.8399 },
+  { name: 'Siam Park', slug: 'family/theme-parks', category: 'family', lat: 28.0719, lng: -16.7260 },
+]
 
 const categories = [
   { id: 'experiences', icon: Camera, href: '/experiences', color: 'from-orange-500 to-amber-500' },
@@ -227,6 +241,17 @@ export default function HomePage() {
       <Suspense fallback={null}>
         <FeaturedPartners />
       </Suspense>
+
+      {/* Explore the Map */}
+      <section className="py-20">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl font-bold text-white">{t('exploreMap.title')}</h2>
+            <p className="mt-2 text-gray-400">{t('exploreMap.subtitle')}</p>
+          </div>
+          <MapSection items={mapPins} />
+        </div>
+      </section>
 
       {/* Newsletter */}
       <section className="py-20">

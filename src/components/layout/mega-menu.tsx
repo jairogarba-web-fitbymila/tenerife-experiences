@@ -24,7 +24,7 @@ interface MenuItem {
 const menuItems: MenuItem[] = [
   {
     key: 'thingsToDo',
-    href: '/experiences',
+    href: '/experiencias',
     groups: [
       {
         key: 'experiences',
@@ -63,7 +63,7 @@ const menuItems: MenuItem[] = [
   },
   {
     key: 'whatToVisit',
-    href: '/areas',
+    href: '/que-visitar',
     groups: [
       {
         key: 'beaches',
@@ -97,7 +97,7 @@ const menuItems: MenuItem[] = [
   },
   {
     key: 'gastronomy',
-    href: '/food',
+    href: '/gastronomia',
     groups: [
       {
         key: 'whereToEat',
@@ -118,7 +118,7 @@ const menuItems: MenuItem[] = [
   },
   {
     key: 'planTrip',
-    href: '/blog',
+    href: '/planifica',
     groups: [
       {
         key: 'beforeTravel',

@@ -61,6 +61,10 @@
       "humidity": "Luftfeuchtigkeit",
       "wind": "Wind"
     },
+    "exploreMap": {
+      "title": "Karte Erkunden",
+      "subtitle": "Entdecke die besten Orte der Insel"
+    },
     "newsletter": {
       "title": "Insider-Tipps erhalten",
       "subtitle": "Wöchentliche Reisetipps, Angebote und lokale Geheimnisse",
@@ -274,6 +278,12 @@
     "secureBooking": "Sichere Buchung",
     "freeCancellation": "Kostenlose Stornierung",
     "bestPrice": "Bestpreisgarantie"
+  },
+  "cookies": {
+    "message": "Wir verwenden Cookies, um Ihre Erfahrung zu verbessern. Wenn Sie weiter surfen, akzeptieren Sie unsere Cookie-Richtlinie.",
+    "accept": "Akzeptieren",
+    "reject": "Ablehnen",
+    "learnMore": "Mehr erfahren"
   },
   "footer": {
     "about": "Über Tenerife Experiences",

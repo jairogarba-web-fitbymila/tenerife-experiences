@@ -12,6 +12,7 @@
     "areas": { "title": "Esplora per Zona", "subtitle": "Le diverse regioni di Tenerife offrono esperienze uniche", "north": "Nord di Tenerife", "south": "Sud di Tenerife", "west": "Ovest di Tenerife", "central": "Centro di Tenerife", "viewAll": "Vedi tutto", "experiences": "esperienze", "explore": "Esplora" },
     "blog": { "title": "Consigli e Guide di Viaggio", "subtitle": "Consigli esperti per il tuo viaggio a Tenerife", "readMore": "Leggi di Più" },
     "weather": { "title": "Meteo Ora", "feelsLike": "Percepita", "humidity": "Umidità", "wind": "Vento" },
+    "exploreMap": { "title": "Esplora la Mappa", "subtitle": "Scopri i migliori luoghi dell'isola" },
     "newsletter": { "title": "Ricevi Consigli Esclusivi", "subtitle": "Consigli settimanali, offerte e segreti locali", "placeholder": "La tua email", "cta": "Iscriviti", "privacy": "Rispettiamo la tua privacy." }
   },
   "categories": { "experiences": "Esperienze", "beaches": "Spiagge", "culture": "Cultura e Storia", "nature": "Natura e Trekking", "food": "Gastronomia", "nightlife": "Vita Notturna", "shopping": "Shopping", "family": "Famiglia", "wellness": "Benessere e Spa", "services": "Servizi", "practical": "Info Pratiche" },
@@ -153,6 +154,12 @@
     "secureBooking": "Prenotazione sicura",
     "freeCancellation": "Cancellazione gratuita",
     "bestPrice": "Miglior prezzo garantito"
+  },
+  "cookies": {
+    "message": "Utilizziamo i cookie per migliorare la tua esperienza. Continuando a navigare, accetti la nostra politica sui cookie.",
+    "accept": "Accetta",
+    "reject": "Rifiuta",
+    "learnMore": "Scopri di più"
   },
   "footer": { "about": "Su Tenerife Experiences", "aboutText": "La tua guida completa a tutto ciò che Tenerife ha da offrire.", "quickLinks": "Link Rapidi", "categories": "Categorie", "contact": "Contatti", "legal": "Note Legali", "privacy": "Privacy Policy", "terms": "Termini di Servizio", "cookies": "Cookie Policy", "copyright": "© {year} Tenerife Experiences. Tutti i diritti riservati.", "partners": "Per i Partner", "advertise": "Pubblicità", "latestArticles": "Ultimi Articoli", "madeIn": "Fatto a Tenerife con amore", "followUs": "Seguici" }
 }

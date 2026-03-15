@@ -61,6 +61,10 @@
       "humidity": "Humidity",
       "wind": "Wind"
     },
+    "exploreMap": {
+      "title": "Explore the Map",
+      "subtitle": "Discover the best spots around the island"
+    },
     "newsletter": {
       "title": "Get Insider Tips",
       "subtitle": "Weekly Tenerife travel tips, deals, and local secrets",
@@ -399,6 +403,12 @@
       "subtitle": "Book the best experiences and activities on the island. Free cancellation and best price guaranteed.",
       "button": "Book Experiences"
     }
+  },
+  "cookies": {
+    "message": "We use cookies to improve your experience. By continuing to browse, you accept our cookie policy.",
+    "accept": "Accept",
+    "reject": "Reject",
+    "learnMore": "Learn more"
   },
   "footer": {
     "about": "About Tenerife Experiences",

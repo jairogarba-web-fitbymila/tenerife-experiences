@@ -4,6 +4,8 @@ import { notFound } from 'next/navigation'
 import { Inter } from 'next/font/google'
 import { Toaster } from 'sonner'
 import { routing } from '@/i18n/routing'
+import { Analytics } from '@/components/shared/analytics'
+import { CookieConsent } from '@/components/shared/cookie-consent'
 import '../globals.css'
 
 const inter = Inter({
@@ -32,7 +34,9 @@ export default async function LocaleLayout({
         <NextIntlClientProvider messages={messages}>
           {children}
           <Toaster richColors position="bottom-right" />
+          <CookieConsent />
         </NextIntlClientProvider>
+        <Analytics />
       </body>
     </html>
   )

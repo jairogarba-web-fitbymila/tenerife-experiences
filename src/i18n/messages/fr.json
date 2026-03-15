@@ -35,6 +35,7 @@
     "areas": { "title": "Explorer par Région", "subtitle": "Les régions de Tenerife offrent des expériences uniques", "north": "Nord de Tenerife", "south": "Sud de Tenerife", "west": "Ouest de Tenerife", "central": "Centre de Tenerife", "viewAll": "Voir tout", "experiences": "expériences", "explore": "Explorer" },
     "blog": { "title": "Conseils & Guides de Voyage", "subtitle": "Conseils d'experts pour votre voyage à Tenerife", "readMore": "Lire la Suite" },
     "weather": { "title": "Météo Actuelle", "feelsLike": "Ressenti", "humidity": "Humidité", "wind": "Vent" },
+    "exploreMap": { "title": "Explorez la Carte", "subtitle": "Découvrez les meilleurs endroits de l'île" },
     "newsletter": { "title": "Recevez des Conseils Exclusifs", "subtitle": "Conseils hebdomadaires, offres et secrets locaux", "placeholder": "Votre adresse e-mail", "cta": "S'abonner", "privacy": "Nous respectons votre vie privée. Désabonnez-vous à tout moment." }
   },
   "categories": { "experiences": "Expériences", "beaches": "Plages", "culture": "Culture & Histoire", "nature": "Nature & Randonnée", "food": "Gastronomie", "nightlife": "Vie Nocturne", "shopping": "Shopping", "family": "Famille", "wellness": "Bien-être & Spa", "services": "Services", "practical": "Infos Pratiques" },
@@ -176,6 +177,12 @@
     "secureBooking": "Réservation sécurisée",
     "freeCancellation": "Annulation gratuite",
     "bestPrice": "Meilleur prix garanti"
+  },
+  "cookies": {
+    "message": "Nous utilisons des cookies pour améliorer votre expérience. En continuant à naviguer, vous acceptez notre politique de cookies.",
+    "accept": "Accepter",
+    "reject": "Refuser",
+    "learnMore": "En savoir plus"
   },
   "footer": { "about": "À Propos de Tenerife Experiences", "aboutText": "Votre guide complet de tout ce que Tenerife a à offrir. Des plages magnifiques aux paysages volcaniques, nous vous aidons à découvrir le meilleur de l'île.", "quickLinks": "Liens Rapides", "categories": "Catégories", "contact": "Contact", "legal": "Mentions Légales", "privacy": "Politique de Confidentialité", "terms": "Conditions d'Utilisation", "cookies": "Politique de Cookies", "copyright": "© {year} Tenerife Experiences. Tous droits réservés.", "partners": "Pour les Partenaires", "advertise": "Annoncez chez nous", "latestArticles": "Derniers Articles", "madeIn": "Fait à Tenerife avec amour", "followUs": "Suivez-nous" }
 }
