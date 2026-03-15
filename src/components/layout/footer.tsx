@@ -164,19 +164,19 @@ export function Footer() {
             <h3 className="text-sm font-semibold text-white mb-4">{t('legal')}</h3>
             <ul className="space-y-2">
               <li>
-                <a href="#" className="text-sm text-gray-400 hover:text-orange-400 transition-colors">
+                <Link href="/privacidad" className="text-sm text-gray-400 hover:text-orange-400 transition-colors">
                   {t('privacy')}
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#" className="text-sm text-gray-400 hover:text-orange-400 transition-colors">
+                <Link href="/terminos" className="text-sm text-gray-400 hover:text-orange-400 transition-colors">
                   {t('terms')}
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#" className="text-sm text-gray-400 hover:text-orange-400 transition-colors">
+                <Link href="/cookies" className="text-sm text-gray-400 hover:text-orange-400 transition-colors">
                   {t('cookies')}
-                </a>
+                </Link>
               </li>
               <li>
                 <Link href="/contact" className="text-sm text-gray-400 hover:text-orange-400 transition-colors">

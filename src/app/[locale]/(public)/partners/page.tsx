@@ -21,6 +21,7 @@ import {
   Send,
   Quote,
 } from 'lucide-react'
+import { toast } from 'sonner'
 
 const plans = [
   {
@@ -91,6 +92,25 @@ const testimonials = [
     quote: 'testimonial3',
   },
 ]
+
+async function handleGetStarted(planKey: string) {
+  try {
+    const res = await fetch('/api/checkout', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ plan: planKey }),
+    })
+    const data = await res.json()
+
+    if (data.url) {
+      window.location.href = data.url
+    } else {
+      toast.info(data.message || 'Contact us at info@tenerifeexperiences.com')
+    }
+  } catch {
+    toast.error('Something went wrong. Please try again.')
+  }
+}
 
 export default function PartnersPage() {
   const t = useTranslations('partners')
@@ -309,11 +329,15 @@ export default function PartnersPage() {
                           ? 'bg-blue-500 hover:bg-blue-600 text-white'
                           : 'bg-white/10 hover:bg-white/20 text-white'
                     }`}
-                    onClick={() =>
-                      document
-                        .getElementById('contact')
-                        ?.scrollIntoView({ behavior: 'smooth' })
-                    }
+                    onClick={() => {
+                      if (plan.price === 0) {
+                        document
+                          .getElementById('contact')
+                          ?.scrollIntoView({ behavior: 'smooth' })
+                      } else {
+                        handleGetStarted(plan.key)
+                      }
+                    }}
                   >
                     {plan.price === 0 ? t('getStarted') : t('contactUs')}
                   </Button>

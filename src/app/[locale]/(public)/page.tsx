@@ -17,12 +17,12 @@ import {
   ArrowRight,
   ChevronRight,
 } from 'lucide-react'
-import { Button } from '@/components/ui/button'
 import { Card, CardContent } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
 import { FeaturedPartners } from '@/components/home/featured-partners'
 import { HeroSearchBar } from '@/components/home/hero-search-bar'
 import { MapSection } from '@/components/home/map-section'
+import { NewsletterForm } from '@/components/home/newsletter-form'
 
 const mapPins = [
   { name: 'Teide National Park', slug: 'areas/teide', category: 'nature', lat: 28.2723, lng: -16.6422 },
@@ -265,19 +265,11 @@ export default function HomePage() {
               <p className="mt-2 text-gray-400">
                 {t('newsletter.subtitle')}
               </p>
-              <div className="mt-6 flex flex-col sm:flex-row gap-3">
-                <input
-                  type="email"
-                  placeholder={t('newsletter.placeholder')}
-                  className="flex-1 bg-slate-900/80 border border-white/10 rounded-xl px-4 py-3 text-white placeholder-gray-500 outline-none focus:border-orange-400/50"
-                />
-                <Button className="bg-orange-500 hover:bg-orange-600 text-white px-6 rounded-xl">
-                  {t('newsletter.cta')}
-                </Button>
-              </div>
-              <p className="mt-3 text-xs text-gray-500">
-                {t('newsletter.privacy')}
-              </p>
+              <NewsletterForm
+                placeholder={t('newsletter.placeholder')}
+                ctaText={t('newsletter.cta')}
+                privacyText={t('newsletter.privacy')}
+              />
             </div>
           </div>
         </div>
