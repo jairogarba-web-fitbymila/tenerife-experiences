@@ -265,6 +265,16 @@
     },
     "viewAll": "View All"
   },
+  "reservas": {
+    "title": "Book Experiences",
+    "subtitle": "Reserve your activities and excursions in Tenerife",
+    "popular": "Most Popular",
+    "allExperiences": "All Experiences",
+    "bookNow": "Book Now",
+    "secureBooking": "Secure booking",
+    "freeCancellation": "Free cancellation",
+    "bestPrice": "Best price guarantee"
+  },
   "footer": {
     "about": "About Tenerife Experiences",
     "aboutText": "Your comprehensive guide to everything Tenerife has to offer. From stunning beaches to volcanic landscapes, we help you discover the best of the island.",

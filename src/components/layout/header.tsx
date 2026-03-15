@@ -35,9 +35,11 @@ export function Header() {
 
           <LanguageSwitcher />
 
-          <Button className="hidden sm:flex bg-orange-500 hover:bg-orange-600 text-white">
-            {t('bookNow')}
-          </Button>
+          <Link href="/reservas">
+            <Button className="hidden sm:flex bg-orange-500 hover:bg-orange-600 text-white">
+              {t('bookNow')}
+            </Button>
+          </Link>
 
           {/* Mobile Menu */}
           <Sheet open={open} onOpenChange={setOpen}>
@@ -49,9 +51,11 @@ export function Header() {
             <SheetContent side="right" className="w-80 bg-slate-950 border-white/10">
               <MegaMenuMobile onNavigate={() => setOpen(false)} />
               <div className="mt-4 px-4">
-                <Button className="w-full bg-orange-500 hover:bg-orange-600 text-white">
-                  {t('bookNow')}
-                </Button>
+                <Link href="/reservas">
+                  <Button className="w-full bg-orange-500 hover:bg-orange-600 text-white">
+                    {t('bookNow')}
+                  </Button>
+                </Link>
               </div>
             </SheetContent>
           </Sheet>

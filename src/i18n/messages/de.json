@@ -265,6 +265,16 @@
     },
     "viewAll": "Alle anzeigen"
   },
+  "reservas": {
+    "title": "Erlebnisse Buchen",
+    "subtitle": "Buchen Sie Ihre Aktivitäten und Ausflüge auf Teneriffa",
+    "popular": "Am Beliebtesten",
+    "allExperiences": "Alle Erlebnisse",
+    "bookNow": "Jetzt Buchen",
+    "secureBooking": "Sichere Buchung",
+    "freeCancellation": "Kostenlose Stornierung",
+    "bestPrice": "Bestpreisgarantie"
+  },
   "footer": {
     "about": "Über Tenerife Experiences",
     "aboutText": "Ihr umfassender Reiseführer für alles, was Teneriffa zu bieten hat. Von atemberaubenden Stränden bis zu vulkanischen Landschaften helfen wir Ihnen, das Beste der Insel zu entdecken.",

@@ -265,6 +265,16 @@
     },
     "viewAll": "Ver todo"
   },
+  "reservas": {
+    "title": "Reserva Experiencias",
+    "subtitle": "Reserva tus actividades y excursiones en Tenerife",
+    "popular": "Más Populares",
+    "allExperiences": "Todas las Experiencias",
+    "bookNow": "Reservar Ahora",
+    "secureBooking": "Reserva segura",
+    "freeCancellation": "Cancelación gratuita",
+    "bestPrice": "Mejor precio garantizado"
+  },
   "footer": {
     "about": "Sobre Tenerife Experiences",
     "aboutText": "Tu guía completa de todo lo que Tenerife tiene para ofrecer. Desde playas impresionantes hasta paisajes volcánicos, te ayudamos a descubrir lo mejor de la isla.",

@@ -144,5 +144,15 @@
     },
     "viewAll": "Vedi tutto"
   },
+  "reservas": {
+    "title": "Prenota Esperienze",
+    "subtitle": "Prenota le tue attività ed escursioni a Tenerife",
+    "popular": "Più Popolari",
+    "allExperiences": "Tutte le Esperienze",
+    "bookNow": "Prenota Ora",
+    "secureBooking": "Prenotazione sicura",
+    "freeCancellation": "Cancellazione gratuita",
+    "bestPrice": "Miglior prezzo garantito"
+  },
   "footer": { "about": "Su Tenerife Experiences", "aboutText": "La tua guida completa a tutto ciò che Tenerife ha da offrire.", "quickLinks": "Link Rapidi", "categories": "Categorie", "contact": "Contatti", "legal": "Note Legali", "privacy": "Privacy Policy", "terms": "Termini di Servizio", "cookies": "Cookie Policy", "copyright": "© {year} Tenerife Experiences. Tutti i diritti riservati.", "partners": "Per i Partner", "advertise": "Pubblicità" }
 }
