@@ -3,7 +3,7 @@
     "title": "Tenerife Experiences - La Tua Guida Completa di Tenerife",
     "description": "Scopri le migliori esperienze, spiagge, escursioni, ristoranti e cose da fare a Tenerife. Prenota tour, trova consigli locali e pianifica il tuo viaggio perfetto."
   },
-  "nav": { "home": "Home", "experiences": "Esperienze", "beaches": "Spiagge", "culture": "Cultura", "nature": "Natura", "food": "Gastronomia", "nightlife": "Vita Notturna", "events": "Feste",
+  "nav": { "home": "Home", "experiences": "Esperienze", "beaches": "Spiagge", "culture": "Cultura", "nature": "Natura", "food": "Gastronomia", "nightlife": "Vita Notturna", "events": "Cultura e Svago",
     "areas": "Zone", "blog": "Blog", "search": "Cerca...", "bookNow": "Prenota" },
   "home": {
     "hero": { "title": "Scopri Tenerife", "subtitle": "La tua guida definitiva all'Isola dell'Eterna Primavera", "cta": "Esplora le Esperienze", "searchPlaceholder": "Cosa vuoi fare a Tenerife?" },

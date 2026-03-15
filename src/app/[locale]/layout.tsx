@@ -28,7 +28,7 @@ export default async function LocaleLayout({
 
   return (
     <html lang={locale} className="dark">
-      <body className={`${inter.variable} font-sans antialiased bg-slate-950 text-white`}>
+      <body className={`${inter.variable} font-sans antialiased bg-[#0a0e1a] text-white`}>
         <NextIntlClientProvider messages={messages}>
           {children}
           <Toaster richColors position="bottom-right" />

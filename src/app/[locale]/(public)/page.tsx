@@ -38,25 +38,25 @@ const areas = [
   {
     id: 'south',
     key: 'south',
-    image: 'https://images.unsplash.com/photo-1559511260-66a654ae982a?w=800&q=80',
+    image: 'https://images.unsplash.com/photo-1648396213626-860f8b8ddf65?w=1200&q=80',
     itemCount: 120,
   },
   {
     id: 'north',
     key: 'north',
-    image: 'https://images.unsplash.com/photo-1580137189272-c9379f8864fd?w=800&q=80',
+    image: 'https://images.unsplash.com/photo-1677503590969-1c16fd0a0981?w=1200&q=80',
     itemCount: 85,
   },
   {
     id: 'west',
     key: 'west',
-    image: 'https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=800&q=80',
+    image: 'https://images.unsplash.com/photo-1669147951690-658f2e4b4dd3?w=1200&q=80',
     itemCount: 45,
   },
   {
     id: 'central',
     key: 'central',
-    image: 'https://images.unsplash.com/photo-1547234935-80c7145ec969?w=800&q=80',
+    image: 'https://images.unsplash.com/photo-1506368387824-6cf9848c1638?w=1200&q=80',
     itemCount: 60,
   },
 ]
@@ -113,8 +113,8 @@ export default function HomePage() {
         {/* Background Image */}
         <div className="absolute inset-0">
           <img
-            src="https://images.unsplash.com/photo-1547234935-80c7145ec969?w=1920&q=85"
-            alt="Mount Teide, Tenerife"
+            src="https://images.unsplash.com/photo-1506368387824-6cf9848c1638?w=1920&q=85"
+            alt="Mount Teide, Tenerife - Canary Islands"
             className="w-full h-full object-cover"
           />
           <div className="absolute inset-0 bg-gradient-to-b from-slate-950/70 via-slate-950/50 to-slate-950" />
