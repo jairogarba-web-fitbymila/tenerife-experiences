@@ -2,27 +2,17 @@
 
 import { useState } from 'react'
 import { useTranslations, useLocale } from 'next-intl'
-import { Link, usePathname } from '@/i18n/routing'
-import { Menu, X, Search, Globe } from 'lucide-react'
+import { Link } from '@/i18n/routing'
+import { Menu } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet'
 import { LanguageSwitcher } from './language-switcher'
 import { SearchDialog } from './search-dialog'
-
-const navItems = [
-  { key: 'experiences', href: '/experiences' },
-  { key: 'beaches', href: '/beaches' },
-  { key: 'nature', href: '/nature' },
-  { key: 'food', href: '/food' },
-  { key: 'events', href: '/events' },
-  { key: 'areas', href: '/areas' },
-  { key: 'blog', href: '/blog' },
-] as const
+import { MegaMenuDesktop, MegaMenuMobile } from './mega-menu'
 
 export function Header() {
   const t = useTranslations('nav')
   const locale = useLocale()
-  const pathname = usePathname()
   const [open, setOpen] = useState(false)
 
   return (
@@ -36,25 +26,8 @@ export function Header() {
           <span className="text-xl font-light text-white">Experiences</span>
         </Link>
 
-        {/* Desktop Nav */}
-        <nav className="hidden lg:flex items-center gap-1">
-          {navItems.map((item) => {
-            const isActive = pathname.startsWith(item.href)
-            return (
-              <Link
-                key={item.key}
-                href={item.href}
-                className={`px-3 py-2 text-sm font-medium rounded-lg transition-colors ${
-                  isActive
-                    ? 'text-orange-400 bg-orange-400/10'
-                    : 'text-gray-300 hover:text-white hover:bg-white/5'
-                }`}
-              >
-                {t(item.key)}
-              </Link>
-            )
-          })}
-        </nav>
+        {/* Desktop Nav - Mega Menu */}
+        <MegaMenuDesktop />
 
         {/* Actions */}
         <div className="flex items-center gap-2">
@@ -74,23 +47,12 @@ export function Header() {
               </Button>
             </SheetTrigger>
             <SheetContent side="right" className="w-80 bg-slate-950 border-white/10">
-              <nav className="flex flex-col gap-1 mt-8">
-                {navItems.map((item) => (
-                  <Link
-                    key={item.key}
-                    href={item.href}
-                    onClick={() => setOpen(false)}
-                    className="px-4 py-3 text-lg font-medium text-gray-300 hover:text-white hover:bg-white/5 rounded-lg transition-colors"
-                  >
-                    {t(item.key)}
-                  </Link>
-                ))}
-                <div className="mt-4 px-4">
-                  <Button className="w-full bg-orange-500 hover:bg-orange-600 text-white">
-                    {t('bookNow')}
-                  </Button>
-                </div>
-              </nav>
+              <MegaMenuMobile onNavigate={() => setOpen(false)} />
+              <div className="mt-4 px-4">
+                <Button className="w-full bg-orange-500 hover:bg-orange-600 text-white">
+                  {t('bookNow')}
+                </Button>
+              </div>
             </SheetContent>
           </Sheet>
         </div>
