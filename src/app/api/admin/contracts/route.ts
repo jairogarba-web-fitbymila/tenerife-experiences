@@ -8,10 +8,67 @@ export async function GET() {
   }
 
   const supabase = createAdminClient()
+
   const { data, error } = await supabase
-    .from('articles')
-    .select('id, slug, title, published, ai_generated, created_at, published_at')
+    .from('contracts')
+    .select(`
+      *,
+      partners:partner_id ( id, name )
+    `)
     .order('created_at', { ascending: false })
+
+  if (error) {
+    return NextResponse.json({ error: error.message }, { status: 500 })
+  }
+
+  return NextResponse.json(data)
+}
+
+export async function POST(request: NextRequest) {
+  if (!(await isAuthenticated())) {
+    return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
+  }
+
+  const body = await request.json()
+  const {
+    partner_id,
+    lead_id,
+    plan,
+    price,
+    billing_cycle,
+    start_date,
+    end_date,
+    notes,
+    status,
+  } = body
+
+  if (!partner_id || !plan) {
+    return NextResponse.json(
+      { error: 'Partner and plan are required' },
+      { status: 400 }
+    )
+  }
+
+  const supabase = createAdminClient()
+
+  const { data, error } = await supabase
+    .from('contracts')
+    .insert({
+      partner_id,
+      lead_id: lead_id || null,
+      plan,
+      price: price || 0,
+      billing_cycle: billing_cycle || 'monthly',
+      start_date: start_date || new Date().toISOString().split('T')[0],
+      end_date: end_date || null,
+      notes: notes || null,
+      status: status || 'draft',
+    })
+    .select(`
+      *,
+      partners:partner_id ( id, name )
+    `)
+    .single()
 
   if (error) {
     return NextResponse.json({ error: error.message }, { status: 500 })
@@ -32,17 +89,16 @@ export async function PUT(request: NextRequest) {
     return NextResponse.json({ error: 'ID is required' }, { status: 400 })
   }
 
-  // If publishing, set published_at
-  if (updates.published === true) {
-    updates.published_at = new Date().toISOString()
-  }
-
   const supabase = createAdminClient()
+
   const { data, error } = await supabase
-    .from('articles')
+    .from('contracts')
     .update(updates)
     .eq('id', id)
-    .select()
+    .select(`
+      *,
+      partners:partner_id ( id, name )
+    `)
     .single()
 
   if (error) {
@@ -65,7 +121,7 @@ export async function DELETE(request: NextRequest) {
   }
 
   const supabase = createAdminClient()
-  const { error } = await supabase.from('articles').delete().eq('id', id)
+  const { error } = await supabase.from('contracts').delete().eq('id', id)
 
   if (error) {
     return NextResponse.json({ error: error.message }, { status: 500 })

@@ -6,6 +6,7 @@ import { Button } from '@/components/ui/button'
 import { Badge } from '@/components/ui/badge'
 import { Input } from '@/components/ui/input'
 import { Textarea } from '@/components/ui/textarea'
+import Link from 'next/link'
 import {
   Users,
   Sparkles,
@@ -437,9 +438,13 @@ export default function LeadsPage() {
                   >
                     <div className="flex-1 min-w-0">
                       <div className="flex items-center gap-3">
-                        <p className="truncate text-sm font-medium text-white">
+                        <Link
+                          href={`/dashboard/leads/${lead.id}`}
+                          onClick={(e) => e.stopPropagation()}
+                          className="truncate text-sm font-medium text-white hover:text-orange-400 transition-colors"
+                        >
                           {lead.business_name}
-                        </p>
+                        </Link>
                         <Badge className={STATUS_COLORS[lead.status] || 'bg-gray-500/10 text-gray-400'}>
                           <StatusIcon className="mr-1 h-3 w-3" />
                           {lead.status}

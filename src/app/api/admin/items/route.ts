@@ -9,8 +9,8 @@ export async function GET() {
 
   const supabase = createAdminClient()
   const { data, error } = await supabase
-    .from('articles')
-    .select('id, slug, title, published, ai_generated, created_at, published_at')
+    .from('items')
+    .select('id, slug, name, subcategory_id, image, visible, featured, price_from, rating, created_at')
     .order('created_at', { ascending: false })
 
   if (error) {
@@ -32,14 +32,9 @@ export async function PUT(request: NextRequest) {
     return NextResponse.json({ error: 'ID is required' }, { status: 400 })
   }
 
-  // If publishing, set published_at
-  if (updates.published === true) {
-    updates.published_at = new Date().toISOString()
-  }
-
   const supabase = createAdminClient()
   const { data, error } = await supabase
-    .from('articles')
+    .from('items')
     .update(updates)
     .eq('id', id)
     .select()
@@ -65,7 +60,7 @@ export async function DELETE(request: NextRequest) {
   }
 
   const supabase = createAdminClient()
-  const { error } = await supabase.from('articles').delete().eq('id', id)
+  const { error } = await supabase.from('items').delete().eq('id', id)
 
   if (error) {
     return NextResponse.json({ error: error.message }, { status: 500 })

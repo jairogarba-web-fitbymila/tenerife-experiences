@@ -144,6 +144,133 @@ export interface Area {
   created_at: string
 }
 
+export interface Lead {
+  id: string
+  business_name: string
+  contact_name: string | null
+  email: string | null
+  phone: string | null
+  website: string | null
+  category: string | null
+  subcategory: string | null
+  zone: string | null
+  status: string
+  priority: string
+  contact_attempts: number
+  notes: string | null
+  source: string | null
+  estimated_revenue: number | null
+  next_follow_up: string | null
+  last_contacted_at: string | null
+  created_at: string
+}
+
+export interface Contract {
+  id: string
+  partner_id: string | null
+  lead_id: string | null
+  plan: 'free' | 'basic' | 'premium' | 'premium_plus'
+  price: number
+  currency: string
+  billing_cycle: 'monthly' | 'yearly'
+  status: 'draft' | 'pending' | 'active' | 'cancelled' | 'expired'
+  start_date: string | null
+  end_date: string | null
+  auto_renew: boolean
+  stripe_subscription_id: string | null
+  stripe_customer_id: string | null
+  notes: string | null
+  created_at: string
+  updated_at: string
+  // Joined fields
+  partner?: Partner
+  lead?: Lead
+}
+
+export interface EmailLog {
+  id: string
+  lead_id: string | null
+  partner_id: string | null
+  template_number: number | null
+  subject: string | null
+  body: string | null
+  recipient_email: string
+  recipient_name: string | null
+  status: 'sent' | 'delivered' | 'opened' | 'clicked' | 'bounced' | 'failed'
+  opened_at: string | null
+  clicked_at: string | null
+  created_at: string
+  // Joined
+  lead?: Lead
+  partner?: Partner
+}
+
+export interface Invoice {
+  id: string
+  contract_id: string | null
+  partner_id: string | null
+  amount: number
+  currency: string
+  status: 'pending' | 'paid' | 'overdue' | 'cancelled'
+  invoice_number: string | null
+  description: string | null
+  issued_at: string
+  due_at: string | null
+  paid_at: string | null
+  stripe_invoice_id: string | null
+  pdf_url: string | null
+  created_at: string
+  // Joined
+  contract?: Contract
+  partner?: Partner
+}
+
+export interface PageView {
+  id: string
+  page_path: string
+  locale: string | null
+  referrer: string | null
+  user_agent: string | null
+  country: string | null
+  device: string | null
+  partner_id: string | null
+  item_id: string | null
+  session_id: string | null
+  created_at: string
+}
+
+export interface Subscriber {
+  id: string
+  email: string
+  locale: string | null
+  subscribed: boolean
+  created_at: string
+}
+
+export interface Event {
+  id: string
+  slug: string
+  name: MultiLangText
+  description: MultiLangText
+  municipality: string
+  municipality_slug: string
+  area_id: string | null
+  event_type: string
+  start_date: string | null
+  end_date: string | null
+  month: number | null
+  image: string | null
+  highlights: MultiLangText[]
+  traditions: MultiLangText[]
+  practical_info: MultiLangText | null
+  meta_title: MultiLangText | null
+  meta_description: MultiLangText | null
+  visible: boolean
+  featured: boolean
+  created_at: string
+  updated_at: string
+}
+
 // API response types
 export interface PaginatedResponse<T> {
   data: T[]

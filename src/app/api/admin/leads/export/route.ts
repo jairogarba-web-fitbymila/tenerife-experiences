@@ -1,12 +1,6 @@
 import { NextResponse } from 'next/server'
 import { createAdminClient } from '@/lib/supabase/admin'
-import { cookies } from 'next/headers'
-
-async function isAuthenticated() {
-  const cookieStore = await cookies()
-  const session = cookieStore.get('admin_session')
-  return session?.value === 'authenticated'
-}
+import { isAuthenticated } from '@/lib/auth'
 
 function escapeCsvField(value: string | null | undefined): string {
   if (value == null) return ''

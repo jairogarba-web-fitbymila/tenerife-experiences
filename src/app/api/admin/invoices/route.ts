@@ -1,7 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { createAdminClient } from '@/lib/supabase/admin'
 import { isAuthenticated } from '@/lib/auth'
-import { slugify } from '@/lib/helpers'
 
 export async function GET() {
   if (!(await isAuthenticated())) {
@@ -9,9 +8,13 @@ export async function GET() {
   }
 
   const supabase = createAdminClient()
+
   const { data, error } = await supabase
-    .from('partners')
-    .select('*')
+    .from('invoices')
+    .select(`
+      *,
+      partners:partner_id ( id, name )
+    `)
     .order('created_at', { ascending: false })
 
   if (error) {
@@ -27,29 +30,47 @@ export async function POST(request: NextRequest) {
   }
 
   const body = await request.json()
-  const { name, type, description, area, address, phone, website, plan } = body
+  const {
+    contract_id,
+    partner_id,
+    amount,
+    currency,
+    invoice_number,
+    description,
+    issued_at,
+    due_at,
+  } = body
 
-  if (!name) {
-    return NextResponse.json({ error: 'Name is required' }, { status: 400 })
+  if (!partner_id || !amount) {
+    return NextResponse.json(
+      { error: 'Partner and amount are required' },
+      { status: 400 }
+    )
   }
 
+  // Auto-generate invoice number if not provided
+  const finalInvoiceNumber =
+    invoice_number || `INV-${Date.now().toString(36).toUpperCase()}`
+
   const supabase = createAdminClient()
+
   const { data, error } = await supabase
-    .from('partners')
+    .from('invoices')
     .insert({
-      name,
-      slug: slugify(name),
-      type: type || 'restaurant',
-      description: description || {},
-      area: area || null,
-      address: address || null,
-      phone: phone || null,
-      website: website || null,
-      plan: plan || 'free',
-      visible: true,
-      featured: false,
+      contract_id: contract_id || null,
+      partner_id,
+      amount,
+      currency: currency || 'EUR',
+      invoice_number: finalInvoiceNumber,
+      description: description || null,
+      issued_at: issued_at || new Date().toISOString().split('T')[0],
+      due_at: due_at || null,
+      status: 'pending',
     })
-    .select()
+    .select(`
+      *,
+      partners:partner_id ( id, name )
+    `)
     .single()
 
   if (error) {
@@ -71,17 +92,21 @@ export async function PUT(request: NextRequest) {
     return NextResponse.json({ error: 'ID is required' }, { status: 400 })
   }
 
-  // Generate slug if name is being updated
-  if (updates.name) {
-    updates.slug = slugify(updates.name)
+  // If marking as paid, set paid_at
+  if (updates.status === 'paid' && !updates.paid_at) {
+    updates.paid_at = new Date().toISOString()
   }
 
   const supabase = createAdminClient()
+
   const { data, error } = await supabase
-    .from('partners')
+    .from('invoices')
     .update(updates)
     .eq('id', id)
-    .select()
+    .select(`
+      *,
+      partners:partner_id ( id, name )
+    `)
     .single()
 
   if (error) {
@@ -89,26 +114,4 @@ export async function PUT(request: NextRequest) {
   }
 
   return NextResponse.json(data)
-}
-
-export async function DELETE(request: NextRequest) {
-  if (!(await isAuthenticated())) {
-    return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
-  }
-
-  const { searchParams } = new URL(request.url)
-  const id = searchParams.get('id')
-
-  if (!id) {
-    return NextResponse.json({ error: 'ID is required' }, { status: 400 })
-  }
-
-  const supabase = createAdminClient()
-  const { error } = await supabase.from('partners').delete().eq('id', id)
-
-  if (error) {
-    return NextResponse.json({ error: error.message }, { status: 500 })
-  }
-
-  return NextResponse.json({ success: true })
 }

@@ -1,13 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { createAdminClient } from '@/lib/supabase/admin'
 import { getEmailTemplate } from '@/lib/email-templates'
-import { cookies } from 'next/headers'
-
-async function isAuthenticated() {
-  const cookieStore = await cookies()
-  const session = cookieStore.get('admin_session')
-  return session?.value === 'authenticated'
-}
+import { isAuthenticated } from '@/lib/auth'
 
 export async function POST(request: NextRequest) {
   if (!(await isAuthenticated())) {

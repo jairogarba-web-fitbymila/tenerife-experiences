@@ -6,6 +6,7 @@ import { Toaster } from 'sonner'
 import { routing } from '@/i18n/routing'
 import { Analytics } from '@/components/shared/analytics'
 import { CookieConsent } from '@/components/shared/cookie-consent'
+import { PageTracker } from '@/components/shared/page-tracker'
 import '../globals.css'
 
 const inter = Inter({
@@ -37,6 +38,7 @@ export default async function LocaleLayout({
           <CookieConsent />
         </NextIntlClientProvider>
         <Analytics />
+        <PageTracker />
       </body>
     </html>
   )

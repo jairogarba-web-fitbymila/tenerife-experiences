@@ -1,12 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { createAdminClient } from '@/lib/supabase/admin'
-import { cookies } from 'next/headers'
-
-async function isAuthenticated() {
-  const cookieStore = await cookies()
-  const session = cookieStore.get('admin_session')
-  return session?.value === 'authenticated'
-}
+import { isAuthenticated } from '@/lib/auth'
 
 export async function GET(request: NextRequest) {
   if (!(await isAuthenticated())) {
@@ -14,9 +8,28 @@ export async function GET(request: NextRequest) {
   }
 
   const { searchParams } = new URL(request.url)
-  const status = searchParams.get('status')
-
   const supabase = createAdminClient()
+
+  // Single lead by ID
+  const id = searchParams.get('id')
+  if (id) {
+    const { data, error } = await supabase
+      .from('leads')
+      .select('*')
+      .eq('id', id)
+      .single()
+
+    if (error) {
+      return NextResponse.json({ error: error.message }, { status: 500 })
+    }
+
+    return NextResponse.json(data)
+  }
+
+  // List leads
+  const status = searchParams.get('status')
+  const search = searchParams.get('search')
+
   let query = supabase
     .from('leads')
     .select('*')
@@ -24,6 +37,10 @@ export async function GET(request: NextRequest) {
 
   if (status && status !== 'all') {
     query = query.eq('status', status)
+  }
+
+  if (search && search.trim()) {
+    query = query.ilike('business_name', `%${search.trim()}%`)
   }
 
   const { data, error } = await query
