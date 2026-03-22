@@ -57,7 +57,7 @@ export function ReviewSection({ page, sectionId, sectionLabel, children }: Revie
           if (existing?.note) setNote(existing.note)
           if (existing?.photoIssue) setPhotoIssue(existing.photoIssue)
         }}
-        className={`absolute top-3 right-3 z-[60] flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-bold text-white shadow-lg cursor-pointer transition-all hover:scale-105 ${
+        className={`absolute top-20 left-3 z-[60] flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-bold text-white shadow-lg cursor-pointer transition-all hover:scale-105 ${
           existing ? statusColor : 'bg-orange-500 animate-pulse'
         }`}
       >
@@ -67,7 +67,7 @@ export function ReviewSection({ page, sectionId, sectionLabel, children }: Revie
 
       {/* Review form overlay */}
       {open && (
-        <div className="absolute top-12 right-3 z-[70] w-80 bg-slate-900 border border-orange-500/40 rounded-xl shadow-2xl p-4 space-y-3">
+        <div className="absolute top-28 left-3 z-[70] w-80 bg-slate-900 border border-orange-500/40 rounded-xl shadow-2xl p-4 space-y-3">
           {/* Header */}
           <div className="flex items-center justify-between">
             <h4 className="text-sm font-bold text-white">{sectionLabel}</h4>
