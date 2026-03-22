@@ -23,6 +23,7 @@ import { ScrollEffects } from '@/components/cinematic/scroll-effects'
 import { t as getLocalizedText, formatPrice } from '@/lib/helpers'
 import type { Locale } from '@/types/database'
 import { notFound } from 'next/navigation'
+import { ReviewSection } from '@/components/review/review-panel'
 
 export async function generateMetadata({
   params,
@@ -157,6 +158,7 @@ export default async function ItemDetailPage({
       <ScrollEffects />
 
       {/* Full-Screen Hero with Ken Burns Animation */}
+      <ReviewSection page="detail" sectionId={`hero-${itemSlug}`} sectionLabel={`Hero: ${getLocalizedText(item.name, loc)}`}>
       <div className="relative h-screen w-full overflow-hidden">
         {item.image && (
           <>
@@ -251,8 +253,10 @@ export default async function ItemDetailPage({
           </div>
         </div>
       </div>
+      </ReviewSection>
 
       {/* Immersive Description Sections with Photo Backgrounds */}
+      <ReviewSection page="detail" sectionId={`description-${itemSlug}`} sectionLabel={`Descripción: ${getLocalizedText(item.name, loc)}`}>
       <div className="relative">
         {descriptionChunks.map((chunk, index) => (
           <div
@@ -280,8 +284,10 @@ export default async function ItemDetailPage({
           </div>
         ))}
       </div>
+      </ReviewSection>
 
       {/* Practical Info Section - Grid of Cards */}
+      <ReviewSection page="detail" sectionId={`info-${itemSlug}`} sectionLabel={`Info práctica: ${getLocalizedText(item.name, loc)}`}>
       <div className="reveal bg-gradient-to-b from-slate-950 to-slate-900 py-20">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-16">
@@ -366,9 +372,11 @@ export default async function ItemDetailPage({
           </div>
         </div>
       </div>
+      </ReviewSection>
 
       {/* Reviews Section */}
       {reviews && reviews.length > 0 && (
+        <ReviewSection page="detail" sectionId={`reviews-${itemSlug}`} sectionLabel={`Reviews: ${getLocalizedText(item.name, loc)}`}>
         <div className="reveal py-20">
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <h2 className="text-4xl md:text-5xl font-bold text-white mb-12">
@@ -408,6 +416,7 @@ export default async function ItemDetailPage({
             </div>
           </div>
         </div>
+        </ReviewSection>
       )}
 
       {/* Sticky Mobile CTA */}

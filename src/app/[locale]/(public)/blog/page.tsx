@@ -6,6 +6,7 @@ import { Calendar, Clock } from 'lucide-react'
 import { t as getLocalizedText } from '@/lib/helpers'
 import { ScrollEffects } from '@/components/cinematic/scroll-effects'
 import type { Locale } from '@/types/database'
+import { ReviewSection } from '@/components/review/review-panel'
 
 export async function generateMetadata({
   params,
@@ -52,44 +53,49 @@ export default async function BlogPage({
       <ScrollEffects />
 
       {/* Hero Section */}
-      <section className="relative h-screen min-h-[40vh] flex items-center justify-center overflow-hidden bg-slate-950">
-        {/* Gradient background */}
-        <div className="absolute inset-0 opacity-50">
-          <div className="absolute top-0 left-1/4 w-96 h-96 bg-orange-500/20 rounded-full blur-3xl"></div>
-          <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-amber-500/20 rounded-full blur-3xl"></div>
-        </div>
+      <ReviewSection page="blog" sectionId="blog-hero" sectionLabel="Hero: Blog">
+        <section className="relative h-screen min-h-[40vh] flex items-center justify-center overflow-hidden bg-slate-950">
+          {/* Gradient background */}
+          <div className="absolute inset-0 opacity-50">
+            <div className="absolute top-0 left-1/4 w-96 h-96 bg-orange-500/20 rounded-full blur-3xl"></div>
+            <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-amber-500/20 rounded-full blur-3xl"></div>
+          </div>
 
-        {/* Content */}
-        <div className="relative z-10 text-center">
-          <h1 className="text-7xl md:text-8xl font-black text-white mb-6 tracking-tight">
-            Blog
-          </h1>
-          <p className="text-xl md:text-2xl text-gray-300 max-w-2xl mx-auto">
-            {t('subtitle')}
-          </p>
-        </div>
-      </section>
+          {/* Content */}
+          <div className="relative z-10 text-center">
+            <h1 className="text-7xl md:text-8xl font-black text-white mb-6 tracking-tight">
+              Blog
+            </h1>
+            <p className="text-xl md:text-2xl text-gray-300 max-w-2xl mx-auto">
+              {t('subtitle')}
+            </p>
+          </div>
+        </section>
+      </ReviewSection>
 
       {/* Category Filter Bar */}
-      <section className="sticky top-0 z-40 bg-slate-950/95 backdrop-blur border-b border-white/5 py-4">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-wrap gap-2">
-            <button className="px-4 py-2 rounded-full border border-orange-500/50 bg-orange-500/10 text-orange-400 text-sm font-medium hover:bg-orange-500/20 transition-colors">
-              All Articles
-            </button>
-            {categories.map((category) => (
-              <button
-                key={category.slug}
-                className="px-4 py-2 rounded-full border border-white/10 bg-slate-900/50 text-gray-300 text-sm font-medium hover:border-white/30 hover:text-white transition-colors"
-              >
-                {category.name}
+      <ReviewSection page="blog" sectionId="blog-filters" sectionLabel="Filtros: Blog">
+        <section className="sticky top-0 z-40 bg-slate-950/95 backdrop-blur border-b border-white/5 py-4">
+          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+            <div className="flex flex-wrap gap-2">
+              <button className="px-4 py-2 rounded-full border border-orange-500/50 bg-orange-500/10 text-orange-400 text-sm font-medium hover:bg-orange-500/20 transition-colors">
+                All Articles
               </button>
-            ))}
+              {categories.map((category) => (
+                <button
+                  key={category.slug}
+                  className="px-4 py-2 rounded-full border border-white/10 bg-slate-900/50 text-gray-300 text-sm font-medium hover:border-white/30 hover:text-white transition-colors"
+                >
+                  {category.name}
+                </button>
+              ))}
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
+      </ReviewSection>
 
       {/* Masonry Grid */}
+      <ReviewSection page="blog" sectionId="blog-grid" sectionLabel="Grid: Artículos">
       <section className="py-16 sm:py-24 bg-slate-950">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           {(!articles || articles.length === 0) ? (
@@ -170,6 +176,7 @@ export default async function BlogPage({
           )}
         </div>
       </section>
+      </ReviewSection>
     </>
   )
 }

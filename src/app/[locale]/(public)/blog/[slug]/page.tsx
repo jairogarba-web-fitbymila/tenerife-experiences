@@ -9,6 +9,7 @@ import { ScrollEffects } from '@/components/cinematic/scroll-effects'
 import { t as getLocalizedText } from '@/lib/helpers'
 import type { Locale } from '@/types/database'
 import { notFound } from 'next/navigation'
+import { ReviewSection } from '@/components/review/review-panel'
 
 export async function generateMetadata({
   params,
@@ -179,6 +180,7 @@ export default async function ArticlePage({
         </div>
 
         {/* Header Section: Category, Date, Read Time */}
+        <ReviewSection page="article" sectionId={`header-${slug}`} sectionLabel={`Header: ${articleTitle}`}>
         <div className="pt-28 pb-8 px-4 sm:px-6 lg:px-8">
           <div className="mx-auto max-w-4xl">
             {/* Category Pill */}
@@ -223,9 +225,11 @@ export default async function ArticlePage({
             </h1>
           </div>
         </div>
+        </ReviewSection>
 
         {/* Full-Width Featured Image (70vh) */}
         {article.image && (
+          <ReviewSection page="article" sectionId={`image-${slug}`} sectionLabel={`Imagen: ${articleTitle}`}>
           <div className="w-full h-[70vh] overflow-hidden reveal">
             <img
               src={article.image}
@@ -234,9 +238,11 @@ export default async function ArticlePage({
               loading="eager"
             />
           </div>
+          </ReviewSection>
         )}
 
         {/* Article Content */}
+        <ReviewSection page="article" sectionId={`content-${slug}`} sectionLabel={`Contenido: ${articleTitle}`}>
         <div className="py-16 px-4 sm:px-6 lg:px-8">
           <div className="mx-auto max-w-3xl">
             {/* Content Section with Prose Dark */}
@@ -248,9 +254,11 @@ export default async function ArticlePage({
             </div>
           </div>
         </div>
+        </ReviewSection>
 
         {/* Related Articles Section */}
         {/* Placeholder for related articles */}
+        <ReviewSection page="article" sectionId={`related-${slug}`} sectionLabel="Artículos Relacionados">
         <div className="py-16 px-4 sm:px-6 lg:px-8 border-t border-white/10">
           <div className="mx-auto max-w-6xl">
             <h2 className="text-3xl font-bold text-white mb-12 reveal">
@@ -290,6 +298,7 @@ export default async function ArticlePage({
             </div>
           </div>
         </div>
+        </ReviewSection>
 
         {/* Bottom spacing */}
         <div className="h-20" />

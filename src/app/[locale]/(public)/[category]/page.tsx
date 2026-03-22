@@ -5,6 +5,7 @@ import { Badge } from '@/components/ui/badge'
 import { t as getLocalizedText } from '@/lib/helpers'
 import { ScrollEffects } from '@/components/cinematic/scroll-effects'
 import type { Locale } from '@/types/database'
+import { ReviewSection } from '@/components/review/review-panel'
 
 export async function generateMetadata({
   params,
@@ -70,62 +71,67 @@ export default async function CategoryPage({
       <ScrollEffects />
 
       {/* Full-screen hero */}
-      <section className="cinematic-section relative overflow-hidden" style={{ minHeight: '60vh' }}>
-        {/* Background with Ken Burns animation */}
-        {cat.image && (
-          <div
-            className="cinematic-bg animate-ken-burns"
-            style={{
-              backgroundImage: `url('${cat.image}')`,
-            }}
-            data-parallax
-          />
-        )}
-        <div className="cinematic-overlay-gradient" />
+      <ReviewSection page="category" sectionId={`hero-${category}`} sectionLabel={`Hero: ${categoryName}`}>
+        <section className="cinematic-section relative overflow-hidden" style={{ minHeight: '60vh' }}>
+          {/* Background with Ken Burns animation */}
+          {cat.image && (
+            <div
+              className="cinematic-bg animate-ken-burns"
+              style={{
+                backgroundImage: `url('${cat.image}')`,
+              }}
+              data-parallax
+            />
+          )}
+          <div className="cinematic-overlay-gradient" />
 
-        {/* Hero content */}
-        <div className="relative z-10 flex flex-col justify-end h-full px-4 sm:px-6 lg:px-8 pb-12 sm:pb-16">
-          <div className="reveal">
-            <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold text-white mb-4 leading-tight">
-              {categoryName}
-            </h1>
-            <p className="text-lg sm:text-xl text-gray-300 max-w-2xl leading-relaxed">
-              {getLocalizedText(cat.description, locale as Locale)}
-            </p>
-          </div>
-        </div>
-      </section>
-
-      {/* Sticky filter bar with subcategories */}
-      {subcategories && subcategories.length > 0 && (
-        <section className="sticky top-16 z-20 bg-slate-950/95 backdrop-blur-sm border-b border-white/5 py-4">
-          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-            <div className="flex gap-2 overflow-x-auto pb-2 scrollbar-hide">
-              {subcategories.map((sub) => (
-                <Link
-                  key={sub.id}
-                  href={`/${category}/${sub.slug}`}
-                  className="inline-block"
-                >
-                  <Badge
-                    variant="outline"
-                    className="bg-slate-900/50 text-white border-orange-400/30 hover:border-orange-400/60 hover:bg-orange-400/10 transition-all duration-200 cursor-pointer whitespace-nowrap min-h-8 px-4 text-sm"
-                  >
-                    {getLocalizedText(sub.name, locale as Locale)}
-                  </Badge>
-                </Link>
-              ))}
+          {/* Hero content */}
+          <div className="relative z-10 flex flex-col justify-end h-full px-4 sm:px-6 lg:px-8 pb-12 sm:pb-16">
+            <div className="reveal">
+              <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold text-white mb-4 leading-tight">
+                {categoryName}
+              </h1>
+              <p className="text-lg sm:text-xl text-gray-300 max-w-2xl leading-relaxed">
+                {getLocalizedText(cat.description, locale as Locale)}
+              </p>
             </div>
           </div>
         </section>
+      </ReviewSection>
+
+      {/* Sticky filter bar with subcategories */}
+      {subcategories && subcategories.length > 0 && (
+        <ReviewSection page="category" sectionId={`filters-${category}`} sectionLabel={`Filtros: ${categoryName}`}>
+          <section className="sticky top-16 z-20 bg-slate-950/95 backdrop-blur-sm border-b border-white/5 py-4">
+            <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+              <div className="flex gap-2 overflow-x-auto pb-2 scrollbar-hide">
+                {subcategories.map((sub) => (
+                  <Link
+                    key={sub.id}
+                    href={`/${category}/${sub.slug}`}
+                    className="inline-block"
+                  >
+                    <Badge
+                      variant="outline"
+                      className="bg-slate-900/50 text-white border-orange-400/30 hover:border-orange-400/60 hover:bg-orange-400/10 transition-all duration-200 cursor-pointer whitespace-nowrap min-h-8 px-4 text-sm"
+                    >
+                      {getLocalizedText(sub.name, locale as Locale)}
+                    </Badge>
+                  </Link>
+                ))}
+              </div>
+            </div>
+          </section>
+        </ReviewSection>
       )}
 
       {/* Asymmetric Grid Inmersivo */}
-      <section className="bg-slate-950 py-16 sm:py-20 lg:py-24">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          {subcategories && subcategories.length > 0 ? (
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 auto-rows-max gap-4 sm:gap-5 lg:gap-6">
-              {subcategories.map((sub, idx) => {
+      <ReviewSection page="category" sectionId={`grid-${category}`} sectionLabel={`Grid: ${categoryName}`}>
+        <section className="bg-slate-950 py-16 sm:py-20 lg:py-24">
+          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+            {subcategories && subcategories.length > 0 ? (
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 auto-rows-max gap-4 sm:gap-5 lg:gap-6">
+                {subcategories.map((sub, idx) => {
                 // Asymmetric layout: vary column and row spans
                 let colSpan = 'lg:col-span-1'
                 let rowSpan = 'lg:row-span-1'
@@ -188,13 +194,14 @@ export default async function CategoryPage({
                 )
               })}
             </div>
-          ) : (
-            <div className="text-center py-16">
-              <p className="text-gray-400 text-lg">{t('noResults')}</p>
-            </div>
-          )}
-        </div>
-      </section>
+            ) : (
+              <div className="text-center py-16">
+                <p className="text-gray-400 text-lg">{t('noResults')}</p>
+              </div>
+            )}
+          </div>
+        </section>
+      </ReviewSection>
     </>
   )
 }
