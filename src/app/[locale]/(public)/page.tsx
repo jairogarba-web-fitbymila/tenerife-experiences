@@ -46,33 +46,33 @@ const categories = [
     image: 'https://images.unsplash.com/photo-1713193160430-a4f8fa3e692f?w=1920&q=85',
     label: 'Adventure Awaits',
     thumbs: [
-      'https://images.unsplash.com/photo-1605182054023-17d71f44aa11?w=400&q=80',
-      'https://images.unsplash.com/photo-1673206212440-797e0e40bd0b?w=400&q=80',
-      'https://images.unsplash.com/photo-1611424458342-096fd23fc077?w=400&q=80',
+      { image: 'https://images.unsplash.com/photo-1605182054023-17d71f44aa11?w=400&q=80', href: '/experiences/tours', labelKey: 'Tours' },
+      { image: 'https://images.unsplash.com/photo-1596464716127-f2a82984de30?w=400&q=80', href: '/experiences/water-sports', labelKey: 'Water Sports' },
+      { image: 'https://images.unsplash.com/photo-1626033005784-e6c39eaa0669?w=400&q=80', href: '/experiences/adventure', labelKey: 'Aventura' },
     ],
   },
   {
     id: 'beaches',
     icon: Waves,
     href: '/beaches',
-    image: 'https://images.unsplash.com/photo-1552934084-2590ebf9da25?w=1920&q=85',
+    image: 'https://images.unsplash.com/photo-1661075246752-4fc14f8c2d60?w=1920&q=85',
     label: 'Golden Sand & Crystal Waters',
     thumbs: [
-      'https://images.unsplash.com/photo-1594061019010-3e1f4f41c02d?w=400&q=80',
-      'https://images.unsplash.com/photo-1611424458342-096fd23fc077?w=400&q=80',
-      'https://images.unsplash.com/photo-1669147951690-658f2e4b4dd3?w=400&q=80',
+      { image: 'https://images.unsplash.com/photo-1633110437400-0ad02d85c2d2?w=400&q=80', href: '/beaches/best-beaches', labelKey: 'Mejores Playas' },
+      { image: 'https://images.unsplash.com/photo-1661075108456-a59effb64e96?w=400&q=80', href: '/beaches/black-sand', labelKey: 'Arena Negra' },
+      { image: 'https://images.unsplash.com/photo-1661075225585-dc3a622b26e5?w=400&q=80', href: '/beaches/natural-pools', labelKey: 'Piscinas Naturales' },
     ],
   },
   {
     id: 'culture',
     icon: MapPin,
     href: '/culture',
-    image: 'https://images.unsplash.com/photo-1661383279161-e2aadb6e8f2e?w=1920&q=85',
+    image: 'https://images.unsplash.com/photo-1580309237429-661ea0218972?w=1920&q=85',
     label: 'Heritage & History',
     thumbs: [
-      'https://images.unsplash.com/photo-1661383279161-e2aadb6e8f2e?w=400&q=80',
-      'https://images.unsplash.com/photo-1656252779225-5bbd338acd14?w=400&q=80',
-      'https://images.unsplash.com/photo-1673206212440-797e0e40bd0b?w=400&q=80',
+      { image: 'https://images.unsplash.com/photo-1558618666-fcd25c85f82e?w=400&q=80', href: '/culture/historic-towns', labelKey: 'Pueblos Históricos' },
+      { image: 'https://images.unsplash.com/photo-1533174072545-7a4b6ad7a6c3?w=400&q=80', href: '/culture/festivals', labelKey: 'Fiestas y Carnaval' },
+      { image: 'https://images.unsplash.com/photo-1582555172866-f73bb12a2ab3?w=400&q=80', href: '/culture/museums', labelKey: 'Museos' },
     ],
   },
   {
@@ -82,33 +82,33 @@ const categories = [
     image: 'https://images.unsplash.com/photo-1626033005784-e6c39eaa0669?w=1920&q=85',
     label: 'Wild & Untamed',
     thumbs: [
-      'https://images.unsplash.com/photo-1626033005784-e6c39eaa0669?w=400&q=80',
-      'https://images.unsplash.com/photo-1669147951690-658f2e4b4dd3?w=400&q=80',
-      'https://images.unsplash.com/photo-1713193160430-a4f8fa3e692f?w=400&q=80',
+      { image: 'https://images.unsplash.com/photo-1713193160430-a4f8fa3e692f?w=400&q=80', href: '/nature/hiking-trails', labelKey: 'Senderismo' },
+      { image: 'https://images.unsplash.com/photo-1669147951690-658f2e4b4dd3?w=400&q=80', href: '/nature/volcanoes', labelKey: 'Volcanes' },
+      { image: 'https://images.unsplash.com/photo-1585320806297-9794b3e4eeae?w=400&q=80', href: '/nature/forests', labelKey: 'Bosques' },
     ],
   },
   {
     id: 'food',
     icon: Utensils,
     href: '/food',
-    image: 'https://images.unsplash.com/photo-1676160423254-1bd3ecfaec16?w=1920&q=85',
+    image: 'https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=1920&q=85',
     label: 'Culinary Delights',
     thumbs: [
-      'https://images.unsplash.com/photo-1676160423254-1bd3ecfaec16?w=400&q=80',
-      'https://images.unsplash.com/photo-1552934084-2590ebf9da25?w=400&q=80',
-      'https://images.unsplash.com/photo-1673206212440-797e0e40bd0b?w=400&q=80',
+      { image: 'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=400&q=80', href: '/food/restaurants', labelKey: 'Restaurantes' },
+      { image: 'https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=400&q=80', href: '/food/guachinches', labelKey: 'Guachinches' },
+      { image: 'https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=400&q=80', href: '/food/recommendations', labelKey: 'Recomendaciones' },
     ],
   },
   {
     id: 'nightlife',
     icon: Music,
     href: '/nightlife',
-    image: 'https://images.unsplash.com/photo-1656252779225-5bbd338acd14?w=1920&q=85',
+    image: 'https://images.unsplash.com/photo-1470225620780-dba8ba36b745?w=1920&q=85',
     label: 'After Dark Magic',
     thumbs: [
-      'https://images.unsplash.com/photo-1656252779225-5bbd338acd14?w=400&q=80',
-      'https://images.unsplash.com/photo-1673206212440-797e0e40bd0b?w=400&q=80',
-      'https://images.unsplash.com/photo-1605182054023-17d71f44aa11?w=400&q=80',
+      { image: 'https://images.unsplash.com/photo-1540541338287-41700207dee6?w=400&q=80', href: '/nightlife/beach-clubs', labelKey: 'Beach Clubs' },
+      { image: 'https://images.unsplash.com/photo-1571266028243-e4733b0f0bb0?w=400&q=80', href: '/nightlife/clubs', labelKey: 'Discotecas' },
+      { image: 'https://images.unsplash.com/photo-1533174072545-7a4b6ad7a6c3?w=400&q=80', href: '/nightlife/festivals', labelKey: 'Festivales' },
     ],
   },
 ]
@@ -133,9 +133,9 @@ const areas = [
     itemCount: 45,
   },
   {
-    id: 'central',
-    key: 'central',
-    image: 'https://images.unsplash.com/photo-1713193160430-a4f8fa3e692f?w=1200&q=80',
+    id: 'metro',
+    key: 'metro',
+    image: 'https://images.unsplash.com/photo-1580309237429-661ea0218972?w=1200&q=80',
     itemCount: 60,
   },
 ]
@@ -249,43 +249,53 @@ export default function HomePage() {
                   <span className="inline-block text-xs sm:text-sm font-bold tracking-[3px] text-orange-400 uppercase mb-3">
                     {cat.label}
                   </span>
-                  <h2 className="text-[clamp(2rem,5vw,3.5rem)] font-extrabold tracking-tight leading-[1.15] text-white mb-4">
+                  <h2 className="text-[clamp(2.5rem,6vw,4.5rem)] font-extrabold tracking-tight leading-[1.1] text-white mb-5">
                     {tc(cat.id)}
                   </h2>
                   <Link
                     href={cat.href}
-                    className={`inline-flex items-center gap-2 text-orange-400 font-semibold hover:gap-3 transition-all duration-300 ${isAlt ? 'flex-row-reverse' : ''}`}
+                    className={`inline-flex items-center gap-2 text-orange-400 font-semibold text-lg hover:gap-3 transition-all duration-300 ${isAlt ? 'flex-row-reverse' : ''}`}
                   >
-                    {isAlt ? <ArrowRight className="h-4 w-4 rotate-180" /> : null}
+                    {isAlt ? <ArrowRight className="h-5 w-5 rotate-180" /> : null}
                     <span>{t('areas.explore')}</span>
-                    {!isAlt ? <ArrowRight className="h-4 w-4" /> : null}
+                    {!isAlt ? <ArrowRight className="h-5 w-5" /> : null}
                   </Link>
                 </div>
               </div>
 
-              {/* Thumbnails (desktop) */}
+              {/* Thumbnails as links (desktop) */}
               <div
                 className={`hidden lg:flex absolute top-1/2 -translate-y-1/2 flex-col gap-4 z-20 ${isAlt ? 'left-12' : 'right-12'}`}
               >
                 {cat.thumbs.map((thumb, j) => (
-                  <div
+                  <Link
                     key={j}
-                    className="w-[100px] h-[100px] xl:w-[120px] xl:h-[120px] rounded-lg overflow-hidden shadow-2xl border-2 border-transparent hover:border-orange-500/50 hover:scale-105 transition-all duration-300 cursor-pointer"
+                    href={thumb.href}
+                    className="group/thumb relative w-[110px] h-[110px] xl:w-[130px] xl:h-[130px] rounded-lg overflow-hidden shadow-2xl border-2 border-transparent hover:border-orange-500/60 hover:scale-105 transition-all duration-300"
                   >
-                    <img src={thumb} alt="" className="w-full h-full object-cover" loading="lazy" />
-                  </div>
+                    <img src={thumb.image} alt={thumb.labelKey} className="w-full h-full object-cover" loading="lazy" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+                    <span className="absolute bottom-1.5 left-0 right-0 text-center text-[10px] xl:text-xs font-bold text-white leading-tight px-1">
+                      {thumb.labelKey}
+                    </span>
+                  </Link>
                 ))}
               </div>
 
-              {/* Thumbnails (mobile) */}
+              {/* Thumbnails as links (mobile) */}
               <div className={`flex lg:hidden absolute top-4 left-4 gap-2 z-20`}>
                 {cat.thumbs.map((thumb, j) => (
-                  <div
+                  <Link
                     key={j}
-                    className="w-12 h-12 sm:w-14 sm:h-14 rounded-xl overflow-hidden border-2 border-white/20 shadow-lg flex-shrink-0"
+                    href={thumb.href}
+                    className="relative w-14 h-14 sm:w-16 sm:h-16 rounded-xl overflow-hidden border-2 border-white/20 shadow-lg flex-shrink-0"
                   >
-                    <img src={thumb} alt="" className="w-full h-full object-cover" loading="lazy" />
-                  </div>
+                    <img src={thumb.image} alt={thumb.labelKey} className="w-full h-full object-cover" loading="lazy" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent" />
+                    <span className="absolute bottom-0.5 left-0 right-0 text-center text-[7px] sm:text-[8px] font-bold text-white leading-tight px-0.5">
+                      {thumb.labelKey}
+                    </span>
+                  </Link>
                 ))}
               </div>
             </section>

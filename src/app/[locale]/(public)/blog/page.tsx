@@ -54,19 +54,23 @@ export default async function BlogPage({
 
       {/* Hero Section */}
       <ReviewSection page="blog" sectionId="blog-hero" sectionLabel="Hero: Blog">
-        <section className="relative h-screen min-h-[40vh] flex items-center justify-center overflow-hidden bg-slate-950">
-          {/* Gradient background */}
-          <div className="absolute inset-0 opacity-50">
-            <div className="absolute top-0 left-1/4 w-96 h-96 bg-orange-500/20 rounded-full blur-3xl"></div>
-            <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-amber-500/20 rounded-full blur-3xl"></div>
+        <section className="relative h-[60vh] min-h-[400px] flex items-center justify-center overflow-hidden">
+          {/* Background image */}
+          <div className="absolute inset-0">
+            <img
+              src="https://images.unsplash.com/photo-1605182054023-17d71f44aa11?w=1920&q=85"
+              alt="Tenerife"
+              className="w-full h-full object-cover animate-ken-burns"
+            />
+            <div className="absolute inset-0 bg-gradient-to-b from-slate-950/40 via-slate-950/30 to-slate-950/80" />
           </div>
 
           {/* Content */}
           <div className="relative z-10 text-center">
-            <h1 className="text-7xl md:text-8xl font-black text-white mb-6 tracking-tight">
+            <h1 className="text-7xl md:text-8xl font-black text-white mb-6 tracking-tight drop-shadow-xl">
               Blog
             </h1>
-            <p className="text-xl md:text-2xl text-gray-300 max-w-2xl mx-auto">
+            <p className="text-xl md:text-2xl text-gray-200 max-w-2xl mx-auto drop-shadow-lg">
               {t('subtitle')}
             </p>
           </div>

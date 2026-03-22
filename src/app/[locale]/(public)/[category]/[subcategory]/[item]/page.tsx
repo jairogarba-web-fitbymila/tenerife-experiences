@@ -419,6 +419,63 @@ export default async function ItemDetailPage({
         </ReviewSection>
       )}
 
+      {/* Advertise Here + Civitatis Section */}
+      <div className="reveal py-16 border-t border-white/5">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            {/* CTA for businesses */}
+            <div className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-orange-500/15 to-amber-500/10 border border-orange-500/20 p-8">
+              <div className="absolute top-0 right-0 w-32 h-32 bg-orange-500/10 rounded-full blur-[60px]" />
+              <div className="relative">
+                <h3 className="text-2xl font-bold text-white mb-3">
+                  {locale === 'es' ? '¿Tienes un negocio en Tenerife?' : locale === 'de' ? 'Haben Sie ein Unternehmen auf Teneriffa?' : 'Have a business in Tenerife?'}
+                </h3>
+                <p className="text-gray-300 mb-6 leading-relaxed">
+                  {locale === 'es'
+                    ? 'Aparece en nuestra guía y llega a miles de turistas que buscan experiencias únicas en la isla.'
+                    : locale === 'de'
+                      ? 'Erscheinen Sie in unserem Reiseführer und erreichen Sie Tausende von Touristen.'
+                      : 'Get featured in our guide and reach thousands of tourists looking for unique experiences.'}
+                </p>
+                <a
+                  href={`/${locale}/partners`}
+                  className="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-orange-500 hover:bg-orange-400 text-white font-semibold transition-colors"
+                >
+                  {locale === 'es' ? 'Anúnciate aquí' : locale === 'de' ? 'Hier werben' : 'Advertise here'}
+                  <ArrowRight className="h-4 w-4" />
+                </a>
+              </div>
+            </div>
+
+            {/* Civitatis affiliate */}
+            <div className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-blue-500/10 to-indigo-500/10 border border-blue-500/20 p-8">
+              <div className="absolute top-0 right-0 w-32 h-32 bg-blue-500/10 rounded-full blur-[60px]" />
+              <div className="relative">
+                <h3 className="text-2xl font-bold text-white mb-3">
+                  {locale === 'es' ? 'Reserva experiencias verificadas' : locale === 'de' ? 'Verifizierte Erlebnisse buchen' : 'Book verified experiences'}
+                </h3>
+                <p className="text-gray-300 mb-6 leading-relaxed">
+                  {locale === 'es'
+                    ? 'Encuentra y reserva actividades, tours y excursiones con cancelación gratuita a través de Civitatis.'
+                    : locale === 'de'
+                      ? 'Finden und buchen Sie Aktivitäten, Touren und Ausflüge mit kostenloser Stornierung.'
+                      : 'Find and book activities, tours and excursions with free cancellation through Civitatis.'}
+                </p>
+                <a
+                  href="https://www.civitatis.com/es/tenerife/?aid=tenerife-experiences"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-blue-600 hover:bg-blue-500 text-white font-semibold transition-colors"
+                >
+                  {locale === 'es' ? 'Ver excursiones en Civitatis' : locale === 'de' ? 'Ausflüge auf Civitatis ansehen' : 'Browse Civitatis tours'}
+                  <ExternalLink className="h-4 w-4" />
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
       {/* Sticky Mobile CTA */}
       {item.bookable && item.booking_url && (
         <div className="fixed bottom-0 left-0 right-0 md:hidden bg-slate-950 border-t border-orange-400/20 p-4 z-40">
