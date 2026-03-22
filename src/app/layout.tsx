@@ -22,9 +22,18 @@ export const metadata: Metadata = {
     siteName: 'Tenerife Experiences',
     locale: 'en_GB',
     alternateLocale: ['es_ES', 'de_DE', 'fr_FR', 'ru_RU', 'it_IT'],
+    images: [
+      {
+        url: 'https://images.unsplash.com/photo-1552934084-2590ebf9da25?w=1200&h=630&fit=crop&q=80',
+        width: 1200,
+        height: 630,
+        alt: 'Tenerife - Canary Islands, Spain',
+      },
+    ],
   },
   twitter: {
     card: 'summary_large_image',
+    images: ['https://images.unsplash.com/photo-1552934084-2590ebf9da25?w=1200&h=630&fit=crop&q=80'],
   },
   robots: {
     index: true,
