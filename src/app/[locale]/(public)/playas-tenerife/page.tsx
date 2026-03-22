@@ -272,7 +272,7 @@ export default async function PlayasTenerifePage({
       <section className="relative overflow-hidden min-h-[70vh] flex items-center">
         <div className="absolute inset-0">
           <img
-            src="https://images.unsplash.com/photo-1559827291-bce45e967478?w=1920&q=85"
+            src="https://images.unsplash.com/photo-1590523741831-ab7e8b8f9c7f?w=1920&q=85"
             alt={getLocalizedText(text.hero.title, loc)}
             className="w-full h-full object-cover"
           />

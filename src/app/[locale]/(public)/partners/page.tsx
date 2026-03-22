@@ -68,7 +68,7 @@ const plans = [
 const stats = [
   { icon: Users, value: '50K+', labelKey: 'monthlyVisitors' },
   { icon: Globe, value: '120+', labelKey: 'countries' },
-  { icon: Languages, value: '6', labelKey: 'languages' },
+  { icon: Languages, value: '5', labelKey: 'languages' },
   { icon: TrendingUp, value: '35%', labelKey: 'yearlyGrowth' },
 ]
 

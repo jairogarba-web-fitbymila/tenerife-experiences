@@ -51,13 +51,13 @@ export async function POST(request: NextRequest) {
     zone: lead.zone || 'Tenerife',
     category: lead.category,
     recipientEmail: lead.email,
-    unsubscribeUrl: `https://tenerife-experiences.com/unsubscribe?email=${encodeURIComponent(lead.email)}`,
+    unsubscribeUrl: `https://tenerifeexperiences.com/unsubscribe?email=${encodeURIComponent(lead.email)}`,
   })
 
   // TODO: Send email via Resend
   // const resend = new Resend(process.env.RESEND_API_KEY)
   // await resend.emails.send({
-  //   from: 'Jairo <jairo@tenerife-experiences.com>',
+  //   from: 'Jairo <jairo@tenerifeexperiences.com>',
   //   to: lead.email,
   //   subject,
   //   html,

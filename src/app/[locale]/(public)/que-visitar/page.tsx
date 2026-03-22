@@ -377,7 +377,7 @@ export default async function PillarPage({
           ) : (
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
               {[
-                { name: 'Playa de Las Teresitas', desc: t('beaches.teresitas'), img: 'https://images.unsplash.com/photo-1559827291-bce45e967478?w=800&q=80' },
+                { name: 'Playa de Las Teresitas', desc: t('beaches.teresitas'), img: 'https://images.unsplash.com/photo-1590523741831-ab7e8b8f9c7f?w=800&q=80' },
                 { name: 'Playa del Duque', desc: t('beaches.duque'), img: 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=800&q=80' },
                 { name: 'Playa de Benijo', desc: t('beaches.benijo'), img: 'https://images.unsplash.com/photo-1519046904884-53103b34b206?w=800&q=80' },
               ].map((beach) => (
@@ -476,7 +476,7 @@ export default async function PillarPage({
             <Card className="group bg-slate-900/50 border-white/5 hover:border-purple-400/20 transition-all duration-300 overflow-hidden">
               <div className="aspect-[16/10] overflow-hidden">
                 <img
-                  src="https://images.unsplash.com/photo-1558618666-fcd25c85f82e?w=800&q=80"
+                  src="https://images.unsplash.com/photo-1564429238961-bf8ee3a83cda?w=800&q=80"
                   alt="La Laguna"
                   className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                 />

@@ -1,0 +1,779 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Prototipo: Formato de Artículo Blog — Tenerife Experiences</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #0f172a;
+      color: #e2e8f0;
+      line-height: 1.8;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 40px 20px;
+    }
+
+    /* Header del prototipo */
+    .proto-header {
+      text-align: center;
+      padding: 60px 20px;
+      background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+      border-bottom: 2px solid #f97316;
+      margin-bottom: 60px;
+    }
+    .proto-header h1 {
+      font-size: 2.5rem;
+      font-weight: 800;
+      background: linear-gradient(to right, #f97316, #fb923c);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 10px;
+    }
+    .proto-header p {
+      color: #94a3b8;
+      font-size: 1.1rem;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    /* Tabs de navegación */
+    .tab-nav {
+      display: flex;
+      gap: 0;
+      margin-bottom: 0;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: #0f172a;
+      padding: 10px 0;
+    }
+    .tab-btn {
+      flex: 1;
+      padding: 16px 24px;
+      background: #1e293b;
+      border: 2px solid #334155;
+      color: #94a3b8;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s;
+      text-align: center;
+    }
+    .tab-btn:first-child { border-radius: 12px 0 0 12px; }
+    .tab-btn:last-child { border-radius: 0 12px 12px 0; }
+    .tab-btn.active {
+      background: #f97316;
+      border-color: #f97316;
+      color: white;
+    }
+    .tab-btn:hover:not(.active) {
+      background: #334155;
+      color: white;
+    }
+
+    .tab-content { display: none; }
+    .tab-content.active { display: block; }
+
+    /* Indicador de versión */
+    .version-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 20px;
+      border-radius: 100px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      margin-bottom: 30px;
+    }
+    .version-badge.bad {
+      background: rgba(239, 68, 68, 0.15);
+      border: 1px solid rgba(239, 68, 68, 0.3);
+      color: #f87171;
+    }
+    .version-badge.good {
+      background: rgba(34, 197, 94, 0.15);
+      border: 1px solid rgba(34, 197, 94, 0.3);
+      color: #4ade80;
+    }
+
+    /* ==================== */
+    /* ANTES: Estilo actual */
+    /* ==================== */
+    .article-before {
+      max-width: 768px;
+      margin: 0 auto;
+      padding: 40px 20px;
+    }
+    .article-before .content-plain {
+      color: #cbd5e1;
+      font-size: 15px;
+      line-height: 1.9;
+    }
+    .article-before .content-plain p {
+      margin-bottom: 0;
+    }
+
+    /* ======================== */
+    /* DESPUÉS: Formato nuevo   */
+    /* ======================== */
+    .article-after {
+      max-width: 768px;
+      margin: 0 auto;
+      padding: 40px 20px;
+    }
+
+    /* Prose styles - matching the site's prose-invert */
+    .prose-new h2 {
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: #ffffff;
+      margin-top: 48px;
+      margin-bottom: 16px;
+      border-left: 4px solid #f97316;
+      padding-left: 16px;
+      line-height: 1.3;
+    }
+
+    .prose-new h3 {
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: #e2e8f0;
+      margin-top: 32px;
+      margin-bottom: 12px;
+    }
+
+    .prose-new p {
+      color: #cbd5e1;
+      font-size: 15px;
+      line-height: 1.9;
+      margin-bottom: 20px;
+    }
+
+    .prose-new strong {
+      color: #ffffff;
+    }
+
+    .prose-new a {
+      color: #f97316;
+      text-decoration: none;
+    }
+    .prose-new a:hover {
+      color: #fb923c;
+    }
+
+    .prose-new ul, .prose-new ol {
+      margin: 16px 0 24px 0;
+      padding-left: 24px;
+    }
+    .prose-new li {
+      color: #cbd5e1;
+      font-size: 15px;
+      line-height: 1.8;
+      margin-bottom: 8px;
+    }
+    .prose-new li::marker {
+      color: #f97316;
+    }
+
+    .prose-new blockquote {
+      border-left: 4px solid #f97316;
+      padding: 16px 24px;
+      margin: 24px 0;
+      background: rgba(249, 115, 22, 0.05);
+      border-radius: 0 12px 12px 0;
+      font-style: italic;
+      color: #94a3b8;
+    }
+
+    /* Info box / Tip box */
+    .info-box {
+      background: linear-gradient(135deg, rgba(249, 115, 22, 0.08), rgba(251, 146, 60, 0.05));
+      border: 1px solid rgba(249, 115, 22, 0.2);
+      border-radius: 12px;
+      padding: 20px 24px;
+      margin: 24px 0;
+    }
+    .info-box .info-title {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-weight: 700;
+      color: #f97316;
+      font-size: 0.9rem;
+      margin-bottom: 8px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .info-box p {
+      color: #cbd5e1;
+      font-size: 14px;
+      line-height: 1.7;
+      margin-bottom: 0;
+    }
+
+    /* CTA inline */
+    .cta-inline {
+      background: linear-gradient(135deg, rgba(249, 115, 22, 0.15), rgba(251, 146, 60, 0.1));
+      border: 1px solid rgba(249, 115, 22, 0.3);
+      border-radius: 16px;
+      padding: 28px 32px;
+      margin: 32px 0;
+      text-align: center;
+    }
+    .cta-inline p {
+      color: #e2e8f0;
+      font-size: 15px;
+      margin-bottom: 16px;
+    }
+    .cta-inline .cta-button {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: #f97316;
+      color: white;
+      padding: 12px 28px;
+      border-radius: 10px;
+      font-weight: 600;
+      font-size: 15px;
+      text-decoration: none;
+      transition: background 0.3s;
+    }
+    .cta-inline .cta-button:hover {
+      background: #ea580c;
+    }
+
+    /* Image placeholder */
+    .article-img {
+      width: 100%;
+      border-radius: 16px;
+      margin: 24px 0;
+      aspect-ratio: 16/9;
+      object-fit: cover;
+    }
+
+    /* Table of contents */
+    .toc {
+      background: #1e293b;
+      border: 1px solid #334155;
+      border-radius: 12px;
+      padding: 24px 28px;
+      margin: 24px 0 32px;
+    }
+    .toc-title {
+      font-weight: 700;
+      color: #f97316;
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 12px;
+    }
+    .toc ol {
+      padding-left: 20px;
+      margin: 0;
+    }
+    .toc li {
+      color: #94a3b8;
+      font-size: 14px;
+      line-height: 2;
+    }
+    .toc li a {
+      color: #94a3b8;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .toc li a:hover {
+      color: #f97316;
+    }
+
+    /* Comparison bar */
+    .comparison-bar {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin: 30px 0;
+      padding: 0 20px;
+      max-width: 768px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .comparison-card {
+      padding: 20px;
+      border-radius: 12px;
+      text-align: center;
+    }
+    .comparison-card.bad-card {
+      background: rgba(239, 68, 68, 0.1);
+      border: 1px solid rgba(239, 68, 68, 0.2);
+    }
+    .comparison-card.good-card {
+      background: rgba(34, 197, 94, 0.1);
+      border: 1px solid rgba(34, 197, 94, 0.2);
+    }
+    .comparison-card .metric {
+      font-size: 2rem;
+      font-weight: 800;
+    }
+    .comparison-card.bad-card .metric { color: #f87171; }
+    .comparison-card.good-card .metric { color: #4ade80; }
+    .comparison-card .label {
+      font-size: 0.8rem;
+      color: #94a3b8;
+      margin-top: 4px;
+    }
+
+    /* Separator */
+    .section-sep {
+      border: none;
+      border-top: 1px solid #334155;
+      margin: 60px auto;
+      max-width: 200px;
+    }
+
+    /* Article meta header (simulating the real site) */
+    .article-meta {
+      margin-bottom: 32px;
+    }
+    .article-meta .badge {
+      display: inline-block;
+      padding: 4px 12px;
+      border: 1px solid rgba(249, 115, 22, 0.3);
+      color: #f97316;
+      border-radius: 100px;
+      font-size: 0.8rem;
+      font-weight: 500;
+      margin-bottom: 12px;
+    }
+    .article-meta h1 {
+      font-size: 2.2rem;
+      font-weight: 800;
+      color: white;
+      line-height: 1.2;
+      margin-bottom: 16px;
+    }
+    .article-meta .meta-info {
+      display: flex;
+      gap: 20px;
+      color: #64748b;
+      font-size: 0.85rem;
+    }
+
+    /* Problems list */
+    .problems-list {
+      max-width: 768px;
+      margin: 0 auto 40px;
+      padding: 0 20px;
+    }
+    .problem-item {
+      display: flex;
+      gap: 12px;
+      padding: 12px 0;
+      border-bottom: 1px solid #1e293b;
+      font-size: 14px;
+      color: #94a3b8;
+    }
+    .problem-item .icon { font-size: 18px; flex-shrink: 0; }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <div class="proto-header">
+    <h1>Prototipo: Formato de Artículo</h1>
+    <p>Comparación ANTES vs DESPUÉS del formato HTML para los artículos del blog de Tenerife Experiences. El objetivo: posicionar en Google y convertir lectores en clientes.</p>
+  </div>
+
+  <div class="container">
+
+    <!-- Tab Navigation -->
+    <div class="tab-nav">
+      <button class="tab-btn active" onclick="showTab('before')">ANTES (Actual)</button>
+      <button class="tab-btn" onclick="showTab('after')">DESPUÉS (Propuesta)</button>
+      <button class="tab-btn" onclick="showTab('impact')">Impacto SEO</button>
+    </div>
+
+    <!-- ============================== -->
+    <!-- TAB 1: ANTES (estado actual)   -->
+    <!-- ============================== -->
+    <div id="tab-before" class="tab-content active">
+
+      <div class="article-before">
+        <br>
+        <span class="version-badge bad">🔴 ESTADO ACTUAL — Sin formato HTML</span>
+
+        <div class="article-meta">
+          <span class="badge">Experiencias</span>
+          <h1>Las 10 Mejores Cosas que Hacer en Tenerife</h1>
+          <div class="meta-info">
+            <span>Tenerife Experiences</span>
+            <span>📅 16 de marzo de 2026</span>
+            <span>⏱️ 5 min de lectura</span>
+          </div>
+        </div>
+
+        <!-- Simulating the ACTUAL content as it looks on the live site -->
+        <div class="content-plain">
+          <p>Las 10 Mejores Cosas que Hacer en Tenerife
+Tenerife es la isla más grande de las Canarias y ofrece una variedad increíble de experiencias. Ya sea que busques aventura, relajación o cultura, aquí tienes las 10 actividades que no puedes perderte.
+1. Subir al Teide
+El Teide es el pico más alto de España con 3.718 metros. Puedes tomar el teleférico (38€ ida y vuelta) hasta la estación superior a 3.555 m. Para llegar a la cima necesitas un permiso gratuito que debes reservar con semanas de antelación en reservasparquesnacionales.es. El amanecer desde la cumbre es una experiencia inolvidable.
+2. Avistar Ballenas y Delfines
+La costa suroeste de Tenerife es uno de los mejores lugares del mundo para ver cetáceos. Los tours salen desde Los Cristianos y Puerto Colón, con precios desde 15€ para excursiones de 2 horas. Los calderones tropicales y delfines mulares son residentes permanentes con avistamientos garantizados casi todo el año.
+3. Visitar los Acantilados de Los Gigantes
+Estos impresionantes acantilados de hasta 600 metros de altura son uno de los paisajes más espectaculares de Canarias. Puedes verlos desde un barco, en kayak o desde el mirador del pueblo de Los Gigantes. Un paseo en barco cuesta entre 20-40€.
+4. Explorar el Casco Histórico de La Laguna
+San Cristóbal de La Laguna es Patrimonio de la Humanidad por la UNESCO. Sus calles empedradas, iglesias históricas y edificios coloniales te transportan al siglo XVI. No te pierdas la Catedral y la Iglesia de la Concepción. La entrada es gratuita.
+5. Relajarte en las Playas
+Tenerife tiene playas para todos los gustos: arena dorada en Las Teresitas, arena negra volcánica en El Bollullo, y calas naturales en la costa de Anaga. Playa de Las Américas y Costa Adeje ofrecen playas con todos los servicios.
+6. Recorrer el Bosque de Anaga
+El macizo de Anaga es Reserva de la Biosfera y alberga uno de los bosques de laurisilva más antiguos del mundo. Sus senderos te llevan por bosques encantados envueltos en niebla. El sendero de El Pijaral requiere permiso previo.
+7. Disfrutar de la Gastronomía Local
+No puedes irte sin probar las papas arrugadas con mojo picón, el gofio escaldado y el queso asado. Visita un guachinche en el norte de la isla para la experiencia más auténtica. Una comida completa en un guachinche cuesta entre 10-15€ por persona.
+8. Visitar el Pueblo de Masca
+Masca es un pueblo escondido en un barranco del macizo de Teno, accesible por una carretera serpenteante de vértigo. El descenso por el barranco hasta el mar es una de las rutas de senderismo más populares de la isla (requiere reserva previa y cuesta 12€).
+9. Hacer Deportes Acuáticos
+Tenerife es ideal para surf (El Médano), kayak (Los Gigantes), buceo (La Restinga, Radazul), parapente sobre los acantilados y jet ski. El viento constante del sureste hace de El Médano un destino mundial de windsurf y kitesurf.
+10. Disfrutar de la Vida Nocturna
+Costa Adeje y Playa de las Américas concentran la vida nocturna. Desde rooftop bars con puesta de sol hasta discotecas. Santa Cruz también ofrece opciones más locales y auténticas, especialmente en la calle Antonio Domínguez Alfonso (La Noria).</p>
+        </div>
+
+        <!-- Problems list -->
+        <div style="margin-top: 40px; padding: 24px; background: rgba(239,68,68,0.08); border: 1px solid rgba(239,68,68,0.2); border-radius: 12px;">
+          <h3 style="color: #f87171; font-size: 1rem; margin-bottom: 16px;">Problemas de este formato:</h3>
+          <div class="problem-item"><span class="icon">❌</span> Sin headings H2/H3 — Google no puede entender la estructura</div>
+          <div class="problem-item"><span class="icon">❌</span> Sin listas HTML — Los "1. 2. 3." son texto plano, no &lt;ol&gt;</div>
+          <div class="problem-item"><span class="icon">❌</span> Todo en un solo &lt;p&gt; — Un bloque de texto interminable</div>
+          <div class="problem-item"><span class="icon">❌</span> Sin imágenes inline — Pierde oportunidad de Image Search</div>
+          <div class="problem-item"><span class="icon">❌</span> Sin internal linking — No enlaza a experiencias/items de la web</div>
+          <div class="problem-item"><span class="icon">❌</span> Sin CTAs de conversión — El lector llega al final y se va</div>
+          <div class="problem-item"><span class="icon">❌</span> Sin tabla de contenidos — En móvil es un scroll infinito</div>
+          <div class="problem-item"><span class="icon">❌</span> Bounce rate alto — El usuario ve un muro de texto y cierra</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============================== -->
+    <!-- TAB 2: DESPUÉS (propuesta)     -->
+    <!-- ============================== -->
+    <div id="tab-after" class="tab-content">
+
+      <div class="article-after">
+        <br>
+        <span class="version-badge good">✅ FORMATO PROPUESTO — HTML profesional optimizado para SEO</span>
+
+        <div class="article-meta">
+          <span class="badge">Experiencias</span>
+          <h1>Las 10 Mejores Cosas que Hacer en Tenerife</h1>
+          <div class="meta-info">
+            <span>Tenerife Experiences</span>
+            <span>📅 16 de marzo de 2026</span>
+            <span>⏱️ 12 min de lectura</span>
+          </div>
+        </div>
+
+        <div class="prose-new">
+
+          <p><strong>Tenerife es la isla más grande de las Canarias</strong> y ofrece una variedad increíble de experiencias. Ya sea que busques aventura, relajación o cultura, aquí tienes las <strong>10 actividades imprescindibles</strong> que no puedes perderte en tu visita.</p>
+
+          <!-- Table of Contents -->
+          <div class="toc">
+            <div class="toc-title">📋 En este artículo</div>
+            <ol>
+              <li><a href="#teide">Subir al Teide</a></li>
+              <li><a href="#ballenas">Avistar Ballenas y Delfines</a></li>
+              <li><a href="#gigantes">Visitar los Acantilados de Los Gigantes</a></li>
+              <li><a href="#laguna">Explorar el Casco Histórico de La Laguna</a></li>
+              <li><a href="#playas">Relajarte en las Playas</a></li>
+              <li><a href="#anaga">Recorrer el Bosque de Anaga</a></li>
+              <li><a href="#gastronomia">Disfrutar de la Gastronomía Local</a></li>
+              <li><a href="#masca">Visitar el Pueblo de Masca</a></li>
+              <li><a href="#deportes">Hacer Deportes Acuáticos</a></li>
+              <li><a href="#nocturna">Disfrutar de la Vida Nocturna</a></li>
+            </ol>
+          </div>
+
+          <!-- 1. TEIDE -->
+          <h2 id="teide">1. Subir al Teide</h2>
+
+          <img class="article-img" src="https://images.unsplash.com/photo-1608834775101-4680235baaac?w=800&q=80" alt="Vista del volcán Teide al atardecer con el cielo anaranjado">
+
+          <p>El <strong>Teide es el pico más alto de España</strong> con 3.718 metros y uno de los volcanes más visitados del mundo. Situado en el corazón del Parque Nacional del Teide, declarado Patrimonio de la Humanidad, ofrece paisajes lunares que no encontrarás en ningún otro lugar de Europa.</p>
+
+          <p>Puedes tomar el <strong>teleférico</strong> (38€ ida y vuelta) hasta la estación superior a 3.555 m, donde las vistas abarcan las islas vecinas y, en días claros, la sombra del volcán proyectada sobre el Atlántico al amanecer.</p>
+
+          <div class="info-box">
+            <div class="info-title">💡 Consejo práctico</div>
+            <p>Para llegar a la cima necesitas un <strong>permiso gratuito</strong> que debes reservar con semanas de antelación en <a href="https://reservasparquesnacionales.es" target="_blank">reservasparquesnacionales.es</a>. Los permisos se agotan rápido, especialmente en temporada alta (diciembre-abril).</p>
+          </div>
+
+          <div class="cta-inline">
+            <p>¿Quieres subir al Teide sin complicaciones? Reserva una excursión guiada con transporte incluido.</p>
+            <a href="/es/experiences/teide-excursions" class="cta-button">Ver excursiones al Teide →</a>
+          </div>
+
+          <!-- 2. BALLENAS -->
+          <h2 id="ballenas">2. Avistar Ballenas y Delfines</h2>
+
+          <img class="article-img" src="https://images.unsplash.com/photo-1568430462989-44163eb1752f?w=800&q=80" alt="Delfines saltando en el océano Atlántico en Tenerife">
+
+          <p>La <strong>costa suroeste de Tenerife</strong> es uno de los mejores lugares del mundo para ver cetáceos. Los calderones tropicales y delfines mulares son <strong>residentes permanentes</strong>, con avistamientos garantizados prácticamente todo el año.</p>
+
+          <h3>Lo que necesitas saber</h3>
+
+          <ul>
+            <li><strong>Dónde salen:</strong> Los tours parten desde Los Cristianos y Puerto Colón</li>
+            <li><strong>Precio:</strong> Desde 15€ para excursiones de 2 horas</li>
+            <li><strong>Mejor hora:</strong> Las salidas de mañana (10:00-12:00) tienen más avistamientos</li>
+            <li><strong>Qué verás:</strong> Calderones tropicales, delfines mulares, y ocasionalmente rorcuales y orcas</li>
+          </ul>
+
+          <div class="cta-inline">
+            <p>Compara las mejores excursiones de avistamiento con valoraciones reales de otros viajeros.</p>
+            <a href="/es/experiences/whale-watching" class="cta-button">Reservar avistamiento de cetáceos →</a>
+          </div>
+
+          <!-- 3. GIGANTES -->
+          <h2 id="gigantes">3. Visitar los Acantilados de Los Gigantes</h2>
+
+          <img class="article-img" src="https://images.unsplash.com/photo-1669147951690-658f2e4b4dd3?w=800&q=80" alt="Acantilados de Los Gigantes en Tenerife con el mar azul">
+
+          <p>Los <strong>Acantilados de Los Gigantes</strong> son paredes verticales de hasta 600 metros de altura que caen directamente al océano. Es uno de los paisajes más espectaculares de Canarias y una imagen icónica de Tenerife.</p>
+
+          <h3>Cómo disfrutarlos</h3>
+
+          <ul>
+            <li><strong>En barco:</strong> Excursiones desde Puerto de Los Gigantes (20-40€) — la forma más impresionante</li>
+            <li><strong>En kayak:</strong> Remando junto a la base de los acantilados, una experiencia más aventurera</li>
+            <li><strong>Desde el mirador:</strong> Vistas gratuitas desde el pueblo, ideal para fotos al atardecer</li>
+          </ul>
+
+          <!-- 4. LA LAGUNA -->
+          <h2 id="laguna">4. Explorar el Casco Histórico de La Laguna</h2>
+
+          <p><strong>San Cristóbal de La Laguna</strong> es Patrimonio de la Humanidad por la UNESCO desde 1999. Sus calles empedradas, iglesias históricas y edificios coloniales te transportan al siglo XVI. Es la antigua capital de Tenerife y conserva un ambiente universitario y cultural vibrante.</p>
+
+          <h3>No te pierdas</h3>
+
+          <ul>
+            <li>La <strong>Catedral de La Laguna</strong> — Neogótica y majestuosa</li>
+            <li>La <strong>Iglesia de la Concepción</strong> — La más antigua de la isla</li>
+            <li>Las <strong>calles peatonales</strong> con tiendas artesanales y cafés con encanto</li>
+            <li>El <strong>Museo de la Historia</strong> en la Casa Lercaro (entrada gratuita)</li>
+          </ul>
+
+          <blockquote>La Laguna es la ciudad universitaria de Tenerife, lo que le da un ambiente joven y cosmopolita que contrasta con el turismo de playa del sur.</blockquote>
+
+          <!-- 5. PLAYAS -->
+          <h2 id="playas">5. Relajarte en las Playas</h2>
+
+          <img class="article-img" src="https://images.unsplash.com/photo-1648396213626-860f8b8ddf65?w=800&q=80" alt="Playa de arena dorada en el sur de Tenerife">
+
+          <p>Tenerife tiene <strong>playas para todos los gustos</strong>. Desde arena dorada importada del Sáhara hasta arena negra volcánica, pasando por calas naturales escondidas.</p>
+
+          <h3>Las mejores playas por tipo</h3>
+
+          <ul>
+            <li><strong>Arena dorada:</strong> Las Teresitas (la más famosa, en Santa Cruz)</li>
+            <li><strong>Arena negra volcánica:</strong> El Bollullo (acceso a pie, salvaje y auténtica)</li>
+            <li><strong>Calas naturales:</strong> Costa de Anaga (para aventureros)</li>
+            <li><strong>Con todos los servicios:</strong> Playa de Las Américas y Costa Adeje</li>
+          </ul>
+
+          <div class="cta-inline">
+            <p>Descubre nuestra guía completa con las 150+ playas de Tenerife clasificadas por zona y tipo de arena.</p>
+            <a href="/es/playas-tenerife" class="cta-button">Ver guía de playas →</a>
+          </div>
+
+          <!-- 6. ANAGA -->
+          <h2 id="anaga">6. Recorrer el Bosque de Anaga</h2>
+
+          <p>El <strong>macizo de Anaga</strong> es Reserva de la Biosfera y alberga uno de los bosques de <strong>laurisilva</strong> más antiguos del mundo. Es como caminar por un bosque encantado envuelto en niebla, con árboles cubiertos de musgo y helechos gigantes.</p>
+
+          <div class="info-box">
+            <div class="info-title">⚠️ Importante</div>
+            <p>El sendero de <strong>El Pijaral</strong> requiere permiso previo (es gratuito pero limitado a un número de visitantes diarios). Solicítalo en la web del Cabildo de Tenerife con al menos 2 semanas de antelación.</p>
+          </div>
+
+          <!-- 7. GASTRONOMÍA -->
+          <h2 id="gastronomia">7. Disfrutar de la Gastronomía Local</h2>
+
+          <img class="article-img" src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=800&q=80" alt="Plato típico canario con papas arrugadas y mojo">
+
+          <p>La gastronomía canaria es uno de los grandes secretos de Tenerife. No puedes irte sin probar estos platos imprescindibles:</p>
+
+          <ul>
+            <li><strong>Papas arrugadas con mojo picón</strong> — El plato icónico por excelencia</li>
+            <li><strong>Gofio escaldado</strong> — Harina de millo tostado con caldo, un alimento ancestral guanche</li>
+            <li><strong>Queso asado con mojo</strong> — Entrante típico de guachinche</li>
+            <li><strong>Conejo en salmorejo</strong> — Marinado canario con ajo, pimentón y orégano</li>
+          </ul>
+
+          <div class="info-box">
+            <div class="info-title">🍷 Experiencia única</div>
+            <p>Visita un <strong>guachinche</strong> en el norte de la isla para la experiencia más auténtica. Son establecimientos temporales donde los viticultores sirven su propio vino con comida casera. Una comida completa cuesta entre <strong>10-15€ por persona</strong>.</p>
+          </div>
+
+          <div class="cta-inline">
+            <p>Explora nuestra guía completa de gastronomía canaria con los mejores restaurantes y guachinches.</p>
+            <a href="/es/gastronomia" class="cta-button">Ver guía gastronómica →</a>
+          </div>
+
+          <!-- 8. MASCA -->
+          <h2 id="masca">8. Visitar el Pueblo de Masca</h2>
+
+          <p><strong>Masca</strong> es un pueblo escondido en un barranco del macizo de Teno, accesible por una carretera serpenteante de vértigo con vistas espectaculares. El descenso por el barranco hasta el mar es una de las <strong>rutas de senderismo más populares</strong> de la isla.</p>
+
+          <div class="info-box">
+            <div class="info-title">📝 Reserva obligatoria</div>
+            <p>Desde 2023, el descenso del Barranco de Masca requiere <strong>reserva previa</strong> y cuesta 12€ por persona. Las plazas son limitadas a 125 personas por día. Reserva en <a href="#">caminomasca.com</a>.</p>
+          </div>
+
+          <!-- 9. DEPORTES -->
+          <h2 id="deportes">9. Hacer Deportes Acuáticos</h2>
+
+          <p>Tenerife es un paraíso para los deportes acuáticos gracias a su clima cálido todo el año y sus condiciones de viento y oleaje variadas.</p>
+
+          <h3>Las mejores opciones</h3>
+
+          <ul>
+            <li><strong>Surf y bodyboard:</strong> El Médano, Playa de las Américas</li>
+            <li><strong>Windsurf y kitesurf:</strong> El Médano (destino mundial)</li>
+            <li><strong>Kayak:</strong> Los Gigantes, Costa de Anaga</li>
+            <li><strong>Buceo:</strong> Radazul, Las Galletas, Puerto de la Cruz</li>
+            <li><strong>Jet ski:</strong> Costa Adeje, Los Cristianos</li>
+            <li><strong>Parapente:</strong> Acantilados de Adeje e Ifonche</li>
+          </ul>
+
+          <!-- 10. VIDA NOCTURNA -->
+          <h2 id="nocturna">10. Disfrutar de la Vida Nocturna</h2>
+
+          <p><strong>Costa Adeje y Playa de las Américas</strong> concentran la vida nocturna turística, desde rooftop bars con puesta de sol hasta discotecas abiertas hasta el amanecer.</p>
+
+          <p>Para una experiencia más local y auténtica, <strong>Santa Cruz</strong> ofrece la calle <strong>Antonio Domínguez Alfonso</strong> (conocida como "La Noria"), con bares de vino, cócteles artesanales y ambiente canario genuino.</p>
+
+          <!-- FINAL CTA -->
+          <hr style="border: none; border-top: 1px solid #334155; margin: 48px 0;">
+
+          <div class="cta-inline" style="background: linear-gradient(135deg, rgba(249,115,22,0.2), rgba(234,88,12,0.15));">
+            <p style="font-size: 1.1rem; font-weight: 600; color: white;">¿Listo para explorar Tenerife?</p>
+            <p>Reserva las mejores experiencias con los mejores precios garantizados. Cancelación gratuita hasta 24h antes.</p>
+            <a href="/es/reservas" class="cta-button" style="font-size: 1.1rem; padding: 16px 36px;">Explorar todas las experiencias →</a>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <!-- ============================== -->
+    <!-- TAB 3: IMPACTO SEO             -->
+    <!-- ============================== -->
+    <div id="tab-impact" class="tab-content">
+      <div class="article-after">
+        <br>
+        <span class="version-badge good">📊 Impacto estimado del reformateo</span>
+
+        <div class="comparison-bar" style="max-width: 100%; margin-top: 30px;">
+          <div class="comparison-card bad-card">
+            <div class="metric">~0</div>
+            <div class="label">Featured Snippets posibles (actual)</div>
+          </div>
+          <div class="comparison-card good-card">
+            <div class="metric">70+</div>
+            <div class="label">Featured Snippets potenciales (con formato)</div>
+          </div>
+        </div>
+
+        <div class="comparison-bar" style="max-width: 100%;">
+          <div class="comparison-card bad-card">
+            <div class="metric">~85%</div>
+            <div class="label">Bounce rate estimado (actual)</div>
+          </div>
+          <div class="comparison-card good-card">
+            <div class="metric">~45%</div>
+            <div class="label">Bounce rate estimado (con formato)</div>
+          </div>
+        </div>
+
+        <div class="comparison-bar" style="max-width: 100%;">
+          <div class="comparison-card bad-card">
+            <div class="metric">~30s</div>
+            <div class="label">Tiempo medio en página (actual)</div>
+          </div>
+          <div class="comparison-card good-card">
+            <div class="metric">~4min</div>
+            <div class="label">Tiempo medio en página (con formato)</div>
+          </div>
+        </div>
+
+        <div class="comparison-bar" style="max-width: 100%;">
+          <div class="comparison-card bad-card">
+            <div class="metric">0</div>
+            <div class="label">CTAs de conversión por artículo (actual)</div>
+          </div>
+          <div class="comparison-card good-card">
+            <div class="metric">3-5</div>
+            <div class="label">CTAs de conversión por artículo (con formato)</div>
+          </div>
+        </div>
+
+        <div class="prose-new" style="margin-top: 40px;">
+          <h2>Qué incluye el nuevo formato</h2>
+
+          <ul>
+            <li><strong>Headings H2/H3 semánticos</strong> — Cada sección con heading propio para que Google entienda la estructura</li>
+            <li><strong>Tabla de contenidos</strong> — Navegación interna con anchor links, mejora UX y puede aparecer como sitelinks en Google</li>
+            <li><strong>Imágenes inline con alt text</strong> — Fotos relevantes de Unsplash dentro del contenido, posicionan en Google Images</li>
+            <li><strong>Listas HTML reales</strong> — &lt;ul&gt; y &lt;ol&gt; en vez de "1. 2. 3." como texto plano</li>
+            <li><strong>Info boxes</strong> — Consejos prácticos destacados (permisos, precios, horarios)</li>
+            <li><strong>CTAs de conversión</strong> — Botones que enlazan a las experiencias/items de la web para monetizar</li>
+            <li><strong>Internal linking</strong> — Links a páginas de la propia web (playas, gastronomía, experiencias)</li>
+            <li><strong>Blockquotes</strong> — Citas o datos destacados que rompen el muro de texto</li>
+            <li><strong>Negritas estratégicas</strong> — Keywords resaltados para SEO y escaneabilidad</li>
+            <li><strong>Tiempo de lectura real</strong> — Calculado según el número de palabras, no "5 min" hardcoded</li>
+          </ul>
+
+          <h2>Plan de ejecución: 70 artículos</h2>
+
+          <p>La transformación se haría por lotes directamente en Supabase con SQL UPDATE:</p>
+
+          <ol>
+            <li><strong>Aprobar este prototipo</strong> — Confirmar que el formato es el correcto</li>
+            <li><strong>Artículos prioritarios (10)</strong> — Los más buscados: Top 10, playas, Teide, gastronomía, Los Gigantes</li>
+            <li><strong>Artículos secundarios (30)</strong> — Categorías de experiencias, cultura, naturaleza</li>
+            <li><strong>Artículos restantes (30)</strong> — Eventos, nichos específicos</li>
+          </ol>
+
+          <p>Cada artículo se reformatea en <strong>5 idiomas</strong> (es, en, de, fr, it), manteniendo el mismo contenido pero con la nueva estructura HTML.</p>
+
+          <div class="info-box">
+            <div class="info-title">⏱️ Tiempo estimado</div>
+            <p>Reformatear los 10 artículos prioritarios: ~2 sesiones de trabajo. Los 70 completos: ~1 semana de sesiones.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <script>
+    function showTab(tab) {
+      document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
+      document.querySelectorAll('.tab-btn').forEach(el => el.classList.remove('active'));
+      document.getElementById('tab-' + tab).classList.add('active');
+
+      const buttons = document.querySelectorAll('.tab-btn');
+      const tabMap = { 'before': 0, 'after': 1, 'impact': 2 };
+      buttons[tabMap[tab]].classList.add('active');
+    }
+  </script>
+
+</body>
+</html>

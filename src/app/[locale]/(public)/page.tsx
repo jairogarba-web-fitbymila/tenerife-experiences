@@ -38,40 +38,40 @@ const mapPins = [
 ]
 
 const categories = [
-  { id: 'experiences', icon: Camera, href: '/experiences', color: 'from-orange-500 to-amber-500' },
-  { id: 'beaches', icon: Waves, href: '/beaches', color: 'from-blue-500 to-cyan-500' },
-  { id: 'culture', icon: MapPin, href: '/culture', color: 'from-purple-500 to-pink-500' },
-  { id: 'nature', icon: TreePine, href: '/nature', color: 'from-green-500 to-emerald-500' },
-  { id: 'food', icon: Utensils, href: '/food', color: 'from-red-500 to-rose-500' },
-  { id: 'nightlife', icon: Music, href: '/nightlife', color: 'from-violet-500 to-purple-500' },
-  { id: 'shopping', icon: ShoppingBag, href: '/shopping', color: 'from-pink-500 to-fuchsia-500' },
-  { id: 'family', icon: Baby, href: '/family', color: 'from-yellow-500 to-orange-500' },
-  { id: 'wellness', icon: Sparkles, href: '/wellness', color: 'from-teal-500 to-cyan-500' },
+  { id: 'experiences', icon: Camera, href: '/experiences', color: 'from-orange-500 to-amber-500', image: 'https://images.unsplash.com/photo-1713193160430-a4f8fa3e692f?w=600&q=80' }, // Roques de Garcia + Teide Tenerife
+  { id: 'beaches', icon: Waves, href: '/beaches', color: 'from-blue-500 to-cyan-500', image: 'https://images.unsplash.com/photo-1605182054023-17d71f44aa11?w=600&q=80' }, // Playa de las Teresitas aerial
+  { id: 'culture', icon: MapPin, href: '/culture', color: 'from-purple-500 to-pink-500', image: 'https://images.unsplash.com/photo-1661383279161-e2aadb6e8f2e?w=600&q=80' }, // La Laguna streets
+  { id: 'nature', icon: TreePine, href: '/nature', color: 'from-green-500 to-emerald-500', image: 'https://images.unsplash.com/photo-1626033005784-e6c39eaa0669?w=600&q=80' }, // Anaga forest Tenerife
+  { id: 'food', icon: Utensils, href: '/food', color: 'from-red-500 to-rose-500', image: 'https://images.unsplash.com/photo-1676160423254-1bd3ecfaec16?w=600&q=80' }, // Tenerife wine/food
+  { id: 'nightlife', icon: Music, href: '/nightlife', color: 'from-violet-500 to-purple-500', image: 'https://images.unsplash.com/photo-1656252779225-5bbd338acd14?w=600&q=80' }, // Carnaval Tenerife
+  { id: 'shopping', icon: ShoppingBag, href: '/shopping', color: 'from-pink-500 to-fuchsia-500', image: 'https://images.unsplash.com/photo-1562038226-76db9be41117?w=600&q=80' }, // La Laguna town
+  { id: 'family', icon: Baby, href: '/family', color: 'from-yellow-500 to-orange-500', image: 'https://images.unsplash.com/photo-1611424458342-096fd23fc077?w=600&q=80' }, // Teresitas beach Tenerife
+  { id: 'wellness', icon: Sparkles, href: '/wellness', color: 'from-teal-500 to-cyan-500', image: 'https://images.unsplash.com/photo-1594061019010-3e1f4f41c02d?w=600&q=80' }, // Tenerife coast
 ]
 
 const areas = [
   {
     id: 'south',
     key: 'south',
-    image: 'https://images.unsplash.com/photo-1648396213626-860f8b8ddf65?w=1200&q=80',
+    image: 'https://images.unsplash.com/photo-1673206212440-797e0e40bd0b?w=1200&q=80', // Costa Adeje Tenerife
     itemCount: 120,
   },
   {
     id: 'north',
     key: 'north',
-    image: 'https://images.unsplash.com/photo-1677503590969-1c16fd0a0981?w=1200&q=80',
+    image: 'https://images.unsplash.com/photo-1661383279169-82ef95e11d3d?w=1200&q=80', // La Laguna / North Tenerife
     itemCount: 85,
   },
   {
     id: 'west',
     key: 'west',
-    image: 'https://images.unsplash.com/photo-1669147951690-658f2e4b4dd3?w=1200&q=80',
+    image: 'https://images.unsplash.com/photo-1669147951690-658f2e4b4dd3?w=1200&q=80', // Los Gigantes cliffs Tenerife (already correct!)
     itemCount: 45,
   },
   {
     id: 'central',
     key: 'central',
-    image: 'https://images.unsplash.com/photo-1506368387824-6cf9848c1638?w=1200&q=80',
+    image: 'https://images.unsplash.com/photo-1545289665-8143f6901607?w=1200&q=80', // Teide / Central Tenerife
     itemCount: 60,
   },
 ]
@@ -128,11 +128,11 @@ export default function HomePage() {
         {/* Background Image */}
         <div className="absolute inset-0">
           <img
-            src="https://images.unsplash.com/photo-1506368387824-6cf9848c1638?w=1920&q=85"
+            src="https://images.unsplash.com/photo-1605182054023-17d71f44aa11?w=1920&q=85"
             alt={t('hero.altImage')}
             className="w-full h-full object-cover"
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-slate-950/70 via-slate-950/50 to-slate-950" />
+          <div className="absolute inset-0 bg-gradient-to-b from-slate-950/50 via-slate-950/30 to-slate-950/70" />
           <div className="absolute inset-0 bg-gradient-to-r from-slate-950/60 to-transparent" />
         </div>
 
@@ -162,7 +162,7 @@ export default function HomePage() {
               </span>
               <span>150+ {t('hero.statsBeaches')}</span>
               <span>500+ {t('hero.statsExperiences')}</span>
-              <span>6 {t('hero.statsLanguages')}</span>
+              <span>5 {t('hero.statsLanguages')}</span>
             </div>
           </div>
         </div>
@@ -181,16 +181,20 @@ export default function HomePage() {
               const Icon = cat.icon
               return (
                 <Link key={cat.id} href={cat.href}>
-                  <Card className="group bg-slate-900/50 border-white/5 hover:border-white/20 transition-all duration-300 hover:scale-[1.02] cursor-pointer">
-                    <CardContent className="flex flex-col items-center gap-3 py-6 px-4">
-                      <div className={`p-3 rounded-xl bg-gradient-to-br ${cat.color} opacity-80 group-hover:opacity-100 transition-opacity`}>
-                        <Icon className="h-6 w-6 text-white" />
-                      </div>
-                      <span className="text-sm font-medium text-gray-300 group-hover:text-white transition-colors text-center">
+                  <div className="group relative aspect-[4/3] rounded-2xl overflow-hidden cursor-pointer hover:scale-[1.02] transition-all duration-300">
+                    <img
+                      src={cat.image}
+                      alt={tc(cat.id)}
+                      className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-black/20 group-hover:from-black/70 transition-all duration-500" />
+                    <div className="absolute inset-0 flex flex-col items-center justify-center gap-2">
+                      <Icon className="h-7 w-7 text-white drop-shadow-lg" />
+                      <span className="text-sm font-semibold text-white drop-shadow-lg text-center">
                         {tc(cat.id)}
                       </span>
-                    </CardContent>
-                  </Card>
+                    </div>
+                  </div>
                 </Link>
               )
             })}

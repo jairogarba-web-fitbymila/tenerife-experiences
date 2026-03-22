@@ -1,41 +1,162 @@
 import { createClient } from '@supabase/supabase-js'
 
 const sb = createClient(
-  'https://sqesgghvaazyajzjkoap.supabase.co',
-  'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InNxZXNnZ2h2YWF6eWFqemprb2FwIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc3MzUxMzgwOSwiZXhwIjoyMDg5MDg5ODA5fQ.UvbRfWU9seJPT9lyCyLmpD4uZrP9jXzsNoeSAjT9HnI'
+  process.env.NEXT_PUBLIC_SUPABASE_URL || 'https://sqesgghvaazyajzjkoap.supabase.co',
+  process.env.SUPABASE_SERVICE_ROLE_KEY || ''
 )
 
-async function main() {
-  // Get all items
-  const { data: items } = await sb.from('items').select('id, slug, image')
-  console.log('Items in DB:', items?.map(i => i.slug).join(', '))
+async function fixImages() {
+  console.log('Starting image fixes...\n')
+  let updated = 0
+  let failed = 0
 
-  // Update images for items that exist
-  const updates: Record<string, string> = {
-    'whale-watching-catamaran': 'https://images.unsplash.com/photo-1568430462989-44163eb1752f?w=1200&q=80',
-    'private-yacht-whale-watching': 'https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=1200&q=80',
-    'eco-whale-watching': 'https://images.unsplash.com/photo-1586953208448-b95a79798f07?w=1200&q=80',
-    'teide-stargazing': 'https://images.unsplash.com/photo-1519681393784-d120267933ba?w=1200&q=80',
-    'teide-sunrise-cable-car': 'https://images.unsplash.com/photo-1547234935-80c7145ec969?w=1200&q=80',
-    'playa-del-duque': 'https://images.unsplash.com/photo-1559511260-66a654ae982a?w=1200&q=80',
-    'playa-de-las-teresitas': 'https://images.unsplash.com/photo-1580137189272-c9379f8864fd?w=1200&q=80',
-    'playa-de-benijo': 'https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=1200&q=80',
-    'playa-la-tejita': 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=1200&q=80',
-    'masca-valley': 'https://images.unsplash.com/photo-1551632811-561732d1e306?w=1200&q=80',
-    'anaga-laurel-forest': 'https://images.unsplash.com/photo-1448375240586-882707db888b?w=1200&q=80',
-    'siam-park': 'https://images.unsplash.com/photo-1565275945520-e79e0fd6bf46?w=1200&q=80',
-    'loro-parque': 'https://images.unsplash.com/photo-1474511320723-9a56873571b7?w=1200&q=80',
-    'el-rincon-de-juan-carlos': 'https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=1200&q=80',
-    'nub': 'https://images.unsplash.com/photo-1550966871-3ed3cdb51f3a?w=1200&q=80',
+  // 1. CICAR Rent a Car (partners table)
+  {
+    const newImage = 'https://images.unsplash.com/photo-1502877338535-766e1452684a?w=800&q=80'
+    const { data, error } = await sb
+      .from('partners')
+      .update({ image: newImage })
+      .ilike('name', '%CICAR%')
+      .select('id, name, image')
+    if (error) {
+      console.log(`FAIL - CICAR Rent a Car: ${error.message}`)
+      failed++
+    } else if (data && data.length > 0) {
+      console.log(`OK - CICAR Rent a Car (partners): updated ${data.length} row(s) -> ${newImage}`)
+      updated++
+    } else {
+      console.log(`SKIP - CICAR Rent a Car: no matching rows found`)
+    }
   }
 
-  for (const [slug, image] of Object.entries(updates)) {
-    const { error, count } = await sb.from('items').update({ image }).eq('slug', slug)
-    if (error) console.log(`  Error ${slug}:`, error.message)
-    else console.log(`  Updated: ${slug}`)
+  // 2. Eco Whale Watching (items table)
+  {
+    const newImage = 'https://images.unsplash.com/photo-1568430462989-44163eb1752f?w=800&q=80'
+    const { data, error } = await sb
+      .from('items')
+      .update({ image: newImage })
+      .eq('slug', 'eco-whale-watching-adeje')
+      .select('id, name, image')
+    if (error) {
+      console.log(`FAIL - Eco Whale Watching: ${error.message}`)
+      failed++
+    } else if (data && data.length > 0) {
+      console.log(`OK - Eco Whale Watching (items): updated -> ${newImage}`)
+      updated++
+    } else {
+      console.log(`SKIP - Eco Whale Watching: no matching rows found`)
+    }
   }
 
-  console.log('\nDone!')
+  // 3. Teide by Night (items table)
+  {
+    const newImage = 'https://images.unsplash.com/photo-1507400492013-162706c8c05e?w=800&q=80'
+    const { data, error } = await sb
+      .from('items')
+      .update({ image: newImage })
+      .eq('slug', 'teide-by-night')
+      .select('id, name, image')
+    if (error) {
+      console.log(`FAIL - Teide by Night: ${error.message}`)
+      failed++
+    } else if (data && data.length > 0) {
+      console.log(`OK - Teide by Night (items): updated -> ${newImage}`)
+      updated++
+    } else {
+      console.log(`SKIP - Teide by Night: no matching rows found`)
+    }
+  }
+
+  // 4. Tour Privado en Helicoptero (items table)
+  {
+    const newImage = 'https://images.unsplash.com/photo-1534786676866-f3a38a0e0baa?w=800&q=80'
+    const { data, error } = await sb
+      .from('items')
+      .update({ image: newImage })
+      .eq('slug', 'private-helicopter-tour')
+      .select('id, name, image')
+    if (error) {
+      console.log(`FAIL - Private Helicopter Tour: ${error.message}`)
+      failed++
+    } else if (data && data.length > 0) {
+      console.log(`OK - Private Helicopter Tour (items): updated -> ${newImage}`)
+      updated++
+    } else {
+      console.log(`SKIP - Private Helicopter Tour: no matching rows found`)
+    }
+  }
+
+  // 5. Piscinas naturales secretas (articles table)
+  {
+    const newImage = 'https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=800&q=80'
+    const { data, error } = await sb
+      .from('articles')
+      .update({ image: newImage })
+      .eq('slug', 'piscinas-naturales-tenerife-secretas')
+      .select('id, title, image')
+    if (error) {
+      console.log(`FAIL - Piscinas naturales: ${error.message}`)
+      failed++
+    } else if (data && data.length > 0) {
+      console.log(`OK - Piscinas naturales (articles): updated -> ${newImage}`)
+      updated++
+    } else {
+      console.log(`SKIP - Piscinas naturales: no matching rows found`)
+    }
+  }
+
+  // 6. Centro de Tenerife area (areas table) - try slug 'centro' first, then region 'central'
+  {
+    const newImage = 'https://images.unsplash.com/photo-1506368387824-6cf9848c1638?w=1200&q=80'
+
+    // Try by slug containing 'centro'
+    let { data, error } = await sb
+      .from('areas')
+      .update({ image: newImage })
+      .ilike('slug', '%centro%')
+      .select('id, name, image')
+
+    if (error) {
+      console.log(`FAIL - Centro area (by slug): ${error.message}`)
+      failed++
+    } else if (data && data.length > 0) {
+      console.log(`OK - Centro area (areas, by slug): updated ${data.length} row(s) -> ${newImage}`)
+      updated++
+    } else {
+      // Fallback: try by region = 'central'
+      console.log(`  Centro area not found by slug, trying region = 'central'...`)
+      const res = await sb
+        .from('areas')
+        .update({ image: newImage })
+        .eq('region', 'central')
+        .select('id, name, image')
+      if (res.error) {
+        console.log(`FAIL - Centro area (by region): ${res.error.message}`)
+        failed++
+      } else if (res.data && res.data.length > 0) {
+        console.log(`OK - Centro area (areas, by region='central'): updated ${res.data.length} row(s) -> ${newImage}`)
+        updated++
+      } else {
+        // Last try: name containing 'centro'
+        const res2 = await sb
+          .from('areas')
+          .update({ image: newImage })
+          .ilike('name', '%centro%')
+          .select('id, name, image')
+        if (res2.error) {
+          console.log(`FAIL - Centro area (by name): ${res2.error.message}`)
+          failed++
+        } else if (res2.data && res2.data.length > 0) {
+          console.log(`OK - Centro area (areas, by name): updated ${res2.data.length} row(s) -> ${newImage}`)
+          updated++
+        } else {
+          console.log(`SKIP - Centro area: no matching rows found by slug, region, or name`)
+        }
+      }
+    }
+  }
+
+  console.log(`\nDone! Updated: ${updated}, Failed: ${failed}`)
 }
 
-main()
+fixImages().catch(console.error)

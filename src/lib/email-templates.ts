@@ -96,7 +96,7 @@ export function introductionEmail(params: EmailTemplateParams): string {
 <table role="presentation" cellpadding="0" cellspacing="0" style="margin:0 0 20px;">
   <tr>
     <td style="padding:8px 12px;vertical-align:top;color:#f97316;font-size:18px;">&#10003;</td>
-    <td style="padding:8px 12px;font-size:14px;color:#3f3f46;">Plataforma turistica disponible en <strong>6 idiomas</strong> (espanol, ingles, aleman, frances, italiano, portugues)</td>
+    <td style="padding:8px 12px;font-size:14px;color:#3f3f46;">Plataforma turistica disponible en <strong>5 idiomas</strong> (espanol, ingles, aleman, frances, italiano)</td>
   </tr>
   <tr>
     <td style="padding:8px 12px;vertical-align:top;color:#f97316;font-size:18px;">&#10003;</td>
@@ -116,7 +116,7 @@ export function introductionEmail(params: EmailTemplateParams): string {
   Me gustaria ofreceros una <strong>ficha basica gratuita</strong> en nuestra plataforma para que los turistas puedan descubrir ${businessName}. Sin compromiso, sin coste.
 </p>
 
-${ctaButton('Quiero aparecer gratis', 'https://tenerife-experiences.com/partners?ref=email-intro')}
+${ctaButton('Quiero aparecer gratis', 'https://tenerifeexperiences.com/partners?ref=email-intro')}
 
 <p style="margin:0;font-size:14px;color:#71717a;line-height:1.5;text-align:center;">
   Si tienes cualquier duda, simplemente responde a este email.<br>
@@ -220,7 +220,7 @@ export function finalOfferEmail(params: EmailTemplateParams): string {
 <table role="presentation" cellpadding="0" cellspacing="0" style="margin:0 0 20px;">
   <tr>
     <td style="padding:6px 12px;vertical-align:top;color:#f97316;font-size:16px;">&#9733;</td>
-    <td style="padding:6px 12px;font-size:14px;color:#3f3f46;">Ficha destacada con fotos, videos y descripcion completa en 6 idiomas</td>
+    <td style="padding:6px 12px;font-size:14px;color:#3f3f46;">Ficha destacada con fotos, videos y descripcion completa en 5 idiomas</td>
   </tr>
   <tr>
     <td style="padding:6px 12px;vertical-align:top;color:#f97316;font-size:16px;">&#9733;</td>
@@ -250,7 +250,7 @@ export function finalOfferEmail(params: EmailTemplateParams): string {
   </p>
 </div>
 
-${ctaButton('Quiero la oferta', 'https://tenerife-experiences.com/partners?ref=email-final-offer')}
+${ctaButton('Quiero la oferta', 'https://tenerifeexperiences.com/partners?ref=email-final-offer')}
 
 <p style="margin:0 0 16px;font-size:15px;color:#3f3f46;line-height:1.6;text-align:center;">
   Si prefieres empezar con la <strong>ficha gratuita</strong>, tambien puedes hacerlo. Simplemente responde "gratis" a este email.

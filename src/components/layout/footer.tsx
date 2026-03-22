@@ -16,16 +16,16 @@ const categoryLinks = [
 ]
 
 const latestArticles = [
-  { title: 'Top 10 Things to Do', href: '/blog/top-10-things-to-do-tenerife' },
-  { title: 'Best Beaches Guide', href: '/blog/best-beaches-tenerife-guide' },
-  { title: 'Mount Teide Guide', href: '/blog/mount-teide-complete-guide' },
+  { key: 'article1', href: '/blog/top-10-things-to-do-tenerife' },
+  { key: 'article2', href: '/blog/best-beaches-tenerife-guide' },
+  { key: 'article3', href: '/blog/mount-teide-complete-guide' },
 ]
 
 const socialLinks = [
-  { name: 'Instagram', href: '#', icon: Instagram },
-  { name: 'Facebook', href: '#', icon: Facebook },
-  { name: 'Twitter', href: '#', icon: Twitter },
-  { name: 'YouTube', href: '#', icon: Youtube },
+  { name: 'Instagram', href: 'https://www.instagram.com/tenerifeexperiences/', icon: Instagram },
+  { name: 'Facebook', href: 'https://www.facebook.com/tenerifeexperiences/', icon: Facebook },
+  { name: 'Twitter', href: 'https://x.com/tenerifeexp', icon: Twitter },
+  { name: 'YouTube', href: 'https://www.youtube.com/@tenerifeexperiences', icon: Youtube },
 ]
 
 function TikTokIcon({ className }: { className?: string }) {
@@ -75,6 +75,8 @@ export function Footer() {
                   <a
                     key={social.name}
                     href={social.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
                     aria-label={social.name}
                     className="flex h-8 w-8 items-center justify-center rounded-full bg-white/5 text-gray-400 transition-all hover:bg-orange-400/20 hover:text-orange-400"
                   >
@@ -82,7 +84,9 @@ export function Footer() {
                   </a>
                 ))}
                 <a
-                  href="#"
+                  href="https://www.tiktok.com/@tenerifeexperiences"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   aria-label="TikTok"
                   className="flex h-8 w-8 items-center justify-center rounded-full bg-white/5 text-gray-400 transition-all hover:bg-orange-400/20 hover:text-orange-400"
                 >
@@ -152,7 +156,7 @@ export function Footer() {
                     className="group flex items-start gap-2 text-sm text-gray-400 hover:text-orange-400 transition-colors"
                   >
                     <span className="mt-1.5 block h-1.5 w-1.5 flex-shrink-0 rounded-full bg-orange-400/60 group-hover:bg-orange-400 transition-colors" />
-                    <span className="leading-snug">{article.title}</span>
+                    <span className="leading-snug">{t(article.key)}</span>
                   </Link>
                 </li>
               ))}
