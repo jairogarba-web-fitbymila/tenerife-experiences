@@ -15,6 +15,7 @@ import {
   DollarSign,
   Mail,
   BarChart3,
+  ImageIcon,
 } from 'lucide-react'
 
 const mainNavItems = [
@@ -33,6 +34,7 @@ const contentNavItems = [
   { href: '/dashboard/events', label: 'Events', icon: CalendarDays },
   { href: '/dashboard/partners', label: 'Partners', icon: Handshake },
   { href: '/dashboard/subscribers', label: 'Subscribers', icon: Users },
+  { href: '/dashboard/photos', label: 'Photo Bank', icon: ImageIcon },
 ]
 
 export default async function AdminLayout({
