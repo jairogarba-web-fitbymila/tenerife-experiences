@@ -254,7 +254,7 @@ export default function HomePage() {
                     className={`inline-flex items-center gap-2 text-orange-400 font-semibold hover:gap-3 transition-all duration-300 ${isAlt ? 'flex-row-reverse' : ''}`}
                   >
                     {isAlt ? <ArrowRight className="h-4 w-4 rotate-180" /> : null}
-                    <span>{t('categories.explore') || 'Explore'}</span>
+                    <span>{t('areas.explore')}</span>
                     {!isAlt ? <ArrowRight className="h-4 w-4" /> : null}
                   </Link>
                 </div>

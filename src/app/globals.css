@@ -285,7 +285,7 @@
 .cinematic-overlay {
   position: absolute;
   inset: 0;
-  background: rgba(10, 14, 26, 0.4);
+  background: rgba(10, 14, 26, 0.55);
   z-index: 1;
 }
 
