@@ -6,12 +6,13 @@ import { Link, usePathname, useRouter } from '@/i18n/routing'
 import type { Locale } from '@/types/database'
 
 const navLinks = [
-  { href: '/experiencias', key: 'experiences' },
-  { href: '/playas', key: 'beaches' },
-  { href: '/cultura', key: 'culture' },
-  { href: '/naturaleza', key: 'nature' },
-  { href: '/gastronomia', key: 'food' },
-  { href: '/vida-nocturna', key: 'nightlife' },
+  { href: '/experiences', key: 'experiences' },
+  { href: '/beaches', key: 'beaches' },
+  { href: '/culture', key: 'culture' },
+  { href: '/nature', key: 'nature' },
+  { href: '/food', key: 'food' },
+  { href: '/nightlife', key: 'nightlife' },
+  { href: '/blog', key: 'blog' },
 ] as const
 
 const displayLocales: Locale[] = ['en', 'es', 'de']
