@@ -23,6 +23,7 @@ import { HeroSearchBar } from '@/components/home/hero-search-bar'
 import { MapSection } from '@/components/home/map-section'
 import { NewsletterForm } from '@/components/home/newsletter-form'
 import { ScrollEffects } from '@/components/cinematic/scroll-effects'
+import { ReviewSection } from '@/components/review/review-panel'
 
 const mapPins = [
   { name: 'Teide National Park', slug: 'areas/teide', category: 'nature', lat: 28.2723, lng: -16.6422 },
@@ -189,47 +190,49 @@ export default function HomePage() {
       />
 
       {/* ===== HERO: Full-screen cinematic ===== */}
-      <section className="relative w-full h-screen flex flex-col items-center justify-center overflow-hidden">
-        <div className="absolute inset-0">
-          <img
-            src="https://images.unsplash.com/photo-1605182054023-17d71f44aa11?w=1920&q=85"
-            alt={t('hero.altImage')}
-            className="w-full h-full object-cover animate-ken-burns"
-          />
-          <div className="absolute inset-0 bg-gradient-to-b from-slate-950/30 via-slate-950/20 to-slate-950/60" />
-        </div>
-
-        <div className="relative z-10 text-center space-y-6 px-4 animate-fade-in-up">
-          <h1 className="text-[clamp(2.5rem,8vw,5.5rem)] font-extrabold tracking-tight leading-[1.1] text-white drop-shadow-xl">
-            {t('hero.title')}
-          </h1>
-          <p className="text-[clamp(1rem,2.5vw,1.3rem)] font-light tracking-wide text-white/80 max-w-2xl mx-auto">
-            {t('hero.subtitle')}
-          </p>
-
-          <HeroSearchBar placeholder={t('hero.searchPlaceholder')} />
-
-          <div className="flex flex-wrap items-center justify-center gap-4 sm:gap-6 text-sm text-white/50">
-            <span className="flex items-center gap-1">
-              <Star className="h-4 w-4 text-orange-400 fill-orange-400" /> 4.9/5 {t('hero.statsRating')}
-            </span>
-            <span>150+ {t('hero.statsBeaches')}</span>
-            <span>500+ {t('hero.statsExperiences')}</span>
+      <ReviewSection page="landing" sectionId="hero" sectionLabel="Hero">
+        <section className="relative w-full h-screen flex flex-col items-center justify-center overflow-hidden">
+          <div className="absolute inset-0">
+            <img
+              src="https://images.unsplash.com/photo-1605182054023-17d71f44aa11?w=1920&q=85"
+              alt={t('hero.altImage')}
+              className="w-full h-full object-cover animate-ken-burns"
+            />
+            <div className="absolute inset-0 bg-gradient-to-b from-slate-950/30 via-slate-950/20 to-slate-950/60" />
           </div>
-        </div>
 
-        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce-down text-white/40">
-          <ChevronDown className="h-6 w-6" />
-        </div>
-      </section>
+          <div className="relative z-10 text-center space-y-6 px-4 animate-fade-in-up">
+            <h1 className="text-[clamp(2.5rem,8vw,5.5rem)] font-extrabold tracking-tight leading-[1.1] text-white drop-shadow-xl">
+              {t('hero.title')}
+            </h1>
+            <p className="text-[clamp(1rem,2.5vw,1.3rem)] font-light tracking-wide text-white/80 max-w-2xl mx-auto">
+              {t('hero.subtitle')}
+            </p>
+
+            <HeroSearchBar placeholder={t('hero.searchPlaceholder')} />
+
+            <div className="flex flex-wrap items-center justify-center gap-4 sm:gap-6 text-sm text-white/50">
+              <span className="flex items-center gap-1">
+                <Star className="h-4 w-4 text-orange-400 fill-orange-400" /> 4.9/5 {t('hero.statsRating')}
+              </span>
+              <span>150+ {t('hero.statsBeaches')}</span>
+              <span>500+ {t('hero.statsExperiences')}</span>
+            </div>
+          </div>
+
+          <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce-down text-white/40">
+            <ChevronDown className="h-6 w-6" />
+          </div>
+        </section>
+      </ReviewSection>
 
       {/* ===== CINEMATIC CATEGORY SECTIONS ===== */}
       <div className="relative z-10">
         {categories.map((cat, i) => {
           const isAlt = i % 2 !== 0
           return (
+            <ReviewSection key={cat.id} page="landing" sectionId={`cat-${cat.id}`} sectionLabel={`Categoría: ${cat.id}`}>
             <section
-              key={cat.id}
               className="cinematic-section h-[70vh] min-h-[500px] md:min-h-[600px] flex items-center border-b border-orange-500/10"
             >
               {/* Background */}
@@ -286,11 +289,13 @@ export default function HomePage() {
                 ))}
               </div>
             </section>
+            </ReviewSection>
           )
         })}
       </div>
 
       {/* ===== AREAS SECTION ===== */}
+      <ReviewSection page="landing" sectionId="areas" sectionLabel="Zonas">
       <section className="py-16 md:py-24 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto">
           <div className="flex items-end justify-between mb-10 md:mb-14 reveal">
@@ -333,6 +338,7 @@ export default function HomePage() {
           </div>
         </div>
       </section>
+      </ReviewSection>
 
       {/* Featured Partners */}
       <Suspense fallback={null}>
@@ -340,6 +346,7 @@ export default function HomePage() {
       </Suspense>
 
       {/* Explore the Map */}
+      <ReviewSection page="landing" sectionId="map" sectionLabel="Mapa">
       <section className="py-16 md:py-24">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12 reveal">
@@ -349,8 +356,10 @@ export default function HomePage() {
           <MapSection items={mapPins} />
         </div>
       </section>
+      </ReviewSection>
 
       {/* Newsletter */}
+      <ReviewSection page="landing" sectionId="newsletter" sectionLabel="Newsletter">
       <section className="py-16 md:py-24 border-t border-orange-500/10">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="relative overflow-hidden rounded-3xl bg-gradient-to-r from-orange-500/15 to-amber-500/10 border border-orange-500/20 p-8 sm:p-12 reveal">
@@ -371,6 +380,7 @@ export default function HomePage() {
           </div>
         </div>
       </section>
+      </ReviewSection>
     </>
   )
 }
