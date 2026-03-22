@@ -1,11 +1,11 @@
 import { getTranslations } from 'next-intl/server'
 import { createClient } from '@/lib/supabase/server'
 import { Link } from '@/i18n/routing'
-import { Card, CardContent } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
-import { Star, MapPin, Clock, ArrowLeft } from 'lucide-react'
+import { Star, MapPin, Clock } from 'lucide-react'
 import { Breadcrumbs } from '@/components/shared/breadcrumbs'
 import { t as getLocalizedText, formatPrice } from '@/lib/helpers'
+import { ScrollEffects } from '@/components/cinematic/scroll-effects'
 import type { Locale } from '@/types/database'
 import { notFound } from 'next/navigation'
 
@@ -47,102 +47,179 @@ export default async function SubcategoryPage({
     .order('featured', { ascending: false })
     .order('rating', { ascending: false })
 
+  const subcategoryName = getLocalizedText(sub.name, locale as Locale)
+  const categoryName = getLocalizedText(cat.name, locale as Locale)
+
   return (
     <>
-      <section className="py-12 sm:py-16">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <ScrollEffects />
+
+      {/* Full-screen hero */}
+      <section className="cinematic-section relative overflow-hidden" style={{ minHeight: '60vh' }}>
+        {/* Background with Ken Burns animation */}
+        {sub.image && (
+          <div
+            className="cinematic-bg animate-ken-burns"
+            style={{
+              backgroundImage: `url('${sub.image}')`,
+            }}
+            data-parallax
+          />
+        )}
+        <div className="cinematic-overlay-gradient" />
+
+        {/* Hero content */}
+        <div className="relative z-10 flex flex-col justify-between h-full px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
           {/* Breadcrumb */}
-          <div className="mb-6">
+          <div className="reveal">
             <Breadcrumbs
               items={[
-                { label: getLocalizedText(cat.name, locale as Locale), href: `/${category}` },
-                { label: getLocalizedText(sub.name, locale as Locale) },
+                { label: categoryName, href: `/${category}` },
+                { label: subcategoryName },
               ]}
             />
           </div>
 
-          <h1 className="text-3xl sm:text-4xl font-bold text-white">
-            {getLocalizedText(sub.name, locale as Locale)}
-          </h1>
-          <p className="mt-3 text-lg text-gray-400 max-w-3xl">
-            {getLocalizedText(sub.description, locale as Locale)}
-          </p>
+          {/* Title and description */}
+          <div className="reveal">
+            <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold text-white mb-4 leading-tight">
+              {subcategoryName}
+            </h1>
+            <p className="text-lg sm:text-xl text-gray-300 max-w-2xl leading-relaxed">
+              {getLocalizedText(sub.description, locale as Locale)}
+            </p>
+          </div>
         </div>
       </section>
 
-      <section className="pb-20">
+      {/* Asymmetric Grid Inmersivo */}
+      <section className="bg-slate-950 py-16 sm:py-20 lg:py-24">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {items?.map((item) => (
-              <Link key={item.id} href={`/${category}/${subcategory}/${item.slug}`}>
-                <Card className="group bg-slate-900/50 border-white/5 hover:border-orange-400/20 transition-all duration-300 overflow-hidden h-full cursor-pointer">
-                  {item.image && (
-                    <div className="aspect-[16/10] overflow-hidden">
-                      <img
-                        src={item.image}
-                        alt={getLocalizedText(item.name, locale as Locale)}
-                        className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                      />
-                    </div>
-                  )}
-                  <CardContent className="p-5">
-                    <div className="flex items-center gap-2 mb-2">
+          {items && items.length > 0 ? (
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 auto-rows-max gap-4 sm:gap-5 lg:gap-6">
+              {items.map((item, idx) => {
+                // Asymmetric layout: vary column and row spans
+                let colSpan = 'lg:col-span-1'
+                let rowSpan = 'lg:row-span-1'
+
+                if (idx % 5 === 0) {
+                  // Large feature card: 2 cols x 2 rows (featured items)
+                  colSpan = 'sm:col-span-2 lg:col-span-2'
+                  rowSpan = 'lg:row-span-2'
+                } else if (idx % 5 === 2) {
+                  // Tall card: 2 rows
+                  rowSpan = 'lg:row-span-2'
+                }
+
+                return (
+                  <Link
+                    key={item.id}
+                    href={`/${category}/${subcategory}/${item.slug}`}
+                    className={`group relative overflow-hidden rounded-lg cursor-pointer reveal h-60 sm:h-72 ${colSpan} ${rowSpan}`}
+                  >
+                    {/* Background image */}
+                    <div
+                      className="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-110"
+                      style={{
+                        backgroundImage: item.image
+                          ? `url('${item.image}')`
+                          : `linear-gradient(135deg, rgba(30, 41, 59, 0.8), rgba(15, 23, 42, 0.9))`,
+                      }}
+                    />
+
+                    {/* Gradient overlay */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/40 to-transparent opacity-90 group-hover:opacity-95 transition-opacity duration-300" />
+
+                    {/* Glow effect on hover */}
+                    <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 shadow-[inset_0_0_40px_rgba(249,115,22,0.3)]" />
+
+                    {/* Content */}
+                    <div className="relative z-10 h-full p-5 sm:p-6 flex flex-col justify-end">
+                      {/* Featured badge */}
                       {item.featured && (
-                        <Badge className="bg-orange-500/20 text-orange-400 border-0 text-xs">
-                          {tc('featured')}
-                        </Badge>
-                      )}
-                      {item.rating > 0 && (
-                        <span className="flex items-center gap-1 text-sm text-amber-400">
-                          <Star className="h-3.5 w-3.5 fill-amber-400" />
-                          {item.rating}
-                          <span className="text-gray-500">({item.review_count})</span>
-                        </span>
-                      )}
-                    </div>
-
-                    <h3 className="text-base font-semibold text-white group-hover:text-orange-400 transition-colors line-clamp-2">
-                      {getLocalizedText(item.name, locale as Locale)}
-                    </h3>
-
-                    <p className="mt-1.5 text-sm text-gray-400 line-clamp-2">
-                      {getLocalizedText(item.short_description || item.description, locale as Locale)}
-                    </p>
-
-                    <div className="mt-3 flex items-center justify-between">
-                      <div className="flex items-center gap-3 text-xs text-gray-500">
-                        {item.location && Object.keys(item.location).length > 0 && (
-                          <span className="flex items-center gap-1">
-                            <MapPin className="h-3 w-3" />
-                            {getLocalizedText(item.location, locale as Locale)}
-                          </span>
-                        )}
-                        {item.duration && (
-                          <span className="flex items-center gap-1">
-                            <Clock className="h-3 w-3" />
-                            {item.duration}
-                          </span>
-                        )}
-                      </div>
-
-                      {item.price_from != null && (
-                        <div className="text-right">
-                          <span className="text-xs text-gray-500">{t('from')}</span>
-                          <span className="ml-1 text-sm font-bold text-white">
-                            {formatPrice(item.price_from, item.currency)}
-                          </span>
+                        <div className="mb-3">
+                          <Badge className="bg-orange-500/20 text-orange-400 border-0 text-xs">
+                            {tc('featured')}
+                          </Badge>
                         </div>
                       )}
-                    </div>
-                  </CardContent>
-                </Card>
-              </Link>
-            ))}
-          </div>
 
-          {(!items || items.length === 0) && (
-            <div className="text-center py-12">
-              <p className="text-gray-500">{tc('noResults')}</p>
+                      <div className="transform transition-transform duration-300 group-hover:translate-y-0 translate-y-2">
+                        {/* Rating stars */}
+                        {item.rating > 0 && (
+                          <div className="flex items-center gap-2 mb-2">
+                            <div className="flex items-center gap-0.5">
+                              {[...Array(5)].map((_, i) => (
+                                <Star
+                                  key={i}
+                                  className={`h-3 w-3 ${
+                                    i < Math.round(item.rating)
+                                      ? 'fill-amber-400 text-amber-400'
+                                      : 'text-gray-600'
+                                  }`}
+                                />
+                              ))}
+                            </div>
+                            <span className="text-xs text-gray-400">
+                              {item.rating.toFixed(1)} ({item.review_count})
+                            </span>
+                          </div>
+                        )}
+
+                        {/* Title */}
+                        <h3 className="text-lg sm:text-xl font-bold text-white mb-2 leading-snug line-clamp-2">
+                          {getLocalizedText(item.name, locale as Locale)}
+                        </h3>
+
+                        {/* Description */}
+                        <p className="text-sm text-gray-300 mb-4 line-clamp-2">
+                          {getLocalizedText(
+                            item.short_description || item.description,
+                            locale as Locale
+                          )}
+                        </p>
+
+                        {/* Location and duration */}
+                        <div className="flex flex-wrap gap-3 mb-4 text-xs text-gray-400">
+                          {item.location && Object.keys(item.location).length > 0 && (
+                            <span className="flex items-center gap-1">
+                              <MapPin className="h-3.5 w-3.5" />
+                              {getLocalizedText(item.location, locale as Locale)}
+                            </span>
+                          )}
+                          {item.duration && (
+                            <span className="flex items-center gap-1">
+                              <Clock className="h-3.5 w-3.5" />
+                              {item.duration}
+                            </span>
+                          )}
+                        </div>
+
+                        {/* Price and CTA */}
+                        <div className="flex items-center justify-between pt-3 border-t border-white/10">
+                          {item.price_from != null ? (
+                            <div>
+                              <span className="text-xs text-gray-500">{t('from')}</span>
+                              <span className="ml-1 text-sm font-bold text-white">
+                                {formatPrice(item.price_from, item.currency)}
+                              </span>
+                            </div>
+                          ) : (
+                            <div />
+                          )}
+                          <span className="text-orange-400 text-sm font-semibold group-hover:translate-x-1 transition-transform duration-300">
+                            →
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+                  </Link>
+                )
+              })}
+            </div>
+          ) : (
+            <div className="text-center py-16">
+              <p className="text-gray-400 text-lg">{tc('noResults')}</p>
             </div>
           )}
         </div>

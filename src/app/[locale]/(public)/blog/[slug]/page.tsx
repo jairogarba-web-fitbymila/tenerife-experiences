@@ -2,9 +2,10 @@ import { getTranslations } from 'next-intl/server'
 import { createClient } from '@/lib/supabase/server'
 import { Link } from '@/i18n/routing'
 import { Badge } from '@/components/ui/badge'
-import { Calendar, Clock, ArrowLeft, Share2 } from 'lucide-react'
-import { Button } from '@/components/ui/button'
+import { Calendar, Clock } from 'lucide-react'
 import { Breadcrumbs } from '@/components/shared/breadcrumbs'
+import { ReadingProgress } from '@/components/cinematic/reading-progress'
+import { ScrollEffects } from '@/components/cinematic/scroll-effects'
 import { t as getLocalizedText } from '@/lib/helpers'
 import type { Locale } from '@/types/database'
 import { notFound } from 'next/navigation'
@@ -147,95 +148,152 @@ export default async function ArticlePage({
     },
   }
 
+  // Calculate estimated reading time (150 words per minute)
+  const wordCount = content.replace(/<[^>]*>/g, '').split(/\s+/).length
+  const readingTime = Math.max(1, Math.ceil(wordCount / 150))
+
   return (
-    <article className="pb-20">
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLd) }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
-      />
-      {/* Header */}
-      <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 pt-8">
-        <div className="mb-8">
-          <Breadcrumbs
-            items={[
-              { label: t('title'), href: '/blog' },
-              { label: articleTitle },
-            ]}
-          />
+    <>
+      <ReadingProgress />
+      <ScrollEffects />
+      <article className="min-h-screen bg-black text-white">
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLd) }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
+        />
+
+        {/* Breadcrumbs */}
+        <div className="fixed top-12 left-0 right-0 z-40 bg-black/40 backdrop-blur-sm border-b border-white/5">
+          <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 py-3">
+            <Breadcrumbs
+              items={[
+                { label: t('title'), href: '/blog' },
+                { label: articleTitle },
+              ]}
+            />
+          </div>
         </div>
 
-        <div className="flex items-center gap-3 mb-4">
-          {article.category && (
-            <Badge
-              variant="outline"
-              className="border-orange-400/30 text-orange-400"
+        {/* Header Section: Category, Date, Read Time */}
+        <div className="pt-28 pb-8 px-4 sm:px-6 lg:px-8">
+          <div className="mx-auto max-w-4xl">
+            {/* Category Pill */}
+            {article.category && (
+              <div className="mb-6">
+                <Badge
+                  variant="outline"
+                  className="border-orange-400/40 text-orange-400 bg-orange-400/10 hover:bg-orange-400/20"
+                >
+                  {getLocalizedText(article.category.name, locale as Locale)}
+                </Badge>
+              </div>
+            )}
+
+            {/* Meta Info (Date + Read Time) */}
+            <div className="flex items-center gap-4 mb-8 text-sm text-gray-400">
+              {article.published_at && (
+                <span className="flex items-center gap-2">
+                  <Calendar className="h-4 w-4" />
+                  {new Date(article.published_at).toLocaleDateString(locale, {
+                    year: 'numeric',
+                    month: 'long',
+                    day: 'numeric',
+                  })}
+                </span>
+              )}
+              <span className="flex items-center gap-2">
+                <Clock className="h-4 w-4" />
+                {readingTime} {readingTime === 1 ? t('readTime') : t('readTime')}
+              </span>
+            </div>
+
+            {/* Massive Title (Immersive) */}
+            <h1
+              className="font-bold text-white leading-tight tracking-tight mb-12 reveal"
+              style={{
+                fontSize: 'clamp(2.5rem, 8vw, 5rem)',
+                lineHeight: '1.1',
+              }}
             >
-              {getLocalizedText(article.category.name, locale as Locale)}
-            </Badge>
-          )}
-          {article.tags?.map((tag: string) => (
-            <Badge key={tag} variant="outline" className="border-white/10 text-gray-500">
-              {tag}
-            </Badge>
-          ))}
+              {getLocalizedText(article.title, locale as Locale)}
+            </h1>
+          </div>
         </div>
 
-        <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white leading-tight">
-          {getLocalizedText(article.title, locale as Locale)}
-        </h1>
-
-        <div className="mt-6 flex items-center gap-6 text-sm text-gray-400">
-          <span>{article.author}</span>
-          {article.published_at && (
-            <span className="flex items-center gap-1">
-              <Calendar className="h-4 w-4" />
-              {new Date(article.published_at).toLocaleDateString(locale, {
-                year: 'numeric',
-                month: 'long',
-                day: 'numeric',
-              })}
-            </span>
-          )}
-          <span className="flex items-center gap-1">
-            <Clock className="h-4 w-4" />
-            5 {t('readTime')}
-          </span>
-        </div>
-      </div>
-
-      {/* Featured Image */}
-      {article.image && (
-        <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 mt-8">
-          <div className="aspect-[21/9] rounded-2xl overflow-hidden">
+        {/* Full-Width Featured Image (70vh) */}
+        {article.image && (
+          <div className="w-full h-[70vh] overflow-hidden reveal">
             <img
               src={article.image}
               alt={getLocalizedText(article.title, locale as Locale)}
               className="w-full h-full object-cover"
+              loading="eager"
             />
           </div>
-        </div>
-      )}
+        )}
 
-      {/* Content */}
-      <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8 mt-12">
-        <div
-          className="prose prose-invert prose-lg max-w-none
-            prose-headings:text-white prose-headings:font-bold prose-headings:mt-10 prose-headings:mb-4
-            prose-h2:text-2xl prose-h2:border-l-4 prose-h2:border-orange-400 prose-h2:pl-4
-            prose-h3:text-xl prose-h3:text-gray-200
-            prose-p:text-gray-300 prose-p:leading-[1.9] prose-p:mb-5 prose-p:text-[15px]
-            prose-a:text-orange-400 prose-a:no-underline hover:prose-a:text-orange-300
-            prose-ul:space-y-2 prose-li:text-gray-300
-            prose-strong:text-white
-            prose-li:text-gray-300
-            prose-blockquote:border-orange-400 prose-blockquote:text-gray-400"
-          dangerouslySetInnerHTML={{ __html: content }}
-        />
-      </div>
-    </article>
+        {/* Article Content */}
+        <div className="py-16 px-4 sm:px-6 lg:px-8">
+          <div className="mx-auto max-w-3xl">
+            {/* Content Section with Prose Dark */}
+            <div className="prose-dark reveal">
+              <div
+                className="prose-dark"
+                dangerouslySetInnerHTML={{ __html: content }}
+              />
+            </div>
+          </div>
+        </div>
+
+        {/* Related Articles Section */}
+        {/* Placeholder for related articles */}
+        <div className="py-16 px-4 sm:px-6 lg:px-8 border-t border-white/10">
+          <div className="mx-auto max-w-6xl">
+            <h2 className="text-3xl font-bold text-white mb-12 reveal">
+              {locale === 'es'
+                ? 'Artículos Relacionados'
+                : locale === 'de'
+                  ? 'Verwandte Artikel'
+                  : 'Related Articles'}
+            </h2>
+
+            {/* Related Articles Grid (3 columns, stack on mobile) */}
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+              {/* Placeholder cards - replace with actual related articles query */}
+              {[1, 2, 3].map((i) => (
+                <div key={i} className="group reveal">
+                  <div className="aspect-video bg-gradient-to-br from-gray-900 to-black rounded-lg overflow-hidden mb-4">
+                    <div className="w-full h-full flex items-center justify-center text-gray-600">
+                      [Related Article {i}]
+                    </div>
+                  </div>
+                  <h3 className="text-lg font-semibold text-white group-hover:text-orange-400 transition-colors">
+                    {locale === 'es'
+                      ? `Artículo Relacionado ${i}`
+                      : locale === 'de'
+                        ? `Verwandter Artikel ${i}`
+                        : `Related Article ${i}`}
+                  </h3>
+                  <p className="text-gray-400 text-sm mt-2">
+                    {locale === 'es'
+                      ? 'Descubre más experiencias en Tenerife'
+                      : locale === 'de'
+                        ? 'Entdecke mehr Erfahrungen auf Teneriffa'
+                        : 'Discover more Tenerife experiences'}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        {/* Bottom spacing */}
+        <div className="h-20" />
+      </article>
+    </>
   )
 }

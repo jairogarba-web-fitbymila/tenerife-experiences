@@ -16,8 +16,10 @@ import {
   Shield,
   Accessibility,
   AlertTriangle,
+  ArrowRight,
 } from 'lucide-react'
 import { Breadcrumbs } from '@/components/shared/breadcrumbs'
+import { ScrollEffects } from '@/components/cinematic/scroll-effects'
 import { t as getLocalizedText, formatPrice } from '@/lib/helpers'
 import type { Locale } from '@/types/database'
 import { notFound } from 'next/navigation'
@@ -134,241 +136,355 @@ export default async function ItemDetailPage({
     }),
   }
 
+  // Split description into chunks for immersive photo sections
+  const descriptionText = getLocalizedText(item.description, loc)
+  const descriptionChunks = descriptionText
+    .split(/(?<=[.!?])\s+/)
+    .reduce((chunks, sentence, i) => {
+      if (i % 3 === 0) chunks.push([])
+      chunks[chunks.length - 1].push(sentence)
+      return chunks
+    }, [] as string[][])
+    .map((chunk) => chunk.join(' '))
+
   return (
-    <div className="pb-20">
+    <div className="bg-slate-950 text-white overflow-hidden">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
-      {/* Breadcrumb */}
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-6">
-        <Breadcrumbs
-          items={[
-            { label: cat ? getLocalizedText(cat.name, loc) : category, href: `/${category}` },
-            { label: sub ? getLocalizedText(sub.name, loc) : subcategory, href: `/${category}/${subcategory}` },
-            { label: getLocalizedText(item.name, loc) },
-          ]}
-        />
+
+      <ScrollEffects />
+
+      {/* Full-Screen Hero with Ken Burns Animation */}
+      <div className="relative h-screen w-full overflow-hidden">
+        {item.image && (
+          <>
+            <img
+              src={item.image}
+              alt={getLocalizedText(item.name, loc)}
+              className="absolute inset-0 w-full h-full object-cover animate-ken-burns"
+            />
+            {/* Gradient overlay - darker at bottom */}
+            <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-black/40 to-black/80" />
+          </>
+        )}
+
+        {/* Info Panel Over Hero Bottom */}
+        <div className="absolute bottom-0 left-0 right-0 z-10">
+          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pb-12">
+            {/* Breadcrumbs */}
+            <div className="mb-8">
+              <Breadcrumbs
+                items={[
+                  { label: cat ? getLocalizedText(cat.name, loc) : category, href: `/${category}` },
+                  { label: sub ? getLocalizedText(sub.name, loc) : subcategory, href: `/${category}/${subcategory}` },
+                  { label: getLocalizedText(item.name, loc) },
+                ]}
+              />
+            </div>
+
+            {/* Title in huge type */}
+            <div className="space-y-6">
+              <div>
+                <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold text-white leading-tight mb-4">
+                  {getLocalizedText(item.name, loc)}
+                </h1>
+              </div>
+
+              {/* Rating, location, highlights */}
+              <div className="flex flex-col gap-4 max-w-2xl">
+                {/* Rating */}
+                {item.rating > 0 && (
+                  <div className="flex items-center gap-2">
+                    <div className="flex items-center gap-1">
+                      {Array.from({ length: 5 }).map((_, i) => (
+                        <Star
+                          key={i}
+                          className={`h-5 w-5 ${
+                            i < Math.round(item.rating)
+                              ? 'text-orange-400 fill-orange-400'
+                              : 'text-gray-600'
+                          }`}
+                        />
+                      ))}
+                    </div>
+                    <span className="text-lg text-gray-200">
+                      {item.rating} · {item.review_count} {t('reviews')}
+                    </span>
+                  </div>
+                )}
+
+                {/* Location & Duration */}
+                <div className="flex flex-col sm:flex-row gap-4 text-gray-200">
+                  {item.location && Object.keys(item.location).length > 0 && (
+                    <span className="flex items-center gap-2">
+                      <MapPin className="h-5 w-5 text-orange-400 shrink-0" />
+                      {getLocalizedText(item.location, loc)}
+                    </span>
+                  )}
+                  {item.duration && (
+                    <span className="flex items-center gap-2">
+                      <Clock className="h-5 w-5 text-orange-400 shrink-0" />
+                      {item.duration}
+                    </span>
+                  )}
+                </div>
+
+                {/* Key highlights */}
+                {item.highlights && (item.highlights as unknown[]).length > 0 && (
+                  <div className="flex flex-wrap gap-2 pt-2">
+                    {(item.highlights as Record<string, string>[])
+                      .slice(0, 3)
+                      .map((h, i) => (
+                        <Badge
+                          key={i}
+                          className="bg-orange-500/20 text-orange-300 border-orange-400/30 border"
+                        >
+                          {getLocalizedText(h, loc)}
+                        </Badge>
+                      ))}
+                  </div>
+                )}
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
 
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 mt-6">
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-          {/* Main Content */}
-          <div className="lg:col-span-2 space-y-8">
-            {/* Image */}
-            {item.image && (
-              <div className="aspect-[16/9] rounded-2xl overflow-hidden">
+      {/* Immersive Description Sections with Photo Backgrounds */}
+      <div className="relative">
+        {descriptionChunks.map((chunk, index) => (
+          <div
+            key={index}
+            className="reveal min-h-[80vh] flex items-center relative overflow-hidden"
+          >
+            {/* Alternating side photos */}
+            {index % 2 === 0 && item.image && (
+              <div className="absolute inset-0 opacity-15">
                 <img
                   src={item.image}
-                  alt={getLocalizedText(item.name, loc)}
+                  alt=""
                   className="w-full h-full object-cover"
                 />
               </div>
             )}
 
-            {/* Title & Meta */}
-            <div>
-              <div className="flex items-center gap-3 mb-3">
-                {item.featured && (
-                  <Badge className="bg-orange-500/20 text-orange-400 border-0">Featured</Badge>
-                )}
-                {item.rating > 0 && (
-                  <span className="flex items-center gap-1 text-amber-400">
-                    <Star className="h-4 w-4 fill-amber-400" />
-                    {item.rating}
-                    <span className="text-gray-500 text-sm">({item.review_count} {t('reviews')})</span>
-                  </span>
-                )}
-              </div>
-
-              <h1 className="text-3xl sm:text-4xl font-bold text-white">
-                {getLocalizedText(item.name, loc)}
-              </h1>
-
-              <div className="mt-4 flex flex-wrap items-center gap-4 text-sm text-gray-400">
-                {item.location && Object.keys(item.location).length > 0 && (
-                  <span className="flex items-center gap-1">
-                    <MapPin className="h-4 w-4 text-orange-400" />
-                    {getLocalizedText(item.location, loc)}
-                  </span>
-                )}
-                {item.duration && (
-                  <span className="flex items-center gap-1">
-                    <Clock className="h-4 w-4" />
-                    {t('duration')}: {item.duration}
-                  </span>
-                )}
+            <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16">
+              <div className={`max-w-2xl ${index % 2 === 1 ? 'ml-auto' : ''}`}>
+                <p className="text-xl md:text-2xl leading-relaxed text-gray-100 font-light">
+                  {chunk}
+                </p>
               </div>
             </div>
+          </div>
+        ))}
+      </div>
 
-            {/* Description */}
-            <div className="bg-slate-900/30 rounded-2xl p-6 border border-white/5">
-              <h2 className="text-xl font-semibold text-white mb-4">{t('description')}</h2>
-              <div className="text-gray-300 leading-[1.8] whitespace-pre-line text-[15px] space-y-3">
-                {getLocalizedText(item.description, loc).split('. ').reduce((acc: string[][], sentence: string, i: number) => {
-                  const groupIndex = Math.floor(i / 2)
-                  if (!acc[groupIndex]) acc[groupIndex] = []
-                  acc[groupIndex].push(sentence)
-                  return acc
-                }, [] as string[][]).map((group: string[], i: number) => (
-                  <p key={i}>{group.join('. ')}{group[group.length - 1]?.endsWith('.') ? '' : '.'}</p>
-                ))}
-              </div>
-            </div>
+      {/* Practical Info Section - Grid of Cards */}
+      <div className="reveal bg-gradient-to-b from-slate-950 to-slate-900 py-20">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <h2 className="text-4xl md:text-5xl font-bold text-white mb-16">
+            {t('essentialInfo')}
+          </h2>
 
-            {/* Beach-specific info */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {/* Sand Type */}
             {item.sand_type && (
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                {item.sand_type && (
-                  <Card className="bg-slate-900/50 border-white/5">
-                    <CardContent className="p-4 flex items-start gap-3">
-                      <Waves className="h-5 w-5 text-blue-400 mt-0.5 shrink-0" />
-                      <div>
-                        <p className="text-sm font-medium text-white">{t('sandType')}</p>
-                        <p className="text-sm text-gray-400">{getLocalizedText(item.sand_type, loc)}</p>
+              <Card className="bg-slate-900/60 border-orange-400/20 hover:border-orange-400/40 transition-colors">
+                <CardContent className="p-6 space-y-3">
+                  <div className="inline-block p-3 bg-blue-500/20 rounded-lg">
+                    <Waves className="h-6 w-6 text-blue-400" />
+                  </div>
+                  <h3 className="font-semibold text-white">{t('sandType')}</h3>
+                  <p className="text-gray-400 text-sm leading-relaxed">
+                    {getLocalizedText(item.sand_type, loc)}
+                  </p>
+                </CardContent>
+              </Card>
+            )}
+
+            {/* Bathing Conditions */}
+            {item.bathing_conditions && (
+              <Card className="bg-slate-900/60 border-orange-400/20 hover:border-orange-400/40 transition-colors">
+                <CardContent className="p-6 space-y-3">
+                  <div className="inline-block p-3 bg-green-500/20 rounded-lg">
+                    <Shield className="h-6 w-6 text-green-400" />
+                  </div>
+                  <h3 className="font-semibold text-white">{t('bathingConditions')}</h3>
+                  <p className="text-gray-400 text-sm leading-relaxed">
+                    {getLocalizedText(item.bathing_conditions, loc)}
+                  </p>
+                </CardContent>
+              </Card>
+            )}
+
+            {/* Accessibility */}
+            {item.accessibility && (
+              <Card className="bg-slate-900/60 border-orange-400/20 hover:border-orange-400/40 transition-colors">
+                <CardContent className="p-6 space-y-3">
+                  <div className="inline-block p-3 bg-purple-500/20 rounded-lg">
+                    <Accessibility className="h-6 w-6 text-purple-400" />
+                  </div>
+                  <h3 className="font-semibold text-white">{t('accessibility')}</h3>
+                  <p className="text-gray-400 text-sm leading-relaxed">
+                    {getLocalizedText(item.accessibility, loc)}
+                  </p>
+                </CardContent>
+              </Card>
+            )}
+
+            {/* Risk Level */}
+            {item.typical_risk && (
+              <Card className="bg-slate-900/60 border-orange-400/20 hover:border-orange-400/40 transition-colors">
+                <CardContent className="p-6 space-y-3">
+                  <div className="inline-block p-3 bg-amber-500/20 rounded-lg">
+                    <AlertTriangle className="h-6 w-6 text-amber-400" />
+                  </div>
+                  <h3 className="font-semibold text-white">{t('riskLevel')}</h3>
+                  <p className="text-gray-400 text-sm leading-relaxed">
+                    {getLocalizedText(item.typical_risk, loc)}
+                  </p>
+                </CardContent>
+              </Card>
+            )}
+
+            {/* Price */}
+            {item.price_from != null && (
+              <Card className="bg-slate-900/60 border-orange-400/20 hover:border-orange-400/40 transition-colors">
+                <CardContent className="p-6 space-y-3">
+                  <div className="inline-block p-3 bg-orange-500/20 rounded-lg">
+                    <ArrowRight className="h-6 w-6 text-orange-400" />
+                  </div>
+                  <h3 className="font-semibold text-white">{t('startingPrice')}</h3>
+                  <p className="text-orange-400 text-2xl font-bold">
+                    {formatPrice(item.price_from, item.currency)}
+                  </p>
+                </CardContent>
+              </Card>
+            )}
+          </div>
+        </div>
+      </div>
+
+      {/* Reviews Section */}
+      {reviews && reviews.length > 0 && (
+        <div className="reveal py-20">
+          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+            <h2 className="text-4xl md:text-5xl font-bold text-white mb-12">
+              {t('reviews')} ({item.review_count})
+            </h2>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              {reviews.map((review) => (
+                <Card
+                  key={review.id}
+                  className="bg-slate-900/40 border-orange-400/10 hover:border-orange-400/30 transition-colors"
+                >
+                  <CardContent className="p-8 space-y-4">
+                    <div className="flex items-center justify-between">
+                      <h3 className="font-semibold text-white text-lg">
+                        {review.author_name}
+                      </h3>
+                      <div className="flex gap-1">
+                        {Array.from({ length: 5 }).map((_, i) => (
+                          <Star
+                            key={i}
+                            className={`h-4 w-4 ${
+                              i < review.rating
+                                ? 'text-orange-400 fill-orange-400'
+                                : 'text-gray-700'
+                            }`}
+                          />
+                        ))}
                       </div>
-                    </CardContent>
-                  </Card>
-                )}
-                {item.bathing_conditions && (
-                  <Card className="bg-slate-900/50 border-white/5">
-                    <CardContent className="p-4 flex items-start gap-3">
-                      <Shield className="h-5 w-5 text-green-400 mt-0.5 shrink-0" />
-                      <div>
-                        <p className="text-sm font-medium text-white">{t('bathingConditions')}</p>
-                        <p className="text-sm text-gray-400">{getLocalizedText(item.bathing_conditions, loc)}</p>
-                      </div>
-                    </CardContent>
-                  </Card>
-                )}
-                {item.accessibility && (
-                  <Card className="bg-slate-900/50 border-white/5">
-                    <CardContent className="p-4 flex items-start gap-3">
-                      <Accessibility className="h-5 w-5 text-purple-400 mt-0.5 shrink-0" />
-                      <div>
-                        <p className="text-sm font-medium text-white">{t('accessibility')}</p>
-                        <p className="text-sm text-gray-400">{getLocalizedText(item.accessibility, loc)}</p>
-                      </div>
-                    </CardContent>
-                  </Card>
-                )}
-                {item.typical_risk && (
-                  <Card className="bg-slate-900/50 border-white/5">
-                    <CardContent className="p-4 flex items-start gap-3">
-                      <AlertTriangle className="h-5 w-5 text-amber-400 mt-0.5 shrink-0" />
-                      <div>
-                        <p className="text-sm font-medium text-white">{t('riskLevel')}</p>
-                        <p className="text-sm text-gray-400">{getLocalizedText(item.typical_risk, loc)}</p>
-                      </div>
-                    </CardContent>
-                  </Card>
-                )}
+                    </div>
+                    <p className="text-gray-300 leading-relaxed">
+                      "{getLocalizedText(review.comment, loc)}"
+                    </p>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Sticky Mobile CTA */}
+      {item.bookable && item.booking_url && (
+        <div className="fixed bottom-0 left-0 right-0 md:hidden bg-slate-950 border-t border-orange-400/20 p-4 z-40">
+          <a href={item.booking_url} target="_blank" rel="noopener noreferrer">
+            <Button className="w-full bg-orange-500 hover:bg-orange-600 text-white text-lg py-6 font-semibold">
+              {t('bookNow')}
+              <ExternalLink className="h-5 w-5 ml-2" />
+            </Button>
+          </a>
+        </div>
+      )}
+
+      {/* Desktop Sidebar Booking Card */}
+      <div className="hidden md:block fixed bottom-8 right-8 z-30 max-w-sm">
+        <Card className="bg-slate-900/95 border-orange-400/20 backdrop-blur-sm">
+          <CardContent className="p-6 space-y-4">
+            {item.price_from != null && (
+              <div>
+                <p className="text-sm text-gray-400">{t('from')}</p>
+                <p className="text-3xl font-bold text-orange-400 mt-1">
+                  {formatPrice(item.price_from, item.currency)}
+                </p>
+                <p className="text-xs text-gray-500 mt-1">{t('perPerson')}</p>
               </div>
             )}
 
-            {/* Highlights */}
-            {item.highlights && (item.highlights as unknown[]).length > 0 && (
-              <div>
-                <h2 className="text-xl font-semibold text-white mb-3">{t('highlights')}</h2>
-                <ul className="space-y-2">
-                  {(item.highlights as Record<string, string>[]).map((h, i) => (
-                    <li key={i} className="flex items-start gap-2 text-gray-300">
-                      <Check className="h-5 w-5 text-green-400 shrink-0 mt-0.5" />
-                      {getLocalizedText(h, loc)}
-                    </li>
-                  ))}
+            {item.bookable && item.booking_url && (
+              <a href={item.booking_url} target="_blank" rel="noopener noreferrer">
+                <Button className="w-full bg-orange-500 hover:bg-orange-600 text-white py-5 font-semibold">
+                  {t('bookNow')}
+                  <ExternalLink className="h-4 w-4 ml-2" />
+                </Button>
+              </a>
+            )}
+
+            {item.includes && (item.includes as unknown[]).length > 0 && (
+              <div className="pt-4 border-t border-white/5 space-y-2">
+                <p className="text-xs font-medium text-gray-300 uppercase tracking-wide">
+                  {t('includes')}
+                </p>
+                <ul className="space-y-1.5">
+                  {(item.includes as Record<string, string>[])
+                    .slice(0, 3)
+                    .map((inc, i) => (
+                      <li key={i} className="flex items-center gap-2 text-xs text-gray-400">
+                        <Check className="h-3.5 w-3.5 text-orange-400 shrink-0" />
+                        {getLocalizedText(inc, loc)}
+                      </li>
+                    ))}
                 </ul>
               </div>
             )}
 
-            {/* Reviews */}
-            {reviews && reviews.length > 0 && (
-              <div>
-                <h2 className="text-xl font-semibold text-white mb-4">
-                  {t('reviews')} ({item.review_count})
-                </h2>
-                <div className="space-y-4">
-                  {reviews.map((review) => (
-                    <Card key={review.id} className="bg-slate-900/50 border-white/5">
-                      <CardContent className="p-4">
-                        <div className="flex items-center gap-2 mb-2">
-                          <span className="font-medium text-white">{review.author_name}</span>
-                          <div className="flex">
-                            {Array.from({ length: 5 }).map((_, i) => (
-                              <Star
-                                key={i}
-                                className={`h-3.5 w-3.5 ${
-                                  i < review.rating
-                                    ? 'text-amber-400 fill-amber-400'
-                                    : 'text-gray-600'
-                                }`}
-                              />
-                            ))}
-                          </div>
-                        </div>
-                        <p className="text-sm text-gray-400">
-                          {getLocalizedText(review.comment, loc)}
-                        </p>
-                      </CardContent>
-                    </Card>
-                  ))}
-                </div>
-              </div>
-            )}
-          </div>
-
-          {/* Sidebar - Booking Card */}
-          <div className="lg:col-span-1">
-            <div className="sticky top-24">
-              <Card className="bg-slate-900/80 border-white/10">
-                <CardContent className="p-6 space-y-4">
-                  {item.price_from != null && (
-                    <div>
-                      <span className="text-sm text-gray-400">{t('from')}</span>
-                      <span className="ml-2 text-3xl font-bold text-white">
-                        {formatPrice(item.price_from, item.currency)}
-                      </span>
-                      <span className="text-sm text-gray-400 ml-1">{t('perPerson')}</span>
-                    </div>
-                  )}
-
-                  {item.bookable && item.booking_url && (
-                    <a href={item.booking_url} target="_blank" rel="noopener noreferrer">
-                      <Button className="w-full bg-orange-500 hover:bg-orange-600 text-white text-lg py-6">
-                        {t('bookNow')}
-                        <ExternalLink className="h-4 w-4 ml-2" />
-                      </Button>
-                    </a>
-                  )}
-
-                  {item.includes && (item.includes as unknown[]).length > 0 && (
-                    <div>
-                      <h3 className="text-sm font-medium text-white mb-2">{t('includes')}</h3>
-                      <ul className="space-y-1.5">
-                        {(item.includes as Record<string, string>[]).map((inc, i) => (
-                          <li key={i} className="flex items-center gap-2 text-sm text-gray-400">
-                            <Check className="h-3.5 w-3.5 text-green-400 shrink-0" />
-                            {getLocalizedText(inc, loc)}
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                  )}
-
-                  <div className="flex gap-2 pt-2">
-                    <Button variant="outline" size="sm" className="flex-1 border-white/10 text-gray-400">
-                      <Heart className="h-4 w-4 mr-1" /> {t('save')}
-                    </Button>
-                    <Button variant="outline" size="sm" className="flex-1 border-white/10 text-gray-400">
-                      <Share2 className="h-4 w-4 mr-1" /> {t('share')}
-                    </Button>
-                  </div>
-                </CardContent>
-              </Card>
+            <div className="flex gap-2 pt-4 border-t border-white/5">
+              <Button
+                variant="outline"
+                size="sm"
+                className="flex-1 border-white/10 text-gray-400 hover:text-orange-400 hover:border-orange-400/50"
+              >
+                <Heart className="h-4 w-4 mr-1" /> {t('save')}
+              </Button>
+              <Button
+                variant="outline"
+                size="sm"
+                className="flex-1 border-white/10 text-gray-400 hover:text-orange-400 hover:border-orange-400/50"
+              >
+                <Share2 className="h-4 w-4 mr-1" /> {t('share')}
+              </Button>
             </div>
-          </div>
-        </div>
+          </CardContent>
+        </Card>
       </div>
+
+      {/* Spacer for mobile with sticky CTA */}
+      {item.bookable && item.booking_url && <div className="md:hidden h-24" />}
     </div>
   )
 }

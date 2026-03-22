@@ -263,3 +263,172 @@
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
+
+/* ===== CINEMATIC DESIGN SYSTEM ===== */
+
+/* Cinematic section with parallax-ready bg */
+.cinematic-section {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+}
+
+.cinematic-bg {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  will-change: transform;
+  z-index: 0;
+}
+
+.cinematic-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(10, 14, 26, 0.4);
+  z-index: 1;
+}
+
+.cinematic-overlay-gradient {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(0deg, rgba(10, 14, 26, 0.85) 0%, rgba(10, 14, 26, 0.2) 50%, rgba(10, 14, 26, 0.1) 100%);
+  z-index: 1;
+}
+
+/* Parallax scroll effect (JS controlled via data-speed) */
+[data-parallax] {
+  will-change: transform;
+}
+
+/* Scroll-triggered reveal */
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.reveal-left {
+  opacity: 0;
+  transform: translateX(-40px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.reveal-left.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.reveal-right {
+  opacity: 0;
+  transform: translateX(40px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.reveal-right.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* Ken Burns animation for hero */
+@keyframes kenBurns {
+  0% { transform: scale(1); }
+  100% { transform: scale(1.1); }
+}
+
+.animate-ken-burns {
+  animation: kenBurns 20s ease-in-out forwards;
+}
+
+/* Bounce indicator */
+@keyframes bounce-down {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+.animate-bounce-down {
+  animation: bounce-down 2s infinite;
+}
+
+/* Reading progress bar */
+.reading-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 3px;
+  background: linear-gradient(90deg, #f97316, #fb923c);
+  z-index: 9999;
+  transition: width 0.1s linear;
+}
+
+@media (max-width: 768px) {
+  .reading-progress {
+    height: 2px;
+  }
+}
+
+/* Masonry grid for blog */
+.masonry-grid {
+  columns: 4;
+  column-gap: 1.5rem;
+}
+
+.masonry-grid > * {
+  break-inside: avoid;
+  margin-bottom: 1.5rem;
+}
+
+@media (max-width: 1024px) {
+  .masonry-grid { columns: 3; }
+}
+
+@media (max-width: 768px) {
+  .masonry-grid { columns: 2; column-gap: 0.75rem; }
+  .masonry-grid > * { margin-bottom: 0.75rem; }
+}
+
+@media (max-width: 480px) {
+  .masonry-grid { columns: 1; }
+}
+
+/* Immersive item detail: info panel slide up */
+@keyframes slideUpPanel {
+  from { transform: translateY(100px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+.animate-slide-up-panel {
+  animation: slideUpPanel 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.3s both;
+}
+
+/* Auto-scroll carousel */
+@keyframes scrollCarousel {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.animate-scroll-carousel {
+  animation: scrollCarousel 30s linear infinite;
+}
+
+.animate-scroll-carousel:hover {
+  animation-play-state: paused;
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .animate-ken-burns,
+  .animate-bounce-down,
+  .animate-scroll-carousel,
+  .reveal, .reveal-left, .reveal-right {
+    animation: none !important;
+    transition: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
