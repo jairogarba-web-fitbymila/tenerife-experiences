@@ -11,7 +11,7 @@ export default function LoginPage() {
   const router = useRouter()
   const pathname = usePathname()
   const locale = pathname?.split('/')[1] || 'es'
-  const [email, setEmail] = useState('')
+  const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
   const [error, setError] = useState('')
   const [loading, setLoading] = useState(false)
@@ -26,11 +26,12 @@ export default function LoginPage() {
       const res = await fetch('/api/admin/login', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email, password }),
+        body: JSON.stringify({ username, password }),
       })
 
       if (res.ok) {
-        router.push(`/${locale}/dashboard`)
+        // Redirect to home page in review mode (admin is logged in, review auto-activates)
+        router.push(`/${locale}`)
         router.refresh()
       } else {
         const data = await res.json()
@@ -65,16 +66,17 @@ export default function LoginPage() {
             <form onSubmit={handleSubmit} className="space-y-4">
               <div>
                 <label className="mb-1.5 block text-xs font-medium text-gray-400">
-                  Email
+                  Usuario
                 </label>
                 <Input
-                  type="email"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
+                  type="text"
+                  value={username}
+                  onChange={(e) => setUsername(e.target.value)}
                   className="bg-slate-800/50 border-white/10 text-white placeholder:text-gray-600"
-                  placeholder="tu@email.com"
+                  placeholder="Tu usuario"
                   required
                   autoFocus
+                  autoComplete="username"
                 />
               </div>
               <div>
@@ -89,6 +91,7 @@ export default function LoginPage() {
                     className="bg-slate-800/50 border-white/10 text-white placeholder:text-gray-600 pr-10"
                     placeholder="Tu contraseña"
                     required
+                    autoComplete="current-password"
                   />
                   <button
                     type="button"
@@ -112,7 +115,7 @@ export default function LoginPage() {
 
               <Button
                 type="submit"
-                disabled={loading || !email || !password}
+                disabled={loading || !username || !password}
                 className="w-full bg-orange-500 hover:bg-orange-600 text-white font-medium"
               >
                 {loading ? (

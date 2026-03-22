@@ -4,7 +4,7 @@ import { useState } from 'react'
 import { useReview } from './review-context'
 
 export function ReviewToolbar() {
-  const { isReviewMode, stats, exportNotes } = useReview()
+  const { isReviewMode, stats, exportNotes, logout } = useReview()
   const [showExport, setShowExport] = useState(false)
   const [copied, setCopied] = useState(false)
 
@@ -38,12 +38,12 @@ export function ReviewToolbar() {
           <div className="flex items-center gap-3">
             <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-orange-500/20 text-orange-400 text-xs font-bold">
               <span className="w-2 h-2 rounded-full bg-orange-500 animate-pulse" />
-              MODO REVISIÓN
+              ADMIN · REVISIÓN
             </span>
           </div>
 
           {/* Stats */}
-          <div className="flex items-center gap-4 text-sm">
+          <div className="hidden sm:flex items-center gap-4 text-sm">
             <span className="text-white/60">
               Revisadas: <strong className="text-white">{stats.total}</strong>
             </span>
@@ -58,13 +58,27 @@ export function ReviewToolbar() {
             </span>
           </div>
 
-          {/* Export button */}
-          <button
-            onClick={() => setShowExport(!showExport)}
-            className="px-4 py-2 rounded-lg bg-orange-500 hover:bg-orange-400 text-white text-sm font-bold transition-colors"
-          >
-            📋 Exportar Notas
-          </button>
+          {/* Actions */}
+          <div className="flex items-center gap-2">
+            <a
+              href="/es/dashboard"
+              className="px-3 py-2 rounded-lg bg-slate-800 hover:bg-slate-700 text-white/70 hover:text-white text-sm font-medium transition-colors"
+            >
+              Dashboard
+            </a>
+            <button
+              onClick={() => setShowExport(!showExport)}
+              className="px-3 py-2 rounded-lg bg-orange-500 hover:bg-orange-400 text-white text-sm font-bold transition-colors"
+            >
+              📋 Exportar
+            </button>
+            <button
+              onClick={logout}
+              className="px-3 py-2 rounded-lg bg-red-600/80 hover:bg-red-500 text-white text-sm font-medium transition-colors"
+            >
+              Salir
+            </button>
+          </div>
         </div>
       </div>
 

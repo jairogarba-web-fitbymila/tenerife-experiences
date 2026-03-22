@@ -4,25 +4,32 @@ import { cookies } from 'next/headers'
 // Admin users - add more entries here for coworkers
 const ADMIN_USERS = [
   {
+    username: process.env.ADMIN_USERNAME || 'Admin',
     email: process.env.ADMIN_EMAIL || 'jairogarba@gmail.com',
-    password: process.env.ADMIN_PASSWORD || 'TenerifeAdmin2026!',
+    password: process.env.ADMIN_PASSWORD || 'test2026*',
     name: 'Jairo',
     role: 'owner',
   },
   // Add coworker access:
   // {
-  //   email: process.env.ADMIN_EMAIL_2 || 'coworker@email.com',
-  //   password: process.env.ADMIN_PASSWORD_2 || 'CoworkPass2026!',
+  //   username: 'Editor',
+  //   email: 'coworker@email.com',
+  //   password: 'CoworkPass2026!',
   //   name: 'Coworker',
   //   role: 'editor',
   // },
 ]
 
 export async function POST(request: NextRequest) {
-  const { email, password } = await request.json()
+  const { username, email, password } = await request.json()
 
+  // Accept login by username OR email
+  const loginId = (username || email || '').trim()
   const user = ADMIN_USERS.find(
-    (u) => u.email.toLowerCase() === email.toLowerCase() && u.password === password
+    (u) =>
+      (u.username.toLowerCase() === loginId.toLowerCase() ||
+        u.email.toLowerCase() === loginId.toLowerCase()) &&
+      u.password === password
   )
 
   if (user) {
@@ -37,6 +44,15 @@ export async function POST(request: NextRequest) {
 
     cookieStore.set('admin_session', sessionValue, {
       httpOnly: true,
+      secure: process.env.NODE_ENV === 'production',
+      sameSite: 'lax',
+      maxAge: 60 * 60 * 24 * 7, // 7 days
+      path: '/',
+    })
+
+    // Non-httpOnly cookie so client-side ReviewProvider can detect admin session
+    cookieStore.set('admin_review', 'true', {
+      httpOnly: false,
       secure: process.env.NODE_ENV === 'production',
       sameSite: 'lax',
       maxAge: 60 * 60 * 24 * 7, // 7 days

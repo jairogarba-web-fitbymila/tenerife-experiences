@@ -21,23 +21,34 @@ interface ReviewContextType {
   getNote: (page: string, sectionId: string) => ReviewNote | undefined
   exportNotes: () => string
   stats: { total: number; approved: number; changes: number; pending: number }
+  logout: () => Promise<void>
 }
 
 const ReviewContext = createContext<ReviewContextType | null>(null)
 
 const STORAGE_KEY = 'tenerife-review-notes'
-const REVIEW_SECRET = 'revisar2026'
+
+function getCookie(name: string): string | null {
+  const match = document.cookie.match(new RegExp('(^| )' + name + '=([^;]+)'))
+  return match ? decodeURIComponent(match[2]) : null
+}
 
 export function ReviewProvider({ children }: { children: ReactNode }) {
   const [isReviewMode, setIsReviewMode] = useState(false)
   const [notes, setNotes] = useState<ReviewNote[]>([])
 
-  // Check URL for review mode
+  // Check for admin session via cookie (set at login) or legacy URL param
   useEffect(() => {
-    const params = new URLSearchParams(window.location.search)
-    if (params.get('review') === REVIEW_SECRET) {
+    // Primary: check admin_review cookie (set by /api/admin/login)
+    if (getCookie('admin_review') === 'true') {
       setIsReviewMode(true)
-      // Persist review mode in sessionStorage so it survives navigation
+      return
+    }
+
+    // Legacy fallback: URL param ?review=revisar2026
+    const params = new URLSearchParams(window.location.search)
+    if (params.get('review') === 'revisar2026') {
+      setIsReviewMode(true)
       sessionStorage.setItem('review-mode', 'true')
     } else if (sessionStorage.getItem('review-mode') === 'true') {
       setIsReviewMode(true)
@@ -50,12 +61,6 @@ export function ReviewProvider({ children }: { children: ReactNode }) {
       const stored = localStorage.getItem(STORAGE_KEY)
       if (stored) setNotes(JSON.parse(stored))
     } catch {}
-  }, [])
-
-  // Save notes to localStorage
-  const persistNotes = useCallback((updated: ReviewNote[]) => {
-    setNotes(updated)
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(updated))
   }, [])
 
   const saveNote = useCallback((note: Omit<ReviewNote, 'id' | 'createdAt' | 'updatedAt'>) => {
@@ -128,6 +133,17 @@ export function ReviewProvider({ children }: { children: ReactNode }) {
     return lines.join('\n')
   }, [notes])
 
+  const logout = useCallback(async () => {
+    try {
+      await fetch('/api/admin/logout', { method: 'POST' })
+    } catch {}
+    // Clear client-side state
+    document.cookie = 'admin_review=; path=/; max-age=0'
+    sessionStorage.removeItem('review-mode')
+    setIsReviewMode(false)
+    window.location.href = '/'
+  }, [])
+
   const stats = {
     total: notes.length,
     approved: notes.filter(n => n.status === 'approved').length,
@@ -136,7 +152,7 @@ export function ReviewProvider({ children }: { children: ReactNode }) {
   }
 
   return (
-    <ReviewContext.Provider value={{ isReviewMode, notes, saveNote, getNote, exportNotes, stats }}>
+    <ReviewContext.Provider value={{ isReviewMode, notes, saveNote, getNote, exportNotes, stats, logout }}>
       {children}
     </ReviewContext.Provider>
   )
