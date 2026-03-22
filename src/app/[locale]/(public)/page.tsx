@@ -46,9 +46,9 @@ const categories = [
     image: 'https://images.unsplash.com/photo-1713193160430-a4f8fa3e692f?w=1920&q=85',
     label: 'Adventure Awaits',
     thumbs: [
-      { image: 'https://images.unsplash.com/photo-1605182054023-17d71f44aa11?w=400&q=80', href: '/experiences/tours', labelKey: 'Tours' },
-      { image: 'https://images.unsplash.com/photo-1596464716127-f2a82984de30?w=400&q=80', href: '/experiences/water-sports', labelKey: 'Water Sports' },
-      { image: 'https://images.unsplash.com/photo-1626033005784-e6c39eaa0669?w=400&q=80', href: '/experiences/adventure', labelKey: 'Aventura' },
+      { image: 'https://images.unsplash.com/photo-1605182054023-17d71f44aa11?w=400&q=80', href: '/experiences/top-experiences', labelKey: 'Top Experiencias' },
+      { image: 'https://images.unsplash.com/photo-1596464716127-f2a82984de30?w=400&q=80', href: '/experiences/water-sports', labelKey: 'Deportes Acuáticos' },
+      { image: 'https://images.unsplash.com/photo-1626033005784-e6c39eaa0669?w=400&q=80', href: '/experiences/day-trips', labelKey: 'Excursiones' },
     ],
   },
   {
@@ -59,8 +59,8 @@ const categories = [
     label: 'Golden Sand & Crystal Waters',
     thumbs: [
       { image: 'https://images.unsplash.com/photo-1633110437400-0ad02d85c2d2?w=400&q=80', href: '/beaches/best-beaches', labelKey: 'Mejores Playas' },
-      { image: 'https://images.unsplash.com/photo-1661075108456-a59effb64e96?w=400&q=80', href: '/beaches/black-sand', labelKey: 'Arena Negra' },
-      { image: 'https://images.unsplash.com/photo-1661075225585-dc3a622b26e5?w=400&q=80', href: '/beaches/natural-pools', labelKey: 'Piscinas Naturales' },
+      { image: 'https://images.unsplash.com/photo-1661075108456-a59effb64e96?w=400&q=80', href: '/beaches/north-beaches', labelKey: 'Playas del Norte' },
+      { image: 'https://images.unsplash.com/photo-1661075225585-dc3a622b26e5?w=400&q=80', href: '/beaches/south-beaches', labelKey: 'Playas del Sur' },
     ],
   },
   {
@@ -71,7 +71,7 @@ const categories = [
     label: 'Heritage & History',
     thumbs: [
       { image: 'https://images.unsplash.com/photo-1558618666-fcd25c85f82e?w=400&q=80', href: '/culture/historic-towns', labelKey: 'Pueblos Históricos' },
-      { image: 'https://images.unsplash.com/photo-1533174072545-7a4b6ad7a6c3?w=400&q=80', href: '/culture/festivals', labelKey: 'Fiestas y Carnaval' },
+      { image: 'https://images.unsplash.com/photo-1533174072545-7a4b6ad7a6c3?w=400&q=80', href: '/culture/guanche-heritage', labelKey: 'Herencia Guanche' },
       { image: 'https://images.unsplash.com/photo-1582555172866-f73bb12a2ab3?w=400&q=80', href: '/culture/museums', labelKey: 'Museos' },
     ],
   },
@@ -83,8 +83,8 @@ const categories = [
     label: 'Wild & Untamed',
     thumbs: [
       { image: 'https://images.unsplash.com/photo-1713193160430-a4f8fa3e692f?w=400&q=80', href: '/nature/hiking-trails', labelKey: 'Senderismo' },
-      { image: 'https://images.unsplash.com/photo-1669147951690-658f2e4b4dd3?w=400&q=80', href: '/nature/volcanoes', labelKey: 'Volcanes' },
-      { image: 'https://images.unsplash.com/photo-1585320806297-9794b3e4eeae?w=400&q=80', href: '/nature/forests', labelKey: 'Bosques' },
+      { image: 'https://images.unsplash.com/photo-1669147951690-658f2e4b4dd3?w=400&q=80', href: '/nature/teide-national-park', labelKey: 'Parque del Teide' },
+      { image: 'https://images.unsplash.com/photo-1585320806297-9794b3e4eeae?w=400&q=80', href: '/nature/miradores', labelKey: 'Miradores' },
     ],
   },
   {
@@ -94,9 +94,9 @@ const categories = [
     image: 'https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=1920&q=85',
     label: 'Culinary Delights',
     thumbs: [
-      { image: 'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=400&q=80', href: '/food/restaurants', labelKey: 'Restaurantes' },
+      { image: 'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=400&q=80', href: '/food/best-restaurants', labelKey: 'Restaurantes' },
       { image: 'https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=400&q=80', href: '/food/guachinches', labelKey: 'Guachinches' },
-      { image: 'https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=400&q=80', href: '/food/recommendations', labelKey: 'Recomendaciones' },
+      { image: 'https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=400&q=80', href: '/food/canarian-cuisine', labelKey: 'Cocina Canaria' },
     ],
   },
   {
