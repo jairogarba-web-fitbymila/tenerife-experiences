@@ -47,7 +47,7 @@ const categories = [
     label: 'Adventure Awaits',
     thumbs: [
       { image: 'https://images.unsplash.com/photo-1605182054023-17d71f44aa11?w=400&q=80', href: '/experiences/top-experiences', labelKey: 'Top Experiencias' },
-      { image: 'https://images.unsplash.com/photo-1596464716127-f2a82984de30?w=400&q=80', href: '/experiences/water-sports', labelKey: 'Deportes Acuáticos' },
+      { image: 'https://images.unsplash.com/photo-1530053969600-caed2596d242?w=400&q=80', href: '/experiences/water-sports', labelKey: 'Deportes Acuáticos' },
       { image: 'https://images.unsplash.com/photo-1626033005784-e6c39eaa0669?w=400&q=80', href: '/experiences/day-trips', labelKey: 'Excursiones' },
     ],
   },
@@ -67,10 +67,10 @@ const categories = [
     id: 'culture',
     icon: MapPin,
     href: '/culture',
-    image: 'https://images.unsplash.com/photo-1580309237429-661ea0218972?w=1920&q=85',
+    image: 'https://images.unsplash.com/photo-1585208798174-6cedd86e019a?w=1920&q=85',
     label: 'Heritage & History',
     thumbs: [
-      { image: 'https://images.unsplash.com/photo-1558618666-fcd25c85f82e?w=400&q=80', href: '/culture/historic-towns', labelKey: 'Pueblos Históricos' },
+      { image: 'https://images.unsplash.com/photo-1648396213626-860f8b8ddf65?w=400&q=80', href: '/culture/historic-towns', labelKey: 'Pueblos Históricos' },
       { image: 'https://images.unsplash.com/photo-1533174072545-7a4b6ad7a6c3?w=400&q=80', href: '/culture/guanche-heritage', labelKey: 'Herencia Guanche' },
       { image: 'https://images.unsplash.com/photo-1582555172866-f73bb12a2ab3?w=400&q=80', href: '/culture/museums', labelKey: 'Museos' },
     ],
@@ -83,8 +83,8 @@ const categories = [
     label: 'Wild & Untamed',
     thumbs: [
       { image: 'https://images.unsplash.com/photo-1713193160430-a4f8fa3e692f?w=400&q=80', href: '/nature/hiking-trails', labelKey: 'Senderismo' },
-      { image: 'https://images.unsplash.com/photo-1669147951690-658f2e4b4dd3?w=400&q=80', href: '/nature/teide-national-park', labelKey: 'Parque del Teide' },
-      { image: 'https://images.unsplash.com/photo-1585320806297-9794b3e4eeae?w=400&q=80', href: '/nature/miradores', labelKey: 'Miradores' },
+      { image: 'https://images.unsplash.com/photo-1552934084-2590ebf9da25?w=400&q=80', href: '/nature/teide-national-park', labelKey: 'Parque del Teide' },
+      { image: 'https://images.unsplash.com/photo-1506368387824-6cf9848c1638?w=400&q=80', href: '/nature/miradores', labelKey: 'Miradores' },
     ],
   },
   {
@@ -107,7 +107,7 @@ const categories = [
     label: 'After Dark Magic',
     thumbs: [
       { image: 'https://images.unsplash.com/photo-1540541338287-41700207dee6?w=400&q=80', href: '/nightlife/beach-clubs', labelKey: 'Beach Clubs' },
-      { image: 'https://images.unsplash.com/photo-1571266028243-e4733b0f0bb0?w=400&q=80', href: '/nightlife/clubs', labelKey: 'Discotecas' },
+      { image: 'https://images.unsplash.com/photo-1566127444979-b3d2b654e3d7?w=400&q=80', href: '/nightlife/clubs', labelKey: 'Discotecas' },
       { image: 'https://images.unsplash.com/photo-1533174072545-7a4b6ad7a6c3?w=400&q=80', href: '/nightlife/festivals', labelKey: 'Festivales' },
     ],
   },
