@@ -189,7 +189,7 @@ export default function HomePage() {
       />
 
       {/* ===== HERO: Full-screen cinematic ===== */}
-      <section className="relative w-full h-screen flex flex-col items-center justify-center overflow-hidden -mt-16">
+      <section className="relative w-full h-screen flex flex-col items-center justify-center overflow-hidden">
         <div className="absolute inset-0">
           <img
             src="https://images.unsplash.com/photo-1605182054023-17d71f44aa11?w=1920&q=85"
