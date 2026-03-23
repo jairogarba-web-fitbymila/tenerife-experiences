@@ -19,6 +19,17 @@ interface ImagePickerModalProps {
   sectionLabel?: string
 }
 
+// Extract a display name from i18n name objects like {en: "...", es: "...", ...}
+function getLocaleName(name: unknown, fallback: string = ''): string {
+  if (!name) return fallback
+  if (typeof name === 'string') return name
+  if (typeof name === 'object' && name !== null) {
+    const obj = name as Record<string, string>
+    return obj.es || obj.en || Object.values(obj)[0] || fallback
+  }
+  return fallback
+}
+
 const CATEGORY_LABELS: Record<string, string> = {
   experiences: 'Experiencias',
   beaches: 'Playas',
@@ -60,7 +71,7 @@ export function ImagePickerModal({
         if (c.image) {
           allPhotos.push({
             url: c.image,
-            label: c.name || c.slug,
+            label: getLocaleName(c.name, c.slug),
             source: 'categories',
             category: c.slug,
           })
@@ -77,7 +88,7 @@ export function ImagePickerModal({
         if (s.image) {
           allPhotos.push({
             url: s.image,
-            label: s.name || s.slug,
+            label: getLocaleName(s.name, s.slug),
             source: 'subcategories',
             category: s.categories?.slug,
           })
@@ -93,19 +104,21 @@ export function ImagePickerModal({
       items.forEach((item: any) => {
         const catSlug = item.subcategories?.categories?.slug
         if (item.image) {
+          const itemLabel = getLocaleName(item.name, item.slug)
           allPhotos.push({
             url: item.image,
-            label: item.name || item.slug,
+            label: itemLabel,
             source: 'items',
             category: catSlug,
           })
         }
         if (item.images && Array.isArray(item.images)) {
+          const itemLabel2 = getLocaleName(item.name, item.slug)
           item.images.forEach((img: string, i: number) => {
             if (img) {
               allPhotos.push({
                 url: img,
-                label: `${item.name || item.slug} (${i + 1})`,
+                label: `${itemLabel2} (${i + 1})`,
                 source: 'items',
                 category: catSlug,
               })

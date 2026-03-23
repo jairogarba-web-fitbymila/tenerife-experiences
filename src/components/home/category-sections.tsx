@@ -89,7 +89,7 @@ export function CategorySections({ categories }: { categories: CategoryData[] })
                 categoryFilter={cat.id}
                 label={`Fondo: ${tc(cat.id)}`}
                 onImageChange={(url) => handleImageChange(bgSectionId, url)}
-                className="absolute top-3 right-3"
+                className="absolute top-3 left-1/2 -translate-x-1/2"
               />
 
               {/* Content */}
