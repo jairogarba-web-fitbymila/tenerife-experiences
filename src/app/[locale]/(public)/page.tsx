@@ -24,6 +24,7 @@ import { MapSection } from '@/components/home/map-section'
 import { NewsletterForm } from '@/components/home/newsletter-form'
 import { ScrollEffects } from '@/components/cinematic/scroll-effects'
 import { ReviewSection } from '@/components/review/review-panel'
+import { CategorySections } from '@/components/home/category-sections'
 
 const mapPins = [
   { name: 'Teide National Park', slug: 'areas/teide', category: 'nature', lat: 28.2723, lng: -16.6422 },
@@ -227,82 +228,7 @@ export default function HomePage() {
       </ReviewSection>
 
       {/* ===== CINEMATIC CATEGORY SECTIONS ===== */}
-      <div className="relative z-10">
-        {categories.map((cat, i) => {
-          const isAlt = i % 2 !== 0
-          return (
-            <ReviewSection key={cat.id} page="landing" sectionId={`cat-${cat.id}`} sectionLabel={`Categoría: ${cat.id}`}>
-            <section
-              className="cinematic-section h-[70vh] min-h-[500px] md:min-h-[600px] flex items-center border-b border-orange-500/10"
-            >
-              {/* Background */}
-              <div
-                className="cinematic-bg"
-                data-parallax
-                style={{ backgroundImage: `url('${cat.image}')` }}
-              />
-              <div className="cinematic-overlay" />
-
-              {/* Content */}
-              <div className={`relative z-10 w-full flex items-center px-6 md:px-12 lg:px-16 ${isAlt ? 'justify-end' : 'justify-start'}`}>
-                <div className={`max-w-lg ${isAlt ? 'text-right' : 'text-left'} reveal`}>
-                  <span className="inline-block text-xs sm:text-sm font-bold tracking-[3px] text-orange-400 uppercase mb-3">
-                    {cat.label}
-                  </span>
-                  <h2 className="text-[clamp(2.5rem,6vw,4.5rem)] font-extrabold tracking-tight leading-[1.1] text-white mb-5">
-                    {tc(cat.id)}
-                  </h2>
-                  <Link
-                    href={cat.href}
-                    className={`inline-flex items-center gap-2 text-orange-400 font-semibold text-lg hover:gap-3 transition-all duration-300 ${isAlt ? 'flex-row-reverse' : ''}`}
-                  >
-                    {isAlt ? <ArrowRight className="h-5 w-5 rotate-180" /> : null}
-                    <span>{t('areas.explore')}</span>
-                    {!isAlt ? <ArrowRight className="h-5 w-5" /> : null}
-                  </Link>
-                </div>
-              </div>
-
-              {/* Thumbnails as links (desktop) */}
-              <div
-                className={`hidden lg:flex absolute top-1/2 -translate-y-1/2 flex-col gap-4 z-20 ${isAlt ? 'left-12' : 'right-12'}`}
-              >
-                {cat.thumbs.map((thumb, j) => (
-                  <Link
-                    key={j}
-                    href={thumb.href}
-                    className="group/thumb relative w-[110px] h-[110px] xl:w-[130px] xl:h-[130px] rounded-lg overflow-hidden shadow-2xl border-2 border-transparent hover:border-orange-500/60 hover:scale-105 transition-all duration-300"
-                  >
-                    <img src={thumb.image} alt={thumb.labelKey} className="w-full h-full object-cover" loading="lazy" />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
-                    <span className="absolute bottom-1.5 left-0 right-0 text-center text-[10px] xl:text-xs font-bold text-white leading-tight px-1">
-                      {thumb.labelKey}
-                    </span>
-                  </Link>
-                ))}
-              </div>
-
-              {/* Thumbnails as links (mobile) */}
-              <div className={`flex lg:hidden absolute top-4 left-4 gap-2 z-20`}>
-                {cat.thumbs.map((thumb, j) => (
-                  <Link
-                    key={j}
-                    href={thumb.href}
-                    className="relative w-14 h-14 sm:w-16 sm:h-16 rounded-xl overflow-hidden border-2 border-white/20 shadow-lg flex-shrink-0"
-                  >
-                    <img src={thumb.image} alt={thumb.labelKey} className="w-full h-full object-cover" loading="lazy" />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent" />
-                    <span className="absolute bottom-0.5 left-0 right-0 text-center text-[7px] sm:text-[8px] font-bold text-white leading-tight px-0.5">
-                      {thumb.labelKey}
-                    </span>
-                  </Link>
-                ))}
-              </div>
-            </section>
-            </ReviewSection>
-          )
-        })}
-      </div>
+      <CategorySections categories={categories.map(({ icon, ...rest }) => rest)} />
 
       {/* ===== AREAS SECTION ===== */}
       <ReviewSection page="landing" sectionId="areas" sectionLabel="Zonas">
