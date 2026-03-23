@@ -10,7 +10,7 @@ interface EditableImageProps {
   categoryFilter?: string
   label?: string
   onImageChange?: (newUrl: string) => void
-  children: React.ReactNode
+  className?: string
 }
 
 export function EditableImage({
@@ -19,7 +19,7 @@ export function EditableImage({
   categoryFilter,
   label,
   onImageChange,
-  children,
+  className = '',
 }: EditableImageProps) {
   const { isReviewMode } = useReview()
   const [pickerOpen, setPickerOpen] = useState(false)
@@ -51,30 +51,25 @@ export function EditableImage({
     setPickerOpen(false)
   }, [sectionId, onImageChange])
 
-  if (!isReviewMode) {
-    return <>{children}</>
-  }
+  if (!isReviewMode) return null
 
   return (
-    <div className="relative group/edit">
-      {children}
-
-      {/* Edit button overlay */}
+    <>
       <button
         onClick={(e) => {
           e.preventDefault()
           e.stopPropagation()
           setPickerOpen(true)
         }}
-        className={`absolute z-[55] flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg text-xs font-bold shadow-lg cursor-pointer transition-all hover:scale-105 ${
+        className={`z-[55] flex items-center gap-1.5 px-2 py-1 rounded-md text-[10px] font-bold shadow-lg cursor-pointer transition-all hover:scale-105 ${
           saved
-            ? 'bg-green-500 text-white top-2 right-2'
+            ? 'bg-green-500 text-white'
             : saving
-              ? 'bg-yellow-500 text-black top-2 right-2'
-              : 'bg-blue-500 hover:bg-blue-400 text-white top-2 right-2 opacity-60 group-hover/edit:opacity-100'
-        }`}
+              ? 'bg-yellow-500 text-black'
+              : 'bg-blue-600 hover:bg-blue-500 text-white'
+        } ${className}`}
       >
-        {saved ? '✓ Guardado' : saving ? '...' : '📷 Cambiar'}
+        {saved ? '✓' : saving ? '...' : '📷'}
       </button>
 
       <ImagePickerModal
@@ -85,6 +80,6 @@ export function EditableImage({
         categoryFilter={categoryFilter}
         sectionLabel={label}
       />
-    </div>
+    </>
   )
 }
