@@ -1,6 +1,15 @@
 import { NextRequest, NextResponse } from 'next/server'
+import { cookies } from 'next/headers'
 import { createAdminClient } from '@/lib/supabase/admin'
 import { isAuthenticated } from '@/lib/auth'
+
+// Check if user is in review mode (admin_session OR admin_review cookie)
+async function isReviewAuthorized(): Promise<boolean> {
+  if (await isAuthenticated()) return true
+  const cookieStore = await cookies()
+  const reviewCookie = cookieStore.get('admin_review')
+  return reviewCookie?.value === 'true'
+}
 
 // GET: Fetch all landing images (public, no auth needed for read)
 export async function GET() {
@@ -20,7 +29,7 @@ export async function GET() {
 
 // PUT: Update a landing image (admin only)
 export async function PUT(request: NextRequest) {
-  if (!(await isAuthenticated())) {
+  if (!(await isReviewAuthorized())) {
     return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
   }
 

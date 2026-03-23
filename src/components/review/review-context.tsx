@@ -50,6 +50,8 @@ export function ReviewProvider({ children }: { children: ReactNode }) {
     if (params.get('review') === 'revisar2026') {
       setIsReviewMode(true)
       sessionStorage.setItem('review-mode', 'true')
+      // Also set cookie so server-side API routes can verify review mode
+      document.cookie = 'admin_review=true; path=/; max-age=86400; SameSite=Lax'
     } else if (sessionStorage.getItem('review-mode') === 'true') {
       setIsReviewMode(true)
     }
