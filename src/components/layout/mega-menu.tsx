@@ -248,6 +248,18 @@ export function MegaMenuDesktop() {
       >
         {t('items.blog')}
       </Link>
+
+      {/* Guides - simple link */}
+      <Link
+        href="/guias"
+        className={`px-3 py-2 text-sm font-medium rounded-lg transition-colors ${
+          pathname.startsWith('/guias')
+            ? 'text-orange-400 bg-orange-400/10'
+            : 'text-gray-300 hover:text-white hover:bg-white/5'
+        }`}
+      >
+        {t('items.guides')}
+      </Link>
     </nav>
   )
 }
@@ -327,6 +339,15 @@ export function MegaMenuMobile({ onNavigate }: MegaMenuMobileProps) {
         className="px-4 py-3 text-lg font-medium text-gray-300 hover:text-white hover:bg-white/5 rounded-lg transition-colors"
       >
         {t('items.blog')}
+      </Link>
+
+      {/* Guides - simple link */}
+      <Link
+        href="/guias"
+        onClick={onNavigate}
+        className="px-4 py-3 text-lg font-medium text-gray-300 hover:text-white hover:bg-white/5 rounded-lg transition-colors"
+      >
+        {t('items.guides')}
       </Link>
     </nav>
   )

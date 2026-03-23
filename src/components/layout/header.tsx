@@ -13,6 +13,7 @@ const navLinks = [
   { href: '/food', key: 'food' },
   { href: '/nightlife', key: 'nightlife' },
   { href: '/blog', key: 'blog' },
+  { href: '/guias', key: 'guides' },
 ] as const
 
 const displayLocales: Locale[] = ['en', 'es', 'de']

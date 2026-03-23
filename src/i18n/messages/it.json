@@ -4,7 +4,7 @@
     "description": "Scopri Tenerife: guida completa alle migliori spiagge, escursioni, ristoranti ed esperienze. Info pratiche aggiornate al 2026. Pianifica il tuo viaggio ora!"
   },
   "nav": { "home": "Home", "experiences": "Esperienze", "beaches": "Spiagge", "culture": "Cultura", "nature": "Natura", "food": "Gastronomia", "nightlife": "Vita Notturna", "events": "Cultura e Svago",
-    "areas": "Zone", "blog": "Blog", "search": "Cerca...", "bookNow": "Prenota" },
+    "areas": "Zone", "blog": "Blog", "guides": "Guide", "search": "Cerca...", "bookNow": "Prenota" },
   "home": {
     "hero": { "title": "Scopri Tenerife", "subtitle": "La tua guida definitiva all'Isola dell'Eterna Primavera", "cta": "Esplora le Esperienze", "searchPlaceholder": "Cosa vuoi fare a Tenerife?", "badge": "Isole Canarie, Spagna", "altImage": "Vista panoramica del Teide e del paesaggio vulcanico di Tenerife, Isole Canarie", "statsRating": "valutazione", "statsBeaches": "spiagge", "statsExperiences": "esperienze", "statsLanguages": "lingue" },
     "featured": { "title": "Esperienze in Evidenza", "subtitle": "Attività selezionate e amate dai visitatori", "viewAll": "Vedi Tutte" },
@@ -18,6 +18,65 @@
   "categories": { "experiences": "Esperienze", "beaches": "Spiagge", "culture": "Cultura e Storia", "nature": "Natura e Trekking", "food": "Gastronomia", "nightlife": "Vita Notturna", "shopping": "Shopping", "family": "Famiglia", "wellness": "Benessere e Spa", "services": "Servizi", "practical": "Info Pratiche" },
   "item": { "from": "Da", "perPerson": "a persona", "bookNow": "Prenota Ora", "duration": "Durata", "rating": "Valutazione", "reviews": "recensioni", "location": "Posizione", "highlights": "In Evidenza", "includes": "Cosa Include", "description": "Descrizione", "sandType": "Tipo di Sabbia", "bathingConditions": "Condizioni di Balneazione", "accessibility": "Accessibilità", "riskLevel": "Livello di Rischio", "similarExperiences": "Esperienze Simili", "writeReview": "Scrivi una Recensione", "seeAllReviews": "Tutte le Recensioni", "share": "Condividi", "save": "Salva" },
   "blog": { "title": "Blog di Viaggio Tenerife", "subtitle": "Consigli, guide e ispirazione per il tuo viaggio", "readTime": "min di lettura", "publishedOn": "Pubblicato il", "relatedArticles": "Articoli Correlati", "categories": "Categorie", "latestPosts": "Ultimi Articoli" },
+  "guides": {
+    "meta": {
+      "title": "Guide di Tenerife — Scarica la tua guida digitale",
+      "description": "Guide digitali di Tenerife: gastronomia, spiagge segrete, avventura, fughe romantiche, piani in famiglia e vita notturna. Scarica in PDF."
+    },
+    "hero": {
+      "badge": "Guide Digitali",
+      "title": "Guide di Tenerife",
+      "subtitle": "Tutto quello che devi sapere, scritto dai residenti. Scarica le nostre guide PDF e porta Tenerife in tasca."
+    },
+    "section": {
+      "title": "Le Nostre Guide",
+      "subtitle": "Ogni guida è scritta da residenti che conoscono ogni angolo dell'isola. Info reali, senza filtri, aggiornate al 2026."
+    },
+    "items": {
+      "foodie": {
+        "title": "Tenerife Foodie — Guida Gastronomica",
+        "description": "50+ ristoranti imperdibili, guachinches nascosti, itinerari gastronomici per zona e i piatti che devi assolutamente provare."
+      },
+      "beaches": {
+        "title": "Spiagge & Calette Segrete",
+        "description": "Le spiagge che non trovi nelle guide. Calette di sabbia nera, piscine naturali, angoli solo per i locali e le migliori per ogni momento."
+      },
+      "adventure": {
+        "title": "Avventura & Natura",
+        "description": "Sentieri escursionistici, gole, arrampicata, surf, parapendio e tutto ciò che puoi fare all'aperto su un'isola vulcanica."
+      },
+      "romantic": {
+        "title": "Tenerife Romantica",
+        "description": "Tramonti perfetti, ristoranti con vista, hotel boutique e angoli magici da vivere in coppia."
+      },
+      "family": {
+        "title": "Tenerife con Bambini",
+        "description": "Piani infallibili con i piccoli: parchi tematici, spiagge sicure, sentieri facili e ristoranti family-friendly."
+      },
+      "nightlife": {
+        "title": "Vita Notturna & Cultura",
+        "description": "La notte di Tenerife non dorme mai: beach club, terrazze cocktail, discoteche, feste locali e dove ballare fino all'alba."
+      }
+    },
+    "status": {
+      "coming_soon": "Prossimamente",
+      "planned": "In preparazione",
+      "available": "Disponibile"
+    },
+    "pages": "pagine",
+    "bundle": {
+      "badge": "Risparmia il 55%",
+      "title": "La Bibbia di Tenerife",
+      "description": "Tutte le 6 guide in un unico pacchetto. Tutto ciò che serve per goderti Tenerife al massimo.",
+      "save": "-55%"
+    },
+    "notify": {
+      "title": "Vuoi essere il primo a saperlo?",
+      "subtitle": "Lascia la tua email e ti avviseremo al lancio di ogni guida. I primi iscritti riceveranno uno sconto esclusivo.",
+      "placeholder": "tu@email.com",
+      "button": "Avvisami"
+    }
+  },
   "areas": { "title": "Esplora Tenerife per Zona", "subtitle": "Ogni regione ha il suo carattere e le sue attrazioni", "thingsToDo": "Cosa Fare", "restaurants": "Ristoranti", "beaches": "Spiagge" },
   "common": { "loading": "Caricamento...", "error": "Qualcosa è andato storto", "notFound": "Pagina non trovata", "backHome": "Torna alla Home", "viewAll": "Vedi Tutto", "showMore": "Mostra di Più", "showLess": "Mostra di Meno", "filters": "Filtri", "sortBy": "Ordina per", "popular": "Più Popolare", "newest": "Più Recente", "priceAsc": "Prezzo: Crescente", "priceDesc": "Prezzo: Decrescente", "ratingDesc": "Migliore Valutazione", "noResults": "Nessun risultato trovato", "free": "Gratuito", "featured": "In Evidenza", "new": "Nuovo", "topRated": "Più Votato" },
   "partners": {
@@ -91,7 +150,8 @@
       "whatToVisit": "Cosa visitare",
       "gastronomy": "Gastronomia",
       "planTrip": "Pianifica il viaggio",
-      "blog": "Blog"
+      "blog": "Blog",
+      "guides": "Guide"
     },
     "groups": {
       "experiences": "Esperienze",

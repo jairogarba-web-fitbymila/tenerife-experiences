@@ -14,6 +14,7 @@
     "events": "Culture & Loisirs",
     "areas": "Régions",
     "blog": "Blog",
+    "guides": "Guides",
     "search": "Rechercher...",
     "bookNow": "Réserver"
   },
@@ -41,6 +42,65 @@
   "categories": { "experiences": "Expériences", "beaches": "Plages", "culture": "Culture & Histoire", "nature": "Nature & Randonnée", "food": "Gastronomie", "nightlife": "Vie Nocturne", "shopping": "Shopping", "family": "Famille", "wellness": "Bien-être & Spa", "services": "Services", "practical": "Infos Pratiques" },
   "item": { "from": "À partir de", "perPerson": "par personne", "bookNow": "Réserver", "duration": "Durée", "rating": "Note", "reviews": "avis", "location": "Lieu", "highlights": "Points Forts", "includes": "Inclus", "description": "Description", "sandType": "Type de Sable", "bathingConditions": "Conditions de Baignade", "accessibility": "Accessibilité", "riskLevel": "Niveau de Risque", "similarExperiences": "Expériences Similaires", "writeReview": "Écrire un Avis", "seeAllReviews": "Voir Tous les Avis", "share": "Partager", "save": "Sauvegarder" },
   "blog": { "title": "Blog Voyage Tenerife", "subtitle": "Conseils, guides et inspiration pour votre voyage", "readTime": "min de lecture", "publishedOn": "Publié le", "relatedArticles": "Articles Connexes", "categories": "Catégories", "latestPosts": "Derniers Articles" },
+  "guides": {
+    "meta": {
+      "title": "Guides de Tenerife — Téléchargez votre guide numérique",
+      "description": "Guides numériques de Tenerife : gastronomie, plages secrètes, aventure, escapades romantiques, plans en famille et vie nocturne. Téléchargement PDF."
+    },
+    "hero": {
+      "badge": "Guides Numériques",
+      "title": "Guides de Tenerife",
+      "subtitle": "Tout ce que vous devez savoir, écrit par des locaux. Téléchargez nos guides PDF et emportez Tenerife dans votre poche."
+    },
+    "section": {
+      "title": "Nos Guides",
+      "subtitle": "Chaque guide est rédigé par des résidents qui connaissent chaque recoin de l'île. Infos réelles, sans filtre, mises à jour pour 2026."
+    },
+    "items": {
+      "foodie": {
+        "title": "Tenerife Foodie — Guide Gastronomique",
+        "description": "50+ restaurants incontournables, guachinches cachés, itinéraires gourmands par zone et les plats que vous devez absolument goûter."
+      },
+      "beaches": {
+        "title": "Plages & Criques Secrètes",
+        "description": "Les plages qui ne figurent pas dans les guides. Criques de sable noir, piscines naturelles, coins réservés aux locaux et les meilleures pour chaque envie."
+      },
+      "adventure": {
+        "title": "Aventure & Nature",
+        "description": "Sentiers de randonnée, ravins, escalade, surf, parapente et tout ce que vous pouvez faire en plein air sur une île volcanique."
+      },
+      "romantic": {
+        "title": "Tenerife Romantique",
+        "description": "Couchers de soleil parfaits, restaurants avec vue, hôtels boutique et coins magiques à savourer en couple."
+      },
+      "family": {
+        "title": "Tenerife en Famille",
+        "description": "Plans infaillibles avec les petits : parcs à thème, plages sûres, randonnées faciles et restaurants adaptés aux familles."
+      },
+      "nightlife": {
+        "title": "Vie Nocturne & Culture",
+        "description": "La nuit de Tenerife ne dort jamais : beach clubs, terrasses cocktails, discothèques, fêtes locales et où danser jusqu'à l'aube."
+      }
+    },
+    "status": {
+      "coming_soon": "Bientôt",
+      "planned": "En préparation",
+      "available": "Disponible"
+    },
+    "pages": "pages",
+    "bundle": {
+      "badge": "Économisez 55%",
+      "title": "La Bible de Tenerife",
+      "description": "Les 6 guides en un seul pack. Tout ce qu'il faut pour profiter de Tenerife au maximum.",
+      "save": "-55%"
+    },
+    "notify": {
+      "title": "Vous voulez être les premiers informés ?",
+      "subtitle": "Laissez votre email et nous vous préviendrons au lancement de chaque guide. Les premiers inscrits bénéficient d'une réduction exclusive.",
+      "placeholder": "vous@email.com",
+      "button": "Me prévenir"
+    }
+  },
   "areas": { "title": "Explorer Tenerife par Région", "subtitle": "Chaque région a son propre caractère et ses attractions", "thingsToDo": "Activités", "restaurants": "Restaurants", "beaches": "Plages" },
   "common": { "loading": "Chargement...", "error": "Une erreur est survenue", "notFound": "Page non trouvée", "backHome": "Retour à l'Accueil", "viewAll": "Voir Tout", "showMore": "Voir Plus", "showLess": "Voir Moins", "filters": "Filtres", "sortBy": "Trier par", "popular": "Plus Populaire", "newest": "Plus Récent", "priceAsc": "Prix : Croissant", "priceDesc": "Prix : Décroissant", "ratingDesc": "Mieux Noté", "noResults": "Aucun résultat trouvé", "free": "Gratuit", "featured": "En Vedette", "new": "Nouveau", "topRated": "Mieux Noté" },
   "partners": {
@@ -114,7 +174,8 @@
       "whatToVisit": "Que visiter",
       "gastronomy": "Gastronomie",
       "planTrip": "Planifier votre voyage",
-      "blog": "Blog"
+      "blog": "Blog",
+      "guides": "Guides"
     },
     "groups": {
       "experiences": "Experiences",

@@ -462,9 +462,9 @@ export default async function ItemDetailPage({
                       : 'Find and book activities, tours and excursions with free cancellation through Civitatis.'}
                 </p>
                 <a
-                  href="https://www.civitatis.com/es/tenerife/?aid=tenerife-experiences"
+                  href={`https://www.civitatis.com/${locale === 'es' ? 'es' : locale === 'de' ? 'de' : locale === 'fr' ? 'fr' : locale === 'it' ? 'it' : locale === 'ru' ? 'ru' : 'en'}/tenerife/${process.env.NEXT_PUBLIC_CIVITATIS_AID ? `?aid=${process.env.NEXT_PUBLIC_CIVITATIS_AID}` : ''}`}
                   target="_blank"
-                  rel="noopener noreferrer"
+                  rel="noopener noreferrer sponsored"
                   className="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-blue-600 hover:bg-blue-500 text-white font-semibold transition-colors"
                 >
                   {locale === 'es' ? 'Ver excursiones en Civitatis' : locale === 'de' ? 'Ausflüge auf Civitatis ansehen' : 'Browse Civitatis tours'}

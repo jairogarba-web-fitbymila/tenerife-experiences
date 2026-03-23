@@ -14,6 +14,7 @@
     "events": "Cultura y Ocio",
     "areas": "Zonas",
     "blog": "Blog",
+    "guides": "Guías",
     "search": "Buscar...",
     "bookNow": "Reservar"
   },
@@ -116,6 +117,65 @@
     "categories": "Categorías",
     "latestPosts": "Últimos Artículos"
   },
+  "guides": {
+    "meta": {
+      "title": "Guías de Tenerife — Descarga tu guía digital",
+      "description": "Guías digitales de Tenerife: gastronomía, playas secretas, aventura, escapadas románticas, planes con niños y vida nocturna. Descarga en PDF."
+    },
+    "hero": {
+      "badge": "Guías Digitales",
+      "title": "Guías de Tenerife",
+      "subtitle": "Todo lo que necesitas saber, escrito por locales. Descarga nuestras guías en PDF y lleva Tenerife en tu bolsillo."
+    },
+    "section": {
+      "title": "Nuestras Guías",
+      "subtitle": "Cada guía está escrita por residentes que conocen cada rincón de la isla. Información real, sin filtros, actualizada en 2026."
+    },
+    "items": {
+      "foodie": {
+        "title": "Tenerife Foodie — Guía Gastronómica",
+        "description": "50+ restaurantes imprescindibles, guachinches escondidos, rutas gastronómicas por zonas y los platos que tienes que probar sí o sí."
+      },
+      "beaches": {
+        "title": "Playas & Calas Secretas",
+        "description": "Las playas que no salen en las guías. Calas de arena negra, piscinas naturales, rincones solo para locales y las mejores para cada momento."
+      },
+      "adventure": {
+        "title": "Aventura & Naturaleza",
+        "description": "Rutas de senderismo, barrancos, escalada, surf, parapente y todo lo que puedes hacer al aire libre en una isla volcánica."
+      },
+      "romantic": {
+        "title": "Tenerife Romántico",
+        "description": "Atardeceres perfectos, restaurantes con vistas, hoteles boutique y rincones mágicos para disfrutar en pareja."
+      },
+      "family": {
+        "title": "Tenerife con Niños",
+        "description": "Planes infalibles con los más pequeños: parques temáticos, playas seguras, rutas fáciles y restaurantes family-friendly."
+      },
+      "nightlife": {
+        "title": "Nightlife & Cultura",
+        "description": "La noche de Tenerife no duerme: beach clubs, terrazas con cócteles, discotecas, fiestas locales y dónde bailar hasta el amanecer."
+      }
+    },
+    "status": {
+      "coming_soon": "Próximamente",
+      "planned": "En preparación",
+      "available": "Disponible"
+    },
+    "pages": "páginas",
+    "bundle": {
+      "badge": "Ahorra un 55%",
+      "title": "La Biblia de Tenerife",
+      "description": "Las 6 guías en un solo pack. Todo lo que necesitas para exprimir Tenerife al máximo, desde la gastronomía hasta la aventura.",
+      "save": "-55%"
+    },
+    "notify": {
+      "title": "¿Quieres ser el primero en enterarte?",
+      "subtitle": "Déjanos tu email y te avisamos cuando lancemos cada guía. Los primeros recibirán un descuento exclusivo.",
+      "placeholder": "tu@email.com",
+      "button": "Avísame"
+    }
+  },
   "areas": {
     "title": "Explora Tenerife por Zona",
     "subtitle": "Cada región tiene su propio carácter y atracciones",
@@ -215,7 +275,8 @@
       "whatToVisit": "Que visitar",
       "gastronomy": "Gastronomia",
       "planTrip": "Planifica tu viaje",
-      "blog": "Blog"
+      "blog": "Blog",
+      "guides": "Guías"
     },
     "groups": {
       "experiences": "Experiencias",

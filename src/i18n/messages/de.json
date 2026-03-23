@@ -14,6 +14,7 @@
     "events": "Kultur & Freizeit",
     "areas": "Regionen",
     "blog": "Blog",
+    "guides": "Reiseführer",
     "search": "Suchen...",
     "bookNow": "Jetzt buchen"
   },
@@ -116,6 +117,65 @@
     "categories": "Kategorien",
     "latestPosts": "Neueste Beiträge"
   },
+  "guides": {
+    "meta": {
+      "title": "Teneriffa-Reiseführer — Laden Sie Ihren digitalen Guide herunter",
+      "description": "Digitale Reiseführer für Teneriffa: Gastronomie, geheime Strände, Abenteuer, romantische Ausflüge, Familienausflüge und Nachtleben. Als PDF herunterladen."
+    },
+    "hero": {
+      "badge": "Digitale Reiseführer",
+      "title": "Teneriffa Reiseführer",
+      "subtitle": "Alles, was Sie wissen müssen, von Einheimischen geschrieben. Laden Sie unsere PDF-Guides herunter und tragen Sie Teneriffa in Ihrer Tasche."
+    },
+    "section": {
+      "title": "Unsere Reiseführer",
+      "subtitle": "Jeder Guide wird von Bewohnern geschrieben, die jeden Winkel der Insel kennen. Echte Infos, ungeschminkt, aktualisiert für 2026."
+    },
+    "items": {
+      "foodie": {
+        "title": "Teneriffa Foodie — Gastronomie-Guide",
+        "description": "50+ Must-Visit-Restaurants, versteckte Guachinches, Gourmet-Routen nach Gegend und die Gerichte, die Sie unbedingt probieren müssen."
+      },
+      "beaches": {
+        "title": "Geheime Strände & Buchten",
+        "description": "Die Strände, die in keinem Reiseführer stehen. Schwarze Sandbuchten, Naturpools, Geheimtipps der Einheimischen und die besten für jede Stimmung."
+      },
+      "adventure": {
+        "title": "Abenteuer & Natur",
+        "description": "Wanderwege, Schluchten, Klettern, Surfen, Paragliding und alles, was Sie im Freien auf einer Vulkaninsel tun können."
+      },
+      "romantic": {
+        "title": "Romantisches Teneriffa",
+        "description": "Perfekte Sonnenuntergänge, Restaurants mit Aussicht, Boutique-Hotels und magische Ecken für Paare."
+      },
+      "family": {
+        "title": "Teneriffa mit Kindern",
+        "description": "Narrensichere Pläne mit den Kleinen: Themenparks, sichere Strände, einfache Wanderwege und familienfreundliche Restaurants."
+      },
+      "nightlife": {
+        "title": "Nachtleben & Kultur",
+        "description": "Teneriffas Nacht schläft nie: Beach Clubs, Cocktail-Terrassen, Clubs, lokale Feste und wo man bis zum Morgengrauen tanzt."
+      }
+    },
+    "status": {
+      "coming_soon": "Demnächst",
+      "planned": "In Vorbereitung",
+      "available": "Verfügbar"
+    },
+    "pages": "Seiten",
+    "bundle": {
+      "badge": "55% sparen",
+      "title": "Die Teneriffa-Bibel",
+      "description": "Alle 6 Guides in einem Paket. Alles, was Sie brauchen, um Teneriffa voll auszukosten.",
+      "save": "-55%"
+    },
+    "notify": {
+      "title": "Möchten Sie als Erster informiert werden?",
+      "subtitle": "Hinterlassen Sie Ihre E-Mail und wir benachrichtigen Sie, wenn jeder Guide erscheint. Frühbucher erhalten einen exklusiven Rabatt.",
+      "placeholder": "sie@email.com",
+      "button": "Benachrichtigen"
+    }
+  },
   "areas": {
     "title": "Teneriffa nach Regionen entdecken",
     "subtitle": "Jede Region hat ihren eigenen Charakter und Attraktionen",
@@ -215,7 +275,8 @@
       "whatToVisit": "Sehenswurdigkeiten",
       "gastronomy": "Essen & Trinken",
       "planTrip": "Reise planen",
-      "blog": "Blog"
+      "blog": "Blog",
+      "guides": "Reiseführer"
     },
     "groups": {
       "experiences": "Erlebnisse",
