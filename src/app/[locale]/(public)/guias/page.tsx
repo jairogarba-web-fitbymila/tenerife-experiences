@@ -27,7 +27,7 @@ const guides = [
     accent: 'orange',
     image: 'https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=800&q=80',
     price: '9.90',
-    status: 'coming_soon' as const,
+    status: 'coming_soon' as ('available' | 'coming_soon' | 'planned'),
     pages: '50+',
   },
   {
