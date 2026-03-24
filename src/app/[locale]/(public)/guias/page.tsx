@@ -2,6 +2,8 @@ import { getTranslations } from 'next-intl/server'
 import { Link } from '@/i18n/routing'
 import { ScrollEffects } from '@/components/cinematic/scroll-effects'
 import { ReviewSection } from '@/components/review/review-panel'
+import { GuideNotifyForm } from '@/components/guides/guide-notify-form'
+import { BuyGuideButton } from '@/components/guides/buy-guide-button'
 import { BookOpen, UtensilsCrossed, Waves, Mountain, Heart, Baby, Moon, Package } from 'lucide-react'
 
 export async function generateMetadata({
@@ -189,16 +191,18 @@ export default async function GuidesPage({
                         {t(`items.${guide.id}.description`)}
                       </p>
 
-                      {/* Meta */}
+                      {/* Meta + Buy */}
                       <div className="flex items-center justify-between pt-4 border-t border-white/5">
                         <div className="flex items-center gap-3 text-xs text-gray-500">
                           <span>{guide.pages} {t('pages')}</span>
                           <span>•</span>
                           <span>PDF</span>
                         </div>
-                        <span className="text-lg font-bold text-orange-400">
-                          {guide.price}€
-                        </span>
+                        <BuyGuideButton
+                          guideId={guide.id}
+                          price={guide.price}
+                          disabled={guide.status !== 'available'}
+                        />
                       </div>
                     </div>
                   </div>
@@ -247,13 +251,21 @@ export default async function GuidesPage({
                   </ul>
 
                   {/* Pricing */}
-                  <div className="flex items-end gap-3">
+                  <div className="flex items-end gap-3 mb-6">
                     <span className="text-4xl font-black text-white">{bundle.price}€</span>
                     <span className="text-lg text-gray-500 line-through mb-1">{bundle.originalPrice}€</span>
                     <span className="px-2 py-1 rounded-md bg-green-500/20 text-green-400 text-xs font-bold mb-1">
                       {t('bundle.save')}
                     </span>
                   </div>
+
+                  {/* Buy bundle button */}
+                  <BuyGuideButton
+                    guideId="bible"
+                    price={bundle.price}
+                    disabled
+                    className="w-full justify-center text-base py-3"
+                  />
                 </div>
 
                 {/* Right: image composition */}
@@ -286,16 +298,10 @@ export default async function GuidesPage({
             <p className="text-gray-400 mb-8">
               {t('notify.subtitle')}
             </p>
-            <div className="flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
-              <input
-                type="email"
-                placeholder={t('notify.placeholder')}
-                className="flex-1 px-4 py-3 rounded-xl bg-slate-900 border border-white/10 text-white placeholder:text-gray-500 focus:outline-none focus:border-orange-500/50 transition-colors"
-              />
-              <button className="px-6 py-3 rounded-xl bg-orange-500 hover:bg-orange-600 text-white font-semibold transition-colors whitespace-nowrap">
-                {t('notify.button')}
-              </button>
-            </div>
+            <GuideNotifyForm
+              placeholder={t('notify.placeholder')}
+              buttonText={t('notify.button')}
+            />
           </div>
         </section>
       </ReviewSection>

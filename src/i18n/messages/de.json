@@ -174,6 +174,12 @@
       "subtitle": "Hinterlassen Sie Ihre E-Mail und wir benachrichtigen Sie, wenn jeder Guide erscheint. Frühbucher erhalten einen exklusiven Rabatt.",
       "placeholder": "sie@email.com",
       "button": "Benachrichtigen"
+    },
+    "success": {
+      "title": "Kauf abgeschlossen!",
+      "subtitle": "Ihr Reiseführer ist unterwegs. Überprüfen Sie Ihren Posteingang.",
+      "emailNotice": "Sie erhalten in den nächsten Minuten eine E-Mail mit dem Download-Link für Ihren PDF-Reiseführer. Falls Sie sie nicht finden, überprüfen Sie Ihren Spam-Ordner.",
+      "backToGuides": "Zurück zu den Reiseführern"
     }
   },
   "areas": {
@@ -341,10 +347,24 @@
     "bestPrice": "Bestpreisgarantie"
   },
   "cookies": {
-    "message": "Wir verwenden Cookies, um Ihre Erfahrung zu verbessern. Wenn Sie weiter surfen, akzeptieren Sie unsere Cookie-Richtlinie.",
-    "accept": "Akzeptieren",
+    "message": "Wir verwenden Cookies, um Ihre Erfahrung zu verbessern. Durch Fortsetzung stimmen Sie unserer Cookie-Richtlinie zu.",
+    "accept": "Alle akzeptieren",
     "reject": "Ablehnen",
-    "learnMore": "Mehr erfahren"
+    "learnMore": "Mehr erfahren",
+    "banner": {
+      "message": "Wir verwenden eigene und Drittanbieter-Cookies zur Analyse der Nutzung und Verbesserung unserer Dienste. Sie können alle akzeptieren, nur essenzielle oder ablehnen.",
+      "detail": "Weitere Informationen in unserer",
+      "policyLink": "Cookie-Richtlinie",
+      "privacyLink": "Datenschutzrichtlinie",
+      "customize": "Anpassen",
+      "essential": "Essenzielle Cookies",
+      "essentialDesc": "Erforderlich für die grundlegende Funktionalität. Können nicht deaktiviert werden.",
+      "analytics": "Analyse-Cookies",
+      "analyticsDesc": "Google Analytics: hilft uns zu verstehen, wie die Seite genutzt wird.",
+      "alwaysOn": "Immer aktiv",
+      "optional": "Optional",
+      "essentialOnly": "Nur essenzielle"
+    }
   },
   "footer": {
     "about": "Über Tenerife Experiences",

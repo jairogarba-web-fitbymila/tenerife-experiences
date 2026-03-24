@@ -75,6 +75,12 @@
       "subtitle": "Lascia la tua email e ti avviseremo al lancio di ogni guida. I primi iscritti riceveranno uno sconto esclusivo.",
       "placeholder": "tu@email.com",
       "button": "Avvisami"
+    },
+    "success": {
+      "title": "Acquisto completato!",
+      "subtitle": "La tua guida è in arrivo. Controlla la tua casella di posta.",
+      "emailNotice": "Riceverai un'email con il link per scaricare la tua guida PDF nei prossimi minuti. Se non la trovi, controlla la cartella spam.",
+      "backToGuides": "Torna alle guide"
     }
   },
   "areas": { "title": "Esplora Tenerife per Zona", "subtitle": "Ogni regione ha il suo carattere e le sue attrazioni", "thingsToDo": "Cosa Fare", "restaurants": "Ristoranti", "beaches": "Spiagge" },
@@ -216,10 +222,24 @@
     "bestPrice": "Miglior prezzo garantito"
   },
   "cookies": {
-    "message": "Utilizziamo i cookie per migliorare la tua esperienza. Continuando a navigare, accetti la nostra politica sui cookie.",
-    "accept": "Accetta",
+    "message": "Utilizziamo i cookie per migliorare la tua esperienza. Continuando, accetti la nostra politica sui cookie.",
+    "accept": "Accetta tutti",
     "reject": "Rifiuta",
-    "learnMore": "Scopri di più"
+    "learnMore": "Scopri di più",
+    "banner": {
+      "message": "Utilizziamo cookie propri e di terze parti per analizzare l'uso del sito e migliorare i nostri servizi. Puoi accettare tutti, solo quelli essenziali o rifiutarli.",
+      "detail": "Maggiori informazioni nella nostra",
+      "policyLink": "Politica dei Cookie",
+      "privacyLink": "Informativa sulla Privacy",
+      "customize": "Personalizza",
+      "essential": "Cookie essenziali",
+      "essentialDesc": "Necessari per il funzionamento base del sito. Non possono essere disattivati.",
+      "analytics": "Cookie analitici",
+      "analyticsDesc": "Google Analytics: ci aiuta a capire come viene utilizzato il sito per migliorarlo.",
+      "alwaysOn": "Sempre attivi",
+      "optional": "Opzionale",
+      "essentialOnly": "Solo essenziali"
+    }
   },
   "footer": { "about": "Su Tenerife Experiences", "aboutText": "La tua guida completa a tutto ciò che Tenerife ha da offrire.", "quickLinks": "Link Rapidi", "categories": "Categorie", "contact": "Contatti", "legal": "Note Legali", "privacy": "Privacy Policy", "terms": "Termini di Servizio", "cookies": "Cookie Policy", "copyright": "© {year} Tenerife Experiences. Tutti i diritti riservati.", "partners": "Per i Partner", "advertise": "Pubblicità", "latestArticles": "Ultimi Articoli", "article1": "Top 10 Cose da Fare a Tenerife", "article2": "Guida alle Migliori Spiagge", "article3": "Guida Completa del Teide", "madeIn": "Fatto a Tenerife con amore", "followUs": "Seguici" }
 }

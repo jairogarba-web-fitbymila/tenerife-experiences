@@ -6,6 +6,17 @@ const content = {
   es: {
     title: 'Terminos de Servicio',
     lastUpdated: 'Ultima actualizacion: Marzo 2026',
+    identificatoryData: {
+      title: 'Datos Identificativos',
+      items: [
+        'Titular: Jairo Garcia Barroso',
+        'NIF: Pendiente de incluir',
+        'Domicilio: Tenerife, Islas Canarias, España',
+        'Correo electronico: info@tenerifeexperiences.com',
+        'Actividad: Plataforma informativa de turismo y venta de guias digitales',
+      ],
+      note: 'El NIF sera publicado tan pronto como sea posible. Si necesitas esta informacion, contactanos por email a info@tenerifeexperiences.com',
+    },
     acceptance: {
       title: 'Aceptacion de los Terminos',
       text: 'Al acceder y utilizar Tenerife Experiences (en adelante, "el Sitio"), aceptas cumplir y quedar vinculado por estos Terminos de Servicio. Si no estas de acuerdo con alguno de estos terminos, te rogamos que no utilices el Sitio. Nos reservamos el derecho de modificar estos terminos en cualquier momento, y tu uso continuado del Sitio constituye la aceptacion de dichas modificaciones.',
@@ -13,6 +24,16 @@ const content = {
     serviceDescription: {
       title: 'Descripcion del Servicio',
       text: 'Tenerife Experiences es una plataforma informativa que proporciona guias, recomendaciones y contenido sobre experiencias turisticas, actividades, restaurantes, alojamientos y servicios en Tenerife, Islas Canarias. El Sitio actua como intermediario informativo y no es el proveedor directo de las experiencias o servicios listados.',
+    },
+    digitalProducts: {
+      title: 'Productos Digitales',
+      items: [
+        'Los productos ofrecidos en el Sitio incluyen guias digitales descargables en formato PDF.',
+        'Los precios mostrados incluyen el Impuesto sobre el Valor Añadido (IVA) donde sea aplicable.',
+        'Una vez iniciada la descarga, el derecho de desistimiento NO aplica de conformidad con el artículo 103.m del Real Decreto Legislativo 1/2007, que excepta el contenido digital una vez iniciada la descarga.',
+        'Los pagos se procesan a través de Stripe. No se admiten reembolsos una vez iniciada la descarga, a menos que el producto sea defectuoso.',
+        'Licencia de uso: personal, no transferible y únicamente para uso no comercial.',
+      ],
     },
     userObligations: {
       title: 'Obligaciones del Usuario',
@@ -38,13 +59,28 @@ const content = {
         'Los precios, horarios y disponibilidad de los servicios de terceros pueden variar sin previo aviso.',
       ],
     },
+    commercialCommunications: {
+      title: 'Comunicaciones Comerciales',
+      items: [
+        'Unicamente enviamos comunicaciones comerciales (boletin informativo) con consentimiento previo y expreso del usuario.',
+        'Todos los correos comerciales incluyen un enlace para darse de baja en la parte inferior del mensaje.',
+        'Puedes darte de baja en cualquier momento haciendo clic en el enlace de desuscripcion o enviando un email a info@tenerifeexperiences.com',
+      ],
+    },
     affiliateLinks: {
       title: 'Enlaces de Afiliados',
-      text: 'Algunos enlaces en el Sitio pueden ser enlaces de afiliados. Esto significa que podemos recibir una comision si realizas una compra a traves de estos enlaces, sin coste adicional para ti. Estas comisiones nos ayudan a mantener y mejorar el Sitio. Siempre recomendamos productos y servicios que consideramos de calidad, independientemente de las comisiones de afiliados.',
+      text: 'Algunos enlaces en el Sitio pueden ser enlaces de afiliados. Tenemos relaciones de afiliacion con Civitatis y potencialmente otras plataformas. Esto significa que podemos recibir una comision si realizas una compra a traves de estos enlaces, sin coste adicional para ti. Las comisiones de afiliados no afectan al precio que pagas como usuario. Utilizamos el atributo rel="sponsored" en los enlaces de afiliados conforme a las directrices de Google. Estas comisiones nos ayudan a mantener y mejorar el Sitio. Siempre recomendamos productos y servicios que consideramos de calidad, independientemente de las comisiones de afiliados.',
     },
     partnerListings: {
       title: 'Listados de Colaboradores',
       text: 'El Sitio incluye listados de negocios y servicios locales que pueden ser colaboradores pagados. Aunque trabajamos con estos colaboradores, las opiniones y recomendaciones publicadas son independientes. Los listados de colaboradores estan identificados cuando corresponde. No garantizamos la calidad de los servicios ofrecidos por los colaboradores y te recomendamos verificar la informacion directamente con el proveedor.',
+    },
+    disputeResolution: {
+      title: 'Resolucion de Conflictos',
+      items: [
+        'Para los consumidores: Cualquier disputa puede ser resuelta a traves de la plataforma de Resolucion de Conflictos en Linea de la Unión Europea en https://ec.europa.eu/consumers/odr',
+        'Preferimos la resolucion amistosa antes de recurrir a acciones legales. Te invitamos a contactarnos en info@tenerifeexperiences.com para resolver cualquier desacuerdo.',
+      ],
     },
     governingLaw: {
       title: 'Ley Aplicable',
@@ -54,6 +90,17 @@ const content = {
   en: {
     title: 'Terms of Service',
     lastUpdated: 'Last updated: March 2026',
+    identificatoryData: {
+      title: 'Identification Data',
+      items: [
+        'Owner: Jairo Garcia Barroso',
+        'NIF (Tax Identification Number): Pending disclosure',
+        'Address: Tenerife, Canary Islands, Spain',
+        'Email: info@tenerifeexperiences.com',
+        'Activity: Tourism informational platform and sale of digital guides',
+      ],
+      note: 'The NIF will be published as soon as possible. If you need this information, please contact us at info@tenerifeexperiences.com',
+    },
     acceptance: {
       title: 'Acceptance of Terms',
       text: 'By accessing and using Tenerife Experiences (hereinafter, "the Site"), you agree to comply with and be bound by these Terms of Service. If you do not agree with any of these terms, please do not use the Site. We reserve the right to modify these terms at any time, and your continued use of the Site constitutes acceptance of such modifications.',
@@ -61,6 +108,16 @@ const content = {
     serviceDescription: {
       title: 'Service Description',
       text: 'Tenerife Experiences is an informational platform that provides guides, recommendations, and content about tourist experiences, activities, restaurants, accommodations, and services in Tenerife, Canary Islands. The Site acts as an informational intermediary and is not the direct provider of the experiences or services listed.',
+    },
+    digitalProducts: {
+      title: 'Digital Products',
+      items: [
+        'Products offered on the Site include downloadable digital guides in PDF format.',
+        'Prices shown include Value Added Tax (VAT) where applicable.',
+        'Once download has started, the right of withdrawal does NOT apply in accordance with Article 103.m of Royal Legislative Decree 1/2007, which exempts digital content once download has begun.',
+        'Payments are processed through Stripe. No refunds are offered once download has started, unless the product is defective.',
+        'License of use: personal, non-transferable, and for non-commercial use only.',
+      ],
     },
     userObligations: {
       title: 'User Obligations',
@@ -86,13 +143,28 @@ const content = {
         'Prices, schedules, and availability of third-party services may change without prior notice.',
       ],
     },
+    commercialCommunications: {
+      title: 'Commercial Communications',
+      items: [
+        'We only send commercial communications (newsletters) with prior explicit consent from the user.',
+        'Every commercial email includes an unsubscribe link at the bottom of the message.',
+        'You can unsubscribe at any time by clicking the unsubscribe link or by sending an email to info@tenerifeexperiences.com',
+      ],
+    },
     affiliateLinks: {
       title: 'Affiliate Links Disclosure',
-      text: 'Some links on the Site may be affiliate links. This means we may receive a commission if you make a purchase through these links, at no additional cost to you. These commissions help us maintain and improve the Site. We always recommend products and services we consider to be of quality, regardless of affiliate commissions.',
+      text: 'Some links on the Site may be affiliate links. We have affiliate relationships with Civitatis and potentially other platforms. This means we may receive a commission if you make a purchase through these links, at no additional cost to you. Affiliate commissions do not affect the price you pay as a user. We use the rel="sponsored" attribute on affiliate links in accordance with Google guidelines. These commissions help us maintain and improve the Site. We always recommend products and services we consider to be of quality, regardless of affiliate commissions.',
     },
     partnerListings: {
       title: 'Partner Listings Disclaimer',
       text: 'The Site includes listings of local businesses and services that may be paid partners. While we work with these partners, the opinions and recommendations published are independent. Partner listings are identified where applicable. We do not guarantee the quality of services offered by partners and recommend that you verify information directly with the provider.',
+    },
+    disputeResolution: {
+      title: 'Dispute Resolution',
+      items: [
+        'For consumers: Any disputes may be resolved through the European Union Online Dispute Resolution platform at https://ec.europa.eu/consumers/odr',
+        'We prefer amicable resolution before resorting to legal action. We encourage you to contact us at info@tenerifeexperiences.com to resolve any disagreement.',
+      ],
     },
     governingLaw: {
       title: 'Governing Law',
@@ -112,11 +184,26 @@ export default function TermsPage() {
           <h1 className="text-4xl font-bold text-white mb-2">{t.title}</h1>
           <p className="text-sm text-gray-500 mb-12">{t.lastUpdated}</p>
 
+          <h2 className="text-2xl font-semibold text-white mt-10 mb-4">{t.identificatoryData.title}</h2>
+          <ul className="space-y-2 mb-4">
+            {t.identificatoryData.items.map((item, i) => (
+              <li key={i} className="text-gray-400 leading-relaxed">{item}</li>
+            ))}
+          </ul>
+          <p className="text-gray-400 leading-relaxed text-sm italic">{t.identificatoryData.note}</p>
+
           <h2 className="text-2xl font-semibold text-white mt-10 mb-4">{t.acceptance.title}</h2>
           <p className="text-gray-400 leading-relaxed">{t.acceptance.text}</p>
 
           <h2 className="text-2xl font-semibold text-white mt-10 mb-4">{t.serviceDescription.title}</h2>
           <p className="text-gray-400 leading-relaxed">{t.serviceDescription.text}</p>
+
+          <h2 className="text-2xl font-semibold text-white mt-10 mb-4">{t.digitalProducts.title}</h2>
+          <ul className="space-y-2">
+            {t.digitalProducts.items.map((item, i) => (
+              <li key={i} className="text-gray-400 leading-relaxed">{item}</li>
+            ))}
+          </ul>
 
           <h2 className="text-2xl font-semibold text-white mt-10 mb-4">{t.userObligations.title}</h2>
           <ul className="space-y-2">
@@ -135,11 +222,25 @@ export default function TermsPage() {
             ))}
           </ul>
 
+          <h2 className="text-2xl font-semibold text-white mt-10 mb-4">{t.commercialCommunications.title}</h2>
+          <ul className="space-y-2">
+            {t.commercialCommunications.items.map((item, i) => (
+              <li key={i} className="text-gray-400 leading-relaxed">{item}</li>
+            ))}
+          </ul>
+
           <h2 className="text-2xl font-semibold text-white mt-10 mb-4">{t.affiliateLinks.title}</h2>
           <p className="text-gray-400 leading-relaxed">{t.affiliateLinks.text}</p>
 
           <h2 className="text-2xl font-semibold text-white mt-10 mb-4">{t.partnerListings.title}</h2>
           <p className="text-gray-400 leading-relaxed">{t.partnerListings.text}</p>
+
+          <h2 className="text-2xl font-semibold text-white mt-10 mb-4">{t.disputeResolution.title}</h2>
+          <ul className="space-y-2">
+            {t.disputeResolution.items.map((item, i) => (
+              <li key={i} className="text-gray-400 leading-relaxed">{item}</li>
+            ))}
+          </ul>
 
           <h2 className="text-2xl font-semibold text-white mt-10 mb-4">{t.governingLaw.title}</h2>
           <p className="text-gray-400 leading-relaxed">{t.governingLaw.text}</p>

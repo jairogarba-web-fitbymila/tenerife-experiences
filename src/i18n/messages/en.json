@@ -174,6 +174,12 @@
       "subtitle": "Leave your email and we'll notify you when each guide launches. Early birds get an exclusive discount.",
       "placeholder": "you@email.com",
       "button": "Notify Me"
+    },
+    "success": {
+      "title": "Purchase Complete!",
+      "subtitle": "Your guide is on its way. Check your inbox.",
+      "emailNotice": "You'll receive an email with your PDF guide download link within the next few minutes. If you don't see it, check your spam folder.",
+      "backToGuides": "Back to guides"
     }
   },
   "areas": {
@@ -467,9 +473,23 @@
   },
   "cookies": {
     "message": "We use cookies to improve your experience. By continuing to browse, you accept our cookie policy.",
-    "accept": "Accept",
+    "accept": "Accept all",
     "reject": "Reject",
-    "learnMore": "Learn more"
+    "learnMore": "Learn more",
+    "banner": {
+      "message": "We use our own and third-party cookies to analyze web usage and improve our services. You can accept all, essential only, or reject them.",
+      "detail": "More information in our",
+      "policyLink": "Cookie Policy",
+      "privacyLink": "Privacy Policy",
+      "customize": "Customize",
+      "essential": "Essential cookies",
+      "essentialDesc": "Required for basic website functionality. Cannot be disabled.",
+      "analytics": "Analytics cookies",
+      "analyticsDesc": "Google Analytics: helps us understand how the site is used to improve it.",
+      "alwaysOn": "Always on",
+      "optional": "Optional",
+      "essentialOnly": "Essential only"
+    }
   },
   "footer": {
     "about": "About Tenerife Experiences",

@@ -18,11 +18,19 @@ function getLocaleFromPath(pathname: string): string | null {
   return match ? match[1] : null
 }
 
+/**
+ * Page view tracker — only sends data if the user has accepted cookies.
+ * Respects RGPD by checking consent before any tracking.
+ */
 export function PageTracker() {
   const pathname = usePathname()
 
   useEffect(() => {
     if (!pathname) return
+
+    // Only track if user has consented to analytics cookies
+    const consent = localStorage.getItem('cookie-consent')
+    if (consent !== 'accepted') return
 
     try {
       const sessionId = getSessionId()

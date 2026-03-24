@@ -99,6 +99,12 @@
       "subtitle": "Laissez votre email et nous vous préviendrons au lancement de chaque guide. Les premiers inscrits bénéficient d'une réduction exclusive.",
       "placeholder": "vous@email.com",
       "button": "Me prévenir"
+    },
+    "success": {
+      "title": "Achat effectué !",
+      "subtitle": "Votre guide est en route. Vérifiez votre boîte de réception.",
+      "emailNotice": "Vous recevrez un email avec le lien de téléchargement de votre guide PDF dans les prochaines minutes. Si vous ne le trouvez pas, vérifiez votre dossier spam.",
+      "backToGuides": "Retour aux guides"
     }
   },
   "areas": { "title": "Explorer Tenerife par Région", "subtitle": "Chaque région a son propre caractère et ses attractions", "thingsToDo": "Activités", "restaurants": "Restaurants", "beaches": "Plages" },
@@ -240,10 +246,24 @@
     "bestPrice": "Meilleur prix garanti"
   },
   "cookies": {
-    "message": "Nous utilisons des cookies pour améliorer votre expérience. En continuant à naviguer, vous acceptez notre politique de cookies.",
-    "accept": "Accepter",
+    "message": "Nous utilisons des cookies pour améliorer votre expérience. En continuant, vous acceptez notre politique de cookies.",
+    "accept": "Tout accepter",
     "reject": "Refuser",
-    "learnMore": "En savoir plus"
+    "learnMore": "En savoir plus",
+    "banner": {
+      "message": "Nous utilisons des cookies propres et tiers pour analyser l'utilisation du site et améliorer nos services. Vous pouvez tout accepter, n'accepter que les essentiels ou les refuser.",
+      "detail": "Plus d'informations dans notre",
+      "policyLink": "Politique de Cookies",
+      "privacyLink": "Politique de Confidentialité",
+      "customize": "Personnaliser",
+      "essential": "Cookies essentiels",
+      "essentialDesc": "Nécessaires au fonctionnement de base du site. Ne peuvent pas être désactivés.",
+      "analytics": "Cookies analytiques",
+      "analyticsDesc": "Google Analytics : nous aide à comprendre comment le site est utilisé pour l'améliorer.",
+      "alwaysOn": "Toujours actifs",
+      "optional": "Optionnel",
+      "essentialOnly": "Essentiels uniquement"
+    }
   },
   "footer": { "about": "À Propos de Tenerife Experiences", "aboutText": "Votre guide complet de tout ce que Tenerife a à offrir. Des plages magnifiques aux paysages volcaniques, nous vous aidons à découvrir le meilleur de l'île.", "quickLinks": "Liens Rapides", "categories": "Catégories", "contact": "Contact", "legal": "Mentions Légales", "privacy": "Politique de Confidentialité", "terms": "Conditions d'Utilisation", "cookies": "Politique de Cookies", "copyright": "© {year} Tenerife Experiences. Tous droits réservés.", "partners": "Pour les Partenaires", "advertise": "Annoncez chez nous", "latestArticles": "Derniers Articles", "article1": "Top 10 Choses à Faire à Tenerife", "article2": "Guide des Meilleures Plages", "article3": "Guide Complet du Teide", "madeIn": "Fait à Tenerife avec amour", "followUs": "Suivez-nous" }
 }
