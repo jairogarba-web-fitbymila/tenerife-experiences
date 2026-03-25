@@ -112,7 +112,7 @@
   "partners": {
     "title": "Promouvez Votre Entreprise a Tenerife",
     "subtitle": "Atteignez des milliers de touristes visitant Tenerife chaque mois via notre plateforme multilingue",
-    "verified": "Verifie",
+    "verified": "Vérifié",
     "premium": "Premium",
     "visitWebsite": "Visiter le Site",
     "becomePartner": "Devenir Partenaire",
@@ -122,9 +122,9 @@
     "perMonth": "/mois",
     "contactUs": "Nous Contacter",
     "featuredTitle": "Partenaires en Vedette",
-    "featuredSubtitle": "Entreprises de confiance recommandees par Tenerife Experiences",
+    "featuredSubtitle": "Entreprises de confiance recommandées par Tenerife Experiences",
     "trustedPartners": "Nos Partenaires",
-    "ctaQuestion": "Vous voulez promouvoir votre entreprise aupres de milliers de touristes ?",
+    "ctaQuestion": "Vous voulez promouvoir votre entreprise auprès de milliers de touristes ?",
     "partnerProgram": "Programme Partenaire",
     "seePlans": "Voir les Plans et Tarifs",
     "choosePlan": "Choisissez Votre Plan",
@@ -133,35 +133,35 @@
     "freePriceLabel": "Gratuit",
     "getStarted": "Commencer",
     "whyPartner": "Pourquoi Devenir Partenaire ?",
-    "whyPartnerSubtitle": "Rejoignez la plateforme de voyage leader pour Tenerife et developpez votre activite",
-    "benefit1Title": "Exposition Ciblee",
-    "benefit1Desc": "Votre entreprise est presentee aux touristes qui planifient activement leur voyage a Tenerife.",
-    "benefit2Title": "Analyses Detaillees",
+    "whyPartnerSubtitle": "Rejoignez la plateforme de voyage leader pour Tenerife et développez votre activité",
+    "benefit1Title": "Exposition Ciblée",
+    "benefit1Desc": "Votre entreprise est présentée aux touristes qui planifient activement leur voyage à Tenerife.",
+    "benefit2Title": "Analyses Détaillées",
     "benefit2Desc": "Suivez les vues, clics et conversions avec notre tableau de bord complet.",
-    "benefit3Title": "Portee sur les Reseaux Sociaux",
-    "benefit3Desc": "Les partenaires premium sont mis en avant sur nos reseaux sociaux.",
+    "benefit3Title": "Portée sur les Réseaux Sociaux",
+    "benefit3Desc": "Les partenaires premium sont mis en avant sur nos réseaux sociaux.",
     "features": {
       "basicListing": "Listing d'entreprise basique",
       "businessProfile": "Page de profil d'entreprise",
       "mapPlacement": "Placement sur la carte",
       "featuredBadge": "Badge vedette et placement en page d'accueil",
-      "analytics": "Tableau de bord analytique detaille",
+      "analytics": "Tableau de bord analytique détaillé",
       "prioritySupport": "Support prioritaire",
-      "topPlacement": "Placement en tete des resultats de recherche",
-      "socialMedia": "Promotion sur les reseaux sociaux",
-      "dedicatedManager": "Gestionnaire de compte dedie"
+      "topPlacement": "Placement en tête des résultats de recherche",
+      "socialMedia": "Promotion sur les réseaux sociaux",
+      "dedicatedManager": "Gestionnaire de compte dédié"
     },
     "stats": {
       "monthlyVisitors": "Visiteurs Mensuels",
       "countries": "Pays Atteints",
-      "languages": "Langues Supportees",
+      "languages": "Langues Supportées",
       "yearlyGrowth": "Croissance Annuelle"
     },
     "testimonialsTitle": "Ce Que Disent Nos Partenaires",
-    "testimonialsSubtitle": "Decouvrez les entreprises qui grandissent deja avec nous",
-    "testimonial1": "Depuis que nous avons rejoint Tenerife Experiences, nous avons constate une augmentation de 40% des reservations internationales.",
-    "testimonial2": "Le tableau de bord analytique nous aide a comprendre exactement d'ou viennent nos clients.",
-    "testimonial3": "Etre partenaire premium a considerablement augmente notre visibilite. L'equipe est professionnelle et reactive.",
+    "testimonialsSubtitle": "Découvrez les entreprises qui grandissent déjà avec nous",
+    "testimonial1": "Depuis que nous avons rejoint Tenerife Experiences, nous avons constaté une augmentation de 40% des réservations internationales.",
+    "testimonial2": "Le tableau de bord analytique nous aide à comprendre exactement d'où viennent nos clients.",
+    "testimonial3": "Être partenaire premium a considérablement augmenté notre visibilité. L'équipe est professionnelle et réactive.",
     "contactTitle": "Contactez-Nous",
     "contactSubtitle": "Parlez-nous de votre entreprise et nous trouverons le plan parfait pour vous",
     "formName": "Votre Nom",
@@ -184,29 +184,29 @@
       "guides": "Guides"
     },
     "groups": {
-      "experiences": "Experiences",
+      "experiences": "Expériences",
       "culture": "Culture",
       "nature": "Nature",
       "nightlife": "Vie nocturne",
       "beaches": "Plages",
       "areas": "Regions",
       "mustSee": "Incontournables",
-      "whereToEat": "Ou manger",
-      "whatToTry": "Que gouter",
+      "whereToEat": "Où manger",
+      "whatToTry": "Que goûter",
       "beforeTravel": "Avant le voyage",
-      "onIsland": "Sur l'ile"
+      "onIsland": "Sur l'île"
     },
     "links": {
       "boatTrips": "Excursions en bateau et observation des baleines",
       "teideTours": "Tours du Teide",
       "waterSports": "Sports nautiques",
-      "themeParks": "Parcs a theme",
-      "museums": "Musees",
-      "festivals": "Fetes et evenements",
+      "themeParks": "Parcs à thème",
+      "museums": "Musées",
+      "festivals": "Fêtes et événements",
       "historicTowns": "Villes historiques",
-      "hiking": "Sentiers de randonnee",
+      "hiking": "Sentiers de randonnée",
       "teideNP": "Parc national du Teide",
-      "stargazing": "Observation des etoiles",
+      "stargazing": "Observation des étoiles",
       "beachClubs": "Beach clubs",
       "clubs": "Clubs",
       "bars": "Bars et pubs",
@@ -226,12 +226,12 @@
       "bestRestaurants": "Meilleurs restaurants",
       "guachinches": "Guachinches",
       "canarianCuisine": "Cuisine canarienne",
-      "wineTasting": "Degustation de vin",
+      "wineTasting": "Dégustation de vin",
       "localProducts": "Produits locaux",
-      "bestTime": "Meilleure periode pour visiter",
+      "bestTime": "Meilleure période pour visiter",
       "northVsSouth": "Nord vs Sud",
       "familyGuide": "Guide familial",
-      "hikingGuide": "Guide de randonnee"
+      "hikingGuide": "Guide de randonnée"
     },
     "viewAll": "Voir tout"
   },
@@ -263,6 +263,131 @@
       "alwaysOn": "Toujours actifs",
       "optional": "Optionnel",
       "essentialOnly": "Essentiels uniquement"
+    }
+  },
+  "pillar": {
+    "meta": {
+      "title": "Que Voir à Tenerife : Guide Complet 2026 | Tenerife Experiences",
+      "description": "Découvrez que voir à Tenerife : les 10 meilleures attractions, plages, nature, culture et gastronomie. Guide complet avec itinéraires de 3, 5 et 7 jours."
+    },
+    "hero": {
+      "title": "Que Voir à Tenerife : Guide Complet 2026",
+      "subtitle": "Tout ce que vous devez savoir pour découvrir l'île la plus spectaculaire des Canaries. Des plages de rêve, des volcans, des villages charmants et une cuisine unique vous attendent.",
+      "badge": "Le Guide Ultime de Tenerife",
+      "altImage": "Vue panoramique du Mont Teide et de la côte de Tenerife au coucher du soleil"
+    },
+    "toc": {
+      "title": "Dans ce guide",
+      "top10": "Top 10 Incontournables",
+      "byArea": "Par Région",
+      "beaches": "Plages",
+      "nature": "Nature",
+      "culture": "Culture",
+      "gastronomy": "Gastronomie",
+      "itineraries": "Itinéraires",
+      "faq": "FAQ"
+    },
+    "sections": {
+      "mustSee": "À Voir Absolument",
+      "top10Title": "Les 10 lieux incontournables de Tenerife",
+      "top10Subtitle": "Les expériences les mieux notées par nos visiteurs. Du majestueux Teide aux plages de sable noir volcanique.",
+      "noData": "Nous ajouterons du contenu ici très bientôt.",
+      "byAreaTitle": "Tenerife par région",
+      "byAreaSubtitle": "Chaque coin de l'île a sa propre personnalité. Découvrez ce que chaque région a à offrir.",
+      "viewAllAreas": "Voir toutes les régions",
+      "explore": "Explorer la région",
+      "beachesLabel": "Plages",
+      "beachesTitle": "Les meilleures plages de Tenerife",
+      "beachesSubtitle": "Des sables dorés de Las Teresitas aux plages volcaniques du nord, Tenerife propose plus de 150 plages pour tous les goûts.",
+      "viewAllBeaches": "Voir toutes les plages",
+      "natureLabel": "Nature",
+      "natureTitle": "Une nature et des paysages uniques",
+      "natureSubtitle": "Tenerife est un paradis naturel : le troisième plus haut volcan du monde, des forêts de lauriers anciens et des ravins spectaculaires.",
+      "learnMore": "En savoir plus",
+      "cultureLabel": "Culture & Histoire",
+      "cultureTitle": "Des villes chargées d'histoire et de tradition",
+      "cultureSubtitle": "Des villes classées au patrimoine mondial de l'UNESCO, des villes reconstruites sur la lave et des musées racontant des siècles d'histoire.",
+      "viewAllCulture": "Explorer toute la culture",
+      "gastronomyLabel": "Gastronomie",
+      "gastronomyTitle": "Les saveurs de Tenerife",
+      "itinerariesLabel": "Planifiez votre voyage",
+      "itinerariesTitle": "Itinéraires suggérés",
+      "itinerariesSubtitle": "Des plans optimisés pour profiter au maximum de votre voyage selon le nombre de jours dont vous disposez.",
+      "faqTitle": "Questions fréquemment posées sur Tenerife",
+      "faqSubtitle": "Nous répondons aux questions les plus courantes des voyageurs visitant l'île."
+    },
+    "nature": {
+      "teideTitle": "Parc National du Teide",
+      "teideDesc": "Le plus haut sommet d'Espagne (3 718 m). Des paysages lunaires, téléphérique et observation des étoiles sous un ciel certifié Starlight.",
+      "anagaTitle": "Forêt d'Anaga",
+      "anagaDesc": "Une réserve de biosphère avec des forêts de lauriers anciens, des points de vue spectaculaires et des villages isolés.",
+      "mascaTitle": "Gorge de Masca",
+      "mascaDesc": "Le sentier de randonnée le plus célèbre de Tenerife. Une descente spectaculaire du village jusqu'à la mer."
+    },
+    "culture": {
+      "lagunaTitle": "San Cristóbal de La Laguna",
+      "lagunaDesc": "Une ville classée au patrimoine mondial de l'UNESCO. Des rues pavées, des demeures colorées et une atmosphère universitaire vibrante.",
+      "garachicoTitle": "Garachico",
+      "garachicoDesc": "La ville renaissante de la lave. Les piscines naturelles d'El Caletón, l'architecture historique et le charme atlantique.",
+      "museumsTitle": "Musées & Espaces Culturels",
+      "museumsDesc": "Du TEA à Santa Cruz au Musée de la Nature et de l'Homme avec ses momies Guanche."
+    },
+    "beaches": {
+      "teresitas": "La plage la plus emblématique de Tenerife, avec du sable doré apporté du Sahara et des eaux cristallines et abritées.",
+      "duque": "Une plage premium à Costa Adeje avec du sable clair, des installations haut de gamme et des eaux calmes. Parfait pour les familles.",
+      "benijo": "Une plage sauvage à Anaga avec du sable noir volcanique et des vues sur les Roques. Idéale pour les surfeurs."
+    },
+    "gastronomy": {
+      "intro": "La cuisine de Tenerife est une fusion des saveurs canarienne, espagnole et latino-américaine. Produits locaux exceptionnels, vins avec leur propre appellation d'origine et une tradition culinaire qui ne cesse de surprendre.",
+      "highlight1": "Papas arrugadas avec mojo : le plat canarien par excellence, à goûter absolument dans n'importe quel guachinche",
+      "highlight2": "Vins de Tenerife : 5 appellations d'origine avec des variétés de raisins uniques pré-phylloxéra",
+      "highlight3": "Guachinches : des petits restaurants familiaux servant une authentique cuisine canarienne à des prix locaux",
+      "cta": "Explorer la cuisine"
+    },
+    "itineraries": {
+      "recommended": "Recommandé",
+      "3days": {
+        "title": "3 Jours à Tenerife",
+        "subtitle": "L'essentiel de l'île",
+        "day1": "Teide au lever du soleil + La Orotava + Puerto de la Cruz",
+        "day2": "Plages du sud : Las Américas, Costa Adeje + observation des baleines",
+        "day3": "La Laguna + Santa Cruz + Playa de Las Teresitas"
+      },
+      "5days": {
+        "title": "5 Jours à Tenerife",
+        "subtitle": "L'expérience complète",
+        "day1": "Parc National du Teide + observation des étoiles",
+        "day2": "Forêt d'Anaga + Playa de Benijo + Taganana",
+        "day3": "La Laguna + Musée de la Nature + gastronomie",
+        "day4": "Costa Adeje + Siam Park + coucher de soleil à Los Gigantes",
+        "day5": "Masca (randonnée) + Garachico + Icod de los Vinos"
+      },
+      "7days": {
+        "title": "7 Jours à Tenerife",
+        "subtitle": "Prenez votre temps, ne manquez rien",
+        "days12": "Teide (téléphérique + randonnée) + La Orotava + Puerto de la Cruz",
+        "day3": "Anaga complet : Cruz del Carmen, Chinamada, Benijo, Taganana",
+        "days45": "Sud : plages, observation des baleines, Siam Park, Barranco del Infierno",
+        "day6": "Ouest : Masca, Garachico, Icod, coucher de soleil à Los Gigantes",
+        "day7": "La Laguna + Santa Cruz + shopping + dîner d'adieu"
+      }
+    },
+    "faq": {
+      "q1": "Quel est le meilleur moment pour visiter Tenerife ?",
+      "a1": "Tenerife peut être visitée toute l'année grâce à son climat subtropical. Les températures oscillent entre 18°C et 28°C. L'hiver (décembre-février) est idéal pour échapper au froid européen, tandis que le printemps (mars-mai) offre des paysages verts et fleuris. L'été est parfait pour la plage, bien que le sud bénéficie toujours d'un beau temps.",
+      "q2": "Combien de jours me faut-il pour voir Tenerife ?",
+      "a2": "Nous recommandons un minimum de 5 jours pour voir l'essentiel : Teide, plages du sud, Anaga et La Laguna. Avec 7 jours, vous pouvez ajouter Masca, Garachico et profiter à un rythme tranquille. Si vous n'avez que 3 jours, concentrez-vous sur Teide, une zone balnéaire et La Laguna.",
+      "q3": "Est-ce le nord ou le sud de Tenerife qui est le mieux ?",
+      "a3": "Cela dépend de vos préférences. Le sud a des plages plus larges, des stations balnéaires et du soleil garanti. Le nord offre une nature luxuriante, des villages charmants, une cuisine authentique et des paysages plus verts. Idéalement, combinez les deux zones.",
+      "q4": "Ai-je besoin d'une voiture pour me déplacer à Tenerife ?",
+      "a4": "Vivement recommandé. Bien qu'il existe des transports en commun (bus et tramway), avoir une voiture vous donne la liberté d'explorer des endroits comme Masca, Anaga ou les plages les plus reculées. Les tarifs de location sont raisonnables, à partir d'environ 20-30 euros par jour.",
+      "q5": "Que voir à Tenerife en famille ?",
+      "a5": "Tenerife est idéale pour les familles. Ne manquez pas Siam Park (le meilleur parc aquatique du monde), Loro Parque, les plages calmes de Costa Adeje, le téléphérique du Teide et les piscines naturelles de Garachico. Il y a aussi des excursions en bateau pour voir les dauphins et les baleines."
+    },
+    "cta": {
+      "title": "Prêt à découvrir Tenerife ?",
+      "subtitle": "Réservez les meilleures expériences et activités de l'île. Annulation gratuite et meilleur prix garanti.",
+      "button": "Réserver des Expériences"
     }
   },
   "footer": { "about": "À Propos de Tenerife Experiences", "aboutText": "Votre guide complet de tout ce que Tenerife a à offrir. Des plages magnifiques aux paysages volcaniques, nous vous aidons à découvrir le meilleur de l'île.", "quickLinks": "Liens Rapides", "categories": "Catégories", "contact": "Contact", "legal": "Mentions Légales", "privacy": "Politique de Confidentialité", "terms": "Conditions d'Utilisation", "cookies": "Politique de Cookies", "copyright": "© {year} Tenerife Experiences. Tous droits réservés.", "partners": "Pour les Partenaires", "advertise": "Annoncez chez nous", "latestArticles": "Derniers Articles", "article1": "Top 10 Choses à Faire à Tenerife", "article2": "Guide des Meilleures Plages", "article3": "Guide Complet du Teide", "madeIn": "Fait à Tenerife avec amour", "followUs": "Suivez-nous" }

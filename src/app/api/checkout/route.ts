@@ -17,7 +17,7 @@ export async function POST(request: NextRequest) {
     const guide = GUIDE_PRODUCTS[guideId as GuideId]
     const lang = (locale in guide.name ? locale : 'en') as keyof typeof guide.name
 
-    const origin = request.headers.get('origin') || process.env.NEXT_PUBLIC_SITE_URL || 'https://tenerifeexperience.com'
+    const origin = request.headers.get('origin') || process.env.NEXT_PUBLIC_SITE_URL || 'https://tenerifeexperiences.com'
 
     // Map locale to Stripe-supported locale
     const stripeLocale = (['es', 'de', 'fr', 'it'].includes(locale) ? locale : 'en') as 'es' | 'de' | 'fr' | 'it' | 'en'

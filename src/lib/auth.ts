@@ -1,16 +1,38 @@
 import { cookies } from 'next/headers'
+import { timingSafeEqual } from 'crypto'
+
+// Session expiration: 7 days in milliseconds
+const SESSION_MAX_AGE_MS = 7 * 24 * 60 * 60 * 1000
+
+/**
+ * Timing-safe string comparison to prevent timing attacks
+ */
+export function safeCompare(a: string, b: string): boolean {
+  if (a.length !== b.length) return false
+  try {
+    return timingSafeEqual(Buffer.from(a), Buffer.from(b))
+  } catch {
+    return false
+  }
+}
 
 export async function isAuthenticated(): Promise<boolean> {
   const cookieStore = await cookies()
   const session = cookieStore.get('admin_session')
   if (!session) return false
 
-  // Support both old format (plain string) and new format (JSON)
   try {
     const parsed = JSON.parse(session.value)
-    return parsed.authenticated === true
+    if (!parsed.authenticated || !parsed.createdAt) return false
+
+    // Check session expiration
+    const sessionAge = Date.now() - new Date(parsed.createdAt).getTime()
+    if (sessionAge > SESSION_MAX_AGE_MS) return false
+
+    return true
   } catch {
-    return session.value === 'authenticated'
+    // Reject plain strings — old format no longer accepted
+    return false
   }
 }
 
@@ -25,14 +47,32 @@ export async function getAdminUser(): Promise<{
 
   try {
     const parsed = JSON.parse(session.value)
-    if (parsed.authenticated) {
-      return { email: parsed.email, name: parsed.name, role: parsed.role }
-    }
+    if (!parsed.authenticated || !parsed.createdAt) return null
+
+    // Check session expiration
+    const sessionAge = Date.now() - new Date(parsed.createdAt).getTime()
+    if (sessionAge > SESSION_MAX_AGE_MS) return null
+
+    return { email: parsed.email, name: parsed.name, role: parsed.role }
   } catch {
-    // Old format - return default user
-    if (session.value === 'authenticated') {
-      return { email: 'jairogarba@gmail.com', name: 'Jairo', role: 'owner' }
-    }
+    return null
   }
-  return null
+}
+
+/**
+ * Generate a CSRF token based on session + secret
+ */
+export function generateCSRFToken(sessionId: string): string {
+  const { createHmac } = require('crypto')
+  const secret = process.env.CSRF_SECRET || process.env.ADMIN_PASSWORD || 'csrf-fallback-key'
+  return createHmac('sha256', secret).update(sessionId).digest('hex')
+}
+
+/**
+ * Verify CSRF token from request header
+ */
+export function verifyCSRFToken(token: string | null, sessionId: string): boolean {
+  if (!token) return false
+  const expected = generateCSRFToken(sessionId)
+  return safeCompare(token, expected)
 }

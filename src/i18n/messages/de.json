@@ -211,7 +211,7 @@
     "topRated": "Bestbewertet"
   },
   "partners": {
-    "title": "Werben Sie fur Ihr Unternehmen auf Teneriffa",
+    "title": "Werben Sie für Ihr Unternehmen auf Teneriffa",
     "subtitle": "Erreichen Sie tausende Touristen, die Teneriffa jeden Monat besuchen, uber unsere mehrsprachige Reiseplattform",
     "verified": "Verifiziert",
     "premium": "Premium",
@@ -225,17 +225,17 @@
     "featuredTitle": "Empfohlene Partner",
     "featuredSubtitle": "Vertrauenswurdige Unternehmen, empfohlen von Tenerife Experiences",
     "trustedPartners": "Unsere Partner",
-    "ctaQuestion": "Mochten Sie Ihr Unternehmen tausenden Touristen prasentieren?",
+    "ctaQuestion": "Möchten Sie Ihr Unternehmen tausenden Touristen präsentieren?",
     "partnerProgram": "Partnerprogramm",
     "seePlans": "Plane und Preise ansehen",
-    "choosePlan": "Wahlen Sie Ihren Plan",
-    "choosePlanSubtitle": "Flexible Optionen fur jede Unternehmensgrosse",
+    "choosePlan": "Wählen Sie Ihren Plan",
+    "choosePlanSubtitle": "Flexible Optionen für jede Unternehmensgröße",
     "mostPopular": "Am beliebtesten",
     "freePriceLabel": "Kostenlos",
     "getStarted": "Loslegen",
     "whyPartner": "Warum Partner werden?",
-    "whyPartnerSubtitle": "Treten Sie der fuhrenden Reiseplattform fur Teneriffa bei und wachsen Sie",
-    "benefit1Title": "Gezielte Prasenz",
+    "whyPartnerSubtitle": "Treten Sie der führenden Reiseplattform für Teneriffa bei und wachsen Sie",
+    "benefit1Title": "Gezielte Präsenz",
     "benefit1Desc": "Ihr Unternehmen wird Touristen gezeigt, die aktiv ihren Teneriffa-Urlaub planen.",
     "benefit2Title": "Detaillierte Analysen",
     "benefit2Desc": "Verfolgen Sie Aufrufe, Klicks und Konversionen mit unserem umfassenden Dashboard.",
@@ -247,22 +247,22 @@
       "mapPlacement": "Kartenplatzierung",
       "featuredBadge": "Empfohlen-Badge und Startseiten-Platzierung",
       "analytics": "Detailliertes Analyse-Dashboard",
-      "prioritySupport": "Prioritatssupport",
+      "prioritySupport": "Prioritätssupport",
       "topPlacement": "Top-Platzierung in Suchergebnissen",
       "socialMedia": "Social-Media-Promotion",
       "dedicatedManager": "Dedizierter Account Manager"
     },
     "stats": {
       "monthlyVisitors": "Monatliche Besucher",
-      "countries": "Erreichte Lander",
+      "countries": "Erreichte Länder",
       "languages": "Unterstutzte Sprachen",
-      "yearlyGrowth": "Jahrliches Wachstum"
+      "yearlyGrowth": "Jährliches Wachstum"
     },
     "testimonialsTitle": "Was unsere Partner sagen",
     "testimonialsSubtitle": "Horen Sie von Unternehmen, die bereits mit uns wachsen",
     "testimonial1": "Seit wir Tenerife Experiences beigetreten sind, haben wir einen 40%igen Anstieg internationaler Reservierungen verzeichnet.",
     "testimonial2": "Das Analyse-Dashboard hilft uns zu verstehen, woher unsere Kunden kommen.",
-    "testimonial3": "Als Premium-Partner hat sich unsere Sichtbarkeit deutlich erhoht. Das Team ist professionell und reaktionsschnell.",
+    "testimonial3": "Als Premium-Partner hat sich unsere Sichtbarkeit deutlich erhöht. Das Team ist professionell und reaktionsschnell.",
     "contactTitle": "Kontaktieren Sie uns",
     "contactSubtitle": "Erzahlen Sie uns von Ihrem Unternehmen und wir finden den perfekten Plan",
     "formName": "Ihr Name",
@@ -272,13 +272,13 @@
     "formBusiness": "Unternehmensname",
     "formBusinessPlaceholder": "Ihr Unternehmensname",
     "formMessage": "Nachricht",
-    "formMessagePlaceholder": "Erzahlen Sie uns von Ihrem Unternehmen...",
+    "formMessagePlaceholder": "Erzählen Sie uns von Ihrem Unternehmen...",
     "sendInquiry": "Anfrage senden"
   },
   "megaMenu": {
     "items": {
-      "thingsToDo": "Aktivitaten",
-      "whatToVisit": "Sehenswurdigkeiten",
+      "thingsToDo": "Aktivitäten",
+      "whatToVisit": "Sehenswürdigkeiten",
       "gastronomy": "Essen & Trinken",
       "planTrip": "Reise planen",
       "blog": "Blog",
@@ -289,7 +289,7 @@
       "culture": "Kultur",
       "nature": "Natur",
       "nightlife": "Nachtleben",
-      "beaches": "Strande",
+      "beaches": "Strände",
       "areas": "Regionen",
       "mustSee": "Muss man sehen",
       "whereToEat": "Wo essen",
@@ -298,22 +298,22 @@
       "onIsland": "Auf der Insel"
     },
     "links": {
-      "boatTrips": "Bootsausfluge & Walbeobachtung",
+      "boatTrips": "Bootsausflüge & Walbeobachtung",
       "teideTours": "Teide-Touren",
       "waterSports": "Wassersport",
       "themeParks": "Freizeitparks",
       "museums": "Museen",
       "festivals": "Feste & Veranstaltungen",
-      "historicTowns": "Historische Stadte",
+      "historicTowns": "Historische Städte",
       "hiking": "Wanderwege",
       "teideNP": "Teide-Nationalpark",
       "stargazing": "Sternbeobachtung",
       "beachClubs": "Beach Clubs",
       "clubs": "Clubs",
       "bars": "Bars & Pubs",
-      "southBeaches": "Sudstrande",
-      "northBeaches": "Nordstrande",
-      "familyBeaches": "Familienstrande",
+      "southBeaches": "Südstrände",
+      "northBeaches": "Nordstrände",
+      "familyBeaches": "Familienstrände",
       "naturalPools": "Naturpools",
       "costaAdeje": "Costa Adeje",
       "puertoCruz": "Puerto de la Cruz",
@@ -326,13 +326,13 @@
       "anaga": "Anaga",
       "bestRestaurants": "Beste Restaurants",
       "guachinches": "Guachinches",
-      "canarianCuisine": "Kanarische Kuche",
+      "canarianCuisine": "Kanarische Küche",
       "wineTasting": "Weinverkostung",
       "localProducts": "Lokale Produkte",
       "bestTime": "Beste Reisezeit",
-      "northVsSouth": "Norden vs Suden",
-      "familyGuide": "Familien-Reisefuhrer",
-      "hikingGuide": "Wander-Reisefuhrer"
+      "northVsSouth": "Norden vs Süden",
+      "familyGuide": "Familien-Reiseführer",
+      "hikingGuide": "Wander-Reiseführer"
     },
     "viewAll": "Alle anzeigen"
   },
@@ -345,6 +345,131 @@
     "secureBooking": "Sichere Buchung",
     "freeCancellation": "Kostenlose Stornierung",
     "bestPrice": "Bestpreisgarantie"
+  },
+  "pillar": {
+    "meta": {
+      "title": "Was Sie auf Teneriffa sehen sollten: Kompletter 2026 Reiseführer | Tenerife Experiences",
+      "description": "Entdecken Sie, was Sie auf Teneriffa sehen sollten: die 10 besten Attraktionen, Strände, Natur, Kultur und Gastronomie. Kompletter Reiseführer mit 3-, 5- und 7-Tage-Reiseplänen."
+    },
+    "hero": {
+      "title": "Was Sie auf Teneriffa sehen sollten: Kompletter 2026 Reiseführer",
+      "subtitle": "Alles, was Sie wissen müssen, um die spektakulärste Insel der Kanaren zu entdecken. Traumhafte Strände, Vulkane, charmante Dörfer und einzigartige Küche erwarten Sie.",
+      "badge": "Der ultimative Teneriffa-Reiseführer",
+      "altImage": "Panoramablick auf den Mount Teide und die Teneriffaküste bei Sonnenuntergang"
+    },
+    "toc": {
+      "title": "In diesem Reiseführer",
+      "top10": "Top 10 Muss man sehen",
+      "byArea": "Nach Region",
+      "beaches": "Strände",
+      "nature": "Natur",
+      "culture": "Kultur",
+      "gastronomy": "Gastronomie",
+      "itineraries": "Reisepläne",
+      "faq": "Häufig gestellte Fragen"
+    },
+    "sections": {
+      "mustSee": "Muss man sehen",
+      "top10Title": "Die 10 Sehenswürdigkeiten auf Teneriffa, die man gesehen haben muss",
+      "top10Subtitle": "Die am höchsten bewerteten Erlebnisse unserer Besucher. Vom majestätischen Teide zu vulkanischen schwarzen Sandstränden.",
+      "noData": "Wir werden hier bald Inhalte hinzufügen.",
+      "byAreaTitle": "Teneriffa nach Region",
+      "byAreaSubtitle": "Jede Ecke der Insel hat ihren eigenen Charakter. Entdecken Sie, was jede Region zu bieten hat.",
+      "viewAllAreas": "Alle Regionen anzeigen",
+      "explore": "Region erkunden",
+      "beachesLabel": "Strände",
+      "beachesTitle": "Die besten Strände auf Teneriffa",
+      "beachesSubtitle": "Von den goldenen Sänden von Las Teresitas bis zu den vulkanischen Stränden des Nordens hat Teneriffa über 150 Strände für jeden Geschmack.",
+      "viewAllBeaches": "Alle Strände anzeigen",
+      "natureLabel": "Natur",
+      "natureTitle": "Einzigartige Natur und Landschaften",
+      "natureSubtitle": "Teneriffa ist ein Naturparadies: der drittgrößte Vulkan der Welt, antike Lorbeerwälder und spektakuläre Schluchten.",
+      "learnMore": "Mehr erfahren",
+      "cultureLabel": "Kultur & Geschichte",
+      "cultureTitle": "Städte voller Geschichte und Tradition",
+      "cultureSubtitle": "UNESCO-Weltkulturerbstädte, Städte, die über Lava wiederaufgebaut wurden, und Museen, die Jahrhunderte der Geschichte erzählen.",
+      "viewAllCulture": "Alle Kulturadressen erkunden",
+      "gastronomyLabel": "Gastronomie",
+      "gastronomyTitle": "Geschmäcker von Teneriffa",
+      "itinerariesLabel": "Planen Sie Ihre Reise",
+      "itinerariesTitle": "Empfohlene Reisepläne",
+      "itinerariesSubtitle": "Optimierte Pläne, um das Beste aus Ihrer Reise je nach verfügbaren Tagen herauszuholen.",
+      "faqTitle": "Häufig gestellte Fragen zu Teneriffa",
+      "faqSubtitle": "Wir beantworten die häufigsten Fragen von Reisenden, die die Insel besuchen."
+    },
+    "nature": {
+      "teideTitle": "Teide-Nationalpark",
+      "teideDesc": "Der höchste Gipfel in Spanien (3.718 m). Mondlandschaften, Seilbahn und Sternbeobachtung unter einem Starlight-zertifizierten Himmel.",
+      "anagaTitle": "Anaga-Wald",
+      "anagaDesc": "Ein Biosphärenreservat mit antiken Lorbeerwäldern, spektakulären Aussichtspunkten und abgelegenen Dörfern.",
+      "mascaTitle": "Masca-Schlucht",
+      "mascaDesc": "Teneriffas berühmtester Wanderweg. Ein spektakulärer Abstieg vom Dorf zum Meer."
+    },
+    "culture": {
+      "lagunaTitle": "San Cristóbal de La Laguna",
+      "lagunaDesc": "Eine UNESCO-Weltkulturerbstätte. Kopfsteinpflastergassen, farbenfrohe Herrenhäuser und eine lebendige Universitätsatmosphäre.",
+      "garachicoTitle": "Garachico",
+      "garachicoDesc": "Die Stadt wiedergeboren aus Lava. Naturbäder von El Caletón, historische Architektur und atlantischer Charme.",
+      "museumsTitle": "Museen & Kulturräume",
+      "museumsDesc": "Von TEA in Santa Cruz bis zum Museum für Natur und Mensch mit seinen Guanche-Mumien."
+    },
+    "beaches": {
+      "teresitas": "Teneriffas ikonischster Strand mit goldenem Sand, der aus der Sahara gebracht wurde, und kristallklarem, geschütztem Wasser.",
+      "duque": "Ein Premium-Strand in Costa Adeje mit hellem Sand, erstklassigen Einrichtungen und ruhigem Wasser. Perfekt für Familien.",
+      "benijo": "Ein wilder Strand in Anaga mit vulkanischem schwarzem Sand und Blick auf die Roques. Perfekt für Surfer."
+    },
+    "gastronomy": {
+      "intro": "Teneriffas Küche ist eine Fusion aus kanarischer, spanischer und lateinamerikanischer Küche. Außergewöhnliche lokale Produkte, Weine mit eigener Herkunftsbezeichnung und eine kulinarische Tradition, die nie enttäuscht.",
+      "highlight1": "Papas arrugadas mit Mojo: das quintessenzielle kanarische Gericht, ein Muss in jedem Guachinche",
+      "highlight2": "Teneriffas Weine: 5 Herkunftsbezeichnungen mit einzigartigen Vor-Reblaus-Traubensorten",
+      "highlight3": "Guachinches: von Familien betriebene Restaurants mit authentischer kanarischer Küche zu lokalen Preisen",
+      "cta": "Erkunden Sie die Küche"
+    },
+    "itineraries": {
+      "recommended": "Empfohlen",
+      "3days": {
+        "title": "3 Tage auf Teneriffa",
+        "subtitle": "Die Insel das Wesentliche",
+        "day1": "Teide bei Sonnenaufgang + La Orotava + Puerto de la Cruz",
+        "day2": "Südstrände: Las Américas, Costa Adeje + Walbeobachtung",
+        "day3": "La Laguna + Santa Cruz + Playa de Las Teresitas"
+      },
+      "5days": {
+        "title": "5 Tage auf Teneriffa",
+        "subtitle": "Das komplette Erlebnis",
+        "day1": "Teide-Nationalpark + Sternbeobachtung",
+        "day2": "Anaga-Wald + Playa de Benijo + Taganana",
+        "day3": "La Laguna + Museum für Natur + Gastronomie",
+        "day4": "Costa Adeje + Siam Park + Sonnenuntergang bei Los Gigantes",
+        "day5": "Masca (Wanderung) + Garachico + Icod de los Vinos"
+      },
+      "7days": {
+        "title": "7 Tage auf Teneriffa",
+        "subtitle": "Nehmen Sie sich Zeit, verpassen Sie nichts",
+        "days12": "Teide (Seilbahn + Wanderung) + La Orotava + Puerto de la Cruz",
+        "day3": "Ganz Anaga: Cruz del Carmen, Chinamada, Benijo, Taganana",
+        "days45": "Süden: Strände, Walbeobachtung, Siam Park, Barranco del Infierno",
+        "day6": "Westen: Masca, Garachico, Icod, Sonnenuntergang bei Los Gigantes",
+        "day7": "La Laguna + Santa Cruz + Einkaufen + Abschiedsdinner"
+      }
+    },
+    "faq": {
+      "q1": "Wann ist die beste Zeit, um Teneriffa zu besuchen?",
+      "a1": "Teneriffa kann dank des subtropischen Klimas das ganze Jahr über besucht werden. Die Temperaturen liegen zwischen 18°C und 28°C. Der Winter (Dezember-Februar) ist ideal, um der europäischen Kälte zu entgehen, während der Frühling (März-Mai) grüne, blühende Landschaften bietet. Der Sommer ist perfekt für den Strand, obwohl der Süden immer gutes Wetter hat.",
+      "q2": "Wie viele Tage brauche ich, um Teneriffa zu sehen?",
+      "a2": "Wir empfehlen mindestens 5 Tage, um das Wesentliche zu sehen: Teide, Südstrände, Anaga und La Laguna. Mit 7 Tagen können Sie Masca, Garachico hinzufügen und in Ruhe genießen. Wenn Sie nur 3 Tage haben, konzentrieren Sie sich auf Teide, einen Strandbereich und La Laguna.",
+      "q3": "Ist der Norden oder der Süden von Teneriffa besser?",
+      "a3": "Das hängt von Ihren Vorlieben ab. Der Süden hat breitere Strände, Resorts und garantierten Sonnenschein. Der Norden bietet üppige Natur, charmante Dörfer, authentische Küche und grünere Landschaften. Im Idealfall kombinieren Sie beide Bereiche.",
+      "q4": "Brauche ich ein Auto, um auf Teneriffa herumzukommen?",
+      "a4": "Sehr empfehlenswert. Obwohl es öffentliche Verkehrsmittel gibt (Busse und Straßenbahn), gibt Ihnen ein Auto die Freiheit, Orte wie Masca, Anaga oder die entlegeneren Strände zu erkunden. Mietpreise sind günstig, ab etwa 20-30 €/Tag.",
+      "q5": "Was sollte man auf Teneriffa mit Kindern sehen?",
+      "a5": "Teneriffa ist ideal für Familien. Verpassen Sie nicht Siam Park (bester Wasserpark der Welt), Loro Parque, die ruhigen Strände von Costa Adeje, die Teide-Seilbahn und die Naturbäder von Garachico. Es gibt auch Bootsausflüge, um Delfine und Wale zu sehen."
+    },
+    "cta": {
+      "title": "Bereit, Teneriffa zu entdecken?",
+      "subtitle": "Buchen Sie die besten Erlebnisse und Aktivitäten auf der Insel. Kostenlose Stornierung und Bestpreisgarantie.",
+      "button": "Erlebnisse buchen"
+    }
   },
   "cookies": {
     "message": "Wir verwenden Cookies, um Ihre Erfahrung zu verbessern. Durch Fortsetzung stimmen Sie unserer Cookie-Richtlinie zu.",

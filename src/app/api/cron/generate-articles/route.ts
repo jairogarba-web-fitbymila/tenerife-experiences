@@ -54,7 +54,7 @@ const ARTICLE_TOPICS = [
 export async function GET(request: NextRequest) {
   // Verify cron secret
   const authHeader = request.headers.get('authorization')
-  if (authHeader !== `Bearer ${process.env.CRON_SECRET}`) {
+  if (!process.env.CRON_SECRET || authHeader !== `Bearer ${process.env.CRON_SECRET}`) {
     return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
   }
 
@@ -77,12 +77,14 @@ export async function GET(request: NextRequest) {
   }
 
   try {
+    // Call the generate endpoint using internal server-to-server call
+    // Use CRON_SECRET instead of exposing SUPABASE_SERVICE_ROLE_KEY
     const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.tenerifeexperiences.com'
     const response = await fetch(`${baseUrl}/api/articles/generate`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        Authorization: `Bearer ${process.env.SUPABASE_SERVICE_ROLE_KEY}`,
+        Authorization: `Bearer ${process.env.CRON_SECRET}`,
       },
       body: JSON.stringify({
         topic,

@@ -241,5 +241,130 @@
       "essentialOnly": "Solo essenziali"
     }
   },
+  "pillar": {
+    "meta": {
+      "title": "Cosa Vedere a Tenerife: Guida Completa 2026 | Tenerife Experiences",
+      "description": "Scopri cosa vedere a Tenerife: le 10 migliori attrazioni, spiagge, natura, cultura e gastronomia. Guida completa con itinerari di 3, 5 e 7 giorni."
+    },
+    "hero": {
+      "title": "Cosa Vedere a Tenerife: Guida Completa 2026",
+      "subtitle": "Tutto ciò che devi sapere per scoprire l'isola più spettacolare delle Canarie. Spiagge da sogno, vulcani, villaggi affascinanti e una cucina unica ti aspettano.",
+      "badge": "La Guida Definitiva di Tenerife",
+      "altImage": "Vista panoramica del Monte Teide e della costa di Tenerife al tramonto"
+    },
+    "toc": {
+      "title": "In questa guida",
+      "top10": "Top 10 da Non Perdere",
+      "byArea": "Per Zona",
+      "beaches": "Spiagge",
+      "nature": "Natura",
+      "culture": "Cultura",
+      "gastronomy": "Gastronomia",
+      "itineraries": "Itinerari",
+      "faq": "Domande Frequenti"
+    },
+    "sections": {
+      "mustSee": "Da Non Perdere",
+      "top10Title": "I 10 posti che devi assolutamente visitare a Tenerife",
+      "top10Subtitle": "Le esperienze più apprezzate dai nostri visitatori. Dal maestoso Teide alle spiagge vulcaniche di sabbia nera.",
+      "noData": "Aggiungeremo presto contenuti qui.",
+      "byAreaTitle": "Tenerife per zona",
+      "byAreaSubtitle": "Ogni angolo dell'isola ha la sua personalità. Scopri cosa offre ogni zona.",
+      "viewAllAreas": "Visualizza tutte le zone",
+      "explore": "Esplora la zona",
+      "beachesLabel": "Spiagge",
+      "beachesTitle": "Le migliori spiagge di Tenerife",
+      "beachesSubtitle": "Dalle sabbie dorate di Las Teresitas alle spiagge vulcaniche del nord, Tenerife ha oltre 150 spiagge per tutti i gusti.",
+      "viewAllBeaches": "Visualizza tutte le spiagge",
+      "natureLabel": "Natura",
+      "natureTitle": "Natura e paesaggi unici",
+      "natureSubtitle": "Tenerife è un paradiso naturale: il terzo vulcano più alto del mondo, antichi boschi di alloro e spettacolari gole.",
+      "learnMore": "Scopri di più",
+      "cultureLabel": "Cultura e Storia",
+      "cultureTitle": "Città ricche di storia e tradizione",
+      "cultureSubtitle": "Città Patrimonio dell'Umanità UNESCO, città ricostruite su lava e musei che raccontano secoli di storia.",
+      "viewAllCulture": "Esplora tutta la cultura",
+      "gastronomyLabel": "Gastronomia",
+      "gastronomyTitle": "I Sapori di Tenerife",
+      "itinerariesLabel": "Pianifica il tuo viaggio",
+      "itinerariesTitle": "Itinerari consigliati",
+      "itinerariesSubtitle": "Piani ottimizzati per sfruttare al massimo il tuo viaggio in base ai giorni a disposizione.",
+      "faqTitle": "Domande frequenti su Tenerife",
+      "faqSubtitle": "Rispondiamo alle domande più comuni dei viaggiatori che visitano l'isola."
+    },
+    "nature": {
+      "teideTitle": "Parco Nazionale del Teide",
+      "teideDesc": "La vetta più alta della Spagna (3.718 m). Paesaggi lunari, funivia e osservazione delle stelle sotto un cielo certificato Starlight.",
+      "anagaTitle": "Bosco di Anaga",
+      "anagaDesc": "Una Riserva della Biosfera con antichi boschi di alloro, spettacolari punti panoramici e villaggi isolati.",
+      "mascaTitle": "Gola di Masca",
+      "mascaDesc": "Il sentiero escursionistico più famoso di Tenerife. Una spettacolare discesa dal villaggio fino al mare."
+    },
+    "culture": {
+      "lagunaTitle": "San Cristóbal de La Laguna",
+      "lagunaDesc": "Una città Patrimonio dell'Umanità UNESCO. Strade acciottolate, dimore colorate e un'atmosfera universitaria vivace.",
+      "garachicoTitle": "Garachico",
+      "garachicoDesc": "La città rinata dalla lava. Le piscine naturali di El Caletón, architettura storica e il fascino dell'Atlantico.",
+      "museumsTitle": "Musei e Spazi Culturali",
+      "museumsDesc": "Dal TEA di Santa Cruz al Museo di Natura e Uomo con le sue mummie guanci."
+    },
+    "beaches": {
+      "teresitas": "La spiaggia più iconica di Tenerife, con sabbia dorata proveniente dal Sahara e acque cristalline protette.",
+      "duque": "Una spiaggia premium a Costa Adeje con sabbia chiara, strutture di alto livello e acque calme. Perfetta per le famiglie.",
+      "benijo": "Una spiaggia selvaggia ad Anaga con sabbia nera vulcanica e vista sui Roques. Perfetta per i surfisti."
+    },
+    "gastronomy": {
+      "intro": "La cucina di Tenerife è una fusione di sapori canari, spagnoli e latinoamericani. Prodotti locali eccezionali, vini con denominazione d'origine propria e una tradizione culinaria che non delude mai.",
+      "highlight1": "Papas arrugadas con mojo: il piatto canario per eccellenza, da provare in qualsiasi guachinche",
+      "highlight2": "Vini di Tenerife: 5 denominazioni di origine con varietà d'uva pre-filossera uniche",
+      "highlight3": "Guachinches: locande a conduzione familiare che servono autentica cucina canaria a prezzi locali",
+      "cta": "Esplora la cucina"
+    },
+    "itineraries": {
+      "recommended": "Consigliati",
+      "3days": {
+        "title": "3 Giorni a Tenerife",
+        "subtitle": "L'essenziale dell'isola",
+        "day1": "Teide all'alba + La Orotava + Puerto de la Cruz",
+        "day2": "Spiagge del sud: Las Américas, Costa Adeje + avvistamento balene",
+        "day3": "La Laguna + Santa Cruz + Playa de Las Teresitas"
+      },
+      "5days": {
+        "title": "5 Giorni a Tenerife",
+        "subtitle": "L'esperienza completa",
+        "day1": "Parco Nazionale del Teide + osservazione delle stelle",
+        "day2": "Bosco di Anaga + Playa de Benijo + Taganana",
+        "day3": "La Laguna + Museo di Natura + gastronomia",
+        "day4": "Costa Adeje + Siam Park + tramonto a Los Gigantes",
+        "day5": "Masca (escursionismo) + Garachico + Icod de los Vinos"
+      },
+      "7days": {
+        "title": "7 Giorni a Tenerife",
+        "subtitle": "Prenditi il tuo tempo, non perderti nulla",
+        "days12": "Teide (funivia + escursionismo) + La Orotava + Puerto de la Cruz",
+        "day3": "Tutto Anaga: Cruz del Carmen, Chinamada, Benijo, Taganana",
+        "days45": "Sud: spiagge, avvistamento balene, Siam Park, Barranco del Infierno",
+        "day6": "Ovest: Masca, Garachico, Icod, tramonto a Los Gigantes",
+        "day7": "La Laguna + Santa Cruz + shopping + cena di addio"
+      }
+    },
+    "faq": {
+      "q1": "Qual è il momento migliore per visitare Tenerife?",
+      "a1": "Tenerife può essere visitata tutto l'anno grazie al suo clima subtropicale. Le temperature variano tra 18°C e 28°C. L'inverno (dicembre-febbraio) è ideale per scappare dal freddo europeo, mentre la primavera (marzo-maggio) offre paesaggi verdi e fioriti. L'estate è perfetta per la spiaggia, anche se il sud ha sempre buon tempo.",
+      "q2": "Quanti giorni mi servono per vedere Tenerife?",
+      "a2": "Consigliamo un minimo di 5 giorni per vedere l'essenziale: Teide, spiagge del sud, Anaga e La Laguna. Con 7 giorni puoi aggiungere Masca, Garachico e goderti il viaggio con calma. Se hai solo 3 giorni, concentrati su Teide, una zona di spiagge e La Laguna.",
+      "q3": "È meglio il nord o il sud di Tenerife?",
+      "a3": "Dipende dalle tue preferenze. Il sud ha spiagge più ampie, resort e sole garantito. Il nord offre natura rigogliosa, villaggi affascinanti, cucina autentica e paesaggi più verdi. Idealmente, combina entrambe le zone.",
+      "q4": "Ho bisogno di un'auto per muovermi a Tenerife?",
+      "a4": "Altamente consigliato. Anche se c'è trasporto pubblico (autobus e tram), avere un'auto ti dà la libertà di esplorare posti come Masca, Anaga o le spiagge più remote. I prezzi di noleggio sono ragionevoli, da circa 20-30€ al giorno.",
+      "q5": "Cosa vedere a Tenerife con i bambini?",
+      "a5": "Tenerife è ideale per le famiglie. Non perderti Siam Park (miglior parco acquatico del mondo), Loro Parque, le spiagge tranquille di Costa Adeje, la funivia del Teide e le piscine naturali di Garachico. Ci sono anche gite in barca per avvistare delfini e balene."
+    },
+    "cta": {
+      "title": "Pronto a scoprire Tenerife?",
+      "subtitle": "Prenota le migliori esperienze e attività sull'isola. Cancellazione gratuita e miglior prezzo garantito.",
+      "button": "Prenota Esperienze"
+    }
+  },
   "footer": { "about": "Su Tenerife Experiences", "aboutText": "La tua guida completa a tutto ciò che Tenerife ha da offrire.", "quickLinks": "Link Rapidi", "categories": "Categorie", "contact": "Contatti", "legal": "Note Legali", "privacy": "Privacy Policy", "terms": "Termini di Servizio", "cookies": "Cookie Policy", "copyright": "© {year} Tenerife Experiences. Tutti i diritti riservati.", "partners": "Per i Partner", "advertise": "Pubblicità", "latestArticles": "Ultimi Articoli", "article1": "Top 10 Cose da Fare a Tenerife", "article2": "Guida alle Migliori Spiagge", "article3": "Guida Completa del Teide", "madeIn": "Fatto a Tenerife con amore", "followUs": "Seguici" }
 }

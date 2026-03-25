@@ -15,9 +15,13 @@ interface ArticleRequest {
 }
 
 export async function POST(request: NextRequest) {
-  // Verify API key for security
+  // Verify API key for security (accepts CRON_SECRET or SUPABASE_SERVICE_ROLE_KEY)
   const authHeader = request.headers.get('authorization')
-  if (authHeader !== `Bearer ${process.env.SUPABASE_SERVICE_ROLE_KEY}`) {
+  const token = authHeader?.replace('Bearer ', '')
+  const isAuthorized =
+    (process.env.CRON_SECRET && token === process.env.CRON_SECRET) ||
+    (process.env.SUPABASE_SERVICE_ROLE_KEY && token === process.env.SUPABASE_SERVICE_ROLE_KEY)
+  if (!isAuthorized) {
     return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
   }
 
