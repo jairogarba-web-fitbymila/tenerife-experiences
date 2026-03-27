@@ -7,6 +7,7 @@ import { t as getLocalizedText } from '@/lib/helpers'
 import { ScrollEffects } from '@/components/cinematic/scroll-effects'
 import type { Locale } from '@/types/database'
 import { ReviewSection } from '@/components/review/review-panel'
+import Image from 'next/image'
 
 export async function generateMetadata({
   params,
@@ -57,10 +58,13 @@ export default async function BlogPage({
         <section className="relative h-[60vh] min-h-[400px] flex items-center justify-center overflow-hidden">
           {/* Background image */}
           <div className="absolute inset-0">
-            <img
+            <Image
               src="https://images.unsplash.com/photo-1605182054023-17d71f44aa11?w=1920&q=85"
               alt="Tenerife"
-              className="w-full h-full object-cover animate-ken-burns"
+              fill
+              priority
+              sizes="100vw"
+              className="object-cover animate-ken-burns"
             />
             <div className="absolute inset-0 bg-gradient-to-b from-slate-950/40 via-slate-950/30 to-slate-950/80" />
           </div>
@@ -121,10 +125,12 @@ export default async function BlogPage({
                       {/* Image */}
                       {article.image && (
                         <div className="absolute inset-0 overflow-hidden">
-                          <img
+                          <Image
                             src={article.image}
                             alt={getLocalizedText(article.title, locale as Locale)}
-                            className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                            fill
+                            sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                            className="object-cover transition-transform duration-500 group-hover:scale-110"
                           />
                           {/* Dark overlay */}
                           <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-slate-950/80"></div>

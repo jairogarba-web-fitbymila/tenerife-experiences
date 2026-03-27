@@ -1,9 +1,20 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { createAdminClient } from '@/lib/supabase/admin'
+import { rateLimit, getClientIP } from '@/lib/rate-limit'
 
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
 
 export async function POST(request: NextRequest) {
+  // Rate limit: 5 subscriptions per hour per IP
+  const ip = getClientIP(request)
+  const { success, remaining } = rateLimit(ip, { limit: 5, windowSeconds: 3600 })
+  if (!success) {
+    return NextResponse.json(
+      { error: 'Too many requests. Please try again later.' },
+      { status: 429, headers: { 'Retry-After': '3600' } }
+    )
+  }
+
   try {
     const body = await request.json()
     const { email, locale } = body
@@ -11,6 +22,14 @@ export async function POST(request: NextRequest) {
     if (!email || typeof email !== 'string' || !EMAIL_REGEX.test(email)) {
       return NextResponse.json(
         { error: 'Invalid email address' },
+        { status: 400 }
+      )
+    }
+
+    // Sanity check: email max length
+    if (email.length > 254) {
+      return NextResponse.json(
+        { error: 'Email too long' },
         { status: 400 }
       )
     }
@@ -41,7 +60,10 @@ export async function POST(request: NextRequest) {
       )
     }
 
-    return NextResponse.json({ success: true })
+    return NextResponse.json(
+      { success: true },
+      { headers: { 'X-RateLimit-Remaining': String(remaining) } }
+    )
   } catch {
     return NextResponse.json(
       { error: 'Invalid request' },

@@ -1,7 +1,18 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { getStripe, GUIDE_PRODUCTS, type GuideId } from '@/lib/stripe/config'
+import { rateLimit, getClientIP } from '@/lib/rate-limit'
 
 export async function POST(request: NextRequest) {
+  // Rate limit: 10 checkout attempts per hour per IP
+  const ip = getClientIP(request)
+  const { success } = rateLimit(ip, { limit: 10, windowSeconds: 3600 })
+  if (!success) {
+    return NextResponse.json(
+      { error: 'Too many requests. Please try again later.' },
+      { status: 429 }
+    )
+  }
+
   try {
     const body = await request.json()
     const { guideId, locale = 'es' } = body as { guideId: string; locale: string }

@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { createAdminClient } from '@/lib/supabase/admin'
+import { rateLimit, getClientIP } from '@/lib/rate-limit'
 
 function detectDevice(userAgent: string): string {
   const ua = userAgent.toLowerCase()
@@ -9,11 +10,26 @@ function detectDevice(userAgent: string): string {
 }
 
 export async function POST(request: NextRequest) {
+  // Rate limit: 100 page views per minute per IP (generous for normal browsing)
+  const ip = getClientIP(request)
+  const { success } = rateLimit(ip, { limit: 100, windowSeconds: 60 })
+  if (!success) {
+    return new NextResponse(null, { status: 429 })
+  }
+
   try {
     const body = await request.json()
     const { page_path, locale, referrer, session_id } = body
 
     if (!page_path || !session_id) {
+      return new NextResponse(null, { status: 400 })
+    }
+
+    // Input validation
+    if (typeof page_path !== 'string' || page_path.length > 500) {
+      return new NextResponse(null, { status: 400 })
+    }
+    if (typeof session_id !== 'string' || session_id.length > 100) {
       return new NextResponse(null, { status: 400 })
     }
 
@@ -24,7 +40,7 @@ export async function POST(request: NextRequest) {
     await supabase.from('page_views').insert({
       page_path,
       locale: locale || null,
-      referrer: referrer || null,
+      referrer: referrer ? String(referrer).slice(0, 500) : null,
       session_id,
       device,
     })

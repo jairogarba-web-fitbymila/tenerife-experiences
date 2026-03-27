@@ -16,7 +16,7 @@ const navLinks = [
   { href: '/guias', key: 'guides' },
 ] as const
 
-const displayLocales: Locale[] = ['en', 'es', 'de']
+const displayLocales: Locale[] = ['en', 'es', 'de', 'fr', 'ru', 'it']
 
 export function Header() {
   const t = useTranslations('nav')

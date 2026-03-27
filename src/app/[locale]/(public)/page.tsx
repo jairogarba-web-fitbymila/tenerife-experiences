@@ -25,6 +25,7 @@ import { NewsletterForm } from '@/components/home/newsletter-form'
 import { ScrollEffects } from '@/components/cinematic/scroll-effects'
 import { ReviewSection } from '@/components/review/review-panel'
 import { CategorySections } from '@/components/home/category-sections'
+import Image from 'next/image'
 
 const mapPins = [
   { name: 'Teide National Park', slug: 'areas/teide', category: 'nature', lat: 28.2723, lng: -16.6422 },
@@ -194,10 +195,13 @@ export default function HomePage() {
       <ReviewSection page="landing" sectionId="hero" sectionLabel="Hero">
         <section className="relative w-full h-screen flex flex-col items-center justify-center overflow-hidden">
           <div className="absolute inset-0">
-            <img
+            <Image
               src="https://images.unsplash.com/photo-1605182054023-17d71f44aa11?w=1920&q=85"
               alt={t('hero.altImage')}
-              className="w-full h-full object-cover animate-ken-burns"
+              fill
+              priority
+              sizes="100vw"
+              className="object-cover animate-ken-burns"
             />
             <div className="absolute inset-0 bg-gradient-to-b from-slate-950/30 via-slate-950/20 to-slate-950/60" />
           </div>
@@ -250,11 +254,12 @@ export default function HomePage() {
             {areas.map((area) => (
               <Link key={area.id} href={`/areas/${area.id}`}>
                 <div className="group relative aspect-[3/4] rounded-2xl overflow-hidden cursor-pointer reveal">
-                  <img
+                  <Image
                     src={area.image}
                     alt={t(`areas.${area.key}`)}
-                    className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                    loading="lazy"
+                    fill
+                    sizes="(max-width: 768px) 50vw, 25vw"
+                    className="object-cover transition-transform duration-700 group-hover:scale-110"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent group-hover:from-black/80 transition-all duration-500" />
                   <div className="absolute bottom-0 left-0 right-0 p-5 md:p-6">
