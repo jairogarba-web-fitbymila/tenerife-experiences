@@ -52,7 +52,6 @@ export default async function AdminLayout({
     redirect(`/${locale}/login`)
   }
 
-  // Support both old format (plain string) and new format (JSON)
   let isAuth = false
   let userName = 'Admin'
   let userRole = 'owner'
@@ -62,7 +61,7 @@ export default async function AdminLayout({
     userName = parsed.name || 'Admin'
     userRole = parsed.role || 'owner'
   } catch {
-    isAuth = session.value === 'authenticated'
+    isAuth = false
   }
 
   if (!isAuth) {

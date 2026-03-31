@@ -8,6 +8,14 @@ import { ReadingProgress } from '@/components/cinematic/reading-progress'
 import { ScrollEffects } from '@/components/cinematic/scroll-effects'
 import { t as getLocalizedText } from '@/lib/helpers'
 import type { Locale } from '@/types/database'
+
+function sanitizeHtml(html: string): string {
+  return html
+    .replace(/<script\b[^<]*(?:(?!<\/script>)<[^<]*)*<\/script>/gi, '')
+    .replace(/on\w+\s*=\s*"[^"]*"/gi, '')
+    .replace(/on\w+\s*=\s*'[^']*'/gi, '')
+    .replace(/javascript\s*:/gi, '')
+}
 import { notFound } from 'next/navigation'
 import { ReviewSection } from '@/components/review/review-panel'
 
@@ -249,7 +257,7 @@ export default async function ArticlePage({
             <div className="prose-dark reveal">
               <div
                 className="prose-dark"
-                dangerouslySetInnerHTML={{ __html: content }}
+                dangerouslySetInnerHTML={{ __html: sanitizeHtml(content) }}
               />
             </div>
           </div>

@@ -64,7 +64,8 @@ export async function getAdminUser(): Promise<{
  */
 export function generateCSRFToken(sessionId: string): string {
   const { createHmac } = require('crypto')
-  const secret = process.env.CSRF_SECRET || process.env.ADMIN_PASSWORD || 'csrf-fallback-key'
+  const secret = process.env.CSRF_SECRET || process.env.ADMIN_PASSWORD
+  if (!secret) throw new Error('CSRF_SECRET or ADMIN_PASSWORD must be set')
   return createHmac('sha256', secret).update(sessionId).digest('hex')
 }
 

@@ -3,12 +3,9 @@ import { cookies } from 'next/headers'
 import { createAdminClient } from '@/lib/supabase/admin'
 import { isAuthenticated } from '@/lib/auth'
 
-// Check if user is in review mode (admin_session OR admin_review cookie)
+// Only full admin auth for write operations
 async function isReviewAuthorized(): Promise<boolean> {
-  if (await isAuthenticated()) return true
-  const cookieStore = await cookies()
-  const reviewCookie = cookieStore.get('admin_review')
-  return reviewCookie?.value === 'true'
+  return isAuthenticated()
 }
 
 // GET: Fetch all landing images (public, no auth needed for read)

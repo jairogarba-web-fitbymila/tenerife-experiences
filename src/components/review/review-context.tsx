@@ -39,20 +39,8 @@ export function ReviewProvider({ children }: { children: ReactNode }) {
 
   // Check for admin session via cookie (set at login) or legacy URL param
   useEffect(() => {
-    // Primary: check admin_review cookie (set by /api/admin/login)
+    // Check admin_review cookie (set by /api/admin/login only)
     if (getCookie('admin_review') === 'true') {
-      setIsReviewMode(true)
-      return
-    }
-
-    // Legacy fallback: URL param ?review=revisar2026
-    const params = new URLSearchParams(window.location.search)
-    if (params.get('review') === 'revisar2026') {
-      setIsReviewMode(true)
-      sessionStorage.setItem('review-mode', 'true')
-      // Also set cookie so server-side API routes can verify review mode
-      document.cookie = 'admin_review=true; path=/; max-age=86400; SameSite=Lax'
-    } else if (sessionStorage.getItem('review-mode') === 'true') {
       setIsReviewMode(true)
     }
   }, [])
