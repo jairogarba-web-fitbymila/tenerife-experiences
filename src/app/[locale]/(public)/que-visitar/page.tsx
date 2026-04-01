@@ -17,6 +17,7 @@ import {
 } from 'lucide-react'
 import { t as getLocalizedText, formatPrice, formatRating } from '@/lib/helpers'
 import type { Locale } from '@/types/database'
+import { buildAlternates } from '@/lib/metadata'
 
 export async function generateMetadata({
   params,
@@ -28,9 +29,7 @@ export async function generateMetadata({
   return {
     title: t('meta.title'),
     description: t('meta.description'),
-    alternates: {
-      canonical: '/que-visitar',
-    },
+    alternates: buildAlternates(locale, '/que-visitar'),
   }
 }
 

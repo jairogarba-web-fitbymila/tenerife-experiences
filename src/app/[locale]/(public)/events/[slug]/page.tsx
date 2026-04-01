@@ -9,6 +9,7 @@ import { t as getLocalizedText } from '@/lib/helpers'
 import type { Locale } from '@/types/database'
 import { notFound } from 'next/navigation'
 
+import { buildAlternates } from '@/lib/metadata'
 export async function generateMetadata({
   params,
 }: {
@@ -28,6 +29,7 @@ export async function generateMetadata({
   return {
     title: getLocalizedText(event.meta_title || event.name, locale as Locale),
     description: getLocalizedText(event.meta_description || event.description, locale as Locale),
+    alternates: buildAlternates(locale, `/events/${slug}`),
   }
 }
 

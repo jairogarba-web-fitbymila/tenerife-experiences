@@ -5,6 +5,7 @@ import { ReviewSection } from '@/components/review/review-panel'
 import { GuideNotifyForm } from '@/components/guides/guide-notify-form'
 import { BuyGuideButton } from '@/components/guides/buy-guide-button'
 import { BookOpen, UtensilsCrossed, Waves, Mountain, Heart, Baby, Moon, Package } from 'lucide-react'
+import { buildAlternates } from '@/lib/metadata'
 
 export async function generateMetadata({
   params,
@@ -16,6 +17,7 @@ export async function generateMetadata({
   return {
     title: t('meta.title'),
     description: t('meta.description'),
+    alternates: buildAlternates(locale, '/guias'),
   }
 }
 

@@ -3,6 +3,7 @@ import { Button } from '@/components/ui/button'
 import { Card, CardContent } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
 import {
+import { buildAlternates } from '@/lib/metadata'
   Plane,
   Ship,
   Sun,
@@ -335,9 +336,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   return {
     title: t.meta.title,
     description: t.meta.description,
-    alternates: {
-      canonical: `https://www.tenerifeexperiences.com/${locale}/planifica`,
-    },
+    alternates: buildAlternates(locale, '/planifica'),
   }
 }
 

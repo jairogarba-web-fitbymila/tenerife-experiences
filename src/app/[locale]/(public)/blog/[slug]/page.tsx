@@ -9,6 +9,7 @@ import { ReadingProgress } from '@/components/cinematic/reading-progress'
 import { ScrollEffects } from '@/components/cinematic/scroll-effects'
 import { t as getLocalizedText } from '@/lib/helpers'
 import type { Locale } from '@/types/database'
+import { buildAlternates } from '@/lib/metadata'
 
 function sanitizeHtml(html: string): string {
   return html
@@ -46,6 +47,7 @@ export async function generateMetadata({
   return {
     title,
     description,
+    alternates: buildAlternates(locale, `/blog/${slug}`),
     openGraph: {
       title,
       description,

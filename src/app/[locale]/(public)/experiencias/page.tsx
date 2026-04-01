@@ -4,6 +4,7 @@ import { Link } from '@/i18n/routing'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
+import { buildAlternates } from '@/lib/metadata'
 import {
   MapPin,
   Star,
@@ -78,7 +79,7 @@ export async function generateMetadata({
   return {
     title: getLocalizedText(text.meta.title, loc),
     description: getLocalizedText(text.meta.description, loc),
-    alternates: { canonical: '/experiencias' },
+    alternates: buildAlternates(locale, '/experiencias'),
   }
 }
 

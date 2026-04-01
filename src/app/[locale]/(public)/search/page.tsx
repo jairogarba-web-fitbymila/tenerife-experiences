@@ -6,6 +6,7 @@ import { Search, MapPin, Star, FileText, Store } from 'lucide-react'
 import { t as getLocalizedText } from '@/lib/helpers'
 import type { Locale } from '@/types/database'
 import { SearchInput } from './search-input'
+import { buildAlternates } from '@/lib/metadata'
 
 export async function generateMetadata({
   params,
@@ -16,10 +17,15 @@ export async function generateMetadata({
   const titles: Record<string, string> = {
     es: 'Buscar - Tenerife Experiences',
     en: 'Search - Tenerife Experiences',
+  const { locale } = await params
+  const titles: Record<string, string> = {
+    es: 'Buscar - Tenerife Experiences',
+    en: 'Search - Tenerife Experiences',
     de: 'Suche - Tenerife Experiences',
   }
   return {
     title: titles[locale] || titles.en,
+    alternates: buildAlternates(locale, '/search'),
   }
 }
 

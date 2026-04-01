@@ -21,6 +21,7 @@ import {
 import { Breadcrumbs } from '@/components/shared/breadcrumbs'
 import { ScrollEffects } from '@/components/cinematic/scroll-effects'
 import { t as getLocalizedText, formatPrice } from '@/lib/helpers'
+import { buildAlternates } from '@/lib/metadata'
 import type { Locale } from '@/types/database'
 import { notFound } from 'next/navigation'
 import { ReviewSection } from '@/components/review/review-panel'
@@ -50,6 +51,7 @@ export async function generateMetadata({
   return {
     title,
     description,
+    alternates: buildAlternates(locale, `/${category}/${subcategory}/${itemSlug}`),
     openGraph: {
       title,
       description,

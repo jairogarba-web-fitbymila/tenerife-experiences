@@ -7,6 +7,7 @@ import { Badge } from '@/components/ui/badge'
 import { MapPin } from 'lucide-react'
 import { t as getLocalizedText } from '@/lib/helpers'
 import type { Locale } from '@/types/database'
+import { buildAlternates } from '@/lib/metadata'
 
 const REGION_LABELS: Record<string, Record<string, string>> = {
   north: { es: 'Norte', en: 'North', de: 'Norden' },
@@ -44,6 +45,7 @@ export async function generateMetadata({
   return {
     title: t('title'),
     description: t('subtitle'),
+    alternates: buildAlternates(locale, '/areas'),
   }
 }
 

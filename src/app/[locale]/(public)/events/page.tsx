@@ -8,6 +8,7 @@ import { Calendar, MapPin, PartyPopper, Church, Music, Trophy, Sparkles, Wine } 
 import { t as getLocalizedText } from '@/lib/helpers'
 import type { Locale } from '@/types/database'
 
+import { buildAlternates } from '@/lib/metadata'
 const EVENT_TYPE_ICONS: Record<string, typeof Calendar> = {
   fiesta_patronal: Church,
   carnival: PartyPopper,
@@ -61,6 +62,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   return {
     title: titles[locale] || titles.en,
     description: descriptions[locale] || descriptions.en,
+    alternates: buildAlternates(locale, '/events'),
   }
 }
 

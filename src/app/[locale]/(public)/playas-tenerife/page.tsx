@@ -3,6 +3,7 @@ import { Link } from '@/i18n/routing'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
+import { buildAlternates } from '@/lib/metadata'
 import {
   MapPin,
   Star,
@@ -94,7 +95,7 @@ export async function generateMetadata({
   return {
     title: getLocalizedText(text.meta.title, loc),
     description: getLocalizedText(text.meta.description, loc),
-    alternates: { canonical: '/playas-tenerife' },
+    alternates: buildAlternates(locale, '/playas-tenerife'),
   }
 }
 

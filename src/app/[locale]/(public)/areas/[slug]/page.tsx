@@ -9,6 +9,7 @@ import { Breadcrumbs } from '@/components/shared/breadcrumbs'
 import { t as getLocalizedText, formatPrice } from '@/lib/helpers'
 import type { Locale } from '@/types/database'
 import { notFound } from 'next/navigation'
+import { buildAlternates } from '@/lib/metadata'
 
 const REGION_LABELS: Record<string, Record<string, string>> = {
   north: { es: 'Norte', en: 'North', de: 'Norden' },
@@ -45,6 +46,7 @@ export async function generateMetadata({
   return {
     title: getLocalizedText(area.name, locale as Locale),
     description: getLocalizedText(area.description, locale as Locale),
+    alternates: buildAlternates(locale, `/areas/${slug}`),
   }
 }
 

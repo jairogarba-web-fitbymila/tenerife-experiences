@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { getStripe } from '@/lib/stripe/config'
 import { createAdminClient } from '@/lib/supabase/admin'
+import { isEventProcessed, markEventProcessed } from '@/lib/webhook-idempotency'
 
 export async function POST(request: NextRequest) {
   const body = await request.text()
@@ -21,6 +22,12 @@ export async function POST(request: NextRequest) {
   } catch (err) {
     console.error('Webhook signature verification failed:', err)
     return NextResponse.json({ error: 'Invalid signature' }, { status: 400 })
+  }
+
+  // Idempotency check: skip if event was already processed
+  if (isEventProcessed(event.id)) {
+    console.log(`Webhook event ${event.id} already processed, skipping`)
+    return NextResponse.json({ received: true, skipped: true })
   }
 
   // Handle checkout.session.completed
@@ -49,6 +56,9 @@ export async function POST(request: NextRequest) {
 
         // TODO: Send download email with PDF link via Resend/Sendgrid
         console.log(`Purchase completed: ${guideId} for ${customerEmail}`)
+
+        // Mark event as processed after successful handling
+        markEventProcessed(event.id)
       } catch (dbError) {
         console.error('Database error recording purchase:', dbError)
       }

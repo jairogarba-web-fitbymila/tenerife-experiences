@@ -7,9 +7,50 @@ import { ScrollEffects } from '@/components/cinematic/scroll-effects'
 import type { Locale } from '@/types/database'
 import { ReviewSection } from '@/components/review/review-panel'
 
+import { buildAlternates } from '@/lib/metadata'
 export async function generateMetadata({
+
   params,
+
 }: {
+
+  params: Promise<{ locale: string; category: string }>
+
+}) {
+
+  const { locale, category } = await params
+
+  const supabase = await createClient()
+
+
+
+  const { data: cat } = await supabase
+
+    .from('categories')
+
+    .select('name, description')
+
+    .eq('slug', category)
+
+    .single()
+
+
+
+  if (!cat) return { title: 'Category' }
+
+
+
+  return {
+
+    title: getLocalizedText(cat.name, locale as Locale),
+
+    description: getLocalizedText(cat.description, locale as Locale),
+
+    alternates: buildAlternates(locale, `/${category}`),
+
+  }
+
+}
   params: Promise<{ locale: string; category: string }>
 }) {
   const { locale, category } = await params

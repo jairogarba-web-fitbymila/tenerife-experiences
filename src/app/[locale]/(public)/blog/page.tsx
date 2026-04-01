@@ -8,6 +8,7 @@ import { ScrollEffects } from '@/components/cinematic/scroll-effects'
 import type { Locale } from '@/types/database'
 import { ReviewSection } from '@/components/review/review-panel'
 import Image from 'next/image'
+import { buildAlternates } from '@/lib/metadata'
 
 export async function generateMetadata({
   params,
@@ -19,6 +20,7 @@ export async function generateMetadata({
   return {
     title: t('title'),
     description: t('subtitle'),
+    alternates: buildAlternates(locale, '/blog'),
   }
 }
 
