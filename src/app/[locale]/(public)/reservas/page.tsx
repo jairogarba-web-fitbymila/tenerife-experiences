@@ -148,16 +148,6 @@ const translations = {
   },
 }
 
-export async function generateMetadata({ params }: { params: { locale: string } }) {
-  const lang = params.locale as keyof typeof translations
-  const t = translations[lang] || translations.en
-  return {
-    title: t.meta.title,
-    description: t.meta.description,
-    robots: 'noindex',
-  }
-}
-
 export default function ReservasPage({ params }: { params: { locale: string } }) {
   const locale = params.locale as keyof typeof translations
   const t = translations[locale] || translations.en

@@ -51,24 +51,6 @@ export async function generateMetadata({
   }
 
 }
-  params: Promise<{ locale: string; category: string }>
-}) {
-  const { locale, category } = await params
-  const supabase = await createClient()
-
-  const { data: cat } = await supabase
-    .from('categories')
-    .select('name, description')
-    .eq('slug', category)
-    .single()
-
-  if (!cat) return { title: 'Category' }
-
-  return {
-    title: getLocalizedText(cat.name, locale as Locale),
-    description: getLocalizedText(cat.description, locale as Locale),
-  }
-}
 
 export default async function CategoryPage({
   params,

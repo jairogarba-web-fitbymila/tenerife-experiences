@@ -168,7 +168,7 @@ export default function EmailsPage() {
     const tpl = TEMPLATES[num]
     if (!tpl) return
 
-    const body = tpl.body
+    let body = tpl.body
     const subject = tpl.subject
 
     // Replace {name} with recipient name if available

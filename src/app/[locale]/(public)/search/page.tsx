@@ -17,11 +17,10 @@ export async function generateMetadata({
   const titles: Record<string, string> = {
     es: 'Buscar - Tenerife Experiences',
     en: 'Search - Tenerife Experiences',
-  const { locale } = await params
-  const titles: Record<string, string> = {
-    es: 'Buscar - Tenerife Experiences',
-    en: 'Search - Tenerife Experiences',
     de: 'Suche - Tenerife Experiences',
+    fr: 'Rechercher - Tenerife Experiences',
+    ru: 'Поиск - Tenerife Experiences',
+    it: 'Cerca - Tenerife Experiences',
   }
   return {
     title: titles[locale] || titles.en,
