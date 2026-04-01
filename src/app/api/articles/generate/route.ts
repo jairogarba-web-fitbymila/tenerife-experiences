@@ -77,7 +77,13 @@ IMPORTANT:
       throw new Error('No text content in response')
     }
 
-    const articleData = JSON.parse(textContent.text)
+    // Strip markdown code fences if Claude wrapped the JSON
+    let rawText = textContent.text.trim()
+    if (rawText.startsWith('```')) {
+      rawText = rawText.replace(/^```(?:json)?\n?/, '').replace(/\n?```$/, '').trim()
+    }
+
+    const articleData = JSON.parse(rawText)
 
     // Store in Supabase
     const supabase = createAdminClient()
