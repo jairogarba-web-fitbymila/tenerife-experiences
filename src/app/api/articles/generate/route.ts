@@ -1,11 +1,9 @@
 import { NextRequest, NextResponse } from 'next/server'
-import Anthropic from '@anthropic-ai/sdk'
+import OpenAI from 'openai'
 import { createAdminClient } from '@/lib/supabase/admin'
 import { slugify } from '@/lib/helpers'
 
-const anthropic = new Anthropic()
-
-const LOCALES = ['en', 'es', 'de', 'fr', 'ru', 'it'] as const
+const openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY })
 
 interface ArticleRequest {
   topic: string
@@ -19,7 +17,6 @@ interface ArticleRequest {
 }
 
 export async function POST(request: NextRequest) {
-  // Verify API key for security (accepts CRON_SECRET or SUPABASE_SERVICE_ROLE_KEY)
   const authHeader = request.headers.get('authorization')
   const token = authHeader?.replace('Bearer ', '')
   const isAuthorized = process.env.CRON_SECRET && token === process.env.CRON_SECRET
@@ -35,17 +32,10 @@ export async function POST(request: NextRequest) {
   }
 
   try {
-    // Generate article content in all languages
-    const message = await anthropic.messages.create({
-      model: 'claude-sonnet-4-20250514',
-      max_tokens: 8000,
-      messages: [
-        {
-          role: 'user',
-          content: `You are a professional travel writer creating content for tenerifeexperiences.com, a premium tourism website about Tenerife, Canary Islands.
+    const prompt = `You are a professional travel writer creating content for tenerifeexperiences.com, a premium tourism website about Tenerife, Canary Islands.
 ${author_name ? `\nYou are writing as ${author_name}: ${author_bio}\nYour tone: ${author_tone}\n` : ''}
 Write a comprehensive, SEO-optimized article about: "${topic}"
-${search_context ? `\n---\nUSE THIS REAL, CURRENT INFORMATION FROM GOOGLE TO GROUND YOUR ARTICLE:\n${search_context}\n\nIMPORTANT: Base your specific facts, prices, places and recommendations on the above search results. Do not invent details. If the search results mention specific venues, prices or times, use them. Cite real sources naturally within the text.\n---\n` : ''}
+${search_context ? `\n---\nUSE THIS REAL, CURRENT INFORMATION FROM GOOGLE TO GROUND YOUR ARTICLE:\n${search_context}\n\nIMPORTANT: Base your specific facts, prices, places and recommendations on the above search results. Do not invent details. Cite real sources naturally within the text.\n---\n` : ''}
 The article should:
 - Be genuinely helpful and informative for tourists
 - Include practical tips, best times to visit, prices where relevant
@@ -67,28 +57,22 @@ Respond in this exact JSON format:
 IMPORTANT:
 - Each language should be a COMPLETE translation, not just a machine-translated version
 - Adapt cultural references and phrasing for each target audience
-- Return ONLY valid JSON, no extra text`,
-        },
-      ],
+- Return ONLY valid JSON, no extra text`
+
+    const completion = await openai.chat.completions.create({
+      model: 'gpt-4o',
+      max_tokens: 8000,
+      response_format: { type: 'json_object' },
+      messages: [{ role: 'user', content: prompt }],
     })
 
-    const textContent = message.content.find((c) => c.type === 'text')
-    if (!textContent || textContent.type !== 'text') {
-      throw new Error('No text content in response')
-    }
-
-    // Strip markdown code fences if Claude wrapped the JSON
-    let rawText = textContent.text.trim()
-    if (rawText.startsWith('```')) {
-      rawText = rawText.replace(/^```(?:json)?\n?/, '').replace(/\n?```$/, '').trim()
-    }
+    const rawText = completion.choices[0]?.message?.content?.trim() || ''
+    if (!rawText) throw new Error('Empty response from OpenAI')
 
     const articleData = JSON.parse(rawText)
 
-    // Store in Supabase
     const supabase = createAdminClient()
 
-    // Find category and area IDs if provided
     let category_id = null
     let area_id = null
 
@@ -124,7 +108,7 @@ IMPORTANT:
         area_id,
         author: author_name || 'Tenerife Experiences',
         ai_generated: true,
-        published: false, // Always draft first, publish manually
+        published: false,
       })
       .select()
       .single()
