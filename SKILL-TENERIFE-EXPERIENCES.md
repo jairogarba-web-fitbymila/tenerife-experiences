@@ -36,6 +36,11 @@ Portal turístico definitivo de Tenerife. Diseño cinematográfico dark con acen
 - **Webhook Secret:** configurado en Vercel env vars (STRIPE_WEBHOOK_SECRET)
 - **Productos:** 7 guías (foodie 9.90€, beaches 7.90€, adventure 7.90€, romantic 5.90€, family 7.90€, nightlife 5.90€, bible/bundle 19.90€)
 
+### SerpApi (búsqueda web para blog IA)
+- **API Key:** `609b4f2fbbffbc6d4502e1779ca44dcd6c85c6b4b21464ed727b51be10050a82`
+- **Uso:** WF1 (Blog Generador) llama a SerpApi antes de generar cada artículo para obtener datos reales actualizados
+- **Endpoint:** `https://serpapi.com/search.json?q={topic}+Tenerife&hl=es&gl=es&location=Tenerife,Canary Islands,Spain`
+
 ### Admin Panel
 - **Ruta:** /admin (protegido por cookie de sesión)
 - **Login:** /api/admin/login

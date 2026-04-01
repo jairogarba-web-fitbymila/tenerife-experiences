@@ -12,6 +12,10 @@ interface ArticleRequest {
   category_slug?: string
   area_slug?: string
   tags?: string[]
+  author_name?: string
+  author_bio?: string
+  author_tone?: string
+  search_context?: string
 }
 
 export async function POST(request: NextRequest) {
@@ -24,7 +28,7 @@ export async function POST(request: NextRequest) {
   }
 
   const body: ArticleRequest = await request.json()
-  const { topic, category_slug, area_slug, tags = [] } = body
+  const { topic, category_slug, area_slug, tags = [], author_name, author_bio, author_tone, search_context } = body
 
   if (!topic) {
     return NextResponse.json({ error: 'Topic is required' }, { status: 400 })
@@ -39,9 +43,9 @@ export async function POST(request: NextRequest) {
         {
           role: 'user',
           content: `You are a professional travel writer creating content for tenerifeexperiences.com, a premium tourism website about Tenerife, Canary Islands.
-
+${author_name ? `\nYou are writing as ${author_name}: ${author_bio}\nYour tone: ${author_tone}\n` : ''}
 Write a comprehensive, SEO-optimized article about: "${topic}"
-
+${search_context ? `\n---\nUSE THIS REAL, CURRENT INFORMATION FROM GOOGLE TO GROUND YOUR ARTICLE:\n${search_context}\n\nIMPORTANT: Base your specific facts, prices, places and recommendations on the above search results. Do not invent details. If the search results mention specific venues, prices or times, use them. Cite real sources naturally within the text.\n---\n` : ''}
 The article should:
 - Be genuinely helpful and informative for tourists
 - Include practical tips, best times to visit, prices where relevant
@@ -112,7 +116,7 @@ IMPORTANT:
         tags: [...(articleData.tags || []), ...tags],
         category_id,
         area_id,
-        author: 'Tenerife Experiences',
+        author: author_name || 'Tenerife Experiences',
         ai_generated: true,
         published: false, // Always draft first, publish manually
       })
@@ -127,9 +131,10 @@ IMPORTANT:
       message: 'Article generated and saved as draft',
     })
   } catch (error) {
-    console.error('Article generation error:', error)
+    const errMsg = error instanceof Error ? error.message : String(error)
+    console.error('Article generation error:', errMsg)
     return NextResponse.json(
-      { error: 'Failed to generate article' },
+      { error: 'Failed to generate article', detail: errMsg },
       { status: 500 }
     )
   }
