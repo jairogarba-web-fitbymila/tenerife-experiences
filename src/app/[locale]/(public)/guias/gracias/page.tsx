@@ -7,7 +7,6 @@ import { ScrollEffects } from '@/components/cinematic/scroll-effects'
 
 export default function GraciasPage() {
   const t = useTranslations('guides.success')
-  const locale = useLocale()
 
   return (
     <>

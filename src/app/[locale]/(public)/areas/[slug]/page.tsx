@@ -1,9 +1,10 @@
+import Image from 'next/image'
 import { getTranslations } from 'next-intl/server'
 import { createClient } from '@/lib/supabase/server'
 import { Link } from '@/i18n/routing'
 import { Card, CardContent } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
-import { MapPin, Star, ArrowLeft, Calendar, Store } from 'lucide-react'
+import { MapPin, Star, Calendar, Store } from 'lucide-react'
 import { Breadcrumbs } from '@/components/shared/breadcrumbs'
 import { t as getLocalizedText, formatPrice } from '@/lib/helpers'
 import type { Locale } from '@/types/database'
@@ -54,7 +55,6 @@ export default async function AreaDetailPage({
 }) {
   const { locale, slug } = await params
   const supabase = await createClient()
-  const t = await getTranslations({ locale, namespace: 'areas' })
   const tc = await getTranslations({ locale, namespace: 'common' })
   const loc = locale as Locale
 
@@ -120,11 +120,13 @@ export default async function AreaDetailPage({
       <section className="relative">
         {area.image && (
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 mb-8">
-            <div className="aspect-[21/9] rounded-2xl overflow-hidden">
-              <img
+            <div className="relative aspect-[21/9] rounded-2xl overflow-hidden">
+              <Image
                 src={area.image}
                 alt={getLocalizedText(area.name, loc)}
-                className="w-full h-full object-cover"
+                fill
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 90vw, 80vw"
+                className="object-cover"
               />
             </div>
           </div>
@@ -168,11 +170,13 @@ export default async function AreaDetailPage({
                   <Link key={item.id} href={href}>
                     <Card className="group bg-slate-900/50 border-white/5 hover:border-orange-400/20 transition-all duration-300 overflow-hidden h-full cursor-pointer">
                       {item.image && (
-                        <div className="aspect-[16/9] overflow-hidden">
-                          <img
+                        <div className="relative aspect-[16/9] overflow-hidden">
+                          <Image
                             src={item.image}
                             alt={getLocalizedText(item.name, loc)}
-                            className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                            fill
+                            sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                            className="object-cover transition-transform duration-500 group-hover:scale-105"
                           />
                         </div>
                       )}
@@ -230,11 +234,13 @@ export default async function AreaDetailPage({
               {partners.map((partner) => (
                 <Card key={partner.id} className="group bg-slate-900/50 border-white/5 hover:border-green-400/20 transition-all duration-300 overflow-hidden h-full">
                   {partner.image && (
-                    <div className="aspect-[16/9] overflow-hidden">
-                      <img
+                    <div className="relative aspect-[16/9] overflow-hidden">
+                      <Image
                         src={partner.image}
                         alt={partner.name}
-                        className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                        fill
+                        sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                        className="object-cover transition-transform duration-500 group-hover:scale-105"
                       />
                     </div>
                   )}
@@ -280,11 +286,13 @@ export default async function AreaDetailPage({
                 <Link key={event.id} href={`/events/${event.slug}`}>
                   <Card className="group bg-slate-900/50 border-white/5 hover:border-purple-400/20 transition-all duration-300 overflow-hidden h-full cursor-pointer">
                     {event.image && (
-                      <div className="aspect-[16/9] overflow-hidden">
-                        <img
+                      <div className="relative aspect-[16/9] overflow-hidden">
+                        <Image
                           src={event.image}
                           alt={getLocalizedText(event.name, loc)}
-                          className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                          fill
+                          sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                          className="object-cover transition-transform duration-500 group-hover:scale-105"
                         />
                       </div>
                     )}

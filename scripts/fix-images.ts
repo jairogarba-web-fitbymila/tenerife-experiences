@@ -110,7 +110,7 @@ async function fixImages() {
     const newImage = 'https://images.unsplash.com/photo-1506368387824-6cf9848c1638?w=1200&q=80'
 
     // Try by slug containing 'centro'
-    let { data, error } = await sb
+    const { data, error } = await sb
       .from('areas')
       .update({ image: newImage })
       .ilike('slug', '%centro%')

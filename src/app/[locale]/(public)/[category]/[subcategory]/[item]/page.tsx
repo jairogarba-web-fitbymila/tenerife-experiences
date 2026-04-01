@@ -408,7 +408,7 @@ export default async function ItemDetailPage({
                       </div>
                     </div>
                     <p className="text-gray-300 leading-relaxed">
-                      "{getLocalizedText(review.comment, loc)}"
+                      {'"'}{getLocalizedText(review.comment, loc)}{'"'}
                     </p>
                   </CardContent>
                 </Card>

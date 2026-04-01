@@ -1,3 +1,4 @@
+import Image from 'next/image'
 import { getTranslations } from 'next-intl/server'
 import { createClient } from '@/lib/supabase/server'
 import { Link } from '@/i18n/routing'
@@ -238,12 +239,14 @@ export default async function ArticlePage({
         {/* Full-Width Featured Image (70vh) */}
         {article.image && (
           <ReviewSection page="article" sectionId={`image-${slug}`} sectionLabel={`Imagen: ${articleTitle}`}>
-          <div className="w-full h-[70vh] overflow-hidden reveal">
-            <img
+          <div className="relative w-full h-[70vh] overflow-hidden reveal">
+            <Image
               src={article.image}
               alt={getLocalizedText(article.title, locale as Locale)}
-              className="w-full h-full object-cover"
-              loading="eager"
+              fill
+              sizes="100vw"
+              className="object-cover"
+              priority
             />
           </div>
           </ReviewSection>

@@ -1,3 +1,4 @@
+import Image from 'next/image'
 import { getTranslations } from 'next-intl/server'
 import { createClient } from '@/lib/supabase/server'
 import { Link } from '@/i18n/routing'
@@ -120,11 +121,13 @@ export default async function AreasPage({
                     <Link key={area.id} href={`/areas/${area.slug}`}>
                       <Card className="group bg-slate-900/50 border-white/5 hover:border-orange-400/20 transition-all duration-300 overflow-hidden h-full cursor-pointer">
                         {area.image && (
-                          <div className="aspect-[16/9] overflow-hidden">
-                            <img
+                          <div className="relative aspect-[16/9] overflow-hidden">
+                            <Image
                               src={area.image}
                               alt={getLocalizedText(area.name, loc)}
-                              className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                              fill
+                              sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                              className="object-cover transition-transform duration-500 group-hover:scale-105"
                             />
                           </div>
                         )}

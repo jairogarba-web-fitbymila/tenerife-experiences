@@ -1,3 +1,4 @@
+import Image from 'next/image'
 import { createClient } from '@/lib/supabase/server'
 import { Link } from '@/i18n/routing'
 import { Button } from '@/components/ui/button'
@@ -10,7 +11,6 @@ import {
   ArrowRight,
   Utensils,
   Wine,
-  GrapeIcon,
 } from 'lucide-react'
 import { t as getLocalizedText, formatRating } from '@/lib/helpers'
 import type { Locale } from '@/types/database'
@@ -179,10 +179,13 @@ export default async function GastronomiaPage({
       {/* HERO */}
       <section className="relative overflow-hidden min-h-[70vh] flex items-center">
         <div className="absolute inset-0">
-          <img
+          <Image
             src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=1920&q=85"
             alt={getLocalizedText(text.hero.title, loc)}
-            className="w-full h-full object-cover"
+            fill
+            sizes="100vw"
+            className="object-cover"
+            priority
           />
           <div className="absolute inset-0 bg-gradient-to-b from-slate-950/70 via-slate-950/50 to-slate-950" />
         </div>
@@ -257,11 +260,13 @@ export default async function GastronomiaPage({
                 <Link key={item.id} href={itemUrl(item)}>
                   <Card className="group bg-slate-900/50 border-white/5 hover:border-red-400/20 transition-all duration-300 overflow-hidden h-full cursor-pointer">
                     {item.image && (
-                      <div className="aspect-[16/10] overflow-hidden">
-                        <img
+                      <div className="relative aspect-[16/10] overflow-hidden">
+                        <Image
                           src={item.image}
                           alt={getLocalizedText(item.name, loc)}
-                          className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                          fill
+                          sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                          className="object-cover transition-transform duration-500 group-hover:scale-105"
                         />
                       </div>
                     )}
@@ -319,11 +324,13 @@ export default async function GastronomiaPage({
                 <Link key={item.id} href={itemUrl(item)}>
                   <Card className="group bg-slate-900/50 border-white/5 hover:border-orange-400/20 transition-all duration-300 overflow-hidden h-full cursor-pointer">
                     {item.image && (
-                      <div className="aspect-[16/10] overflow-hidden">
-                        <img
+                      <div className="relative aspect-[16/10] overflow-hidden">
+                        <Image
                           src={item.image}
                           alt={getLocalizedText(item.name, loc)}
-                          className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                          fill
+                          sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                          className="object-cover transition-transform duration-500 group-hover:scale-105"
                         />
                       </div>
                     )}
@@ -382,11 +389,13 @@ export default async function GastronomiaPage({
                 <Link key={item.id} href={itemUrl(item)}>
                   <Card className="group bg-slate-900/50 border-white/5 hover:border-purple-400/20 transition-all duration-300 overflow-hidden h-full cursor-pointer">
                     {item.image && (
-                      <div className="aspect-[16/10] overflow-hidden">
-                        <img
+                      <div className="relative aspect-[16/10] overflow-hidden">
+                        <Image
                           src={item.image}
                           alt={getLocalizedText(item.name, loc)}
-                          className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                          fill
+                          sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                          className="object-cover transition-transform duration-500 group-hover:scale-105"
                         />
                       </div>
                     )}

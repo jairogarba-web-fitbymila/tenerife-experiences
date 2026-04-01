@@ -7,7 +7,6 @@ import { Badge } from '@/components/ui/badge'
 import {
   MapPin,
   Star,
-  Clock,
   ChevronRight,
   ArrowRight,
   Mountain,
@@ -15,9 +14,6 @@ import {
   Landmark,
   Utensils,
   Calendar,
-  Camera,
-  Sun,
-  TreePine,
 } from 'lucide-react'
 import { t as getLocalizedText, formatPrice, formatRating } from '@/lib/helpers'
 import type { Locale } from '@/types/database'

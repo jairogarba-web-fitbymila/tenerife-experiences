@@ -1,5 +1,5 @@
 import { cookies } from 'next/headers'
-import { timingSafeEqual } from 'crypto'
+import { timingSafeEqual, createHmac } from 'crypto'
 
 // Session expiration: 7 days in milliseconds
 const SESSION_MAX_AGE_MS = 7 * 24 * 60 * 60 * 1000
@@ -63,7 +63,6 @@ export async function getAdminUser(): Promise<{
  * Generate a CSRF token based on session + secret
  */
 export function generateCSRFToken(sessionId: string): string {
-  const { createHmac } = require('crypto')
   const secret = process.env.CSRF_SECRET || process.env.ADMIN_PASSWORD
   if (!secret) throw new Error('CSRF_SECRET or ADMIN_PASSWORD must be set')
   return createHmac('sha256', secret).update(sessionId).digest('hex')

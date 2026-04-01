@@ -4,14 +4,10 @@ import { getTranslations } from 'next-intl/server'
 import { Link } from '@/i18n/routing'
 import {
   Waves,
-  Mountain,
   Utensils,
   Camera,
   TreePine,
   Music,
-  ShoppingBag,
-  Baby,
-  Sparkles,
   MapPin,
   Star,
   ArrowRight,
@@ -153,7 +149,6 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
 
 export default function HomePage() {
   const t = useTranslations('home')
-  const tc = useTranslations('categories')
 
   const websiteJsonLd = {
     '@context': 'https://schema.org',

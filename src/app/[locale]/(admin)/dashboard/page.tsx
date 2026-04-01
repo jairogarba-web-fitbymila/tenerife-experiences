@@ -10,7 +10,6 @@ import {
   Users,
   Mail,
   Sparkles,
-  Download,
   Plus,
   Eye,
 } from 'lucide-react'

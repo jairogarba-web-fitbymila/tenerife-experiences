@@ -16,10 +16,8 @@ import {
   ArrowRight,
   Thermometer,
   Droplets,
-  Building,
   TreePine,
   Compass,
-  Calendar,
 } from 'lucide-react'
 
 const content = {

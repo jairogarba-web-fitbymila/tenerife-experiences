@@ -1,9 +1,9 @@
-import { getTranslations } from 'next-intl/server'
+import Image from 'next/image'
 import { createClient } from '@/lib/supabase/server'
 import { Link } from '@/i18n/routing'
 import { Card, CardContent } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
-import { Calendar, MapPin, ArrowLeft, Check, Info, Star } from 'lucide-react'
+import { Calendar, MapPin, Check, Info, Star } from 'lucide-react'
 import { Breadcrumbs } from '@/components/shared/breadcrumbs'
 import { t as getLocalizedText } from '@/lib/helpers'
 import type { Locale } from '@/types/database'
@@ -96,11 +96,13 @@ export default async function EventDetailPage({
       {/* Image */}
       {event.image && (
         <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 mt-8">
-          <div className="aspect-[21/9] rounded-2xl overflow-hidden">
-            <img
+          <div className="relative aspect-[21/9] rounded-2xl overflow-hidden">
+            <Image
               src={event.image}
               alt={getLocalizedText(event.name, loc)}
-              className="w-full h-full object-cover"
+              fill
+              sizes="(max-width: 768px) 100vw, (max-width: 1280px) 90vw, 80vw"
+              className="object-cover"
             />
           </div>
         </div>

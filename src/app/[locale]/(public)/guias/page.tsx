@@ -1,5 +1,5 @@
+import Image from 'next/image'
 import { getTranslations } from 'next-intl/server'
-import { Link } from '@/i18n/routing'
 import { ScrollEffects } from '@/components/cinematic/scroll-effects'
 import { ReviewSection } from '@/components/review/review-panel'
 import { GuideNotifyForm } from '@/components/guides/guide-notify-form'
@@ -107,10 +107,13 @@ export default async function GuidesPage({
       <ReviewSection page="guides" sectionId="guides-hero" sectionLabel="Hero: Guías">
         <section className="relative h-[60vh] min-h-[400px] flex items-center justify-center overflow-hidden">
           <div className="absolute inset-0">
-            <img
+            <Image
               src="https://images.unsplash.com/photo-1605182054023-17d71f44aa11?w=1920&q=85"
               alt="Tenerife"
-              className="w-full h-full object-cover animate-ken-burns"
+              fill
+              sizes="100vw"
+              className="object-cover animate-ken-burns"
+              priority
             />
             <div className="absolute inset-0 bg-gradient-to-b from-slate-950/40 via-slate-950/30 to-slate-950/80" />
           </div>
@@ -156,10 +159,12 @@ export default async function GuidesPage({
                   >
                     {/* Image */}
                     <div className="relative h-56 overflow-hidden">
-                      <img
+                      <Image
                         src={guide.image}
                         alt={t(`items.${guide.id}.title`)}
-                        className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                        fill
+                        sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                        className="object-cover transition-transform duration-700 group-hover:scale-110"
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/40 to-transparent" />
 
@@ -272,11 +277,13 @@ export default async function GuidesPage({
                 <div className="relative hidden md:flex items-center justify-center">
                   <div className="grid grid-cols-2 gap-3 transform rotate-2">
                     {guides.slice(0, 4).map((guide) => (
-                      <div key={guide.id} className="rounded-xl overflow-hidden shadow-2xl border border-white/10">
-                        <img
+                      <div key={guide.id} className="relative rounded-xl overflow-hidden shadow-2xl border border-white/10 h-32">
+                        <Image
                           src={guide.image}
                           alt={t(`items.${guide.id}.title`)}
-                          className="w-full h-32 object-cover"
+                          fill
+                          sizes="(max-width: 768px) 100vw, 20vw"
+                          className="object-cover"
                         />
                       </div>
                     ))}

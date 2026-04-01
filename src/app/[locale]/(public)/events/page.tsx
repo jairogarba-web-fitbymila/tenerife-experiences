@@ -1,9 +1,10 @@
+import Image from 'next/image'
 import { createClient } from '@/lib/supabase/server'
 import { Link } from '@/i18n/routing'
 import { Card, CardContent } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
-import { Calendar, MapPin, PartyPopper, Church, Music, Utensils, Trophy, Sparkles, Wine } from 'lucide-react'
+import { Calendar, MapPin, PartyPopper, Church, Music, Trophy, Sparkles, Wine } from 'lucide-react'
 import { t as getLocalizedText } from '@/lib/helpers'
 import type { Locale } from '@/types/database'
 
@@ -70,11 +71,13 @@ function EventCard({ event, locale }: { event: any; locale: Locale }) {
     <Link href={`/events/${event.slug}`}>
       <Card className="group bg-slate-900/50 border-white/5 hover:border-purple-400/20 transition-all duration-300 h-full cursor-pointer overflow-hidden">
         {event.image ? (
-          <div className="aspect-[16/9] overflow-hidden">
-            <img
+          <div className="relative aspect-[16/9] overflow-hidden">
+            <Image
               src={event.image}
               alt={getLocalizedText(event.name, locale)}
-              className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+              fill
+              sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+              className="object-cover transition-transform duration-500 group-hover:scale-105"
             />
           </div>
         ) : null}
@@ -279,8 +282,8 @@ export default async function EventsPage({ params }: { params: Promise<{ locale:
                       <Link key={item.id} href={`/nightlife/beach-clubs/${item.slug}`}>
                         <Card className="group bg-slate-900/50 border-white/5 hover:border-cyan-400/20 transition-all duration-300 h-full cursor-pointer overflow-hidden">
                           {item.image ? (
-                            <div className="aspect-[16/9] overflow-hidden">
-                              <img src={item.image} alt={getLocalizedText(item.name, loc)} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+                            <div className="relative aspect-[16/9] overflow-hidden">
+                              <Image src={item.image} alt={getLocalizedText(item.name, loc)} fill sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw" className="object-cover transition-transform duration-500 group-hover:scale-105" />
                             </div>
                           ) : null}
                           <CardContent className="p-5">
@@ -320,8 +323,8 @@ export default async function EventsPage({ params }: { params: Promise<{ locale:
                       <Link key={item.id} href={`/nightlife/${item.subcategory?.slug || 'clubs'}/${item.slug}`}>
                         <Card className="group bg-slate-900/50 border-white/5 hover:border-violet-400/20 transition-all duration-300 h-full cursor-pointer overflow-hidden">
                           {item.image ? (
-                            <div className="aspect-[16/9] overflow-hidden">
-                              <img src={item.image} alt={getLocalizedText(item.name, loc)} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+                            <div className="relative aspect-[16/9] overflow-hidden">
+                              <Image src={item.image} alt={getLocalizedText(item.name, loc)} fill sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw" className="object-cover transition-transform duration-500 group-hover:scale-105" />
                             </div>
                           ) : null}
                           <CardContent className="p-5">
@@ -349,8 +352,8 @@ export default async function EventsPage({ params }: { params: Promise<{ locale:
                         <Link key={item.id} href={`/nightlife/${item.subcategory?.slug || 'bars-pubs'}/${item.slug}`}>
                           <Card className="group bg-slate-900/50 border-white/5 hover:border-amber-400/20 transition-all duration-300 h-full cursor-pointer overflow-hidden">
                             {item.image ? (
-                              <div className="aspect-[16/9] overflow-hidden">
-                                <img src={item.image} alt={getLocalizedText(item.name, loc)} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+                              <div className="relative aspect-[16/9] overflow-hidden">
+                                <Image src={item.image} alt={getLocalizedText(item.name, loc)} fill sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw" className="object-cover transition-transform duration-500 group-hover:scale-105" />
                               </div>
                             ) : null}
                             <CardContent className="p-5">
@@ -389,8 +392,8 @@ export default async function EventsPage({ params }: { params: Promise<{ locale:
                       <Link key={item.id} href={`/nightlife/festivals/${item.slug}`}>
                         <Card className="group bg-slate-900/50 border-white/5 hover:border-pink-400/20 transition-all duration-300 h-full cursor-pointer overflow-hidden">
                           {item.image ? (
-                            <div className="aspect-[16/9] overflow-hidden">
-                              <img src={item.image} alt={getLocalizedText(item.name, loc)} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+                            <div className="relative aspect-[16/9] overflow-hidden">
+                              <Image src={item.image} alt={getLocalizedText(item.name, loc)} fill sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw" className="object-cover transition-transform duration-500 group-hover:scale-105" />
                             </div>
                           ) : null}
                           <CardContent className="p-5">
