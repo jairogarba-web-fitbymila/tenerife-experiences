@@ -31,7 +31,7 @@ export async function generateMetadata({
 }: {
   params: Promise<{ locale: string; category: string; subcategory: string; item: string }>
 }) {
-  const { locale, item: itemSlug } = await params
+  const { locale, category, subcategory, item: itemSlug } = await params
   const supabase = await createClient()
 
   const { data: item } = await supabase
