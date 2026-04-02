@@ -31,17 +31,93 @@
       "statsExperiences": "expériences",
       "statsLanguages": "langues"
     },
-    "featured": { "title": "Expériences en Vedette", "subtitle": "Activités sélectionnées et appréciées par les visiteurs", "viewAll": "Voir Tout" },
-    "categories": { "title": "Explorer par Catégorie", "subtitle": "Trouvez exactement ce que vous cherchez" },
-    "areas": { "title": "Explorer par Région", "subtitle": "Les régions de Tenerife offrent des expériences uniques", "north": "Nord de Tenerife", "south": "Sud de Tenerife", "west": "Ouest de Tenerife", "central": "Centre de Tenerife", "viewAll": "Voir tout", "experiences": "expériences", "explore": "Explorer" },
-    "blog": { "title": "Conseils & Guides de Voyage", "subtitle": "Conseils d'experts pour votre voyage à Tenerife", "readMore": "Lire la Suite" },
-    "weather": { "title": "Météo Actuelle", "feelsLike": "Ressenti", "humidity": "Humidité", "wind": "Vent" },
-    "exploreMap": { "title": "Explorez la Carte", "subtitle": "Découvrez les meilleurs endroits de l'île" },
-    "newsletter": { "title": "Recevez des Conseils Exclusifs", "subtitle": "Conseils hebdomadaires, offres et secrets locaux", "placeholder": "Votre adresse e-mail", "cta": "S'abonner", "privacy": "Nous respectons votre vie privée. Désabonnez-vous à tout moment." }
+    "featured": {
+      "title": "Expériences en Vedette",
+      "subtitle": "Activités sélectionnées et appréciées par les visiteurs",
+      "viewAll": "Voir Tout"
+    },
+    "categories": {
+      "title": "Explorer par Catégorie",
+      "subtitle": "Trouvez exactement ce que vous cherchez"
+    },
+    "areas": {
+      "title": "Explorer par Région",
+      "subtitle": "Les régions de Tenerife offrent des expériences uniques",
+      "north": "Nord de Tenerife",
+      "south": "Sud de Tenerife",
+      "west": "Ouest de Tenerife",
+      "central": "Centre de Tenerife",
+      "viewAll": "Voir tout",
+      "experiences": "expériences",
+      "explore": "Explorer",
+      "metro": "Métropolitaine"
+    },
+    "blog": {
+      "title": "Conseils & Guides de Voyage",
+      "subtitle": "Conseils d'experts pour votre voyage à Tenerife",
+      "readMore": "Lire la Suite"
+    },
+    "weather": {
+      "title": "Météo Actuelle",
+      "feelsLike": "Ressenti",
+      "humidity": "Humidité",
+      "wind": "Vent"
+    },
+    "exploreMap": {
+      "title": "Explorez la Carte",
+      "subtitle": "Découvrez les meilleurs endroits de l'île"
+    },
+    "newsletter": {
+      "title": "Recevez des Conseils Exclusifs",
+      "subtitle": "Conseils hebdomadaires, offres et secrets locaux",
+      "placeholder": "Votre adresse e-mail",
+      "cta": "S'abonner",
+      "privacy": "Nous respectons votre vie privée. Désabonnez-vous à tout moment."
+    }
   },
-  "categories": { "experiences": "Expériences", "beaches": "Plages", "culture": "Culture & Histoire", "nature": "Nature & Randonnée", "food": "Gastronomie", "nightlife": "Vie Nocturne", "shopping": "Shopping", "family": "Famille", "wellness": "Bien-être & Spa", "services": "Services", "practical": "Infos Pratiques" },
-  "item": { "from": "À partir de", "perPerson": "par personne", "bookNow": "Réserver", "duration": "Durée", "rating": "Note", "reviews": "avis", "location": "Lieu", "highlights": "Points Forts", "includes": "Inclus", "description": "Description", "sandType": "Type de Sable", "bathingConditions": "Conditions de Baignade", "accessibility": "Accessibilité", "riskLevel": "Niveau de Risque", "similarExperiences": "Expériences Similaires", "writeReview": "Écrire un Avis", "seeAllReviews": "Voir Tous les Avis", "share": "Partager", "save": "Sauvegarder" },
-  "blog": { "title": "Blog Voyage Tenerife", "subtitle": "Conseils, guides et inspiration pour votre voyage", "readTime": "min de lecture", "publishedOn": "Publié le", "relatedArticles": "Articles Connexes", "categories": "Catégories", "latestPosts": "Derniers Articles" },
+  "categories": {
+    "experiences": "Expériences",
+    "beaches": "Plages",
+    "culture": "Culture & Histoire",
+    "nature": "Nature & Randonnée",
+    "food": "Gastronomie",
+    "nightlife": "Vie Nocturne",
+    "shopping": "Shopping",
+    "family": "Famille",
+    "wellness": "Bien-être & Spa",
+    "services": "Services",
+    "practical": "Infos Pratiques"
+  },
+  "item": {
+    "from": "À partir de",
+    "perPerson": "par personne",
+    "bookNow": "Réserver",
+    "duration": "Durée",
+    "rating": "Note",
+    "reviews": "avis",
+    "location": "Lieu",
+    "highlights": "Points Forts",
+    "includes": "Inclus",
+    "description": "Description",
+    "sandType": "Type de Sable",
+    "bathingConditions": "Conditions de Baignade",
+    "accessibility": "Accessibilité",
+    "riskLevel": "Niveau de Risque",
+    "similarExperiences": "Expériences Similaires",
+    "writeReview": "Écrire un Avis",
+    "seeAllReviews": "Voir Tous les Avis",
+    "share": "Partager",
+    "save": "Sauvegarder"
+  },
+  "blog": {
+    "title": "Blog Voyage Tenerife",
+    "subtitle": "Conseils, guides et inspiration pour votre voyage",
+    "readTime": "min de lecture",
+    "publishedOn": "Publié le",
+    "relatedArticles": "Articles Connexes",
+    "categories": "Catégories",
+    "latestPosts": "Derniers Articles"
+  },
   "guides": {
     "meta": {
       "title": "Guides de Tenerife — Téléchargez votre guide numérique",
@@ -107,10 +183,36 @@
       "backToGuides": "Retour aux guides"
     }
   },
-  "areas": { "title": "Explorer Tenerife par Région", "subtitle": "Chaque région a son propre caractère et ses attractions", "thingsToDo": "Activités", "restaurants": "Restaurants", "beaches": "Plages" },
-  "common": { "loading": "Chargement...", "error": "Une erreur est survenue", "notFound": "Page non trouvée", "backHome": "Retour à l'Accueil", "viewAll": "Voir Tout", "showMore": "Voir Plus", "showLess": "Voir Moins", "filters": "Filtres", "sortBy": "Trier par", "popular": "Plus Populaire", "newest": "Plus Récent", "priceAsc": "Prix : Croissant", "priceDesc": "Prix : Décroissant", "ratingDesc": "Mieux Noté", "noResults": "Aucun résultat trouvé", "free": "Gratuit", "featured": "En Vedette", "new": "Nouveau", "topRated": "Mieux Noté" },
+  "areas": {
+    "title": "Explorer Tenerife par Région",
+    "subtitle": "Chaque région a son propre caractère et ses attractions",
+    "thingsToDo": "Activités",
+    "restaurants": "Restaurants",
+    "beaches": "Plages"
+  },
+  "common": {
+    "loading": "Chargement...",
+    "error": "Une erreur est survenue",
+    "notFound": "Page non trouvée",
+    "backHome": "Retour à l'Accueil",
+    "viewAll": "Voir Tout",
+    "showMore": "Voir Plus",
+    "showLess": "Voir Moins",
+    "filters": "Filtres",
+    "sortBy": "Trier par",
+    "popular": "Plus Populaire",
+    "newest": "Plus Récent",
+    "priceAsc": "Prix : Croissant",
+    "priceDesc": "Prix : Décroissant",
+    "ratingDesc": "Mieux Noté",
+    "noResults": "Aucun résultat trouvé",
+    "free": "Gratuit",
+    "featured": "En Vedette",
+    "new": "Nouveau",
+    "topRated": "Mieux Noté"
+  },
   "partners": {
-    "title": "Promouvez Votre Entreprise a Tenerife",
+    "title": "Promouvez Votre Entreprise à Tenerife",
     "subtitle": "Atteignez des milliers de touristes visitant Tenerife chaque mois via notre plateforme multilingue",
     "verified": "Vérifié",
     "premium": "Premium",
@@ -390,5 +492,24 @@
       "button": "Réserver des Expériences"
     }
   },
-  "footer": { "about": "À Propos de Tenerife Experiences", "aboutText": "Votre guide complet de tout ce que Tenerife a à offrir. Des plages magnifiques aux paysages volcaniques, nous vous aidons à découvrir le meilleur de l'île.", "quickLinks": "Liens Rapides", "categories": "Catégories", "contact": "Contact", "legal": "Mentions Légales", "privacy": "Politique de Confidentialité", "terms": "Conditions d'Utilisation", "cookies": "Politique de Cookies", "copyright": "© {year} Tenerife Experiences. Tous droits réservés.", "partners": "Pour les Partenaires", "advertise": "Annoncez chez nous", "latestArticles": "Derniers Articles", "article1": "Top 10 Choses à Faire à Tenerife", "article2": "Guide des Meilleures Plages", "article3": "Guide Complet du Teide", "madeIn": "Fait à Tenerife avec amour", "followUs": "Suivez-nous" }
+  "footer": {
+    "about": "À Propos de Tenerife Experiences",
+    "aboutText": "Votre guide complet de tout ce que Tenerife a à offrir. Des plages magnifiques aux paysages volcaniques, nous vous aidons à découvrir le meilleur de l'île.",
+    "quickLinks": "Liens Rapides",
+    "categories": "Catégories",
+    "contact": "Contact",
+    "legal": "Mentions Légales",
+    "privacy": "Politique de Confidentialité",
+    "terms": "Conditions d'Utilisation",
+    "cookies": "Politique de Cookies",
+    "copyright": "© {year} Tenerife Experiences. Tous droits réservés.",
+    "partners": "Pour les Partenaires",
+    "advertise": "Annoncez chez nous",
+    "latestArticles": "Derniers Articles",
+    "article1": "Top 10 Choses à Faire à Tenerife",
+    "article2": "Guide des Meilleures Plages",
+    "article3": "Guide Complet du Teide",
+    "madeIn": "Fait à Tenerife avec amour",
+    "followUs": "Suivez-nous"
+  }
 }
