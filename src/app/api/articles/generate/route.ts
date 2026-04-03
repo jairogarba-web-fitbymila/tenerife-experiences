@@ -5,6 +5,16 @@ import { slugify } from '@/lib/helpers'
 
 const openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY })
 
+const CATEGORY_IMAGES: Record<string, string> = {
+  beaches: 'https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=1200&q=80',
+  food: 'https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=1200&q=80',
+  nature: 'https://images.unsplash.com/photo-1682687220742-aba13b6e50ba?w=1200&q=80',
+  culture: 'https://images.unsplash.com/photo-1539037116277-4db20889f2d4?w=1200&q=80',
+  experiences: 'https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?w=1200&q=80',
+  nightlife: 'https://images.unsplash.com/photo-1566417713940-fe7c737a9ef2?w=1200&q=80',
+  default: 'https://images.unsplash.com/photo-1518098268026-4e89f1a2cd8e?w=1200&q=80',
+}
+
 interface ArticleRequest {
   topic: string
   category_slug?: string
@@ -94,6 +104,8 @@ IMPORTANT:
       area_id = area?.id || null
     }
 
+    const image = CATEGORY_IMAGES[category_slug || ''] || CATEGORY_IMAGES.default
+
     const { data: article, error } = await supabase
       .from('articles')
       .insert({
@@ -104,6 +116,7 @@ IMPORTANT:
         meta_title: articleData.meta_title,
         meta_description: articleData.meta_description,
         tags: [...(articleData.tags || []), ...tags],
+        image,
         category_id,
         area_id,
         author: author_name || 'Tenerife Experiences',
