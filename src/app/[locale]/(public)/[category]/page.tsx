@@ -6,6 +6,8 @@ import { t as getLocalizedText } from '@/lib/helpers'
 import { ScrollEffects } from '@/components/cinematic/scroll-effects'
 import type { Locale } from '@/types/database'
 import { ReviewSection } from '@/components/review/review-panel'
+import { EditableImage } from '@/components/review/editable-image'
+import { isAuthenticated } from '@/lib/auth'
 
 import { buildAlternates } from '@/lib/metadata'
 export async function generateMetadata({
@@ -60,6 +62,7 @@ export default async function CategoryPage({
   const { locale, category } = await params
   const supabase = await createClient()
   const t = await getTranslations({ locale, namespace: 'common' })
+  const isAdmin = await isAuthenticated()
 
   // Fetch category
   const { data: cat } = await supabase
@@ -79,13 +82,14 @@ export default async function CategoryPage({
     )
   }
 
-  // Fetch subcategories
-  const { data: subcategories } = await supabase
+  // Fetch subcategories (admin sees all, users only visible)
+  let subQuery = supabase
     .from('subcategories')
     .select('*, items:items(count)')
     .eq('category_id', cat.id)
-    .eq('visible', true)
     .order('sort_order')
+  if (!isAdmin) subQuery = subQuery.eq('visible', true)
+  const { data: subcategories } = await subQuery
 
   const categoryName = getLocalizedText(cat.name, locale as Locale)
 
@@ -107,6 +111,16 @@ export default async function CategoryPage({
             />
           )}
           <div className="cinematic-overlay-gradient" />
+
+          {/* Admin: Edit category image */}
+          <div className="absolute top-24 right-4 z-[60]">
+            <EditableImage
+              sectionId={`cat-image-${cat.id}`}
+              currentImage={cat.image || ''}
+              label={categoryName}
+              target={{ table: 'categories', id: cat.id }}
+            />
+          </div>
 
           {/* Hero content */}
           <div className="relative z-10 flex flex-col justify-end h-full px-4 sm:px-6 lg:px-8 pb-12 sm:pb-16">

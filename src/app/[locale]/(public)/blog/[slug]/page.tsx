@@ -20,6 +20,8 @@ function sanitizeHtml(html: string): string {
 }
 import { notFound } from 'next/navigation'
 import { ReviewSection } from '@/components/review/review-panel'
+import { EditableImage } from '@/components/review/editable-image'
+import { isAuthenticated } from '@/lib/auth'
 
 export async function generateMetadata({
   params,
@@ -64,13 +66,12 @@ export default async function ArticlePage({
   const { locale, slug } = await params
   const supabase = await createClient()
   const t = await getTranslations({ locale, namespace: 'blog' })
+  const isAdmin = await isAuthenticated()
 
-  const { data: article } = await supabase
-    .from('articles')
-    .select('*, category:categories(slug, name)')
-    .eq('slug', slug)
-    .eq('published', true)
-    .single()
+  // Admin can see all articles (including unpublished), normal users only published
+  let query = supabase.from('articles').select('*, category:categories(slug, name)').eq('slug', slug)
+  if (!isAdmin) query = query.eq('published', true)
+  const { data: article } = await query.single()
 
   if (!article) notFound()
 
@@ -250,6 +251,15 @@ export default async function ArticlePage({
               className="object-cover"
               priority
             />
+            {/* Admin: Edit image button */}
+            <div className="absolute top-4 right-4 z-[60]">
+              <EditableImage
+                sectionId={`article-image-${article.id}`}
+                currentImage={article.image}
+                label={articleTitle}
+                target={{ table: 'articles', id: article.id }}
+              />
+            </div>
           </div>
           </ReviewSection>
         )}

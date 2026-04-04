@@ -25,6 +25,8 @@ import { buildAlternates } from '@/lib/metadata'
 import type { Locale } from '@/types/database'
 import { notFound } from 'next/navigation'
 import { ReviewSection } from '@/components/review/review-panel'
+import { EditableImage } from '@/components/review/editable-image'
+import { isAuthenticated } from '@/lib/auth'
 
 export async function generateMetadata({
   params,
@@ -68,13 +70,12 @@ export default async function ItemDetailPage({
   const { locale, category, subcategory, item: itemSlug } = await params
   const supabase = await createClient()
   const t = await getTranslations({ locale, namespace: 'item' })
+  const isAdmin = await isAuthenticated()
 
-  const { data: item } = await supabase
-    .from('items')
-    .select('*')
-    .eq('slug', itemSlug)
-    .eq('visible', true)
-    .single()
+  // Admin can see all items (including unpublished), normal users only visible
+  let query = supabase.from('items').select('*').eq('slug', itemSlug)
+  if (!isAdmin) query = query.eq('visible', true)
+  const { data: item } = await query.single()
 
   if (!item) notFound()
 
@@ -173,6 +174,17 @@ export default async function ItemDetailPage({
             <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-black/40 to-black/80" />
           </>
         )}
+
+        {/* Admin: Edit image button */}
+        <div className="absolute top-24 right-4 z-[60]">
+          <EditableImage
+            sectionId={`item-image-${item.id}`}
+            currentImage={item.image || ''}
+            label={getLocalizedText(item.name, loc)}
+            target={{ table: 'items', id: item.id }}
+            categoryFilter={category}
+          />
+        </div>
 
         {/* Info Panel Over Hero Bottom */}
         <div className="absolute bottom-0 left-0 right-0 z-10">

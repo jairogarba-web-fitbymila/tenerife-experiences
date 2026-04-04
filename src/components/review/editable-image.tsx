@@ -11,6 +11,11 @@ interface EditableImageProps {
   label?: string
   onImageChange?: (newUrl: string) => void
   className?: string
+  // New: support for direct entity updates
+  target?: {
+    table: string // 'items' | 'articles' | 'categories' | etc.
+    id: string    // entity UUID
+  }
 }
 
 export function EditableImage({
@@ -20,6 +25,7 @@ export function EditableImage({
   label,
   onImageChange,
   className = '',
+  target,
 }: EditableImageProps) {
   const { isReviewMode } = useReview()
   const [pickerOpen, setPickerOpen] = useState(false)
@@ -29,15 +35,31 @@ export function EditableImage({
   const handleSelect = useCallback(async (newUrl: string) => {
     setSaving(true)
     try {
-      const res = await fetch('/api/admin/landing-images', {
-        method: 'PUT',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          section_id: sectionId,
-          image_url: newUrl,
-          updated_by: 'admin',
-        }),
-      })
+      let res: Response
+
+      if (target) {
+        // Direct entity update (items, articles, etc.)
+        res = await fetch('/api/admin/update-image', {
+          method: 'PUT',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            table: target.table,
+            id: target.id,
+            image_url: newUrl,
+          }),
+        })
+      } else {
+        // Landing image override (original behavior)
+        res = await fetch('/api/admin/landing-images', {
+          method: 'PUT',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            section_id: sectionId,
+            image_url: newUrl,
+            updated_by: 'admin',
+          }),
+        })
+      }
 
       if (res.ok) {
         setSaved(true)
@@ -49,7 +71,7 @@ export function EditableImage({
     }
     setSaving(false)
     setPickerOpen(false)
-  }, [sectionId, onImageChange])
+  }, [sectionId, target, onImageChange])
 
   if (!isReviewMode) return null
 
@@ -61,15 +83,15 @@ export function EditableImage({
           e.stopPropagation()
           setPickerOpen(true)
         }}
-        className={`z-[55] flex items-center gap-1.5 px-2 py-1 rounded-md text-[10px] font-bold shadow-lg cursor-pointer transition-all hover:scale-105 ${
+        className={`z-[55] flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg text-xs font-bold shadow-lg cursor-pointer transition-all hover:scale-105 ${
           saved
             ? 'bg-green-500 text-white'
             : saving
-              ? 'bg-yellow-500 text-black'
+              ? 'bg-yellow-500 text-black animate-pulse'
               : 'bg-blue-600 hover:bg-blue-500 text-white'
         } ${className}`}
       >
-        {saved ? '✓' : saving ? '...' : '📷'}
+        {saved ? '✓ Guardado' : saving ? 'Guardando...' : '📷 Cambiar foto'}
       </button>
 
       <ImagePickerModal
