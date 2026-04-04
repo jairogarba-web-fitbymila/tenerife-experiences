@@ -109,9 +109,14 @@ export default async function BlogPage({
       <section className="py-16 sm:py-24 bg-slate-950">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           {(!articles || articles.length === 0) ? (
-            <div className="text-center py-20">
-              <p className="text-gray-500 text-lg">{tc('noResults')}</p>
-              <p className="mt-2 text-gray-600 text-sm">Articles coming soon...</p>
+            <div className="text-center py-20 max-w-lg mx-auto">
+              <div className="w-16 h-16 mx-auto mb-6 rounded-full bg-orange-500/10 flex items-center justify-center">
+                <Clock className="w-8 h-8 text-orange-400" />
+              </div>
+              <h3 className="text-2xl font-bold text-white mb-3">{tc('comingSoon') || 'Coming Soon'}</h3>
+              <p className="text-gray-400 leading-relaxed">
+                {tc('comingSoonBlog') || 'We are preparing the best travel guides and tips about Tenerife. Stay tuned!'}
+              </p>
             </div>
           ) : (
             <div className="masonry-grid reveal stagger-children">
