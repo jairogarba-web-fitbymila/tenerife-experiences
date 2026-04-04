@@ -4,9 +4,9 @@ import { safeCompare } from '@/lib/auth'
 
 export async function POST(request: NextRequest) {
   // Require all admin credentials to be set via environment variables
-  const adminUsername = process.env.ADMIN_USERNAME
-  const adminEmail = process.env.ADMIN_EMAIL
-  const adminPassword = process.env.ADMIN_PASSWORD
+  const adminUsername = process.env.ADMIN_USERNAME?.trim()
+  const adminEmail = process.env.ADMIN_EMAIL?.trim()
+  const adminPassword = process.env.ADMIN_PASSWORD?.trim()
   const adminName = process.env.ADMIN_NAME || 'Admin'
   const adminRole = process.env.ADMIN_ROLE || 'owner'
 
@@ -21,7 +21,9 @@ export async function POST(request: NextRequest) {
   const { username, email, password } = await request.json()
   const loginId = (username || email || '').trim()
 
-  if (!loginId || !password) {
+  const cleanPassword = (password || '').trim()
+
+  if (!loginId || !cleanPassword) {
     return NextResponse.json(
       { error: 'Credenciales requeridas' },
       { status: 400 }
@@ -33,7 +35,7 @@ export async function POST(request: NextRequest) {
     safeCompare(loginId.toLowerCase(), adminUsername.toLowerCase()) ||
     safeCompare(loginId.toLowerCase(), adminEmail.toLowerCase())
 
-  const passwordMatches = safeCompare(password, adminPassword)
+  const passwordMatches = safeCompare(cleanPassword, adminPassword)
 
   if (loginMatches && passwordMatches) {
     const cookieStore = await cookies()
