@@ -55,9 +55,9 @@ export async function POST(request: NextRequest) {
       path: '/',
     })
 
-    // Review mode cookie (httpOnly for security, readable server-side)
+    // Review mode cookie (NOT httpOnly — must be readable by client JS in review-context.tsx)
     cookieStore.set('admin_review', 'true', {
-      httpOnly: true,
+      httpOnly: false,
       secure: process.env.NODE_ENV === 'production',
       sameSite: 'strict',
       maxAge: 60 * 60 * 24 * 7,
