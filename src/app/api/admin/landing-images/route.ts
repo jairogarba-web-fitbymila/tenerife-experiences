@@ -1,12 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { cookies } from 'next/headers'
 import { createAdminClient } from '@/lib/supabase/admin'
-import { isAuthenticated } from '@/lib/auth'
-
-// Only full admin auth for write operations
-async function isReviewAuthorized(): Promise<boolean> {
-  return isAuthenticated()
-}
+import { requireEditor } from '@/lib/auth'
 
 // GET: Fetch all landing images (public, no auth needed for read)
 export async function GET() {
@@ -26,8 +21,9 @@ export async function GET() {
 
 // PUT: Update a landing image (admin only)
 export async function PUT(request: NextRequest) {
-  if (!(await isReviewAuthorized())) {
-    return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
+  const user = await requireEditor()
+  if (!user) {
+    return NextResponse.json({ error: 'No tienes permisos para editar imágenes' }, { status: 403 })
   }
 
   const body = await request.json()

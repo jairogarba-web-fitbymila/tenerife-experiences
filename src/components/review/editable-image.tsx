@@ -27,7 +27,7 @@ export function EditableImage({
   className = '',
   target,
 }: EditableImageProps) {
-  const { isReviewMode } = useReview()
+  const { isReviewMode, canEdit } = useReview()
   const [pickerOpen, setPickerOpen] = useState(false)
   const [saving, setSaving] = useState(false)
   const [saved, setSaved] = useState(false)
@@ -73,7 +73,7 @@ export function EditableImage({
     setPickerOpen(false)
   }, [sectionId, target, onImageChange])
 
-  if (!isReviewMode) return null
+  if (!isReviewMode || !canEdit) return null
 
   return (
     <>

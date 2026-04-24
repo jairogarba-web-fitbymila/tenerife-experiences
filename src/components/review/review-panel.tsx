@@ -11,7 +11,7 @@ interface ReviewSectionProps {
 }
 
 export function ReviewSection({ page, sectionId, sectionLabel, children }: ReviewSectionProps) {
-  const { isReviewMode, saveNote, getNote } = useReview()
+  const { isReviewMode, canEdit, saveNote, getNote } = useReview()
   const [open, setOpen] = useState(false)
   const [note, setNote] = useState('')
   const [photoIssue, setPhotoIssue] = useState(false)
@@ -74,45 +74,53 @@ export function ReviewSection({ page, sectionId, sectionLabel, children }: Revie
             <button onClick={() => setOpen(false)} className="text-white/50 hover:text-white text-lg leading-none">&times;</button>
           </div>
 
-          {/* Photo issue toggle */}
-          <label className="flex items-center gap-2 text-sm text-white/80 cursor-pointer">
-            <input
-              type="checkbox"
-              checked={photoIssue}
-              onChange={e => setPhotoIssue(e.target.checked)}
-              className="w-4 h-4 rounded border-orange-500/50 accent-orange-500"
-            />
-            🖼️ La foto no va / necesita cambio
-          </label>
+          {canEdit ? (
+            <>
+              {/* Photo issue toggle */}
+              <label className="flex items-center gap-2 text-sm text-white/80 cursor-pointer">
+                <input
+                  type="checkbox"
+                  checked={photoIssue}
+                  onChange={e => setPhotoIssue(e.target.checked)}
+                  className="w-4 h-4 rounded border-orange-500/50 accent-orange-500"
+                />
+                🖼️ La foto no va / necesita cambio
+              </label>
 
-          {/* Note textarea */}
-          <textarea
-            value={note}
-            onChange={e => setNote(e.target.value)}
-            placeholder="Escribe tu nota aquí... (ej: cambiar foto por una del Teide, texto incorrecto, etc.)"
-            className="w-full h-20 bg-slate-800 border border-white/10 rounded-lg p-2 text-sm text-white placeholder-white/30 resize-none focus:outline-none focus:border-orange-500/50"
-          />
+              {/* Note textarea */}
+              <textarea
+                value={note}
+                onChange={e => setNote(e.target.value)}
+                placeholder="Escribe tu nota aquí... (ej: cambiar foto por una del Teide, texto incorrecto, etc.)"
+                className="w-full h-20 bg-slate-800 border border-white/10 rounded-lg p-2 text-sm text-white placeholder-white/30 resize-none focus:outline-none focus:border-orange-500/50"
+              />
 
-          {/* Existing note display */}
-          {existing?.note && !note && (
-            <p className="text-xs text-white/50 italic">Nota anterior: {existing.note}</p>
+              {/* Existing note display */}
+              {existing?.note && !note && (
+                <p className="text-xs text-white/50 italic">Nota anterior: {existing.note}</p>
+              )}
+
+              {/* Action buttons */}
+              <div className="flex gap-2">
+                <button
+                  onClick={() => handleSave('approved')}
+                  className="flex-1 py-2 rounded-lg bg-green-600 hover:bg-green-500 text-white text-sm font-semibold transition-colors"
+                >
+                  ✅ Aprobar
+                </button>
+                <button
+                  onClick={() => handleSave('changes_requested')}
+                  className="flex-1 py-2 rounded-lg bg-red-600 hover:bg-red-500 text-white text-sm font-semibold transition-colors"
+                >
+                  🔄 Cambiar
+                </button>
+              </div>
+            </>
+          ) : (
+            <p className="text-xs text-white/50 italic text-center py-2">
+              👁️ Solo lectura — no puedes editar
+            </p>
           )}
-
-          {/* Action buttons */}
-          <div className="flex gap-2">
-            <button
-              onClick={() => handleSave('approved')}
-              className="flex-1 py-2 rounded-lg bg-green-600 hover:bg-green-500 text-white text-sm font-semibold transition-colors"
-            >
-              ✅ Aprobar
-            </button>
-            <button
-              onClick={() => handleSave('changes_requested')}
-              className="flex-1 py-2 rounded-lg bg-red-600 hover:bg-red-500 text-white text-sm font-semibold transition-colors"
-            >
-              🔄 Cambiar
-            </button>
-          </div>
         </div>
       )}
 

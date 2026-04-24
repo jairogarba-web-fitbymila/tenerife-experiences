@@ -4,7 +4,7 @@ import { useState } from 'react'
 import { useReview } from './review-context'
 
 export function ReviewToolbar() {
-  const { isReviewMode, stats, exportNotes, logout } = useReview()
+  const { isReviewMode, role, canEdit, stats, exportNotes, logout } = useReview()
   const [showExport, setShowExport] = useState(false)
   const [copied, setCopied] = useState(false)
 
@@ -38,7 +38,7 @@ export function ReviewToolbar() {
           <div className="flex items-center gap-3">
             <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-orange-500/20 text-orange-400 text-xs font-bold">
               <span className="w-2 h-2 rounded-full bg-orange-500 animate-pulse" />
-              ADMIN · REVISIÓN
+              {role === 'viewer' ? 'VISOR' : 'ADMIN'} · REVISIÓN
             </span>
           </div>
 
@@ -60,12 +60,14 @@ export function ReviewToolbar() {
 
           {/* Actions */}
           <div className="flex items-center gap-2">
-            <a
-              href="/es/dashboard"
-              className="px-3 py-2 rounded-lg bg-slate-800 hover:bg-slate-700 text-white/70 hover:text-white text-sm font-medium transition-colors"
-            >
-              Dashboard
-            </a>
+            {canEdit && (
+              <a
+                href="/es/dashboard"
+                className="px-3 py-2 rounded-lg bg-slate-800 hover:bg-slate-700 text-white/70 hover:text-white text-sm font-medium transition-colors"
+              >
+                Dashboard
+              </a>
+            )}
             <button
               onClick={() => setShowExport(!showExport)}
               className="px-3 py-2 rounded-lg bg-orange-500 hover:bg-orange-400 text-white text-sm font-bold transition-colors"

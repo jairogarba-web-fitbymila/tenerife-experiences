@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { createAdminClient } from '@/lib/supabase/admin'
-import { isAuthenticated } from '@/lib/auth'
+import { requireEditor } from '@/lib/auth'
 
 // Allowed tables and their image field names
 const ALLOWED_TABLES: Record<string, string> = {
@@ -14,8 +14,9 @@ const ALLOWED_TABLES: Record<string, string> = {
 }
 
 export async function PUT(request: NextRequest) {
-  if (!(await isAuthenticated())) {
-    return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
+  const user = await requireEditor()
+  if (!user) {
+    return NextResponse.json({ error: 'No tienes permisos para editar imágenes' }, { status: 403 })
   }
 
   const body = await request.json()

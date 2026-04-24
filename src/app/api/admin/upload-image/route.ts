@@ -1,10 +1,11 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { createAdminClient } from '@/lib/supabase/admin'
-import { isAuthenticated } from '@/lib/auth'
+import { requireEditor } from '@/lib/auth'
 
 export async function POST(request: NextRequest) {
-  if (!(await isAuthenticated())) {
-    return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
+  const user = await requireEditor()
+  if (!user) {
+    return NextResponse.json({ error: 'No tienes permisos para subir imágenes' }, { status: 403 })
   }
 
   const formData = await request.formData()

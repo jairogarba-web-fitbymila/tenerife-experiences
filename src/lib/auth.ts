@@ -36,6 +36,17 @@ export async function isAuthenticated(): Promise<boolean> {
   }
 }
 
+export async function requireEditor(): Promise<{
+  email: string
+  name: string
+  role: string
+} | null> {
+  const user = await getAdminUser()
+  if (!user) return null
+  if (user.role === 'viewer') return null
+  return user
+}
+
 export async function getAdminUser(): Promise<{
   email: string
   name: string

@@ -2,6 +2,8 @@
 
 import { createContext, useContext, useState, useEffect, useCallback, type ReactNode } from 'react'
 
+export type AdminRole = 'owner' | 'editor' | 'viewer' | null
+
 export interface ReviewNote {
   id: string
   page: string
@@ -16,6 +18,8 @@ export interface ReviewNote {
 
 interface ReviewContextType {
   isReviewMode: boolean
+  role: AdminRole
+  canEdit: boolean // owner or editor can edit; viewer cannot
   notes: ReviewNote[]
   saveNote: (note: Omit<ReviewNote, 'id' | 'createdAt' | 'updatedAt'>) => void
   getNote: (page: string, sectionId: string) => ReviewNote | undefined
@@ -35,6 +39,7 @@ function getCookie(name: string): string | null {
 
 export function ReviewProvider({ children }: { children: ReactNode }) {
   const [isReviewMode, setIsReviewMode] = useState(false)
+  const [role, setRole] = useState<AdminRole>(null)
   const [notes, setNotes] = useState<ReviewNote[]>([])
 
   // Check for admin session via cookie (set at login) or legacy URL param
@@ -43,7 +48,14 @@ export function ReviewProvider({ children }: { children: ReactNode }) {
     if (getCookie('admin_review') === 'true') {
       setIsReviewMode(true)
     }
+    // Read role from admin_role cookie
+    const roleCookie = getCookie('admin_role')
+    if (roleCookie && ['owner', 'editor', 'viewer'].includes(roleCookie)) {
+      setRole(roleCookie as AdminRole)
+    }
   }, [])
+
+  const canEdit = role === 'owner' || role === 'editor'
 
   // Load notes from localStorage
   useEffect(() => {
@@ -129,8 +141,10 @@ export function ReviewProvider({ children }: { children: ReactNode }) {
     } catch {}
     // Clear client-side state
     document.cookie = 'admin_review=; path=/; max-age=0'
+    document.cookie = 'admin_role=; path=/; max-age=0'
     sessionStorage.removeItem('review-mode')
     setIsReviewMode(false)
+    setRole(null)
     window.location.href = '/'
   }, [])
 
@@ -142,7 +156,7 @@ export function ReviewProvider({ children }: { children: ReactNode }) {
   }
 
   return (
-    <ReviewContext.Provider value={{ isReviewMode, notes, saveNote, getNote, exportNotes, stats, logout }}>
+    <ReviewContext.Provider value={{ isReviewMode, role, canEdit, notes, saveNote, getNote, exportNotes, stats, logout }}>
       {children}
     </ReviewContext.Provider>
   )
