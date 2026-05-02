@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { cookies } from 'next/headers'
 import { createAdminClient } from '@/lib/supabase/admin'
-import { requireEditor } from '@/lib/auth'
+import { logActivity, requireEditorOrForbidden } from '@/lib/activity-log'
 
 // GET: Fetch all landing images (public, no auth needed for read)
 export async function GET() {
@@ -21,7 +21,7 @@ export async function GET() {
 
 // PUT: Update a landing image (admin only)
 export async function PUT(request: NextRequest) {
-  const user = await requireEditor()
+  const user = await requireEditorOrForbidden(request, 'landing_image')
   if (!user) {
     return NextResponse.json({ error: 'No tienes permisos para editar imágenes' }, { status: 403 })
   }
@@ -51,6 +51,16 @@ export async function PUT(request: NextRequest) {
   if (error) {
     return NextResponse.json({ error: error.message }, { status: 500 })
   }
+
+  await logActivity({
+    user,
+    action: 'update',
+    entityType: 'landing_image',
+    entityId: section_id,
+    entityLabel: section_id,
+    changes: { image_url },
+    request,
+  })
 
   return NextResponse.json(data)
 }

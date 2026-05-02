@@ -16,6 +16,7 @@ import {
   Mail,
   BarChart3,
   ImageIcon,
+  Activity,
 } from 'lucide-react'
 
 const mainNavItems = [
@@ -25,6 +26,7 @@ const mainNavItems = [
   { href: '/dashboard/ventas', label: 'Sales', icon: DollarSign, ownerOnly: true },
   { href: '/dashboard/emails', label: 'Emails', icon: Mail, ownerOnly: true },
   { href: '/dashboard/analytics', label: 'Analytics', icon: BarChart3, ownerOnly: false },
+  { href: '/dashboard/activity', label: 'Actividad', icon: Activity, ownerOnly: true },
 ]
 
 const contentNavItems = [

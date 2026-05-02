@@ -36,33 +36,28 @@ export async function isAuthenticated(): Promise<boolean> {
   }
 }
 
-export async function requireEditor(): Promise<{
+export type AdminUser = {
+  id: string | null
   email: string
   name: string
   role: string
-} | null> {
+}
+
+export async function requireEditor(): Promise<AdminUser | null> {
   const user = await getAdminUser()
   if (!user) return null
   if (user.role === 'viewer') return null
   return user
 }
 
-export async function requireOwner(): Promise<{
-  email: string
-  name: string
-  role: string
-} | null> {
+export async function requireOwner(): Promise<AdminUser | null> {
   const user = await getAdminUser()
   if (!user) return null
   if (user.role !== 'owner') return null
   return user
 }
 
-export async function getAdminUser(): Promise<{
-  email: string
-  name: string
-  role: string
-} | null> {
+export async function getAdminUser(): Promise<AdminUser | null> {
   const cookieStore = await cookies()
   const session = cookieStore.get('admin_session')
   if (!session) return null
@@ -75,7 +70,12 @@ export async function getAdminUser(): Promise<{
     const sessionAge = Date.now() - new Date(parsed.createdAt).getTime()
     if (sessionAge > SESSION_MAX_AGE_MS) return null
 
-    return { email: parsed.email, name: parsed.name, role: parsed.role }
+    return {
+      id: parsed.userId ?? null,
+      email: parsed.email,
+      name: parsed.name,
+      role: parsed.role,
+    }
   } catch {
     return null
   }

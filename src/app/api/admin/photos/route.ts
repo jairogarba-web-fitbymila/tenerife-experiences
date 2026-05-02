@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { createAdminClient } from '@/lib/supabase/admin'
-import { isAuthenticated, requireEditor } from '@/lib/auth'
+import { isAuthenticated } from '@/lib/auth'
+import { logActivity, requireEditorOrForbidden } from '@/lib/activity-log'
 
 export async function GET(request: NextRequest) {
   if (!(await isAuthenticated())) {
@@ -42,7 +43,8 @@ export async function GET(request: NextRequest) {
 }
 
 export async function PUT(request: NextRequest) {
-  if (!(await requireEditor())) {
+  const user = await requireEditorOrForbidden(request, 'photo')
+  if (!user) {
     return NextResponse.json({ error: 'Forbidden' }, { status: 403 })
   }
 
@@ -62,6 +64,15 @@ export async function PUT(request: NextRequest) {
     if (error) {
       return NextResponse.json({ error: error.message }, { status: 500 })
     }
+    await logActivity({
+      user,
+      action: 'update',
+      entityType: 'photo',
+      entityLabel: `${ids.length} fotos (bulk)`,
+      changes: updates,
+      metadata: { ids },
+      request,
+    })
     return NextResponse.json(data)
   }
 
@@ -81,11 +92,22 @@ export async function PUT(request: NextRequest) {
     return NextResponse.json({ error: error.message }, { status: 500 })
   }
 
+  await logActivity({
+    user,
+    action: 'update',
+    entityType: 'photo',
+    entityId: id,
+    entityLabel: data?.description ?? data?.search_term ?? null,
+    changes: updates,
+    request,
+  })
+
   return NextResponse.json(data)
 }
 
 export async function DELETE(request: NextRequest) {
-  if (!(await requireEditor())) {
+  const user = await requireEditorOrForbidden(request, 'photo')
+  if (!user) {
     return NextResponse.json({ error: 'Forbidden' }, { status: 403 })
   }
 
@@ -97,11 +119,26 @@ export async function DELETE(request: NextRequest) {
   }
 
   const supabase = createAdminClient()
+  const { data: existing } = await supabase
+    .from('photo_bank')
+    .select('description, search_term')
+    .eq('id', id)
+    .maybeSingle()
+
   const { error } = await supabase.from('photo_bank').delete().eq('id', id)
 
   if (error) {
     return NextResponse.json({ error: error.message }, { status: 500 })
   }
+
+  await logActivity({
+    user,
+    action: 'delete',
+    entityType: 'photo',
+    entityId: id,
+    entityLabel: existing?.description ?? existing?.search_term ?? null,
+    request,
+  })
 
   return NextResponse.json({ success: true })
 }

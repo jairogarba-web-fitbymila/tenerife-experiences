@@ -1,6 +1,6 @@
-import { NextResponse } from 'next/server'
+import { NextRequest, NextResponse } from 'next/server'
 import { createAdminClient } from '@/lib/supabase/admin'
-import { requireOwner } from '@/lib/auth'
+import { logActivity, requireOwnerOrForbidden } from '@/lib/activity-log'
 
 function escapeCsvField(value: string | null | undefined): string {
   if (value == null) return ''
@@ -11,8 +11,9 @@ function escapeCsvField(value: string | null | undefined): string {
   return str
 }
 
-export async function GET() {
-  if (!(await requireOwner())) {
+export async function GET(request: NextRequest) {
+  const user = await requireOwnerOrForbidden(request, 'lead')
+  if (!user) {
     return NextResponse.json({ error: 'Forbidden' }, { status: 403 })
   }
 
@@ -25,6 +26,15 @@ export async function GET() {
   if (error) {
     return NextResponse.json({ error: error.message }, { status: 500 })
   }
+
+  await logActivity({
+    user,
+    action: 'update',
+    entityType: 'lead',
+    entityLabel: `Export CSV (${leads?.length ?? 0} leads)`,
+    metadata: { export: 'csv', count: leads?.length ?? 0 },
+    request,
+  })
 
   const columns = [
     'business_name',

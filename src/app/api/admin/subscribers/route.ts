@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { createAdminClient } from '@/lib/supabase/admin'
-import { requireOwner } from '@/lib/auth'
+import { logActivity, requireOwnerOrForbidden } from '@/lib/activity-log'
 
 function escapeCsvField(value: string | null | undefined): string {
   if (value == null) return ''
@@ -12,7 +12,7 @@ function escapeCsvField(value: string | null | undefined): string {
 }
 
 export async function GET(request: NextRequest) {
-  if (!(await requireOwner())) {
+  if (!(await requireOwnerOrForbidden(request, 'subscriber'))) {
     return NextResponse.json({ error: 'Forbidden' }, { status: 403 })
   }
 
@@ -50,7 +50,8 @@ export async function GET(request: NextRequest) {
 }
 
 export async function DELETE(request: NextRequest) {
-  if (!(await requireOwner())) {
+  const user = await requireOwnerOrForbidden(request, 'subscriber')
+  if (!user) {
     return NextResponse.json({ error: 'Forbidden' }, { status: 403 })
   }
 
@@ -62,11 +63,26 @@ export async function DELETE(request: NextRequest) {
   }
 
   const supabase = createAdminClient()
+  const { data: existing } = await supabase
+    .from('subscribers')
+    .select('email')
+    .eq('id', id)
+    .maybeSingle()
+
   const { error } = await supabase.from('subscribers').delete().eq('id', id)
 
   if (error) {
     return NextResponse.json({ error: error.message }, { status: 500 })
   }
+
+  await logActivity({
+    user,
+    action: 'delete',
+    entityType: 'subscriber',
+    entityId: id,
+    entityLabel: existing?.email ?? null,
+    request,
+  })
 
   return NextResponse.json({ success: true })
 }

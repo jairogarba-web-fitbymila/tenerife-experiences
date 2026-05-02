@@ -1,9 +1,9 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { createAdminClient } from '@/lib/supabase/admin'
-import { requireOwner } from '@/lib/auth'
+import { logActivity, requireOwnerOrForbidden } from '@/lib/activity-log'
 
-export async function GET() {
-  if (!(await requireOwner())) {
+export async function GET(request: NextRequest) {
+  if (!(await requireOwnerOrForbidden(request, 'invoice'))) {
     return NextResponse.json({ error: 'Forbidden' }, { status: 403 })
   }
 
@@ -25,7 +25,8 @@ export async function GET() {
 }
 
 export async function POST(request: NextRequest) {
-  if (!(await requireOwner())) {
+  const user = await requireOwnerOrForbidden(request, 'invoice')
+  if (!user) {
     return NextResponse.json({ error: 'Forbidden' }, { status: 403 })
   }
 
@@ -77,11 +78,22 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ error: error.message }, { status: 500 })
   }
 
+  await logActivity({
+    user,
+    action: 'create',
+    entityType: 'invoice',
+    entityId: data?.id,
+    entityLabel: data?.invoice_number ?? null,
+    changes: { partner_id, amount, currency: currency || 'EUR' },
+    request,
+  })
+
   return NextResponse.json(data)
 }
 
 export async function PUT(request: NextRequest) {
-  if (!(await requireOwner())) {
+  const user = await requireOwnerOrForbidden(request, 'invoice')
+  if (!user) {
     return NextResponse.json({ error: 'Forbidden' }, { status: 403 })
   }
 
@@ -112,6 +124,16 @@ export async function PUT(request: NextRequest) {
   if (error) {
     return NextResponse.json({ error: error.message }, { status: 500 })
   }
+
+  await logActivity({
+    user,
+    action: 'update',
+    entityType: 'invoice',
+    entityId: id,
+    entityLabel: data?.invoice_number ?? null,
+    changes: updates,
+    request,
+  })
 
   return NextResponse.json(data)
 }

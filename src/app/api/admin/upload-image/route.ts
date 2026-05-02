@@ -1,9 +1,9 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { createAdminClient } from '@/lib/supabase/admin'
-import { requireEditor } from '@/lib/auth'
+import { logActivity, requireEditorOrForbidden } from '@/lib/activity-log'
 
 export async function POST(request: NextRequest) {
-  const user = await requireEditor()
+  const user = await requireEditorOrForbidden(request, 'photo')
   if (!user) {
     return NextResponse.json({ error: 'No tienes permisos para subir imágenes' }, { status: 403 })
   }
@@ -57,6 +57,16 @@ export async function POST(request: NextRequest) {
   const { data: urlData } = supabase.storage
     .from('images')
     .getPublicUrl(filename)
+
+  await logActivity({
+    user,
+    action: 'create',
+    entityType: 'photo',
+    entityId: data.path,
+    entityLabel: file.name,
+    metadata: { size: file.size, contentType: file.type, url: urlData.publicUrl },
+    request,
+  })
 
   return NextResponse.json({
     success: true,

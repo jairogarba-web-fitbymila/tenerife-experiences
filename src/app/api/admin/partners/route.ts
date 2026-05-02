@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { createAdminClient } from '@/lib/supabase/admin'
-import { isAuthenticated, requireEditor } from '@/lib/auth'
+import { isAuthenticated } from '@/lib/auth'
+import { logActivity, requireEditorOrForbidden } from '@/lib/activity-log'
 import { slugify } from '@/lib/helpers'
 
 export async function GET() {
@@ -22,7 +23,8 @@ export async function GET() {
 }
 
 export async function POST(request: NextRequest) {
-  if (!(await requireEditor())) {
+  const user = await requireEditorOrForbidden(request, 'partner')
+  if (!user) {
     return NextResponse.json({ error: 'Forbidden' }, { status: 403 })
   }
 
@@ -56,11 +58,22 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ error: error.message }, { status: 500 })
   }
 
+  await logActivity({
+    user,
+    action: 'create',
+    entityType: 'partner',
+    entityId: data?.id,
+    entityLabel: data?.name ?? null,
+    changes: { name, type, plan },
+    request,
+  })
+
   return NextResponse.json(data)
 }
 
 export async function PUT(request: NextRequest) {
-  if (!(await requireEditor())) {
+  const user = await requireEditorOrForbidden(request, 'partner')
+  if (!user) {
     return NextResponse.json({ error: 'Forbidden' }, { status: 403 })
   }
 
@@ -88,11 +101,22 @@ export async function PUT(request: NextRequest) {
     return NextResponse.json({ error: error.message }, { status: 500 })
   }
 
+  await logActivity({
+    user,
+    action: 'update',
+    entityType: 'partner',
+    entityId: id,
+    entityLabel: data?.name ?? null,
+    changes: updates,
+    request,
+  })
+
   return NextResponse.json(data)
 }
 
 export async function DELETE(request: NextRequest) {
-  if (!(await requireEditor())) {
+  const user = await requireEditorOrForbidden(request, 'partner')
+  if (!user) {
     return NextResponse.json({ error: 'Forbidden' }, { status: 403 })
   }
 
@@ -104,11 +128,26 @@ export async function DELETE(request: NextRequest) {
   }
 
   const supabase = createAdminClient()
+  const { data: existing } = await supabase
+    .from('partners')
+    .select('name')
+    .eq('id', id)
+    .maybeSingle()
+
   const { error } = await supabase.from('partners').delete().eq('id', id)
 
   if (error) {
     return NextResponse.json({ error: error.message }, { status: 500 })
   }
+
+  await logActivity({
+    user,
+    action: 'delete',
+    entityType: 'partner',
+    entityId: id,
+    entityLabel: existing?.name ?? null,
+    request,
+  })
 
   return NextResponse.json({ success: true })
 }

@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { createAdminClient } from '@/lib/supabase/admin'
-import { isAuthenticated, requireEditor } from '@/lib/auth'
+import { isAuthenticated } from '@/lib/auth'
+import { logActivity, requireEditorOrForbidden } from '@/lib/activity-log'
 
 export async function GET() {
   if (!(await isAuthenticated())) {
@@ -21,7 +22,8 @@ export async function GET() {
 }
 
 export async function PUT(request: NextRequest) {
-  if (!(await requireEditor())) {
+  const user = await requireEditorOrForbidden(request, 'category')
+  if (!user) {
     return NextResponse.json({ error: 'Forbidden' }, { status: 403 })
   }
 
@@ -43,6 +45,16 @@ export async function PUT(request: NextRequest) {
   if (error) {
     return NextResponse.json({ error: error.message }, { status: 500 })
   }
+
+  await logActivity({
+    user,
+    action: 'update',
+    entityType: 'category',
+    entityId: id,
+    entityLabel: data?.slug ?? null,
+    changes: updates,
+    request,
+  })
 
   return NextResponse.json(data)
 }

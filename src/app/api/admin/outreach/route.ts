@@ -1,10 +1,11 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { createAdminClient } from '@/lib/supabase/admin'
 import { getEmailTemplate } from '@/lib/email-templates'
-import { requireOwner } from '@/lib/auth'
+import { logActivity, requireOwnerOrForbidden } from '@/lib/activity-log'
 
 export async function POST(request: NextRequest) {
-  if (!(await requireOwner())) {
+  const user = await requireOwnerOrForbidden(request, 'outreach')
+  if (!user) {
     return NextResponse.json({ error: 'Forbidden' }, { status: 403 })
   }
 
@@ -80,6 +81,16 @@ export async function POST(request: NextRequest) {
       { status: 500 }
     )
   }
+
+  await logActivity({
+    user,
+    action: 'create',
+    entityType: 'outreach',
+    entityId: lead.id,
+    entityLabel: `${lead.business_name} (template ${templateNumber})`,
+    metadata: { template_number: templateNumber, attempt: (lead.contact_attempts || 0) + 1 },
+    request,
+  })
 
   return NextResponse.json({
     success: true,

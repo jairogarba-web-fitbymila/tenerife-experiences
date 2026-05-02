@@ -1,9 +1,9 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { createAdminClient } from '@/lib/supabase/admin'
-import { requireOwner } from '@/lib/auth'
+import { logActivity, requireOwnerOrForbidden } from '@/lib/activity-log'
 
-export async function GET() {
-  if (!(await requireOwner())) {
+export async function GET(request: NextRequest) {
+  if (!(await requireOwnerOrForbidden(request, 'contract'))) {
     return NextResponse.json({ error: 'Forbidden' }, { status: 403 })
   }
 
@@ -25,7 +25,8 @@ export async function GET() {
 }
 
 export async function POST(request: NextRequest) {
-  if (!(await requireOwner())) {
+  const user = await requireOwnerOrForbidden(request, 'contract')
+  if (!user) {
     return NextResponse.json({ error: 'Forbidden' }, { status: 403 })
   }
 
@@ -74,11 +75,22 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ error: error.message }, { status: 500 })
   }
 
+  await logActivity({
+    user,
+    action: 'create',
+    entityType: 'contract',
+    entityId: data?.id,
+    entityLabel: `${data?.plan ?? plan} · ${data?.partners?.name ?? partner_id}`,
+    changes: { partner_id, plan, price, billing_cycle },
+    request,
+  })
+
   return NextResponse.json(data)
 }
 
 export async function PUT(request: NextRequest) {
-  if (!(await requireOwner())) {
+  const user = await requireOwnerOrForbidden(request, 'contract')
+  if (!user) {
     return NextResponse.json({ error: 'Forbidden' }, { status: 403 })
   }
 
@@ -105,11 +117,22 @@ export async function PUT(request: NextRequest) {
     return NextResponse.json({ error: error.message }, { status: 500 })
   }
 
+  await logActivity({
+    user,
+    action: 'update',
+    entityType: 'contract',
+    entityId: id,
+    entityLabel: `${data?.plan ?? ''} · ${data?.partners?.name ?? ''}`.trim() || null,
+    changes: updates,
+    request,
+  })
+
   return NextResponse.json(data)
 }
 
 export async function DELETE(request: NextRequest) {
-  if (!(await requireOwner())) {
+  const user = await requireOwnerOrForbidden(request, 'contract')
+  if (!user) {
     return NextResponse.json({ error: 'Forbidden' }, { status: 403 })
   }
 
@@ -126,6 +149,14 @@ export async function DELETE(request: NextRequest) {
   if (error) {
     return NextResponse.json({ error: error.message }, { status: 500 })
   }
+
+  await logActivity({
+    user,
+    action: 'delete',
+    entityType: 'contract',
+    entityId: id,
+    request,
+  })
 
   return NextResponse.json({ success: true })
 }

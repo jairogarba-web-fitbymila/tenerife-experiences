@@ -1,9 +1,9 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { createAdminClient } from '@/lib/supabase/admin'
-import { requireOwner } from '@/lib/auth'
+import { logActivity, requireOwnerOrForbidden } from '@/lib/activity-log'
 
 export async function GET(request: NextRequest) {
-  if (!(await requireOwner())) {
+  if (!(await requireOwnerOrForbidden(request, 'lead'))) {
     return NextResponse.json({ error: 'Forbidden' }, { status: 403 })
   }
 
@@ -53,7 +53,8 @@ export async function GET(request: NextRequest) {
 }
 
 export async function POST(request: NextRequest) {
-  if (!(await requireOwner())) {
+  const user = await requireOwnerOrForbidden(request, 'lead')
+  if (!user) {
     return NextResponse.json({ error: 'Forbidden' }, { status: 403 })
   }
 
@@ -100,11 +101,21 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ error: error.message }, { status: 500 })
   }
 
+  await logActivity({
+    user,
+    action: 'create',
+    entityType: 'lead',
+    entityId: data?.id,
+    entityLabel: data?.business_name ?? null,
+    request,
+  })
+
   return NextResponse.json(data)
 }
 
 export async function PUT(request: NextRequest) {
-  if (!(await requireOwner())) {
+  const user = await requireOwnerOrForbidden(request, 'lead')
+  if (!user) {
     return NextResponse.json({ error: 'Forbidden' }, { status: 403 })
   }
 
@@ -134,6 +145,16 @@ export async function PUT(request: NextRequest) {
   if (error) {
     return NextResponse.json({ error: error.message }, { status: 500 })
   }
+
+  await logActivity({
+    user,
+    action: 'update',
+    entityType: 'lead',
+    entityId: id,
+    entityLabel: data?.business_name ?? null,
+    changes: updates,
+    request,
+  })
 
   return NextResponse.json(data)
 }

@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from 'next/server'
 import { cookies } from 'next/headers'
 import bcrypt from 'bcryptjs'
 import { createClient } from '@supabase/supabase-js'
+import { logActivity } from '@/lib/activity-log'
 
 const supabase = createClient(
   process.env.NEXT_PUBLIC_SUPABASE_URL!,
@@ -29,12 +30,25 @@ export async function POST(request: NextRequest) {
     .single()
 
   if (error || !user) {
+    await logActivity({
+      action: 'login_failed',
+      entityType: 'auth',
+      request,
+      metadata: { loginId, reason: 'user_not_found' },
+    })
     return NextResponse.json({ error: 'Credenciales incorrectas' }, { status: 401 })
   }
 
   // Verify password with bcrypt
   const passwordValid = await bcrypt.compare(cleanPassword, user.password_hash)
   if (!passwordValid) {
+    await logActivity({
+      user: { id: user.id, name: user.name, role: user.role },
+      action: 'login_failed',
+      entityType: 'auth',
+      request,
+      metadata: { loginId, reason: 'bad_password' },
+    })
     return NextResponse.json({ error: 'Credenciales incorrectas' }, { status: 401 })
   }
 
@@ -72,6 +86,13 @@ export async function POST(request: NextRequest) {
     sameSite: 'strict',
     maxAge: 60 * 60 * 24 * 7,
     path: '/',
+  })
+
+  await logActivity({
+    user: { id: user.id, name: user.name, role: user.role },
+    action: 'login',
+    entityType: 'session',
+    request,
   })
 
   return NextResponse.json({ success: true, name: user.name, role: user.role })

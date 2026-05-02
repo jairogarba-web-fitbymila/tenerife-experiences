@@ -45,3 +45,6 @@ next-env.d.ts
 
 # review files
 ADMIN_PANEL_REVIEW.json
+
+# Supabase CLI local cache
+supabase/.temp/
