@@ -4,6 +4,8 @@ import { useState, useEffect } from 'react'
 import { useTranslations, useLocale } from 'next-intl'
 import { Link, usePathname, useRouter } from '@/i18n/routing'
 import type { Locale } from '@/types/database'
+import { SearchDialog } from './search-dialog'
+import { localeNames, localeFlags } from '@/i18n/config'
 
 const navLinks = [
   { href: '/experiences', key: 'experiences' },
@@ -90,8 +92,9 @@ export function Header() {
           ))}
         </ul>
 
-        {/* Desktop Language Selector */}
+        {/* Desktop Search + Language Selector */}
         <div className="hidden lg:flex items-center gap-2">
+          <SearchDialog locale={locale} />
           {displayLocales.map((loc) => (
             <button
               key={loc}
@@ -107,9 +110,13 @@ export function Header() {
           ))}
         </div>
 
-        {/* Hamburger (mobile) */}
+        {/* Mobile right cluster: search + hamburger */}
+        <div className="flex lg:hidden items-center gap-1">
+          <div onClick={(e) => e.stopPropagation()}>
+            <SearchDialog locale={locale} />
+          </div>
         <button
-          className={`flex lg:hidden flex-col gap-[5px] cursor-pointer p-2 z-[1100] bg-transparent border-none ${
+          className={`flex flex-col gap-[5px] cursor-pointer p-2 z-[1100] bg-transparent border-none ${
             mobileOpen ? 'hamburger-active' : ''
           }`}
           onClick={() => setMobileOpen(!mobileOpen)}
@@ -125,6 +132,7 @@ export function Header() {
             mobileOpen ? '-rotate-45 -translate-y-[7px]' : ''
           }`} />
         </button>
+        </div>
       </nav>
 
       {/* Mobile Overlay */}
@@ -156,19 +164,23 @@ export function Header() {
           </Link>
         ))}
 
-        {/* Mobile Language Buttons */}
-        <div className="flex gap-3 mt-4">
+        {/* Mobile Language Selector — single row of flag+name pills, vertical list */}
+        <div className="flex flex-col gap-2 mt-4 w-full max-w-xs">
           {displayLocales.map((loc) => (
             <button
               key={loc}
               onClick={() => handleLocaleChange(loc)}
-              className={`w-11 h-11 rounded-full text-[0.85rem] font-semibold cursor-pointer transition-all duration-300 ${
+              className={`flex items-center justify-between gap-3 px-4 py-3 rounded-xl text-base font-medium cursor-pointer transition-all duration-200 ${
                 loc === locale
                   ? 'bg-[#f97316] text-white border border-[#f97316]'
-                  : 'bg-transparent text-white/70 border border-[rgba(249,115,22,0.4)] hover:border-[#f97316] hover:text-[#f97316]'
+                  : 'bg-transparent text-white/80 border border-white/10 hover:border-[#f97316]/60 hover:text-white active:bg-white/5'
               }`}
             >
-              {loc.toUpperCase()}
+              <span className="flex items-center gap-3">
+                <span className="text-xl leading-none">{localeFlags[loc]}</span>
+                {localeNames[loc]}
+              </span>
+              <span className="text-xs uppercase tracking-wider opacity-60">{loc}</span>
             </button>
           ))}
         </div>

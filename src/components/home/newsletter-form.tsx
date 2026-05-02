@@ -1,10 +1,19 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useRef } from 'react'
 import { useLocale } from 'next-intl'
 import { toast } from 'sonner'
 import { Button } from '@/components/ui/button'
 import { Link } from '@/i18n/routing'
+
+const LOADING_LABEL: Record<string, string> = {
+  es: 'Enviando…',
+  en: 'Submitting…',
+  de: 'Wird gesendet…',
+  fr: 'Envoi…',
+  ru: 'Отправка…',
+  it: 'Invio…',
+}
 
 interface NewsletterFormProps {
   placeholder: string
@@ -18,6 +27,8 @@ export function NewsletterForm({ placeholder, ctaText, privacyText, consentLabel
   const [email, setEmail] = useState('')
   const [consent, setConsent] = useState(false)
   const [loading, setLoading] = useState(false)
+  const [highlightConsent, setHighlightConsent] = useState(false)
+  const consentRef = useRef<HTMLLabelElement>(null)
   const locale = useLocale()
 
   const defaultConsentLabel: Record<string, string> = {
@@ -41,12 +52,18 @@ export function NewsletterForm({ placeholder, ctaText, privacyText, consentLabel
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault()
 
-    if (!email || !consent) {
-      if (!consent) {
-        toast.error(locale === 'es' ? 'Debes aceptar la política de privacidad' : 'You must accept the privacy policy')
-      }
+    if (!consent) {
+      setHighlightConsent(true)
+      consentRef.current?.scrollIntoView({ behavior: 'smooth', block: 'center' })
+      toast.error(
+        locale === 'es'
+          ? 'Marca la casilla de privacidad para continuar'
+          : 'Tick the privacy box to continue',
+      )
+      window.setTimeout(() => setHighlightConsent(false), 2400)
       return
     }
+    if (!email) return
 
     setLoading(true)
 
@@ -91,22 +108,31 @@ export function NewsletterForm({ placeholder, ctaText, privacyText, consentLabel
         />
         <Button
           type="submit"
-          disabled={loading || !consent}
-          className="bg-orange-500 hover:bg-orange-600 text-white px-6 rounded-xl disabled:opacity-50"
+          disabled={loading}
+          className="bg-orange-500 hover:bg-orange-600 text-white px-6 rounded-xl disabled:opacity-60"
         >
-          {loading ? '...' : ctaText}
+          {loading ? (LOADING_LABEL[locale] || LOADING_LABEL.en) : ctaText}
         </Button>
       </div>
 
       {/* RGPD consent checkbox */}
-      <label className="mt-3 flex items-start gap-2 cursor-pointer group">
+      <label
+        ref={consentRef}
+        className={`mt-3 flex items-start gap-2 cursor-pointer group rounded-md p-1.5 -m-1.5 transition-all duration-300 ${
+          highlightConsent ? 'ring-1 ring-red-400/60 bg-red-500/5 animate-pulse' : ''
+        }`}
+      >
         <input
           type="checkbox"
           checked={consent}
           onChange={(e) => setConsent(e.target.checked)}
-          className="mt-0.5 h-4 w-4 rounded border-white/20 bg-white/5 text-orange-500 focus:ring-orange-500/50 accent-orange-500"
+          aria-required="true"
+          className={`mt-0.5 h-4 w-4 rounded bg-white/5 text-orange-500 focus:ring-orange-500/50 accent-orange-500 transition-colors ${
+            highlightConsent ? 'border-red-400' : 'border-white/20'
+          }`}
         />
-        <span className="text-xs text-gray-500 group-hover:text-gray-400 transition-colors">
+        <span className={`text-xs transition-colors ${highlightConsent ? 'text-red-200' : 'text-gray-500 group-hover:text-gray-400'}`}>
+          <span className="text-orange-400 mr-0.5">*</span>
           {consentLabel || defaultConsentLabel[locale] || defaultConsentLabel.en}{' '}
           <Link href="/privacidad" className="text-orange-400 hover:underline">
             {privacyLinkLabel[locale] || privacyLinkLabel.en}

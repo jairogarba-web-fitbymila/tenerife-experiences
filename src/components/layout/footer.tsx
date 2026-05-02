@@ -137,8 +137,8 @@ export function Footer() {
                 </Link>
               </li>
               <li>
-                <Link href="/partners" className="text-sm text-gray-400 hover:text-orange-400 transition-colors">
-                  {t('advertise')}
+                <Link href="/contacto" className="text-sm text-gray-400 hover:text-orange-400 transition-colors">
+                  {t('contact')}
                 </Link>
               </li>
             </ul>

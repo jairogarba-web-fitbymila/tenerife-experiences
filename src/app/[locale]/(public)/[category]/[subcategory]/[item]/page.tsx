@@ -27,6 +27,7 @@ import { notFound } from 'next/navigation'
 import { ReviewSection } from '@/components/review/review-panel'
 import { EditableImage } from '@/components/review/editable-image'
 import { isAuthenticated } from '@/lib/auth'
+import { StickyBookingCard } from '@/components/items/sticky-booking-card'
 
 export async function generateMetadata({
   params,
@@ -503,7 +504,7 @@ export default async function ItemDetailPage({
       )}
 
       {/* Desktop Sidebar Booking Card */}
-      <div className="hidden md:block fixed bottom-8 right-8 z-30 max-w-sm">
+      <StickyBookingCard>
         <Card className="bg-slate-900/95 border-orange-400/20 backdrop-blur-sm">
           <CardContent className="p-6 space-y-4">
             {item.price_from != null && (
@@ -561,10 +562,10 @@ export default async function ItemDetailPage({
             </div>
           </CardContent>
         </Card>
-      </div>
+      </StickyBookingCard>
 
       {/* Spacer for mobile with sticky CTA */}
-      {item.bookable && item.booking_url && <div className="md:hidden h-24" />}
+      {item.bookable && item.booking_url && <div className="md:hidden h-28" />}
     </div>
   )
 }

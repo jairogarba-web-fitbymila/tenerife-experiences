@@ -202,21 +202,21 @@ export function MegaMenuDesktop() {
                   ? 'opacity-100 visible translate-y-0'
                   : 'opacity-0 invisible -translate-y-2'
               }`}
-              style={{ minWidth: item.groups.length > 2 ? '640px' : '400px' }}
+              style={{ minWidth: item.groups.length > 2 ? '560px' : '380px' }}
             >
               <div className="bg-slate-900/95 backdrop-blur-xl border border-white/10 rounded-xl shadow-2xl p-6">
                 <div
-                  className="grid gap-6"
+                  className="grid gap-x-8 gap-y-5"
                   style={{
-                    gridTemplateColumns: `repeat(${Math.min(item.groups.length, 4)}, minmax(0, 1fr))`,
+                    gridTemplateColumns: `repeat(${Math.min(item.groups.length, 3)}, minmax(0, 1fr))`,
                   }}
                 >
                   {item.groups.map((group) => (
                     <div key={group.key}>
-                      <h3 className="text-sm font-bold text-orange-400 uppercase tracking-wider mb-3">
+                      <h3 className="text-xs font-bold text-orange-400 uppercase tracking-wider mb-2.5">
                         {t(`groups.${group.key}`)}
                       </h3>
-                      <ul className="space-y-1.5">
+                      <ul className="space-y-0.5">
                         {group.links.map((link) => (
                           <li key={link.key}>
                             <Link
@@ -230,6 +230,16 @@ export function MegaMenuDesktop() {
                       </ul>
                     </div>
                   ))}
+                </div>
+                {/* View all link to the menu's hub page */}
+                <div className="mt-5 pt-4 border-t border-white/10">
+                  <Link
+                    href={item.href}
+                    className="flex items-center justify-between text-sm text-orange-400 hover:text-orange-300 transition-colors group"
+                  >
+                    <span className="font-medium">{t('viewAll')} {t(`items.${item.key}`)}</span>
+                    <span className="transition-transform group-hover:translate-x-1">→</span>
+                  </Link>
                 </div>
               </div>
             </div>

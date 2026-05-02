@@ -1,7 +1,7 @@
 'use client'
 
 import { useState } from 'react'
-import { useRouter } from 'next/navigation'
+import { useRouter } from '@/i18n/routing'
 import { MapPin, ArrowRight } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 
@@ -9,15 +9,11 @@ export function HeroSearchBar({ placeholder }: { placeholder: string }) {
   const [query, setQuery] = useState('')
   const router = useRouter()
 
-  const locale =
-    typeof window !== 'undefined' ? window.location.pathname.split('/')[1] : ''
-  const prefix = locale && locale.length === 2 ? `/${locale}` : ''
-
   function handleSubmit(e: React.FormEvent) {
     e.preventDefault()
     const trimmed = query.trim()
     if (trimmed) {
-      router.push(`${prefix}/search?q=${encodeURIComponent(trimmed)}`)
+      router.push({ pathname: '/search', query: { q: trimmed } })
     }
   }
 
