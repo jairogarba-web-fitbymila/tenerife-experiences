@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { usePathname } from 'next/navigation'
 
 function getSessionId(): string {
@@ -24,13 +24,21 @@ function getLocaleFromPath(pathname: string): string | null {
  */
 export function PageTracker() {
   const pathname = usePathname()
+  const [consented, setConsented] = useState(false)
 
   useEffect(() => {
-    if (!pathname) return
+    const check = () => setConsented(localStorage.getItem('cookie-consent') === 'accepted')
+    check()
+    window.addEventListener('cookie-consent-change', check)
+    window.addEventListener('storage', check)
+    return () => {
+      window.removeEventListener('cookie-consent-change', check)
+      window.removeEventListener('storage', check)
+    }
+  }, [])
 
-    // Only track if user has consented to analytics cookies
-    const consent = localStorage.getItem('cookie-consent')
-    if (consent !== 'accepted') return
+  useEffect(() => {
+    if (!pathname || !consented) return
 
     try {
       const sessionId = getSessionId()
@@ -49,7 +57,7 @@ export function PageTracker() {
     } catch {
       // Silent fail
     }
-  }, [pathname])
+  }, [pathname, consented])
 
   return null
 }

@@ -20,25 +20,16 @@ export function CookieConsent() {
     }
   }, [])
 
-  const handleAcceptAll = () => {
-    localStorage.setItem('cookie-consent', 'accepted')
+  const persistConsent = (level: 'accepted' | 'essential' | 'rejected') => {
+    localStorage.setItem('cookie-consent', level)
     localStorage.setItem('cookie-consent-date', new Date().toISOString())
     setVisible(false)
-    // Reload so Analytics + PageTracker detect consent
-    window.location.reload()
+    window.dispatchEvent(new CustomEvent('cookie-consent-change', { detail: level }))
   }
 
-  const handleEssentialOnly = () => {
-    localStorage.setItem('cookie-consent', 'essential')
-    localStorage.setItem('cookie-consent-date', new Date().toISOString())
-    setVisible(false)
-  }
-
-  const handleReject = () => {
-    localStorage.setItem('cookie-consent', 'rejected')
-    localStorage.setItem('cookie-consent-date', new Date().toISOString())
-    setVisible(false)
-  }
+  const handleAcceptAll = () => persistConsent('accepted')
+  const handleEssentialOnly = () => persistConsent('essential')
+  const handleReject = () => persistConsent('rejected')
 
   if (!visible) return null
 

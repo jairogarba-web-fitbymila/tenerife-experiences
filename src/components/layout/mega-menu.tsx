@@ -24,7 +24,7 @@ interface MenuItem {
 const menuItems: MenuItem[] = [
   {
     key: 'thingsToDo',
-    href: '/experiencias',
+    href: '/experiences',
     groups: [
       {
         key: 'experiences',
@@ -97,7 +97,7 @@ const menuItems: MenuItem[] = [
   },
   {
     key: 'gastronomy',
-    href: '/gastronomia',
+    href: '/food',
     groups: [
       {
         key: 'whereToEat',

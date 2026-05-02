@@ -95,7 +95,7 @@ export async function generateMetadata({
   return {
     title: getLocalizedText(text.meta.title, loc),
     description: getLocalizedText(text.meta.description, loc),
-    alternates: buildAlternates(locale, '/playas-tenerife'),
+    alternates: buildAlternates(locale, '/beaches'),
   }
 }
 

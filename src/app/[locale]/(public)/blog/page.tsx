@@ -26,27 +26,45 @@ export async function generateMetadata({
 
 export default async function BlogPage({
   params,
+  searchParams,
 }: {
   params: Promise<{ locale: string }>
+  searchParams: Promise<{ category?: string }>
 }) {
   const { locale } = await params
+  const { category: activeCategory } = await searchParams
   const supabase = await createClient()
   const t = await getTranslations({ locale, namespace: 'blog' })
   const tc = await getTranslations({ locale, namespace: 'common' })
 
-  const { data: articles } = await supabase
+  // Always fetch categories (for the filter bar) from articles, regardless of active filter
+  const { data: allArticlesForCategories } = await supabase
     .from('articles')
-    .select('*, category:categories(slug, name)')
+    .select('category:categories(slug, name)')
+    .eq('published', true)
+
+  const categoriesMap = new Map<string, string>()
+  for (const a of allArticlesForCategories ?? []) {
+    const cat = a.category as { slug?: string; name?: Partial<Record<Locale, string>> | null } | null
+    if (cat?.slug && !categoriesMap.has(cat.slug)) {
+      categoriesMap.set(cat.slug, getLocalizedText(cat.name ?? null, locale as Locale))
+    }
+  }
+  const categories = Array.from(categoriesMap.entries()).map(([slug, name]) => ({ slug, name }))
+
+  // Filtered article list
+  let query = supabase
+    .from('articles')
+    .select('*, category:categories!inner(slug, name)')
     .eq('published', true)
     .order('published_at', { ascending: false })
     .limit(20)
 
-  // Get unique categories for filter bar
-  const categories = Array.from(
-    new Map(
-      articles?.map((a) => [a.category?.slug, getLocalizedText(a.category?.name, locale as Locale)])
-    ).entries()
-  ).map(([slug, name]) => ({ slug, name }))
+  if (activeCategory) {
+    query = query.eq('category.slug', activeCategory)
+  }
+
+  const { data: articles } = await query
 
   // Featured articles: alternate pattern (every 3rd item)
   const isFeatured = (index: number) => index % 3 === 0
@@ -88,16 +106,28 @@ export default async function BlogPage({
         <section className="sticky top-0 z-40 bg-slate-950/95 backdrop-blur border-b border-white/5 py-4">
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <div className="flex flex-wrap gap-2">
-              <button className="px-4 py-2 rounded-full border border-orange-500/50 bg-orange-500/10 text-orange-400 text-sm font-medium hover:bg-orange-500/20 transition-colors">
-                All Articles
-              </button>
+              <Link
+                href="/blog"
+                className={`px-4 py-2 rounded-full border text-sm font-medium transition-colors ${
+                  !activeCategory
+                    ? 'border-orange-500/50 bg-orange-500/10 text-orange-400 hover:bg-orange-500/20'
+                    : 'border-white/10 bg-slate-900/50 text-gray-300 hover:border-white/30 hover:text-white'
+                }`}
+              >
+                {tc.has('allArticles') ? tc('allArticles') : 'All Articles'}
+              </Link>
               {categories.map((category) => (
-                <button
+                <Link
                   key={category.slug}
-                  className="px-4 py-2 rounded-full border border-white/10 bg-slate-900/50 text-gray-300 text-sm font-medium hover:border-white/30 hover:text-white transition-colors"
+                  href={{ pathname: '/blog', query: { category: category.slug } }}
+                  className={`px-4 py-2 rounded-full border text-sm font-medium transition-colors ${
+                    activeCategory === category.slug
+                      ? 'border-orange-500/50 bg-orange-500/10 text-orange-400 hover:bg-orange-500/20'
+                      : 'border-white/10 bg-slate-900/50 text-gray-300 hover:border-white/30 hover:text-white'
+                  }`}
                 >
                   {category.name}
-                </button>
+                </Link>
               ))}
             </div>
           </div>

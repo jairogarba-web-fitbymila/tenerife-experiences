@@ -8,12 +8,12 @@ const suggestedPages = [
     icon: MapPin,
   },
   {
-    href: '/playas-tenerife',
+    href: '/beaches',
     label: 'Playas / Beaches',
     icon: Waves,
   },
   {
-    href: '/experiencias',
+    href: '/experiences',
     label: 'Experiencias / Experiences',
     icon: Mountain,
   },

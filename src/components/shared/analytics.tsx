@@ -18,9 +18,13 @@ export function Analytics() {
       setConsented(consent === 'accepted')
     }
     check()
-    // Re-check when consent changes (cookie banner sets it and reloads)
+    // Re-check when consent changes — same tab via custom event, other tabs via storage event
+    window.addEventListener('cookie-consent-change', check)
     window.addEventListener('storage', check)
-    return () => window.removeEventListener('storage', check)
+    return () => {
+      window.removeEventListener('cookie-consent-change', check)
+      window.removeEventListener('storage', check)
+    }
   }, [])
 
   if (!GA_ID || !consented) return null

@@ -1,5 +1,7 @@
 'use client'
 
+import { useState } from 'react'
+import { useLocale } from 'next-intl'
 import { Link } from '@/i18n/routing'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent } from '@/components/ui/card'
@@ -13,6 +15,9 @@ import {
   Handshake,
   ArrowRight,
   MessageSquare,
+  CheckCircle2,
+  AlertCircle,
+  Loader2,
 } from 'lucide-react'
 
 const content = {
@@ -36,6 +41,11 @@ const content = {
       message: 'Mensaje',
       messagePlaceholder: 'Escribe tu mensaje aquí...',
       send: 'Enviar mensaje',
+      sending: 'Enviando…',
+      success: '¡Mensaje enviado! Te responderemos pronto.',
+      errorGeneric: 'No hemos podido enviar tu mensaje. Inténtalo de nuevo.',
+      errorEmail: 'Revisa tu correo electrónico.',
+      errorMissing: 'Rellena todos los campos.',
     },
     info: {
       emailLabel: 'Email',
@@ -69,6 +79,11 @@ const content = {
       message: 'Message',
       messagePlaceholder: 'Write your message here...',
       send: 'Send message',
+      sending: 'Sending…',
+      success: 'Message sent! We will get back to you soon.',
+      errorGeneric: 'We could not send your message. Please try again.',
+      errorEmail: 'Please check your email address.',
+      errorMissing: 'Please fill in all fields.',
     },
     info: {
       emailLabel: 'Email',
@@ -84,10 +99,63 @@ const content = {
   },
 }
 
+type FormState = {
+  name: string
+  email: string
+  subject: string
+  message: string
+}
+
+const EMPTY_FORM: FormState = { name: '', email: '', subject: '', message: '' }
+
 export default function ContactoPage() {
-  const locale = typeof window !== 'undefined' ? (document.documentElement.lang || 'en') : 'en'
+  const locale = useLocale()
   const lang = locale === 'es' ? 'es' : 'en'
   const t = content[lang]
+
+  const [form, setForm] = useState<FormState>(EMPTY_FORM)
+  const [status, setStatus] = useState<'idle' | 'sending' | 'success' | 'error'>('idle')
+  const [errorMsg, setErrorMsg] = useState<string | null>(null)
+
+  const updateField = (field: keyof FormState) => (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
+  ) => setForm((prev) => ({ ...prev, [field]: e.target.value }))
+
+  async function handleSubmit(e: React.FormEvent) {
+    e.preventDefault()
+    if (status === 'sending') return
+
+    setStatus('sending')
+    setErrorMsg(null)
+
+    try {
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ ...form, locale }),
+      })
+      const data = await res.json().catch(() => ({}))
+
+      if (!res.ok) {
+        const code = data?.error
+        const msg =
+          code === 'invalid_email'
+            ? t.form.errorEmail
+            : code === 'missing_fields'
+              ? t.form.errorMissing
+              : t.form.errorGeneric
+        setErrorMsg(msg)
+        setStatus('error')
+        return
+      }
+
+      setForm(EMPTY_FORM)
+      setStatus('success')
+    } catch {
+      setErrorMsg(t.form.errorGeneric)
+      setStatus('error')
+    }
+  }
 
   return (
     <div className="min-h-screen">
@@ -117,22 +185,20 @@ export default function ContactoPage() {
             <div className="lg:col-span-2">
               <Card className="bg-slate-900/80 border-white/10">
                 <CardContent className="p-8">
-                  <form
-                    className="space-y-6"
-                    onSubmit={(e) => {
-                      e.preventDefault()
-                      // TODO: connect to backend
-                    }}
-                  >
+                  <form className="space-y-6" onSubmit={handleSubmit}>
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                       <div className="space-y-2">
                         <label className="text-sm font-medium text-gray-300">
                           {t.form.name}
                         </label>
                         <Input
+                          name="name"
+                          value={form.name}
+                          onChange={updateField('name')}
                           placeholder={t.form.namePlaceholder}
                           className="bg-slate-800 border-white/10 text-white placeholder-gray-500 rounded-xl"
                           required
+                          disabled={status === 'sending'}
                         />
                       </div>
                       <div className="space-y-2">
@@ -140,10 +206,14 @@ export default function ContactoPage() {
                           {t.form.email}
                         </label>
                         <Input
+                          name="email"
                           type="email"
+                          value={form.email}
+                          onChange={updateField('email')}
                           placeholder={t.form.emailPlaceholder}
                           className="bg-slate-800 border-white/10 text-white placeholder-gray-500 rounded-xl"
                           required
+                          disabled={status === 'sending'}
                         />
                       </div>
                     </div>
@@ -152,9 +222,13 @@ export default function ContactoPage() {
                         {t.form.subject}
                       </label>
                       <Input
+                        name="subject"
+                        value={form.subject}
+                        onChange={updateField('subject')}
                         placeholder={t.form.subjectPlaceholder}
                         className="bg-slate-800 border-white/10 text-white placeholder-gray-500 rounded-xl"
                         required
+                        disabled={status === 'sending'}
                       />
                     </div>
                     <div className="space-y-2">
@@ -162,18 +236,46 @@ export default function ContactoPage() {
                         {t.form.message}
                       </label>
                       <Textarea
+                        name="message"
+                        value={form.message}
+                        onChange={updateField('message')}
                         placeholder={t.form.messagePlaceholder}
                         className="bg-slate-800 border-white/10 text-white placeholder-gray-500 rounded-xl min-h-[160px]"
                         rows={5}
                         required
+                        disabled={status === 'sending'}
                       />
                     </div>
+
+                    {status === 'success' && (
+                      <div className="flex items-start gap-3 rounded-xl border border-emerald-500/30 bg-emerald-500/10 p-4 text-sm text-emerald-200">
+                        <CheckCircle2 className="h-5 w-5 shrink-0" />
+                        <span>{t.form.success}</span>
+                      </div>
+                    )}
+                    {status === 'error' && errorMsg && (
+                      <div className="flex items-start gap-3 rounded-xl border border-red-500/30 bg-red-500/10 p-4 text-sm text-red-200">
+                        <AlertCircle className="h-5 w-5 shrink-0" />
+                        <span>{errorMsg}</span>
+                      </div>
+                    )}
+
                     <Button
                       type="submit"
-                      className="w-full bg-orange-500 hover:bg-orange-600 text-white py-6 rounded-xl text-lg"
+                      disabled={status === 'sending'}
+                      className="w-full bg-orange-500 hover:bg-orange-600 text-white py-6 rounded-xl text-lg disabled:opacity-60"
                     >
-                      <Send className="h-5 w-5 mr-2" />
-                      {t.form.send}
+                      {status === 'sending' ? (
+                        <>
+                          <Loader2 className="h-5 w-5 mr-2 animate-spin" />
+                          {t.form.sending}
+                        </>
+                      ) : (
+                        <>
+                          <Send className="h-5 w-5 mr-2" />
+                          {t.form.send}
+                        </>
+                      )}
                     </Button>
                   </form>
                 </CardContent>
