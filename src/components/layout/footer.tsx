@@ -2,7 +2,7 @@
 
 import { useTranslations } from 'next-intl'
 import { Link } from '@/i18n/routing'
-import { MapPin, Mail, Phone, Instagram, Facebook, Youtube, Twitter, Heart } from 'lucide-react'
+import { MapPin, Mail, Phone, Facebook, Youtube, Twitter, Heart } from 'lucide-react'
 
 const categoryLinks = [
   { key: 'experiences', href: '/experiences' },
@@ -22,7 +22,6 @@ const latestArticles = [
 ]
 
 const socialLinks = [
-  { name: 'Instagram', href: 'https://www.instagram.com/tenerifeexperiences/', icon: Instagram },
   { name: 'Facebook', href: 'https://www.facebook.com/tenerifeexperiences/', icon: Facebook },
   { name: 'Twitter', href: 'https://x.com/tenerifeexp', icon: Twitter },
   { name: 'YouTube', href: 'https://www.youtube.com/@tenerifeexperiences', icon: Youtube },

@@ -19,22 +19,22 @@ import {
 } from 'lucide-react'
 
 const mainNavItems = [
-  { href: '/dashboard', label: 'Dashboard', icon: LayoutDashboard },
-  { href: '/dashboard/leads', label: 'Leads', icon: Target },
-  { href: '/dashboard/contracts', label: 'Contracts', icon: ScrollText },
-  { href: '/dashboard/ventas', label: 'Sales', icon: DollarSign },
-  { href: '/dashboard/emails', label: 'Emails', icon: Mail },
-  { href: '/dashboard/analytics', label: 'Analytics', icon: BarChart3 },
+  { href: '/dashboard', label: 'Dashboard', icon: LayoutDashboard, ownerOnly: false },
+  { href: '/dashboard/leads', label: 'Leads', icon: Target, ownerOnly: true },
+  { href: '/dashboard/contracts', label: 'Contracts', icon: ScrollText, ownerOnly: true },
+  { href: '/dashboard/ventas', label: 'Sales', icon: DollarSign, ownerOnly: true },
+  { href: '/dashboard/emails', label: 'Emails', icon: Mail, ownerOnly: true },
+  { href: '/dashboard/analytics', label: 'Analytics', icon: BarChart3, ownerOnly: false },
 ]
 
 const contentNavItems = [
-  { href: '/dashboard/articles', label: 'Articles', icon: FileText },
-  { href: '/dashboard/items', label: 'Items', icon: MapPin },
-  { href: '/dashboard/categories', label: 'Categories', icon: FolderTree },
-  { href: '/dashboard/events', label: 'Events', icon: CalendarDays },
-  { href: '/dashboard/partners', label: 'Partners', icon: Handshake },
-  { href: '/dashboard/subscribers', label: 'Subscribers', icon: Users },
-  { href: '/dashboard/photos', label: 'Photo Bank', icon: ImageIcon },
+  { href: '/dashboard/articles', label: 'Articles', icon: FileText, ownerOnly: false },
+  { href: '/dashboard/items', label: 'Items', icon: MapPin, ownerOnly: false },
+  { href: '/dashboard/categories', label: 'Categories', icon: FolderTree, ownerOnly: false },
+  { href: '/dashboard/events', label: 'Events', icon: CalendarDays, ownerOnly: false },
+  { href: '/dashboard/partners', label: 'Partners', icon: Handshake, ownerOnly: false },
+  { href: '/dashboard/subscribers', label: 'Subscribers', icon: Users, ownerOnly: true },
+  { href: '/dashboard/photos', label: 'Photo Bank', icon: ImageIcon, ownerOnly: false },
 ]
 
 export default async function AdminLayout({
@@ -83,35 +83,39 @@ export default async function AdminLayout({
         {/* Navigation */}
         <nav className="flex-1 overflow-y-auto px-3 py-4">
           <div className="space-y-1">
-            {mainNavItems.map((item) => {
-              const Icon = item.icon
-              return (
-                <Link
-                  key={item.href}
-                  href={`/${locale}${item.href}`}
-                  className="flex items-center gap-3 rounded-lg px-3 py-2 text-sm text-gray-400 transition-colors hover:bg-white/5 hover:text-white"
-                >
-                  <Icon className="h-4 w-4" />
-                  {item.label}
-                </Link>
-              )
-            })}
+            {mainNavItems
+              .filter((item) => !item.ownerOnly || userRole === 'owner')
+              .map((item) => {
+                const Icon = item.icon
+                return (
+                  <Link
+                    key={item.href}
+                    href={`/${locale}${item.href}`}
+                    className="flex items-center gap-3 rounded-lg px-3 py-2 text-sm text-gray-400 transition-colors hover:bg-white/5 hover:text-white"
+                  >
+                    <Icon className="h-4 w-4" />
+                    {item.label}
+                  </Link>
+                )
+              })}
           </div>
           <div className="my-4 border-t border-white/5" />
           <div className="space-y-1">
-            {contentNavItems.map((item) => {
-              const Icon = item.icon
-              return (
-                <Link
-                  key={item.href}
-                  href={`/${locale}${item.href}`}
-                  className="flex items-center gap-3 rounded-lg px-3 py-2 text-sm text-gray-400 transition-colors hover:bg-white/5 hover:text-white"
-                >
-                  <Icon className="h-4 w-4" />
-                  {item.label}
-                </Link>
-              )
-            })}
+            {contentNavItems
+              .filter((item) => !item.ownerOnly || userRole === 'owner')
+              .map((item) => {
+                const Icon = item.icon
+                return (
+                  <Link
+                    key={item.href}
+                    href={`/${locale}${item.href}`}
+                    className="flex items-center gap-3 rounded-lg px-3 py-2 text-sm text-gray-400 transition-colors hover:bg-white/5 hover:text-white"
+                  >
+                    <Icon className="h-4 w-4" />
+                    {item.label}
+                  </Link>
+                )
+              })}
           </div>
         </nav>
 

@@ -47,6 +47,17 @@ export async function requireEditor(): Promise<{
   return user
 }
 
+export async function requireOwner(): Promise<{
+  email: string
+  name: string
+  role: string
+} | null> {
+  const user = await getAdminUser()
+  if (!user) return null
+  if (user.role !== 'owner') return null
+  return user
+}
+
 export async function getAdminUser(): Promise<{
   email: string
   name: string

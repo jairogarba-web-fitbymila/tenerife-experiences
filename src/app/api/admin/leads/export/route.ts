@@ -1,6 +1,6 @@
 import { NextResponse } from 'next/server'
 import { createAdminClient } from '@/lib/supabase/admin'
-import { isAuthenticated } from '@/lib/auth'
+import { requireOwner } from '@/lib/auth'
 
 function escapeCsvField(value: string | null | undefined): string {
   if (value == null) return ''
@@ -12,8 +12,8 @@ function escapeCsvField(value: string | null | undefined): string {
 }
 
 export async function GET() {
-  if (!(await isAuthenticated())) {
-    return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
+  if (!(await requireOwner())) {
+    return NextResponse.json({ error: 'Forbidden' }, { status: 403 })
   }
 
   const supabase = createAdminClient()
