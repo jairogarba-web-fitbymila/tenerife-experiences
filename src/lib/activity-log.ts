@@ -100,7 +100,49 @@ export async function requireEditorOrForbidden(
   return null
 }
 
+// Actions worth notifying the owner about. Plain login/logout would be noise.
+const NOTIFIABLE_ACTIONS: ReadonlySet<ActivityAction> = new Set([
+  'create',
+  'update',
+  'delete',
+  'forbidden',
+  'login_failed',
+])
+
+async function notifyAdminAlert(
+  params: LogActivityParams,
+  ip: string | null,
+): Promise<void> {
+  const url = process.env.N8N_WEBHOOK_ADMIN_ALERT
+  if (!url) return
+  if (!NOTIFIABLE_ACTIONS.has(params.action)) return
+
+  try {
+    await fetch(url, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        user_name: params.user?.name ?? null,
+        user_role: params.user?.role ?? null,
+        action: params.action,
+        entity_type: params.entityType,
+        entity_id: params.entityId == null ? null : String(params.entityId),
+        entity_label: params.entityLabel ?? null,
+        changes: params.changes ?? null,
+        ip,
+        timestamp: new Date().toISOString(),
+      }),
+      // Don't block the response on the webhook
+      signal: AbortSignal.timeout(2500),
+    })
+  } catch (err) {
+    console.error('[activity-log] webhook notify failed:', err)
+  }
+}
+
 export async function logActivity(params: LogActivityParams): Promise<void> {
+  const ip = getClientIp(params.request ?? null)
+
   try {
     const supabase = createAdminClient()
     await supabase.from('admin_activity_log').insert({
@@ -112,7 +154,7 @@ export async function logActivity(params: LogActivityParams): Promise<void> {
       entity_id: params.entityId == null ? null : String(params.entityId),
       entity_label: params.entityLabel ?? null,
       changes: params.changes ?? null,
-      ip_address: getClientIp(params.request ?? null),
+      ip_address: ip,
       user_agent: params.request?.headers.get('user-agent') ?? null,
       metadata: params.metadata ?? null,
     })
@@ -120,4 +162,7 @@ export async function logActivity(params: LogActivityParams): Promise<void> {
     // Never let logging failures break the main flow
     console.error('[activity-log] failed to record activity:', err)
   }
+
+  // Fire admin alert in the background; logging always wins priority over notif.
+  notifyAdminAlert(params, ip).catch(() => {})
 }
